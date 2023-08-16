@@ -18,13 +18,16 @@ const ForgotPass = () => {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.imgContainer}>
         <img
           src="https://i.ibb.co/bvdHLJW/Illustration.png"
           alt="Illustration"
         />
       </div>
-      <h2>Forgot Password</h2>
+      <h2 className={styles.heading}>Forgot Password</h2>
+      <h3 className={styles.h3}>
+        We will send you an email with recovery instructions
+      </h3>
       {error && <p className={styles.error}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
@@ -37,8 +40,11 @@ const ForgotPass = () => {
         <button className={styles.button} type="submit">
           Send Reset Email
         </button>
+        <p className={styles.account}>If you don't have an account yet</p>
       </form>
-      <Link to="/signin">Sign in</Link>
+      <Link to="/signin" className={styles.signInLink}>
+        Sign in
+      </Link>
     </div>
   );
 };

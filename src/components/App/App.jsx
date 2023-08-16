@@ -3,7 +3,6 @@ import Layout from 'components/Layout/Layout';
 import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
 import MainAuth from 'pages/Auth/MainAuth/MainAuth';
 import HomePage from 'pages/HomePage';
-// import MainPage from 'pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
 import SignIn from '../../pages/Auth/SignIn/SignIn';
 import SignUp from '../../pages/Auth/SignUp/SignUp';

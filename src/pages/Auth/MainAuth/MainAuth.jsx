@@ -27,12 +27,12 @@ const MainAuth = () => {
         </h2>
         <div className={styles['main-auth-button']}>
           <div>
-            <Link to="signin" className={styles['auth-button']}>
+            <Link to="/signin" className={styles['auth-button']}>
               sign in
             </Link>
           </div>
           <div>
-            <Link to="signup" className={styles['auth-button']}>
+            <Link to="/signup" className={styles['auth-button']}>
               sign up
             </Link>
           </div>
@@ -45,14 +45,6 @@ const MainAuth = () => {
             <li>Control your weight</li>
           </ul>
         </div>
-        {/*<div className={styles['auth-step-container']}>*/}
-        {/*  <div>*/}
-        {/*    {!AuthUser.step ? <Main /> : null}*/}
-        {/*    {AuthUser.step === 'signIn' ? <SignIn /> : null}*/}
-        {/*    {AuthUser.step === 'signUp' ? <SignUp /> : null}*/}
-        {/*    {AuthUser.step === 'forgotPass' ? <ForgotPass /> : null}*/}
-        {/*  </div>*/}
-        {/*</div>*/}
       </div>
     </div>
   );
