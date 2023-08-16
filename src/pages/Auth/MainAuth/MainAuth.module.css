@@ -27,18 +27,12 @@
 }
 
 .auth-step-button {
-  background-color: #0078d4;
-  color: #ffffff;
+  color: #000000;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.auth-step-button:hover {
-  background-color: #005a9e;
 }
 
 .auth-step-container {
@@ -80,6 +74,7 @@
 
 .auth-button:hover {
   background-color: #e3ffa8;
+  color: #000000;
 }
 
 .main-auth-button {

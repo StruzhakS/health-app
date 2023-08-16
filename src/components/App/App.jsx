@@ -14,9 +14,9 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainAuth />} />
-          <Route path="/auth/signin" element={<SignIn />} />
-          <Route path="/auth/signup" element={<SignUp />} />
-          <Route path="/auth/forgot-password" element={<ForgotPass />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPass />} />
           <Route path="/recomendedFood" element={<RecomendedFood />} />
           <Route path="/diary" element={<Diary />} />
           <Route path="*" element={<HomePage />} />

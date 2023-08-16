@@ -59,7 +59,7 @@ const SignUp = () => {
       </form>
       <div className={styles.linkContainer}>
         <p className={styles.linkText}>Do you already have an account?</p>
-        <Link to="/auth/signin" className={styles.link}>
+        <Link to="/signin" className={styles.link}>
           Sign in
         </Link>
       </div>

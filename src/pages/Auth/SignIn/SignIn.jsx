@@ -49,13 +49,13 @@ const SignIn = () => {
           Sign In
         </button>
 
-        <Link to="/auth/forgot-password" className={styles.forgotPasswordLink}>
+        <Link to="/forgot-password" className={styles.forgotPasswordLink}>
           Forgot your password?
         </Link>
       </form>
       <div className={styles.signupContainer}>
         <p className={styles.signupText}>If you don't have an account yet</p>
-        <Link to="/auth/signup" className={styles.signupLink}>
+        <Link to="/signup" className={styles.signupLink}>
           Sign up
         </Link>
       </div>

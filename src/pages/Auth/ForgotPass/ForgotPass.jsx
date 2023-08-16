@@ -42,7 +42,7 @@ const ForgotPass = () => {
         </button>
         <p className={styles.account}>If you don't have an account yet</p>
       </form>
-      <Link to="/auth/signin" className={styles.signInLink}>
+      <Link to="/signin" className={styles.signInLink}>
         Sign in
       </Link>
     </div>

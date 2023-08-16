@@ -27,12 +27,12 @@ const MainAuth = () => {
         </h2>
         <div className={styles['main-auth-button']}>
           <div>
-            <Link to="/auth/signin" className={styles['auth-button']}>
+            <Link to="/signin" className={styles['auth-button']}>
               sign in
             </Link>
           </div>
           <div>
-            <Link to="/auth/signup" className={styles['auth-button']}>
+            <Link to="/signup" className={styles['auth-button']}>
               sign up
             </Link>
           </div>
