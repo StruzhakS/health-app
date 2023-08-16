@@ -38,7 +38,7 @@ const ForgotPass = () => {
           onChange={e => setEmail(e.target.value)}
         />
         <button className={styles.button} type="submit">
-          Send Reset Email
+          Send
         </button>
         <p className={styles.account}>If you don't have an account yet</p>
       </form>
