@@ -1,3 +1,4 @@
+import Diary from 'components/Diary/Diary';
 import Layout from 'components/Layout/Layout';
 import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
 import Auth from 'pages/Auth';
@@ -14,7 +15,7 @@ export const App = () => {
           <Route path="/:auth" element={<Auth />} />
           <Route path="/mainPage" element={<MainPage />} />
           <Route path="/recomendedFood" element={<RecomendedFood />} />
-
+          <Route path="/diary" element={<Diary />} />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
