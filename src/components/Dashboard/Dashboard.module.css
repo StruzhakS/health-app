@@ -1,10 +1,61 @@
-
-
 .dashboardSection {
-    padding: 10px 10px 60px 10px;
-    margin: 0 auto;
+  padding: 10px 10px 60px 10px;
+  margin: 0 auto;
 }
 
-.dashboardTitle{
-    color: aliceblue;
+.dashboardTitle {
+  color: aliceblue;
+}
+.dashboardButton {
+  width: 136px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-right: 6px;
+}
+.dashboardBtnLeftArrow {
+  margin-right: 10px;
+}
+.dashboardSvg {
+  width: 16px;
+  height: 16px;
+  transform: scaleX(-1);
+}
+.dashboardSvgLink {
+  stroke: rgba(182, 182, 182, 1);
+}
+
+.dashboardArrowDownSvg {
+  width: 16px;
+  height: 16px;
+  transform: scaleY(-1);
+}
+ .dashboardArrowDownSvgLink{
+    stroke: rgba(182, 182, 182, 1);
+}
+.dashboardArrowDownSvgLink:hover {
+  stroke: rgba(227, 255, 168, 1);
+}
+
+.dashboardArrowDownSvgLink:focus {
+  stroke: rgba(227, 255, 168, 1);
+}
+.dashboardButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.dashboardCaloriesContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 320px;
+    color: white;
+    padding-right: 20px;
 }
