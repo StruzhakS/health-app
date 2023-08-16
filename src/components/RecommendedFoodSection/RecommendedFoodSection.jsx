@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import recommendedFood from '../../recomended-food.json';
 
 import css from './RecommendedFoodSection.module.css';
+import Icons from '../../assets/icons/symbol-defs.svg';
 
 const RecommendedFoodSection = () => {
   const navigate = useNavigate();
@@ -56,7 +57,15 @@ const RecommendedFoodSection = () => {
         ))}
       </ul>
 
-      <button onClick={evt => onSeeMoreButtonClick(evt)}>See more</button>
+      <button
+        onClick={evt => onSeeMoreButtonClick(evt)}
+        className={css.recommendedFoodSectionButton}
+      >
+        See more
+        <svg width="16px" height="16px" stroke="white">
+          <use xlinkHref={`${Icons}#arrow-right`} />
+        </svg>
+      </button>
     </section>
   );
 };

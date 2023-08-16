@@ -2,7 +2,7 @@ import RecommendedFoodSection from 'components/RecommendedFoodSection/Recommende
 import { useMediaQuery } from 'react-responsive';
 
 const MainPage = () => {
-  const isTabletScreen = useMediaQuery({ minWidth: 768 });
+  const isTabletScreen = useMediaQuery({ minWidth: 834 });
 
   return <>{isTabletScreen && <RecommendedFoodSection />}</>;
 };

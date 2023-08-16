@@ -1,5 +1,4 @@
 .recommendedFoodSection {
-   
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -10,22 +9,48 @@
 .recommendedFoodSectionTitle {
   font-size: 22px;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.45em;
 }
 
 .recommendedFoodSectionList {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .recommendedFoodSectionListItem {
-    display: flex;
-    gap: 20px;
-    width: 380px;
-    padding: 20px 24px;
-    background-color: #0F0F0F;
-   border-radius: 12px; 
+  display: flex;
+  gap: 20px;
+  width: 380px;
+  padding: 20px 24px;
+  background-color: #0f0f0f;
+  border-radius: 12px;
+}
 
+.listItemFoodName {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3em;
+  margin-bottom: 2px;
+}
+
+.listItemFoodDescription{
+font-size: 14px;    
+    font-weight: 400;
+    line-height: 1.42em;
+}
+
+.listItemFoodDescriptionCalories{
+font-weight: 500;
+color: #B6B6B6;
+margin-left: 6px;
+}
+
+.recommendedFoodSectionButton{
+    width: 100px;
+    display: flex;
+    gap: 6px;
+   align-items: center;
+   cursor: pointer;
 }
