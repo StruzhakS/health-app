@@ -19,14 +19,16 @@ const SignIn = () => {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.imgContainer}>
         <img
           src="https://i.ibb.co/bvdHLJW/Illustration.png"
           alt="Illustration"
         />
       </div>
-      <h2>Sign In</h2>
-      <h3>You need to login to use the service</h3>
+      <h2 className={styles.heading}>Sign In</h2>
+      <h3 className={styles.subheading}>
+        You need to login to use the service
+      </h3>
       {error && <p className={styles.error}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
@@ -47,11 +49,15 @@ const SignIn = () => {
           Sign In
         </button>
 
-        <Link to="/auth/forgot-password">Forgot your password?</Link>
+        <Link to="/auth/forgot-password" className={styles.forgotPasswordLink}>
+          Forgot your password?
+        </Link>
       </form>
-      <div>
-        <p>If you don't have an account yet</p>
-        <Link to="/auth/signup">Sign up</Link>
+      <div className={styles.signupContainer}>
+        <p className={styles.signupText}>If you don't have an account yet</p>
+        <Link to="/auth/signup" className={styles.signupLink}>
+          Sign up
+        </Link>
       </div>
     </div>
   );

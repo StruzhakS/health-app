@@ -26,8 +26,10 @@ const SignUp = () => {
           alt="Illustration"
         />
       </div>
-      <h2>Sign Up</h2>
-      <h3>You need to register to use the service</h3>
+      <h2 className={styles.heading}>Sign Up</h2>
+      <h3 className={styles.subheading}>
+        You need to register to use the service
+      </h3>
       {error && <p className={styles.error}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
@@ -55,9 +57,11 @@ const SignUp = () => {
           Sign Up
         </button>
       </form>
-      <div>
-        <p>Do you already have an account?</p>
-        <Link to="/auth/signin">Sign in</Link>
+      <div className={styles.linkContainer}>
+        <p className={styles.linkText}>Do you already have an account?</p>
+        <Link to="/auth/signin" className={styles.link}>
+          Sign in
+        </Link>
       </div>
     </div>
   );
