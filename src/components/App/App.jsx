@@ -3,7 +3,7 @@ import Layout from 'components/Layout/Layout';
 import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
 import MainAuth from 'pages/Auth/MainAuth/MainAuth';
 import HomePage from 'pages/HomePage';
-import MainPage from 'pages/MainPage';
+// import MainPage from 'pages/MainPage';
 import Dashboard from '../Dashboard/Dashboard';
 
 import { Route, Routes } from 'react-router-dom';
