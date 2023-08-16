@@ -4,6 +4,8 @@ import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
 import Auth from 'pages/Auth';
 import HomePage from 'pages/HomePage';
 import MainPage from 'pages/MainPage';
+import Dashboard from '../Dashboard/Dashboard';
+
 import { Route, Routes } from 'react-router-dom';
 
 export const App = () => {
@@ -16,6 +18,7 @@ export const App = () => {
           <Route path="/mainPage" element={<MainPage />} />
           <Route path="/recomendedFood" element={<RecomendedFood />} />
           <Route path="/diary" element={<Diary />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
