@@ -1,0 +1,16 @@
+.mainPageStatisticsSection{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    color: #fff;
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.mainPageStatisticsSectionHeaderContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}

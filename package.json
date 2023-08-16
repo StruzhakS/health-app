@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "clsx": "^2.0.0",
+    "echarts": "^5.4.3",
     "nanoid": "^4.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
