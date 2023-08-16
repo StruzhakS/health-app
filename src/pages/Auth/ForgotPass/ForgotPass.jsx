@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { forgotPassword } from 'redux/auth/authOperations';
 import styles from './ForgotPass.module.css';
-import { updateAuthStep } from '../../../redux/auth/authSlice';
+import { Link } from 'react-router-dom';
 
 const ForgotPass = () => {
   const dispatch = useDispatch();
@@ -15,10 +15,6 @@ const ForgotPass = () => {
       dispatch(forgotPassword(email));
     }
   };
-
-  const updateStep = useCallback((step) => {
-    dispatch(updateAuthStep(step));
-  }, []);
 
   return (
     <div className={styles.container}>
@@ -36,8 +32,7 @@ const ForgotPass = () => {
           Send Reset Email
         </button>
       </form>
-
-      <button onClick={() => updateStep('signIn')}>sign in</button>
+      <Link to="/auth/signin">Sign in</Link>
 
     </div>
   );
