@@ -18,6 +18,12 @@ const ForgotPass = () => {
 
   return (
     <div className={styles.container}>
+      <div>
+        <img
+          src="https://i.ibb.co/bvdHLJW/Illustration.png"
+          alt="Illustration"
+        />
+      </div>
       <h2>Forgot Password</h2>
       {error && <p className={styles.error}>{error}</p>}
       <form onSubmit={handleSubmit}>
@@ -33,7 +39,6 @@ const ForgotPass = () => {
         </button>
       </form>
       <Link to="/auth/signin">Sign in</Link>
-
     </div>
   );
 };

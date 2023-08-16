@@ -20,6 +20,12 @@ const SignUp = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.img}>
+        <img
+          src="https://i.ibb.co/bvdHLJW/Illustration.png"
+          alt="Illustration"
+        />
+      </div>
       <h2>Sign Up</h2>
       <h3>You need to register to use the service</h3>
       {error && <p className={styles.error}>{error}</p>}

@@ -14,6 +14,12 @@ const MainAuth = () => {
 
   return (
     <div className={styles['auth-container']}>
+      <div className={styles['auth-img']}>
+        <img
+          src="https://i.ibb.co/bvdHLJW/Illustration.png"
+          alt="Illustration"
+        />
+      </div>
       <h1 className={styles['auth-header']}>Set goals and achieve them</h1>
       <div className={styles['auth-content']}>
         <h2 className={styles['main-auth-title']}>
@@ -21,18 +27,12 @@ const MainAuth = () => {
         </h2>
         <div className={styles['main-auth-button']}>
           <div>
-            <Link
-              to='signin'
-              className={styles['auth-button']}
-            >
+            <Link to="signin" className={styles['auth-button']}>
               sign in
             </Link>
           </div>
           <div>
-            <Link
-              to='signup'
-              className={styles['auth-button']}
-            >
+            <Link to="signup" className={styles['auth-button']}>
               sign up
             </Link>
           </div>
