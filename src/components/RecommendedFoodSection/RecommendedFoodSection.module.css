@@ -1,4 +1,5 @@
 .recommendedFoodSection {
+   
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -20,7 +21,11 @@
 }
 
 .recommendedFoodSectionListItem {
+    display: flex;
+    gap: 20px;
     width: 380px;
     padding: 20px 24px;
     background-color: #0F0F0F;
+   border-radius: 12px; 
+
 }

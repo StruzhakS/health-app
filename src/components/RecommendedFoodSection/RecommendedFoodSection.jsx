@@ -37,11 +37,19 @@ const RecommendedFoodSection = () => {
       <ul className={css.recommendedFoodSectionList}>
         {randomDataArr().map(({ name, amount, calories }) => (
           <li className={css.recommendedFoodSectionListItem} key={name}>
-            <img src="" alt={name} />
+            <img
+              width="46px"
+              height="46px"
+              src="https://emoji-copy.com/imaj/160/1F966.webp"
+              alt={name}
+            />
             <div>
-              <p>{name}</p>
-              <p>
-                {amount} <span>{`${calories} calories`}</span>
+              <p className={css.listItemFoodName}>{name}</p>
+              <p className={css.listItemFoodDescription}>
+                {amount}
+                <span
+                  className={css.listItemFoodDescriptionCalories}
+                >{`${calories} calories`}</span>
               </p>
             </div>
           </li>
