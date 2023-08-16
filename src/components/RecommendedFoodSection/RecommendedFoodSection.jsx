@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import recommendedFood from '../../recomended-food.json';
 
+import css from './RecommendedFoodSection.module.css';
+
 const RecommendedFoodSection = () => {
   const navigate = useNavigate();
 
@@ -30,11 +32,11 @@ const RecommendedFoodSection = () => {
   };
 
   return (
-    <section>
-      <h2>Recommented food</h2>
-      <ul>
+    <section className={css.recommendedFoodSection}>
+      <h2 className={css.recommendedFoodSectionTitle}>Recommented food</h2>
+      <ul className={css.recommendedFoodSectionList}>
         {randomDataArr().map(({ name, amount, calories }) => (
-          <li key={name}>
+          <li className={css.recommendedFoodSectionListItem} key={name}>
             <img src="" alt={name} />
             <div>
               <p>{name}</p>
