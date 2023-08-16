@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { forgotPassword } from 'redux/auth/authOperations';
 import styles from './ForgotPass.module.css';
@@ -38,7 +38,7 @@ const ForgotPass = () => {
           Send Reset Email
         </button>
       </form>
-      <Link to="/auth/signin">Sign in</Link>
+      <Link to="/signin">Sign in</Link>
     </div>
   );
 };

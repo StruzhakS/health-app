@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUp } from 'redux/auth/authOperations';
 import styles from './SignUp.module.css';
@@ -57,7 +57,7 @@ const SignUp = () => {
       </form>
       <div>
         <p>Do you already have an account?</p>
-        <Link to="/auth/signin">Sign in</Link>
+        <Link to="/signin">Sign in</Link>
       </div>
     </div>
   );

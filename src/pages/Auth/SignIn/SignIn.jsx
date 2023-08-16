@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SignIn.module.css';
 import { signIn } from '../../../redux/auth/authOperations';
@@ -47,11 +47,11 @@ const SignIn = () => {
           Sign In
         </button>
 
-        <Link to="/auth/forgot-password">Forgot your password?</Link>
+        <Link to="/forgot-password">Forgot your password?</Link>
       </form>
       <div>
         <p>If you don't have an account yet</p>
-        <Link to="/auth/signup">Sign up</Link>
+        <Link to="/signup">Sign up</Link>
       </div>
     </div>
   );
