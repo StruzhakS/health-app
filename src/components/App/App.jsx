@@ -1,4 +1,5 @@
 import Layout from 'components/Layout/Layout';
+import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
 import Auth from 'pages/Auth';
 import HomePage from 'pages/HomePage';
 import MainPage from 'pages/MainPage';
@@ -12,6 +13,7 @@ export const App = () => {
           <Route index element={<HomePage />} />
           <Route path="/:auth" element={<Auth />} />
           <Route path="/mainPage" element={<MainPage />} />
+          <Route path="/recomendedFood" element={<RecomendedFood />} />
 
           <Route path="*" element={<HomePage />} />
         </Route>
