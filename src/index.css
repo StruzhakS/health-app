@@ -4,6 +4,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  /* width: 1440px; */
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
 }
 ul,
 ol {
