@@ -1,0 +1,68 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  height: 100px;
+  background-color: #0f0f0f;
+  padding: 0 10px;
+}
+
+@media screen and (min-width: 834px) {
+  .header {
+    font-size: 22px;
+
+    padding: 0 27px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .header {
+    padding: 0 34px;
+  }
+}
+
+.logoLink {
+  color: #b6b6b6;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+@media screen and (min-width: 834px) {
+  .logoLink {
+    font-size: 22px;
+  }
+}
+
+.logoLink:hover {
+  color: white;
+}
+
+.authLinkUp,
+.authLinkIn {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@media screen and (min-width: 834px) {
+  .authLinkUp,
+  .authLinkIn {
+    font-size: 14px;
+  }
+}
+
+.navlink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon {
+  fill: white;
+}
+
+.active {
+  color: #e3ffa8;
+}
