@@ -1,0 +1,26 @@
+.recommendedFoodSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #fff;
+  width: 780px;
+}
+
+.recommendedFoodSectionTitle {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.recommendedFoodSectionList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.recommendedFoodSectionListItem {
+    width: 380px;
+    padding: 20px 24px;
+    background-color: #0F0F0F;
+}
