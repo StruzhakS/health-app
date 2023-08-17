@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Diary from '../Diary/Diary';
 import Layout from '../Layout/Layout';
@@ -12,41 +12,54 @@ import ForgotPass from '../../pages/Auth/ForgotPass/ForgotPass';
 import PublicRoute from 'containers/PublicRoute.jsx';
 import PrivateRoute from 'containers/PrivateRoute';
 import Settings from 'components/Settings/Settings';
+import { useDispatch } from 'react-redux';
+import { updateAuthUser } from '../../redux/auth/authSlice';
 
 export const App = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const authData = localStorage.getItem('user_data');
+    if (authData) {
+      const parsedAuthData = JSON.parse(authData);
+      dispatch(updateAuthUser(parsedAuthData));
+    }
+  }, []);
+
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path='/' element={<Layout />}>
           <Route index element={<MainAuth />} />
           <Route
-            path="/signin"
+            path='/signin'
             element={
-              <PublicRoute component={<SignIn />} redirect="/mainpage" />
+              <PublicRoute component={<SignIn />} redirect='/mainpage' />
             }
           />
           <Route
-            path="/mainpage"
+            path='/mainpage'
             element={<PrivateRoute component={<MainPage />} />}
           />
           {/* <Route path="/signin" element={<SignIn />} /> */}
           <Route
-            path="/signup"
+            path='/signup'
             element={
-              <PublicRoute component={<SignUp />} redirect="/mainpage" />
+              <PublicRoute component={<SignUp />} redirect='/mainpage' />
             }
           />
-          <Route path="/signup/:params" element={<SignupForm />} />
-          <Route path="/forgot-password" element={<ForgotPass />} />
+          <Route path='/signup/:params' element={<SignupForm />} />
+          <Route path='/forgot-password' element={<ForgotPass />} />
 
           <Route
-            path="/recomendedFood"
+            path='/recomendedFood'
             element={<PrivateRoute component={<RecomendedFood />} />}
           />
 
-          <Route path="/diary" element={<Diary />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="*" element={<MainAuth />} />
+          <Route path='/diary' element={<Diary />} />
+          <Route path='/settings' element={<Settings />} />
+          <Route path='*' element={<MainAuth />} />
         </Route>
       </Routes>
     </>
