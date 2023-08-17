@@ -1,7 +1,10 @@
-import React from 'react';
+import RecommendedFoodSection from 'components/RecommendedFoodSection/RecommendedFoodSection';
+import { useMediaQuery } from 'react-responsive';
 
 const MainPage = () => {
-  return <div>MainPage</div>;
+  const isTabletScreen = useMediaQuery({ minWidth: 768 });
+
+  return <>{isTabletScreen && <RecommendedFoodSection />}</>;
 };
 
 export default MainPage;
