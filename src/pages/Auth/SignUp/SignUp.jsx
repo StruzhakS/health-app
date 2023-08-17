@@ -20,9 +20,9 @@ const SignUp = () => {
       if (res?.payload?.success) {
         const signInRes = await dispatch(signIn({ email, password }));
         if (signInRes?.payload?.success) {
-          await dispatch(updateAuthUser(signInRes.payload));
-          localStorage.setItem('user_token', signInRes?.payload?.token);
-          localStorage.setItem('user_data', JSON.stringify(signInRes?.payload));
+          await dispatch(updateAuthUser(signInRes.payload?.user));
+          localStorage.setItem('user_token', signInRes?.payload?.user?.token);
+          localStorage.setItem('user_data', JSON.stringify(signInRes?.payload?.user));
           navigate('/diary');
         }
       } else {

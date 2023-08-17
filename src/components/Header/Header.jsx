@@ -30,7 +30,7 @@ const Header = () => {
     localStorage.removeItem('user_data');
     localStorage.removeItem('user_token');
     navigate('/');
-  }, []);
+  }, [dispatch, navigate]);
 
   return isAuth ? (
     <div className={s.header}>

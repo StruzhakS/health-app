@@ -7,7 +7,7 @@ import { updateAuthUser } from '../../../redux/auth/authSlice';
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Используем useNavigate
+  const navigate = useNavigate();
   const error = useSelector(state => state.auth?.error);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,10 +17,10 @@ const SignIn = () => {
     if (email && password) {
       const res = await dispatch(signIn({ email, password }));
       if (res?.payload?.success) {
-        await dispatch(updateAuthUser(res.payload));
-        localStorage.setItem('user_token', res?.payload?.token);
-        localStorage.setItem('user_data', JSON.stringify(res?.payload));
-        navigate('/diary'); // Перенаправление на страницу Diary после успешного входа
+        await dispatch(updateAuthUser(res.payload?.user));
+        localStorage.setItem('user_token', res?.payload?.user?.token);
+        localStorage.setItem('user_data', JSON.stringify(res?.payload.user));
+        navigate('/diary');
       } else {
         alert(res?.payload?.message ?? 'error');
       }
@@ -30,7 +30,7 @@ const SignIn = () => {
   const AuthUser = useSelector(state => state.auth.user);
 
   if (AuthUser?.id) {
-    navigate('/diary'); // Перенаправление на страницу Diary если пользователь уже авторизован
+    navigate('/diary');
   }
 
   return (

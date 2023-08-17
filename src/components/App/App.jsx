@@ -24,7 +24,7 @@ export const App = () => {
       const parsedAuthData = JSON.parse(authData);
       dispatch(updateAuthUser(parsedAuthData));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
