@@ -20,15 +20,13 @@ const SignIn = () => {
       if (res?.payload?.success) {
         await dispatch(updateAuthUser(res.payload));
 
-        navigate('/diary');
+        navigate('/mainpage');
       } else {
         alert(res?.payload?.message ?? 'error');
       }
     }
   };
-  const isAuth = useSelector(state => state.auth.token);
-
-  console.log(isAuth);
+  // const isAuth = useSelector(state => state.auth.token);
 
   const AuthUser = useSelector(state => state.auth.user);
 

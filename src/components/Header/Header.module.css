@@ -70,6 +70,7 @@
 .avatarImg {
   width: 30px;
   height: 30px;
+  border-radius: 50%;
 }
 
 .userBtn {
@@ -77,19 +78,26 @@
   align-items: center;
   gap: 5px;
   font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.42;
 }
 
 .userSettingsModal {
-  position: relative;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   background-color: #0f0f0f;
   width: 158px;
   height: 112px;
   border-radius: 12px;
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
-  top: '50%';
-  left: '50%';
-  /* right: 'auto';
-  bottom: 'auto'; */
-  /* marginRight: '-50%'; */
-  transform: 'translate(-50%, -50%)';
+  top: 80px;
+  right: 27px;
+  padding: 24px;
+}
+
+.controlWrapper {
+  display: flex;
 }

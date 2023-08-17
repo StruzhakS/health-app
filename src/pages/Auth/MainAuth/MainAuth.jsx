@@ -9,7 +9,7 @@ const MainAuth = () => {
   useEffect(() => {
     if (AuthUser?.user?.id) {
       // Пример редиректа, если пользователь авторизован
-      return <Navigate to="/diary" />;
+      return <Navigate to="/mainpage" />;
     }
   }, [AuthUser]);
 

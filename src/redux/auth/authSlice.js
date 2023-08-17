@@ -4,7 +4,7 @@ import { signUp, signIn, forgotPassword } from './authOperations';
 const initialState = {
   user: null,
   step: null,
-  token: 'null',
+  token: null,
   error: null,
 };
 
@@ -22,7 +22,6 @@ const authSlice = createSlice({
       state.step = action.payload;
     },
     updateAuthUser: (state, action) => {
-      console.log(action);
       state.token = action.payload.token;
       state.user = action.payload;
     },
@@ -33,6 +32,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.error = null;
+        state.avatar = action.payload.avatar;
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
