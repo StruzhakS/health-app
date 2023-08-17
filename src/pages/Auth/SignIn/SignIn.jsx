@@ -26,9 +26,7 @@ const SignIn = () => {
       }
     }
   };
-  const isAuth = useSelector(state => state.auth.token);
-
-  console.log(isAuth);
+  // const isAuth = useSelector(state => state.auth.token);
 
   const AuthUser = useSelector(state => state.auth.user);
 

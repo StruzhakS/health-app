@@ -4,11 +4,10 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import iconsSrc from '../../assets/icons/symbol-defs.svg';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
-import avatar from '../../assets/icons/emoji/Waight.png';
 import Modal from 'react-modal';
-import ReactModal from 'react-modal';
+import ControlPanel from 'components/ControlPanel/ControlPanel';
 
-const customStyles = {
+export const customStyles = {
   overlay: {
     background: 'transparent',
   },
@@ -18,6 +17,9 @@ Modal.setAppElement('#root');
 
 const Header = () => {
   const isAuth = useSelector(state => state.auth.token);
+  const avatar = useSelector(state => state?.auth?.user?.avatarURL);
+  const userName = useSelector(state => state?.auth?.user?.name);
+
   const [setingsModalIsOpen, setSetingsModalIsOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -27,20 +29,20 @@ const Header = () => {
       <NavLink to={'/'} className={s.logoLink}>
         Your Health
       </NavLink>
-      <div></div>
-      <div></div>
-      <button
-        type="button"
-        className={s.userBtn}
-        onClick={() => setSetingsModalIsOpen(true)}
-      >
-        UserName <img src={avatar} alt="" className={s.avatarImg} />
-        <svg style={{ fill: 'white' }} width="14" height="14">
-          <use href={`${iconsSrc}#arrow-down`} />
-        </svg>
-      </button>
-
-      <ReactModal
+      <div className={s.controlWrapper}>
+        <ControlPanel />
+        <button
+          type="button"
+          className={s.userBtn}
+          onClick={() => setSetingsModalIsOpen(true)}
+        >
+          {userName} <img src={avatar} alt="" className={s.avatarImg} />
+          <svg style={{ fill: 'white' }} width="14" height="14">
+            <use href={`${iconsSrc}#arrow-down`} />
+          </svg>
+        </button>
+      </div>
+      <Modal
         className={s.userSettingsModal}
         isOpen={setingsModalIsOpen}
         onRequestClose={() => setSetingsModalIsOpen(false)}
@@ -59,7 +61,7 @@ const Header = () => {
           </svg>
           Log out
         </button>
-      </ReactModal>
+      </Modal>
     </div>
   ) : (
     <div className={s.header}>

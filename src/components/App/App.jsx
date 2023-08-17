@@ -25,7 +25,10 @@ export const App = () => {
               <PublicRoute component={<SignIn />} redirect="/mainpage" />
             }
           />
-          <Route path="/mainpage" element={<MainPage />} />
+          <Route
+            path="/mainpage"
+            element={<PrivateRoute component={<MainPage />} />}
+          />
           {/* <Route path="/signin" element={<SignIn />} /> */}
           <Route
             path="/signup"
