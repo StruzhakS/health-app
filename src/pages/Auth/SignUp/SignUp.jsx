@@ -1,22 +1,40 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signUp } from 'redux/auth/authOperations';
+import { signUp, signIn } from '../../../redux/auth/authOperations';
 import styles from './SignUp.module.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { updateAuthUser } from '../../../redux/auth/authSlice';
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const error = useSelector(state => state.auth.error);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (email && password && name) {
-      dispatch(signUp({ name, email, password }));
+      const res = await dispatch(signUp({ name, email, password }));
+      if (res?.payload?.success) {
+        const res = await dispatch(signIn({ email, password }));
+
+        if (res?.payload?.success) {
+          await dispatch(updateAuthUser(res.payload));
+
+          navigate('/diary');
+        }
+      } else {
+        alert(res?.payload?.message ?? 'error');
+      }
     }
   };
+
+  const AuthUser = useSelector(state => state.auth.user);
+
+  if (AuthUser?.id) {
+    return <Navigate to="/diary" />;
+  }
 
   return (
     <div className={styles.container}>

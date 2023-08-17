@@ -1,9 +1,10 @@
-import Diary from 'components/Diary/Diary';
-import Layout from 'components/Layout/Layout';
-import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
-import MainAuth from 'pages/Auth/MainAuth/MainAuth';
-import HomePage from 'pages/HomePage';
-import { Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Diary from '../Diary/Diary';
+import Layout from '../Layout/Layout';
+import RecomendedFood from '../RecomendedFood/RecomendedFood';
+import MainAuth from '../../pages/Auth/MainAuth/MainAuth';
+import HomePage from '../../pages/HomePage';
 import SignIn from '../../pages/Auth/SignIn/SignIn';
 import SignUp from '../../pages/Auth/SignUp/SignUp';
 import ForgotPass from '../../pages/Auth/ForgotPass/ForgotPass';
