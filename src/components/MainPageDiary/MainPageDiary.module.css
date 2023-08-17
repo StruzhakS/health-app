@@ -1,0 +1,28 @@
+.DiarySection {
+  color: #fff;
+  width: 300px;
+}
+
+.DiaryTitle {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33em;
+
+
+  @media (min-width: 834px) {
+    font-size: 22px;
+    line-height: 1.45em;
+  }
+}
+
+.DiaryTitleLink {
+  color: #b6b6b6; 
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42em;
+}
+
+.DiaryTitleContainer {
+    display: flex;
+    gap: 16px;
+}

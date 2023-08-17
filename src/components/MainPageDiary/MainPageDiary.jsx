@@ -1,0 +1,46 @@
+import { Link } from 'react-router-dom';
+import Icons from '../../assets/icons/symbol-defs.svg';
+import css from './MainPageDiary.module.css';
+
+const Data = [
+  { carbonohidrates: 60, protein: 40, fat: 20 },
+  { carbonohidrates: 110, protein: 79.5, fat: 24.8 },
+  {},
+  {},
+];
+
+const MainPageDiary = () => {
+  return (
+    <section className={css.DiarySection}>
+      <div className={css.DiaryTitleContainer}>
+        <h2 className={css.DiaryTitle}>Daily goal</h2>
+        <Link className={css.DiaryTitleLink} to={`/diary`}>
+          See more
+        </Link>
+      </div>
+
+      <ul>
+        {Data.map(({ carbonohidrates, protein, fat }, i) => (
+          <li key={i}>
+            <div>
+              <svg width="36px" height="36px" className={css.svgBubble}>
+                <use xlinkHref={`${Icons}#bubble`} />
+              </svg>
+              <h3>
+                {i === 0
+                  ? 'Breakfast'
+                  : i === 1
+                  ? 'Lunch'
+                  : i === 2
+                  ? 'Dinner'
+                  : 'Snack'}
+              </h3>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+};
+
+export default MainPageDiary;
