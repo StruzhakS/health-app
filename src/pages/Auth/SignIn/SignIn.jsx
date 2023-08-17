@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SignIn.module.css';
 import { signIn } from '../../../redux/auth/authOperations';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { updateAuthUser } from '../../../redux/auth/authSlice';
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Используем useNavigate
   const error = useSelector(state => state.auth?.error);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,27 +20,25 @@ const SignIn = () => {
         await dispatch(updateAuthUser(res.payload));
         localStorage.setItem('user_token', res?.payload?.token);
         localStorage.setItem('user_data', JSON.stringify(res?.payload));
-        navigate('/mainpage');
+        navigate('/diary'); // Перенаправление на страницу Diary после успешного входа
       } else {
         alert(res?.payload?.message ?? 'error');
       }
     }
   };
-  // const isAuth = useSelector(state => state.auth.token);
 
-  const AuthUser = useSelector(state => state.auth?.user);
+  const AuthUser = useSelector(state => state.auth.user);
 
   if (AuthUser?.id) {
-    // Пример редиректа, если пользователь авторизован
-    return <Navigate to='/diary' />;
+    navigate('/diary'); // Перенаправление на страницу Diary если пользователь уже авторизован
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         <img
-          src='https://i.ibb.co/bvdHLJW/Illustration.png'
-          alt='Illustration'
+          src="https://i.ibb.co/bvdHLJW/Illustration.png"
+          alt="Illustration"
         />
       </div>
       <h2 className={styles.heading}>Sign In</h2>
@@ -51,29 +49,29 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <input
           className={styles.input}
-          type='email'
-          placeholder='Email'
+          type="email"
+          placeholder="Email"
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
         <input
           className={styles.input}
-          type='password'
-          placeholder='Password'
+          type="password"
+          placeholder="Password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button className={styles.button} type='submit'>
+        <button className={styles.button} type="submit">
           Sign In
         </button>
 
-        <Link to='/forgot-password' className={styles.forgotPasswordLink}>
+        <Link to="/forgot-password" className={styles.forgotPasswordLink}>
           Forgot your password?
         </Link>
       </form>
       <div className={styles.signupContainer}>
         <p className={styles.signupText}>If you don't have an account yet</p>
-        <Link to='/signup' className={styles.signupLink}>
+        <Link to="/signup" className={styles.signupLink}>
           Sign up
         </Link>
       </div>

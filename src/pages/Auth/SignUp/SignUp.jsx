@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signUp, signIn } from '../../../redux/auth/authOperations';
 import styles from './SignUp.module.css';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { signUp, signIn } from '../../../redux/auth/authOperations';
+import { Link, useNavigate } from 'react-router-dom';
 import { updateAuthUser } from '../../../redux/auth/authSlice';
 
 const SignUp = () => {
@@ -12,17 +12,18 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+
   const handleSubmit = async e => {
     e.preventDefault();
     if (email && password && name) {
       const res = await dispatch(signUp({ name, email, password }));
       if (res?.payload?.success) {
-        const res = await dispatch(signIn({ email, password }));
-
-        if (res?.payload?.success) {
-          await dispatch(updateAuthUser(res.payload));
-
-          navigate('/mainpage');
+        const signInRes = await dispatch(signIn({ email, password }));
+        if (signInRes?.payload?.success) {
+          await dispatch(updateAuthUser(signInRes.payload));
+          localStorage.setItem('user_token', signInRes?.payload?.token);
+          localStorage.setItem('user_data', JSON.stringify(signInRes?.payload));
+          navigate('/diary');
         }
       } else {
         alert(res?.payload?.message ?? 'error');
@@ -33,7 +34,7 @@ const SignUp = () => {
   const AuthUser = useSelector(state => state.auth.user);
 
   if (AuthUser?.id) {
-    return <Navigate to="/diary" />;
+    navigate('/diary');
   }
 
   return (
