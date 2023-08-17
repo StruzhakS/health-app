@@ -2,23 +2,40 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SignIn.module.css';
 import { signIn } from '../../../redux/auth/authOperations';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { updateAuthUser } from '../../../redux/auth/authSlice';
 
 const SignIn = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const error = useSelector(state => state.auth.error);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (email && password) {
-      dispatch(signIn({ email, password }));
+      const res = await dispatch(signIn({ email, password }));
+
+      if (res?.payload?.success) {
+        await dispatch(updateAuthUser(res.payload));
+
+        navigate('/diary');
+      } else {
+        alert(res?.payload?.message ?? 'error');
+      }
     }
   };
   const isAuth = useSelector(state => state.auth.token);
 
   console.log(isAuth);
+
+  const AuthUser = useSelector(state => state.auth.user);
+
+  if (AuthUser?.id) {
+    // Пример редиректа, если пользователь авторизован
+    return <Navigate to="/diary" />;
+  }
 
   return (
     <div className={styles.container}>

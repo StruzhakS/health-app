@@ -1,13 +1,11 @@
-import Diary from 'components/Diary/Diary';
-
-import Layout from 'components/Layout/Layout';
-import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Diary from '../Diary/Diary';
+import Layout from '../Layout/Layout';
+import RecomendedFood from '../RecomendedFood/RecomendedFood';
+import MainAuth from '../../pages/Auth/MainAuth/MainAuth';
 import SignupForm from 'components/SignupForm/SignupForm';
 import MainPage from 'pages/MainPage/MainPage';
-
-import MainAuth from 'pages/Auth/MainAuth/MainAuth';
-
-import { Route, Routes } from 'react-router-dom';
 import SignIn from '../../pages/Auth/SignIn/SignIn';
 import SignUp from '../../pages/Auth/SignUp/SignUp';
 import ForgotPass from '../../pages/Auth/ForgotPass/ForgotPass';

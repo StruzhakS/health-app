@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Базовый URL для API
-const baseURL = 'https://';
+const baseURL = 'https://health-app-1rfu.onrender.com/api/auth';
 
 // Функция для регистрации
 export const signUpAPI = async userData => {
@@ -16,7 +16,7 @@ export const signUpAPI = async userData => {
 // Функция для входа
 export const signInAPI = async userData => {
   try {
-    const response = await axios.post(`${baseURL}/signin`, userData);
+    const response = await axios.post(`${baseURL}/login`, userData);
     return response.data;
   } catch (error) {
     throw error.response.data;

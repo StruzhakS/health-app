@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import styles from './MainAuth.module.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 const MainAuth = () => {
   const AuthUser = useAuth();
 
   useEffect(() => {
     if (AuthUser?.user?.id) {
-      //TODO if logged -> redirect
+      // Пример редиректа, если пользователь авторизован
+      return <Navigate to="/diary" />;
     }
   }, [AuthUser]);
 
