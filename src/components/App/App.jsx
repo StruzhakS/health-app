@@ -22,12 +22,17 @@ export const App = () => {
           <Route
             path="/signin"
             element={
-              <PublicRoute component={<SignIn />} redirect="/recomendedFood" />
+              <PublicRoute component={<SignIn />} redirect="/mainpage" />
             }
           />
-          <Route path="/mainPage" element={<MainPage />} />
+          <Route path="/mainpage" element={<MainPage />} />
           {/* <Route path="/signin" element={<SignIn />} /> */}
-          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute component={<SignUp />} redirect="/mainpage" />
+            }
+          />
           <Route path="/signup/:params" element={<SignupForm />} />
           <Route path="/forgot-password" element={<ForgotPass />} />
 

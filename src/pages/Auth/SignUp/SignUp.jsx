@@ -22,7 +22,7 @@ const SignUp = () => {
         if (res?.payload?.success) {
           await dispatch(updateAuthUser(res.payload));
 
-          navigate('/diary');
+          navigate('/mainpage');
         }
       } else {
         alert(res?.payload?.message ?? 'error');
