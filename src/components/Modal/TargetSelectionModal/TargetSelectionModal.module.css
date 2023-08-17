@@ -1,0 +1,14 @@
+.userSettingsModal {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #0f0f0f;
+  width: 392px;
+  height: 352px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+  top: 100px;
+  right: 248px;
+  padding: 20 24px;
+}
