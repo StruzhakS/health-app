@@ -94,3 +94,9 @@
   letter-spacing: 0em;
   text-align: left;
 }
+
+@media (min-width: 768px) and (max-width: 1099px) {
+}
+
+@media (min-width: 1100px) {
+}
