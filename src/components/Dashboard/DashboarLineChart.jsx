@@ -58,18 +58,34 @@ const LineChart = () => {
         data: values,
         type: 'line',
         symbol: 'circle',
+        itemStyle: {
+          color:'rgba(227, 255, 168, 1)',
+        },
         symbolSize: (value, params) =>
           params.dataIndex + 1 === maxIndex ? 10 : 0,
         smooth: true,
+        lineStyle: {
+        color: 'rgba(227, 255, 168, 1)', // Оновлений колір лінії
+      },
 
         emphasis: {
-          itemStyle: {
-            color: '#ff0000',
-          },
+        itemStyle: {
+          color: 'rgba(227, 255, 168, 1)',
         },
-        markPoint: {
-          data: [{ type: 'max', name: 'Max Value' }],
+      },
+         markPoint: {
+        data: [{ type: 'max', name: 'Max Value' }],
+        symbol: 'rect', // Змінено на 'rect' для квадрата
+        symbolSize: [104, 92], // Розміри квадрата
+        symbolOffset: [-1, '-55%'], // Зміщення, щоб символ був зверху середини маркера
+
+        itemStyle: {
+          color: '#0F0F0F', // Колір квадрата
+          borderRadius: 8, // Радіус кутів
+          shadowBlur: 14, // Розмиття тіні
+          shadowColor: 'rgba(227, 255, 168, 0.20)', // Колір тіні
         },
+      },
       },
     ],
   };
@@ -89,3 +105,70 @@ const LineChart = () => {
 };
 
 export default LineChart;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+
+// const LineChart = () => {
+//   const data = [10, 25, 15, 30, 20];
+//   const maxY = Math.max(...data);
+//   const height = 300;
+
+//   const points = data.map((value, index) => {
+//     const x = index * 50;
+//     const y = height - (value / maxY) * height;
+//     return `${x},${y}`;
+//   });
+
+//   const polylinePoints = points.join(' ');
+
+//   return (
+//     <svg width="400" height={height + 20}>
+//       {/* Вертикальні лінії на осі X */}
+//       {data.map((value, index) => (
+//         <line
+//           key={`vertical-${index}`}
+//           x1={index * 50}
+//           y1={0}
+//           x2={index * 50}
+//           y2={height}
+//           stroke="gray"
+//           strokeWidth="1"
+//         />
+//       ))}
+
+//       {/* Горизонтальні лінії на осі Y */}
+//       {Array.from({ length: 6 }).map((_, index) => (
+//         <line
+//           key={`horizontal-${index}`}
+//           x1={0}
+//           y1={height - (index * height) / 5}
+//           x2={400}
+//           y2={height - (index * height) / 5}
+//           stroke="gray"
+//           strokeWidth="1"
+//         />
+//       ))}
+
+//       {/* Лінія графіка */}
+//       <polyline points={polylinePoints} fill="none" stroke="blue" strokeWidth="2" />
+//     </svg>
+//   );
+// };
+
+// export default LineChart;
