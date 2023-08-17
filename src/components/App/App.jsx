@@ -13,7 +13,6 @@ import SignUp from '../../pages/Auth/SignUp/SignUp';
 import ForgotPass from '../../pages/Auth/ForgotPass/ForgotPass';
 import PublicRoute from 'containers/PublicRoute.jsx';
 import PrivateRoute from 'containers/PrivateRoute';
-import MainPage from 'pages/MainPage';
 
 export const App = () => {
   return (
@@ -27,9 +26,8 @@ export const App = () => {
               <PublicRoute component={<SignIn />} redirect="/recomendedFood" />
             }
           />
-          {/* <Route path="/signin" element={<SignIn />} /> */}
           <Route path="/mainPage" element={<MainPage />} />
-          <Route path="/signin" element={<SignIn />} />
+          {/* <Route path="/signin" element={<SignIn />} /> */}
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signup/:params" element={<SignupForm />} />
           <Route path="/forgot-password" element={<ForgotPass />} />
