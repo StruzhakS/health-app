@@ -1,9 +1,9 @@
 import css from './MainPageFood.module.css';
 
-const percent = 50;
-const percent1 = 35;
-const percent2 = 60;
-const percent3 = 25;
+const percent = 30;
+const percent1 = 28;
+const percent2 = 90;
+const percent3 = 35;
 
 const MainPageFood = () => {
   return (

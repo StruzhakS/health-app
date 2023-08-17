@@ -1,16 +1,45 @@
-.mainPageStatisticsSection{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    color: #fff;
-    gap: 20px;
+.mainPageStatisticsSection {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  color: #fff;
+  gap: 20px;
 
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+
+  @media (min-width: 834px) {
+    width: 780px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 1372px;
+  }
 }
 
-.mainPageStatisticsSectionHeaderContainer{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    
+.mainPageStatisticsSectionHeaderContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
+
+.mainPageStatisticsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+  }
+}
+
+.mainPageStatisticsGoalAndWaterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (min-width: 834px) {
+    flex-direction: row;
+  }
+}
+
+/* 1440, 834, 320 */

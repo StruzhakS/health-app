@@ -27,9 +27,14 @@ const MainPageStatisticsSection = () => {
           </svg>
         </button>
       </div>
-      <MainPageDailyGoal />
-      <MainPageWater />
-      <MainPageFood />
+      <div className={css.mainPageStatisticsContainer}>
+        <div className={css.mainPageStatisticsGoalAndWaterContainer}>
+          <MainPageDailyGoal />
+          <MainPageWater />
+        </div>
+
+        <MainPageFood />
+      </div>
     </section>
   );
 };

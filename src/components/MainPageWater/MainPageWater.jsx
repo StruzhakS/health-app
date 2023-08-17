@@ -1,7 +1,7 @@
 import Icons from '../../assets/icons/symbol-defs.svg';
 import css from './MainPageWater.module.css';
 
-const percent = 25;
+const percent = 100;
 
 const MainPageWater = () => {
   return (
