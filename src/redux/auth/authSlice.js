@@ -4,7 +4,7 @@ import { signUp, signIn, forgotPassword } from './authOperations';
 const initialState = {
   user: null,
   step: null,
-  token: 'null',
+  token: null,
   error: null,
 };
 
