@@ -66,3 +66,30 @@
 .active {
   color: #e3ffa8;
 }
+
+.avatarImg {
+  width: 30px;
+  height: 30px;
+}
+
+.userBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.userSettingsModal {
+  position: relative;
+  background-color: #0f0f0f;
+  width: 158px;
+  height: 112px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+  top: '50%';
+  left: '50%';
+  /* right: 'auto';
+  bottom: 'auto'; */
+  /* marginRight: '-50%'; */
+  transform: 'translate(-50%, -50%)';
+}
