@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import styles from './MainAuth.module.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 const MainAuth = () => {
   const AuthUser = useAuth();
 
   useEffect(() => {
     if (AuthUser?.user?.id) {
-      //TODO if logged -> redirect
+      // Пример редиректа, если пользователь авторизован
+      return <Navigate to="/mainpage" />;
     }
   }, [AuthUser]);
 
@@ -20,39 +21,46 @@ const MainAuth = () => {
           alt="Illustration"
         />
       </div>
-      <h1 className={styles['auth-header']}>Set goals and achieve them</h1>
+
       <div className={styles['auth-content']}>
+        <h1 className={styles['auth-header']}>Set goals and achieve them</h1>
         <h2 className={styles['main-auth-title']}>
           The service will help you set goals and follow them.
         </h2>
         <div className={styles['main-auth-button']}>
           <div>
-            <Link to="signin" className={styles['auth-button']}>
+            <Link to="/signin" className={styles['auth-button']}>
               sign in
             </Link>
           </div>
           <div>
-            <Link to="signup" className={styles['auth-button']}>
+            <Link to="/signup" className={styles['auth-button']}>
               sign up
             </Link>
           </div>
         </div>
-        <div>
-          <ul>
-            <li>Set goals</li>
-            <li>Watch your calories</li>
-            <li>Keep track of your water intake</li>
-            <li>Control your weight</li>
+        <div className={styles['auth-list']}>
+          <ul className={styles['auth-list-c']}>
+            <li className={styles['auth-list-item']}>Set goals</li>
+            <li className={styles['auth-list-item']}>Watch your calories</li>
+            <li className={styles['auth-list-item']}>
+              Keep track of your water intake
+            </li>
+            <li className={styles['auth-list-item']}>Control your weight</li>
           </ul>
+          <div className={styles['auth-list-a-b']}>
+            <ul className={styles['auth-list-a']}>
+              <li className={styles['auth-list-item']}>Set goals</li>
+              <li className={styles['auth-list-item']}>
+                Keep track of your water intake
+              </li>
+            </ul>
+            <ul className={styles['auth-list-b']}>
+              <li className={styles['auth-list-item']}>Watch your calories</li>
+              <li className={styles['auth-list-item']}>Control your weight</li>
+            </ul>
+          </div>
         </div>
-        {/*<div className={styles['auth-step-container']}>*/}
-        {/*  <div>*/}
-        {/*    {!AuthUser.step ? <Main /> : null}*/}
-        {/*    {AuthUser.step === 'signIn' ? <SignIn /> : null}*/}
-        {/*    {AuthUser.step === 'signUp' ? <SignUp /> : null}*/}
-        {/*    {AuthUser.step === 'forgotPass' ? <ForgotPass /> : null}*/}
-        {/*  </div>*/}
-        {/*</div>*/}
       </div>
     </div>
   );
