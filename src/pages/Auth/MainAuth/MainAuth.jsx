@@ -20,8 +20,9 @@ const MainAuth = () => {
           alt="Illustration"
         />
       </div>
-      <h1 className={styles['auth-header']}>Set goals and achieve them</h1>
+
       <div className={styles['auth-content']}>
+        <h1 className={styles['auth-header']}>Set goals and achieve them</h1>
         <h2 className={styles['main-auth-title']}>
           The service will help you set goals and follow them.
         </h2>
@@ -37,13 +38,27 @@ const MainAuth = () => {
             </Link>
           </div>
         </div>
-        <div>
-          <ul>
-            <li>Set goals</li>
-            <li>Watch your calories</li>
-            <li>Keep track of your water intake</li>
-            <li>Control your weight</li>
+        <div className={styles['auth-list']}>
+          <ul className={styles['auth-list-c']}>
+            <li className={styles['auth-list-item']}>Set goals</li>
+            <li className={styles['auth-list-item']}>Watch your calories</li>
+            <li className={styles['auth-list-item']}>
+              Keep track of your water intake
+            </li>
+            <li className={styles['auth-list-item']}>Control your weight</li>
           </ul>
+          <div className={styles['auth-list-a-b']}>
+            <ul className={styles['auth-list-a']}>
+              <li className={styles['auth-list-item']}>Set goals</li>
+              <li className={styles['auth-list-item']}>
+                Keep track of your water intake
+              </li>
+            </ul>
+            <ul className={styles['auth-list-b']}>
+              <li className={styles['auth-list-item']}>Watch your calories</li>
+              <li className={styles['auth-list-item']}>Control your weight</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

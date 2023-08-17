@@ -26,42 +26,46 @@ const SignUp = () => {
           alt="Illustration"
         />
       </div>
-      <h2 className={styles.heading}>Sign Up</h2>
-      <h3 className={styles.subheading}>
-        You need to register to use the service
-      </h3>
-      {error && <p className={styles.error}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          className={styles.input}
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-        <input
-          className={styles.input}
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <input
-          className={styles.input}
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <button className={styles.button} type="submit">
-          Sign Up
-        </button>
-      </form>
-      <div className={styles.linkContainer}>
-        <p className={styles.linkText}>Do you already have an account?</p>
-        <Link to="/signin" className={styles.link}>
-          Sign in
-        </Link>
+      <div className={styles.ContainerDiv}>
+        <h2 className={styles.heading}>Sign Up</h2>
+        <h3 className={styles.subheading}>
+          You need to register to use the service
+        </h3>
+        {error && <p className={styles.error}>{error}</p>}
+        <div className={styles.center}>
+          <form className={styles.center} onSubmit={handleSubmit}>
+            <input
+              className={styles.input}
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+            <input
+              className={styles.input}
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+            <input
+              className={styles.input}
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <button className={styles.button} type="submit">
+              Sign Up
+            </button>
+          </form>
+        </div>
+        <div className={styles.linkContainer}>
+          <p className={styles.linkText}>Do you already have an account?</p>
+          <Link to="/signin" className={styles.link}>
+            Sign in
+          </Link>
+        </div>
       </div>
     </div>
   );
