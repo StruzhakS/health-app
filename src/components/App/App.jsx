@@ -13,6 +13,7 @@ import SignUp from '../../pages/Auth/SignUp/SignUp';
 import ForgotPass from '../../pages/Auth/ForgotPass/ForgotPass';
 import PublicRoute from 'containers/PublicRoute.jsx';
 import PrivateRoute from 'containers/PrivateRoute';
+import Settings from 'components/Settings/Settings';
 
 export const App = () => {
   return (
@@ -38,6 +39,7 @@ export const App = () => {
           />
 
           <Route path="/diary" element={<Diary />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<MainAuth />} />
         </Route>
       </Routes>
