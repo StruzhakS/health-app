@@ -16,6 +16,9 @@ const SignIn = () => {
       dispatch(signIn({ email, password }));
     }
   };
+  const isAuth = useSelector(state => state.auth.token);
+
+  console.log(isAuth);
 
   return (
     <div className={styles.container}>
