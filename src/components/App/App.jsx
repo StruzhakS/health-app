@@ -12,7 +12,7 @@ import ForgotPass from '../../pages/Auth/ForgotPass/ForgotPass';
 import PublicRoute from 'containers/PublicRoute.jsx';
 import PrivateRoute from 'containers/PrivateRoute';
 import Settings from 'components/Settings/Settings';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateAuthUser } from '../../redux/auth/authSlice';
 
 export const App = () => {
@@ -26,11 +26,13 @@ export const App = () => {
     }
   }, [dispatch]);
 
+  const isAuth = useSelector(state => state.auth.token);
+  console.log(isAuth);
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<MainAuth />} />
+          <Route index element={isAuth ? <MainPage /> : <MainAuth />} />
           <Route
             path="/signin"
             element={
