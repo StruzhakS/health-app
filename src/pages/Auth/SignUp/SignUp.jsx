@@ -42,8 +42,9 @@ const SignUp = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.img}>
+      <div className={styles.containerImg}>
         <img
+          className={styles.imgIllustration}
           src="https://i.ibb.co/bvdHLJW/Illustration.png"
           alt="Illustration"
         />
