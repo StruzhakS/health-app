@@ -1,19 +1,17 @@
-import { useNavigate } from 'react-router-dom';
 import recommendedFood from '../../recomended-food.json';
 import Food from '../../assets/img/desktop/Food.png';
 import s from './RecomendedFood.module.css';
 
 const RecomendedFood = () => {
-  const navigate = useNavigate();
 
-  const randomDataArr = () => {
+  const randomArr = () => {
     const indexArr = [];
 
     do {
       const randomIndex = Math.round(
         Math.random() * (recommendedFood.length - 1)
       );
-      console.log(randomIndex);
+      // console.log(randomIndex);
       if (!indexArr.includes(randomIndex)) {
         indexArr.push(randomIndex);
       }
@@ -32,11 +30,6 @@ const RecomendedFood = () => {
       recommendedFood[indexArr[9]],
     ];
   };
-
-  const onSeeMoreButtonClick = evt => {
-    evt.preventDefault();
-    navigate('/recommented-food');
-  }
   
   return (
     <section className={s.recomendedFoodSection}>
@@ -44,7 +37,7 @@ const RecomendedFood = () => {
       <div className={s.recomendedFoodBox}>
       <img src={Food} alt='Food' />
       <ul className={s.recomendedFoodList}>
-        {randomDataArr().map(({ name, amount, calories }) => (
+        {randomArr().map(({ name, amount, calories }) => (
           <li className={s.recomendedFoodListItem} key={name}>
             <img src="" alt={name} />
             <div>
@@ -57,7 +50,6 @@ const RecomendedFood = () => {
         ))}
       </ul>
       </div>
-      <button onClick={evt => onSeeMoreButtonClick(evt)}>See more</button>
     </section>
   );
 };
