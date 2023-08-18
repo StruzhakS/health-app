@@ -30,7 +30,8 @@ const Header = () => {
     localStorage.removeItem('user_data');
     localStorage.removeItem('user_token');
     navigate('/');
-  }, []);
+    setSetingsModalIsOpen(false);
+  }, [dispatch, navigate]);
 
   return isAuth ? (
     <div className={s.header}>
@@ -40,12 +41,12 @@ const Header = () => {
       <div className={s.controlWrapper}>
         <ControlPanel />
         <button
-          type='button'
+          type="button"
           className={s.userBtn}
           onClick={() => setSetingsModalIsOpen(true)}
         >
-          {userName} <img src={avatar} alt='' className={s.avatarImg} />
-          <svg style={{ fill: 'white' }} width='14' height='14'>
+          {userName} <img src={avatar} alt="" className={s.avatarImg} />
+          <svg style={{ fill: 'white' }} width="14" height="14">
             <use href={`${iconsSrc}#arrow-down`} />
           </svg>
         </button>
@@ -55,16 +56,16 @@ const Header = () => {
         isOpen={setingsModalIsOpen}
         onRequestClose={() => setSetingsModalIsOpen(false)}
         style={customStyles}
-        contentLabel='Example Modal'
+        contentLabel="Example Modal"
       >
         <button className={s.userBtn} onClick={() => navigate('settings')}>
-          <svg style={{ fill: 'white' }} width='16' height='16'>
+          <svg style={{ fill: 'white' }} width="16" height="16">
             <use href={`${iconsSrc}#icon-setting`} />
           </svg>
           Settings
         </button>
         <button onClick={logOut} className={s.userBtn}>
-          <svg style={{ fill: 'white' }} width='16' height='16'>
+          <svg style={{ fill: 'white' }} width="16" height="16">
             <use href={`${iconsSrc}#icon-logout`} />
           </svg>
           Log out
@@ -94,7 +95,7 @@ const Header = () => {
         >
           Sign up
         </NavLink>
-        <svg style={{ fill: 'white' }} width='24' height='24'>
+        <svg style={{ fill: 'white' }} width="24" height="24">
           <use href={`${iconsSrc}#profile-circle`} />
         </svg>
       </nav>
