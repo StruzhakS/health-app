@@ -3,10 +3,12 @@ import Modal from 'react-modal';
 import s from './TargetSelectionModal.module.css';
 import { customStyles } from 'components/Header/Header';
 import loseFat from '../../../assets/icons/emoji/Lose_fat_men.png';
-import mainTainspa from '../../../assets/icons/emoji/Maintake_men.png';
+import maintain from '../../../assets/icons/emoji/Maintake_men.png';
 import gainMuscle from '../../../assets/icons/emoji/Gain_muscle.png';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { useMediaQuery } from 'react-responsive';
+import { useDispatch } from 'react-redux';
+import { updateGoalOperation } from 'redux/user/userOperations';
 
 export const customMobileStyles = {
   overlay: {
@@ -14,17 +16,23 @@ export const customMobileStyles = {
   },
 };
 
-const TargetSelectionModal = ({ targetModalOpen, setTargetModalOpen }) => {
-  const [selectTarget, setSelecttarget] = useState('lose fat');
+const TargetSelectionModal = ({
+  targetModalOpen,
+  setTargetModalOpen,
+  goal,
+}) => {
+  const [selectTarget, setSelecttarget] = useState(goal);
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(selectTarget);
     setTargetModalOpen(false);
-    //   діспатч на зміну цілі
+    dispatch(updateGoalOperation(selectTarget));
   };
 
   const isMobileScreen = useMediaQuery({ maxWidth: 834 });
+
+  console.log(selectTarget);
 
   return (
     <>
@@ -83,29 +91,25 @@ const TargetSelectionModal = ({ targetModalOpen, setTargetModalOpen }) => {
               <input
                 className={s.inputTarget}
                 type="radio"
-                value="maintainspa"
+                value="maintain"
                 name="target"
-                checked={selectTarget === 'maintainspa'}
+                checked={selectTarget === 'maintain'}
                 onChange={e => setSelecttarget(e.target.value)}
               />
               <div
                 className={s.imageWrapper}
                 style={
-                  selectTarget === 'maintainspa'
+                  selectTarget === 'maintain'
                     ? { borderColor: '#B6C3FF' }
                     : null
                 }
               >
-                <img
-                  src={mainTainspa}
-                  alt="maintainspa"
-                  className={s.radioImage}
-                />
+                <img src={maintain} alt="maintain" className={s.radioImage} />
               </div>
 
               <span
                 style={
-                  selectTarget === 'maintainspa' ? { color: '#B6C3FF' } : null
+                  selectTarget === 'maintain' ? { color: '#B6C3FF' } : null
                 }
               >
                 Maintainspa
