@@ -30,6 +30,7 @@ const Header = () => {
     localStorage.removeItem('user_data');
     localStorage.removeItem('user_token');
     navigate('/');
+    setSetingsModalIsOpen(false);
   }, [dispatch, navigate]);
 
   return isAuth ? (

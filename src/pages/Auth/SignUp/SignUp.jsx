@@ -22,8 +22,11 @@ const SignUp = () => {
         if (signInRes?.payload?.success) {
           await dispatch(updateAuthUser(signInRes.payload?.user));
           localStorage.setItem('user_token', signInRes?.payload?.user?.token);
-          localStorage.setItem('user_data', JSON.stringify(signInRes?.payload?.user));
-          navigate('/diary');
+          localStorage.setItem(
+            'user_data',
+            JSON.stringify(signInRes?.payload?.user)
+          );
+          navigate('/');
         }
       } else {
         alert(res?.payload?.message ?? 'error');
@@ -34,7 +37,7 @@ const SignUp = () => {
   const AuthUser = useSelector(state => state.auth.user);
 
   if (AuthUser?.id) {
-    navigate('/diary');
+    navigate('/');
   }
 
   return (
