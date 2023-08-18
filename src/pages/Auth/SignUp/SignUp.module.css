@@ -246,4 +246,25 @@
   .link {
     font-size: 12px;
   }
+  .invalidPassword {
+    border-color: red;
+  }
+
+  .securePassword {
+    border-color: green;
+  }
+
+  .passwordMessage {
+    font-size: 14px;
+    margin-top: 5px;
+    max-width: 192px;
+  }
+
+  .invalidPassword .passwordMessage {
+    color: red;
+  }
+
+  .securePassword .passwordMessage {
+    color: green;
+  }
 }
