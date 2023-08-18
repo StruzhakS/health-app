@@ -6,18 +6,22 @@ import Waigth from '../../assets/icons/emoji/Waight.png';
 import TargetSelectionModal from 'components/Modal/TargetSelectionModal/TargetSelectionModal';
 import СurrentWeightModal from '../Modal/СurrentWeightModal/СurrentWeightModal';
 import { useMediaQuery } from 'react-responsive';
+import { useSelector } from 'react-redux';
 
 const ControlPanel = () => {
   const [targetModalOpen, setTargetModalOpen] = useState(false);
 
   const [weightModalOpen, setWeightModalOpen] = useState(false);
   const isMobileScreen = useMediaQuery({ maxWidth: 834 });
+  const weight = useSelector(state => state?.auth?.user?.weight) || 0;
+  const goal = useSelector(state => state?.auth?.user?.goal);
 
   return (
     <>
       <TargetSelectionModal
         targetModalOpen={targetModalOpen}
         setTargetModalOpen={setTargetModalOpen}
+        goal={goal}
       />
       <СurrentWeightModal
         weightModalOpen={weightModalOpen}
@@ -31,7 +35,9 @@ const ControlPanel = () => {
           <div className={s.targetTextWrapper}>
             <h3 className={s.titleTarget}>Goal</h3>
             <div className={s.BtnTextWrapper}>
-              <p className={s.subTitleTarget}>Lose fat</p>
+              <p className={s.subTitleTarget}>
+                {goal.charAt(0).toUpperCase() + goal.slice(1)}
+              </p>
               <button onClick={() => setTargetModalOpen(true)}>
                 <svg
                   style={
@@ -64,7 +70,7 @@ const ControlPanel = () => {
           <div className={s.targetTextWrapper}>
             <h3 className={s.titleTarget}>Weigth</h3>
             <div className={s.BtnTextWrapper}>
-              <p className={s.subTitleTarget}>65</p>{' '}
+              <p className={s.subTitleTarget}>{weight}</p>{' '}
               <p className={s.weigthTargetText}>kg</p>
               <button onClick={() => setWeightModalOpen(true)}>
                 <svg style={{ fill: 'white' }} width="24" height="14">

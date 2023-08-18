@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { signUp, signIn, forgotPassword } from './authOperations';
+import { updateGoalOperation } from 'redux/user/userOperations';
 
 const initialState = {
   user: null,
@@ -41,6 +42,9 @@ const authSlice = createSlice({
       })
       .addCase(forgotPassword.fulfilled, (state, action) => {
         state.error = null;
+      })
+      .addCase(updateGoalOperation.fulfilled, (state, { payload }) => {
+        state.user.goal = payload.goal;
       })
       .addMatcher(
         action => action.type.endsWith('/rejected'),
