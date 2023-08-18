@@ -17,6 +17,7 @@ const MainAuth = () => {
     <div className={styles['auth-container']}>
       <div className={styles['auth-img']}>
         <img
+          className={styles.imgIllustration}
           src="https://i.ibb.co/bvdHLJW/Illustration.png"
           alt="Illustration"
         />

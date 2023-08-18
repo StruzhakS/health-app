@@ -26,31 +26,36 @@ const ForgotPass = () => {
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         <img
+          className={styles.imgIllustration}
           src="https://i.ibb.co/bvdHLJW/Illustration.png"
           alt="Illustration"
         />
       </div>
-      <h2 className={styles.heading}>Forgot Password</h2>
-      <h3 className={styles.h3}>
-        We will send you an email with recovery instructions
-      </h3>
-      {error && <p className={styles.error}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          className={styles.input}
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <button className={styles.button} type="submit">
-          Send
-        </button>
-        <p className={styles.account}>If you don't have an account yet</p>
-      </form>
-      <Link to="/signin" className={styles.signInLink}>
-        Sign in
-      </Link>
+      <div className={styles.ContainerDiv}>
+        <h2 className={styles.heading}>Forgot Password</h2>
+        <h3 className={styles.h3}>
+          We will send you an email with recovery instructions
+        </h3>
+        {error && <p className={styles.error}>{error}</p>}
+        <form className={styles.center} onSubmit={handleSubmit}>
+          <input
+            className={styles.input}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+          <button className={styles.button} type="submit">
+            Send
+          </button>
+          <div className={styles.linkContainer}>
+            <p className={styles.account}>If you don't have an account yet</p>
+            <Link to="/signin" className={styles.signInLink}>
+              Sign in
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
