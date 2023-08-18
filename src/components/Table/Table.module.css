@@ -30,3 +30,7 @@
     font-size: 14px;
     line-height: 22px;
 }
+.btnEdit{
+    display: flex;
+    gap: 6px;
+}

@@ -15,10 +15,12 @@ const Table = ()=>{
         <td>3.6</td>
         <td>12</td>
         <td>
-          <svg stroke="white" width="16" height="16">
+          <button className={s.btnEdit}>
+          <svg stroke="#B6B6B6" width="16" height="16">
         <use href={`${icon}#edit-2`} />
       </svg>
       Edit
+          </button>
       </td>
       </tr>
       <tr>
