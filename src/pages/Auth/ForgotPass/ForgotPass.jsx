@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { forgotPassword } from 'redux/auth/authOperations';
+import { forgotPassword } from '../../../redux/auth/authOperations';
 import styles from './ForgotPass.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ForgotPass = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const error = useSelector(state => state.auth.error);
   const [email, setEmail] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (email) {
-      dispatch(forgotPassword(email));
+      const res = await dispatch(forgotPassword(email));
+      if (res?.payload?.success) {
+        navigate('/signIn');
+      } else {
+        alert(res?.payload?.message ?? 'error');
+      }
     }
   };
 
@@ -38,7 +44,7 @@ const ForgotPass = () => {
           onChange={e => setEmail(e.target.value)}
         />
         <button className={styles.button} type="submit">
-          Send Reset Email
+          Send
         </button>
         <p className={styles.account}>If you don't have an account yet</p>
       </form>

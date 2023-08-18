@@ -1,0 +1,32 @@
+.table{
+    width: 676px;
+    height: 240px;
+    border-radius: 12px;
+    background-color: #0f0f0f;
+}
+.table td{
+    height: 60px;
+}
+.table th, .table td{
+    padding: 20px 14px 20px;
+    font-size: 14px;
+    line-height: 20px;
+    
+}
+.table th{
+    font-weight: 600;
+   
+}
+.secondTd{
+    width: 260px;
+    
+}
+.btnAdd{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    color:  #E3FFA8;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+}
