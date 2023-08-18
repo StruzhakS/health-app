@@ -12,10 +12,11 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (email && password && name) {
+    if (email && password && name && checkPasswordStrength(password)) {
       const res = await dispatch(signUp({ name, email, password }));
       if (res?.payload?.success) {
         const signInRes = await dispatch(signIn({ email, password }));
@@ -39,6 +40,16 @@ const SignUp = () => {
   if (AuthUser?.id) {
     navigate('/');
   }
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const checkPasswordStrength = password => {
+    const passwordPattern =
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d.*\d.*\d.*\d)[A-Za-z\d]{6,}$/;
+    return passwordPattern.test(password);
+  };
 
   return (
     <div className={styles.container}>
@@ -71,13 +82,39 @@ const SignUp = () => {
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-            <input
-              className={styles.input}
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
+            <div className={styles.passwordInputContainer}>
+              <input
+                className={`${styles.passwordInput} ${
+                  password.length >= 6 && checkPasswordStrength(password)
+                    ? styles.securePassword
+                    : styles.invalidPassword
+                }`}
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                className={styles.showPasswordButton}
+                onClick={toggleShowPassword}
+              >
+                {showPassword ? 'Hide' : 'Show'}
+              </button>
+              {password && (
+                <p
+                  className={`${styles.passwordMessage} ${
+                    password.length >= 6 && checkPasswordStrength(password)
+                      ? styles.securePassword
+                      : styles.invalidPassword
+                  }`}
+                >
+                  {password.length >= 6 && checkPasswordStrength(password)
+                    ? 'Password is secure'
+                    : 'Enter a valid Password* (at least 6 characters, including at least 1 uppercase letter, 1 lowercase letter, and 4 digits)'}
+                </p>
+              )}
+            </div>
             <button className={styles.button} type="submit">
               Sign Up
             </button>
