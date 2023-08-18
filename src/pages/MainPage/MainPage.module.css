@@ -1,0 +1,15 @@
+.diaryAndFoodContainer {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 834px) {
+    width: 780px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 1375px;
+    display: flex;
+    gap: 178px;
+  }
+}
