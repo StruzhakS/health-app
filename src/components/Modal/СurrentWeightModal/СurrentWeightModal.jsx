@@ -5,6 +5,8 @@ import Modal from 'react-modal';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { useMediaQuery } from 'react-responsive';
 import { customMobileStyles } from '../TargetSelectionModal/TargetSelectionModal';
+import { useDispatch } from 'react-redux';
+import { updateWeightOperation } from 'redux/user/userOperations';
 
 const СurrentWeightModal = ({ weightModalOpen, setWeightModalOpen }) => {
   const D = new Date();
@@ -19,13 +21,15 @@ const СurrentWeightModal = ({ weightModalOpen, setWeightModalOpen }) => {
       D.getFullYear()
   );
 
+  const dispatch = useDispatch();
+
   const handleChange = e => {
     setWeight(e.target.value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    // Діспатч на зміну ваги
+    dispatch(updateWeightOperation(Number(weight)));
     setWeightModalOpen(false);
   };
 

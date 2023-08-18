@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setHeadersToken, updateGoalApi } from './userApi';
+import { setHeadersToken, updateGoalApi, updateWeightApi } from './userApi';
 
 export const updateGoalOperation = createAsyncThunk(
   'user/goal',
@@ -7,6 +7,19 @@ export const updateGoalOperation = createAsyncThunk(
     try {
       setHeadersToken(getState().auth.token);
       const data = await updateGoalApi(body);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateWeightOperation = createAsyncThunk(
+  'user/weight',
+  async (body, { rejectWithValue, getState }) => {
+    try {
+      setHeadersToken(getState().auth.token);
+      const data = await updateWeightApi(body);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
