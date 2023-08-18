@@ -54,8 +54,10 @@ export const App = () => {
           <Route path="/forgot-password" element={<ForgotPass />} />
 
           <Route
-            path="/recomended-food"
-            element={<PrivateRoute component={<RecomendedFood />} />}
+            path="/recomendedfood"
+            element={
+              <PrivateRoute component={<RecomendedFood />} redirect="/" />
+            }
           />
 
           <Route

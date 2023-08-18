@@ -51,7 +51,6 @@ const Header = () => {
             <svg width="16" height="16">
               <use href={`${iconsSrc}#menu`} />
             </svg>
-            {/* MobileMenu */}
           </button>
         )}
       </div>
