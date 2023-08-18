@@ -20,7 +20,7 @@ const SignIn = () => {
         await dispatch(updateAuthUser(res.payload?.user));
         localStorage.setItem('user_token', res?.payload?.user?.token);
         localStorage.setItem('user_data', JSON.stringify(res?.payload.user));
-        navigate('/diary');
+        navigate('/');
       } else {
         alert(res?.payload?.message ?? 'error');
       }
@@ -30,7 +30,7 @@ const SignIn = () => {
   const AuthUser = useSelector(state => state.auth.user);
 
   if (AuthUser?.id) {
-    navigate('/diary');
+    navigate('/');
   }
 
   return (
