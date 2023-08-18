@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import s from './Header.module.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import iconsSrc from '../../assets/icons/symbol-defs.svg';
@@ -9,8 +9,6 @@ import ControlPanel from 'components/ControlPanel/ControlPanel';
 import { logout } from '../../redux/auth/authSlice';
 import { useMediaQuery } from 'react-responsive';
 import MobileMenuModal from 'components/Modal/MobileMenuModal/MobileMenuModal';
-import { updateGoalApi } from 'redux/user/userApi';
-import { updateGoalOperation } from 'redux/user/userOperations';
 
 export const customStyles = {
   overlay: {
