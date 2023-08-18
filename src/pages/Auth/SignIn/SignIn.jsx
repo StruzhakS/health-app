@@ -37,6 +37,7 @@ const SignIn = () => {
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         <img
+          className={styles.imgIlistration}
           src="https://i.ibb.co/bvdHLJW/Illustration.png"
           alt="Illustration"
         />
