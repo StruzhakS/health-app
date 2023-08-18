@@ -5,9 +5,12 @@ import s from './ControlPanel.module.css';
 import Waigth from '../../assets/icons/emoji/Waight.png';
 import TargetSelectionModal from 'components/Modal/TargetSelectionModal/TargetSelectionModal';
 import СurrentWeightModal from '../Modal/СurrentWeightModal/СurrentWeightModal';
+
 const ControlPanel = () => {
   const [targetModalOpen, setTargetModalOpen] = useState(false);
+
   const [weightModalOpen, setWeightModalOpen] = useState(false);
+
   return (
     <>
       <TargetSelectionModal
@@ -28,7 +31,18 @@ const ControlPanel = () => {
             <div className={s.BtnTextWrapper}>
               <p className={s.subTitleTarget}>Lose fat</p>
               <button onClick={() => setTargetModalOpen(true)}>
-                <svg style={{ fill: 'white' }} width="14" height="14">
+                <svg
+                  style={
+                    !targetModalOpen
+                      ? { fill: 'white' }
+                      : {
+                          fill: 'white',
+                          rotate: '180deg',
+                        }
+                  }
+                  width="14"
+                  height="14"
+                >
                   <use href={`${iconsSrc}#arrow-down`} />
                 </svg>
               </button>

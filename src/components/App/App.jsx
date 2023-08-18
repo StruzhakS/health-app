@@ -27,7 +27,7 @@ export const App = () => {
   }, [dispatch]);
 
   const isAuth = useSelector(state => state.auth.token);
-  console.log(isAuth);
+
   return (
     <>
       <Routes>
