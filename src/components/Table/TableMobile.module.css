@@ -3,13 +3,13 @@
     height: 232px;
     border-radius: 12px;
     background-color: #0f0f0f;
+    padding: 16px 12px;
 }
-.table td{
-    /* height: 60px; */
-}
+
 .table th, .table td{
     font-size: 14px;
     line-height: 20px;
+    text-align: center;
     
 }
 .table th{
@@ -38,6 +38,15 @@
     line-height: 22px;
 }
 .btnEdit{
+    width: 49px;
     display: flex;
-    gap: 6px;
+    gap:6px;
+    font-size: 14px;
+    line-height: 20px;
+    color:#B6B6B6;
+}
+.btn{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 5px;
 }

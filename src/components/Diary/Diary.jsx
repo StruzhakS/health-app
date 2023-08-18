@@ -23,12 +23,12 @@ const isMobile = useMediaQuery({maxWidth: 833});
     <div className={s.tableRow}>
     <div className={s.container}>
     <div className={s.containerLis}>
+      <div className={s.foodIMG}>
+      <img src={require('../../assets/icons/food/Breakfast.png')} alt='breakfast' width='32px' height='32px'/>
     <h2 className={s.titleTab}>
-      <svg width="36" height="36">
-        <use href='../../assets/icons/Illustration/symbol-svg.svg#Snack' ></use>
-        </svg>
       Breakfast
     </h2>
+      </div>
     <ul className={s.listTab}>
       <li className={s.itemTab}>Carbonohidrates: 0</li>
       <li className={s.itemTab}>Protein: 0</li>
@@ -41,12 +41,12 @@ const isMobile = useMediaQuery({maxWidth: 833});
     </div>
     <div className={s.container}>
     <div className={s.containerLis}>
+    <div className={s.foodIMG}>
+    <img src={require('../../assets/icons/food/Dinner.png')} alt='dinner' width='32px' height='32px'/>
     <h2 className={s.titleTab}>
-      <svg width="36" height="36">
-        <use href='../../assets/icons/Illustration/symbol-svg.svg#Snack' ></use>
-        </svg>
       Dinner
     </h2>
+    </div>
     <ul className={s.listTab}>
       <li className={s.itemTab}>Carbonohidrates: 0</li>
       <li className={s.itemTab}>Protein: 0</li>
@@ -61,12 +61,12 @@ const isMobile = useMediaQuery({maxWidth: 833});
     <div className={s.tableRow}>
     <div className={s.container}>
       <div className={s.containerLis}>
+      <div className={s.foodIMG}>
+      <img src={require('../../assets/icons/food/Lunch.png')} alt='lunch' width='32px' height='32px'/>
       <h2 className={s.titleTab}>
-      <svg width="36" height="36">
-        <use href='../../assets/icons/Illustration/symbol-svg.svg#Snack' ></use>
-        </svg>
       Lunch
     </h2>
+    </div>
     <ul className={s.listTab}>
       <li className={s.itemTab}>Carbonohidrates: 0</li>
       <li className={s.itemTab}>Protein: 0</li>
@@ -79,12 +79,12 @@ const isMobile = useMediaQuery({maxWidth: 833});
     </div>
     <div className={s.container}>
     <div className={s.containerLis}>
+    <div className={s.foodIMG}>
+    <img src={require('../../assets/icons/food/Snack.png')} alt='snack' width='32px' height='32px'/>
     <h2 className={s.titleTab}>
-      <svg width="36" height="36">
-        <use href='../../assets/icons/Illustration/symbol-svg.svg#Snack' ></use>
-        </svg>
       Snack
     </h2>
+    </div>
     <ul className={s.listTab}>
       <li className={s.itemTab}>Carbonohidrates: 0</li>
       <li className={s.itemTab}>Protein: 0</li>

@@ -10,7 +10,7 @@ const TableMobile = ()=>{
       <tr>
         <th>1</th>
         <td className={s.secondTd}>English breakfast</td>
-        <td>
+        <td className={s.btn}>
           <button className={s.btnEdit}>
           <svg stroke="#B6B6B6" width="16" height="16">
         <use href={`${icon}#edit-2`} />
@@ -20,7 +20,7 @@ const TableMobile = ()=>{
       </td>
       </tr>
       <tr  className={s.colspanTR}>
-        <td colspan="3" className={s.colspanTD}>Carb. 11.2 Prot. 3.6 Fat. 12</td>
+        <td colSpan={3} className={s.colspanTD}>Carb. 11.2   Prot. 3.6   Fat. 12</td>
       </tr>
       <tr>
         <th>2</th>
@@ -34,7 +34,7 @@ const TableMobile = ()=>{
         <td></td>
       </tr>
       <tr  className={s.colspanTR}>
-        <td colspan="3" className={s.colspanTD}></td>
+        <td colSpan={3} className={s.colspanTD}></td>
       </tr>
       <tr>
         <th>3</th>
@@ -42,7 +42,7 @@ const TableMobile = ()=>{
         <td></td>
       </tr>
       <tr  className={s.colspanTR}>
-        <td colspan="3" className={s.colspanTD}></td>
+        <td colSpan={3} className={s.colspanTD}></td>
       </tr>
       <tr>
         <th>4</th>
@@ -50,7 +50,7 @@ const TableMobile = ()=>{
         <td></td>
       </tr>
       <tr  className={s.colspanTR}>
-        <td colspan="3" className={s.colspanTD}></td>
+        <td colSpan={3} className={s.colspanTD}></td>
       </tr>
       </tbody>
     </table>
