@@ -32,15 +32,15 @@ const SignIn = () => {
 
   if (AuthUser?.id) {
     // Пример редиректа, если пользователь авторизован
-    return <Navigate to='/diary' />;
+    return <Navigate to="/diary" />;
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         <img
-          src='https://i.ibb.co/bvdHLJW/Illustration.png'
-          alt='Illustration'
+          src="https://i.ibb.co/bvdHLJW/Illustration.png"
+          alt="Illustration"
         />
       </div>
       <h2 className={styles.heading}>Sign In</h2>
@@ -51,29 +51,29 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <input
           className={styles.input}
-          type='email'
-          placeholder='Email'
+          type="email"
+          placeholder="Email"
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
         <input
           className={styles.input}
-          type='password'
-          placeholder='Password'
+          type="password"
+          placeholder="Password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button className={styles.button} type='submit'>
+        <button className={styles.button} type="submit">
           Sign In
         </button>
 
-        <Link to='/forgot-password' className={styles.forgotPasswordLink}>
+        <Link to="/forgot-password" className={styles.forgotPasswordLink}>
           Forgot your password?
         </Link>
       </form>
       <div className={styles.signupContainer}>
         <p className={styles.signupText}>If you don't have an account yet</p>
-        <Link to='/signup' className={styles.signupLink}>
+        <Link to="/signup" className={styles.signupLink}>
           Sign up
         </Link>
       </div>
