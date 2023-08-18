@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import Icons from '../../assets/icons/symbol-defs.svg';
 import css from './MainPageDiary.module.css';
 
 const Data = [
@@ -23,9 +22,7 @@ const MainPageDiary = () => {
         {Data.map(({ carbonohidrates, protein, fat }, i) => (
           <li key={i}>
             <div>
-              <svg width="36px" height="36px" className={css.svgBubble}>
-                <use xlinkHref={`${Icons}#bubble`} />
-              </svg>
+              <img src="" alt="meal" />
               <h3>
                 {i === 0
                   ? 'Breakfast'
@@ -35,6 +32,29 @@ const MainPageDiary = () => {
                   ? 'Dinner'
                   : 'Snack'}
               </h3>
+              {carbonohidrates && (
+                <ul>
+                  <li>
+                    <p>
+                      Carbonohidrates:
+                      <span>{carbonohidrates}</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Protein:
+                      <span>{protein}</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Fat:
+                      <span>{fat}</span>
+                    </p>
+                  </li>
+                </ul>
+              )}
+              {!carbonohidrates && <button>Test</button>}
             </div>
           </li>
         ))}
