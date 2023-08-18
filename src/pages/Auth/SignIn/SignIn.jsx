@@ -42,38 +42,40 @@ const SignIn = () => {
           alt="Illustration"
         />
       </div>
-      <h2 className={styles.heading}>Sign In</h2>
-      <h3 className={styles.subheading}>
-        You need to login to use the service
-      </h3>
-      {error && <p className={styles.error}>{error}</p>}
-      <form className={styles.inputContainer} onSubmit={handleSubmit}>
-        <input
-          className={styles.input}
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <input
-          className={styles.input}
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <button className={styles.button} type="submit">
-          Sign In
-        </button>
-        <Link to="/forgot-password" className={styles.forgotPasswordLink}>
-          Forgot your password?
-        </Link>
-      </form>
-      <div className={styles.signupContainer}>
-        <p className={styles.signupText}>If you don't have an account yet</p>
-        <Link to="/signup" className={styles.signupLink}>
-          Sign up
-        </Link>
+      <div className={styles.ContainerDiv}>
+        <h2 className={styles.heading}>Sign In</h2>
+        <h3 className={styles.subheading}>
+          You need to login to use the service
+        </h3>
+        {error && <p className={styles.error}>{error}</p>}
+        <form className={styles.inputContainer} onSubmit={handleSubmit}>
+          <input
+            className={styles.input}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+          <input
+            className={styles.input}
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+          <button className={styles.button} type="submit">
+            Sign In
+          </button>
+          <Link to="/forgot-password" className={styles.forgotPasswordLink}>
+            Forgot your password?
+          </Link>
+        </form>
+        <div className={styles.signupContainer}>
+          <p className={styles.signupText}>If you don't have an account yet</p>
+          <Link to="/signup" className={styles.signupLink}>
+            Sign up
+          </Link>
+        </div>
       </div>
     </div>
   );
