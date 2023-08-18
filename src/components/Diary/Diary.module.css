@@ -27,6 +27,7 @@
 .btnNav{
     display: flex;
     margin-bottom: 16px;
+    align-items:center;
 }
 .btnDiary{
     display: flex;

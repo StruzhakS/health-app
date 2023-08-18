@@ -1,6 +1,7 @@
 import React from 'react';
-import icon from '../../assets/icons/symbol-defs.svg';
 import s from './TableMobile.module.css';
+import {PiPencilLineLight} from 'react-icons/pi';
+import {BsPlus} from 'react-icons/bs';
 
 const TableMobile = ()=>{
     return(
@@ -12,9 +13,7 @@ const TableMobile = ()=>{
         <td className={s.secondTd}>English breakfast</td>
         <td className={s.btn}>
           <button className={s.btnEdit}>
-          <svg stroke="#B6B6B6" width="16" height="16">
-        <use href={`${icon}#edit-2`} />
-      </svg>
+          <PiPencilLineLight size="1rem"/>
       Edit
           </button>
       </td>
@@ -26,9 +25,7 @@ const TableMobile = ()=>{
         <th>2</th>
         <td>
           <button className={s.btnAdd}>
-          <svg stroke="#E3FFA8" width="16" height="16">
-        <use href={`${icon}#add`} />
-      </svg>
+          <BsPlus size="1rem"/>
             Record your meal</button>
           </td>
         <td></td>
