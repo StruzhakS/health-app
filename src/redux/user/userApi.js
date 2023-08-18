@@ -12,6 +12,10 @@ export function unSetHeadersToken() {
 
 export async function updateGoalApi(body) {
   const { data } = await axios.put('/goal', { goal: body });
-  console.log(data);
+  return data;
+}
+
+export async function updateWeightApi(body) {
+  const { data } = await axios.put('/weight', { weight: body });
   return data;
 }

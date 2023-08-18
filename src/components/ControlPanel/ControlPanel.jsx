@@ -26,6 +26,7 @@ const ControlPanel = () => {
       <СurrentWeightModal
         weightModalOpen={weightModalOpen}
         setWeightModalOpen={setWeightModalOpen}
+        weight={weight}
       />
       <div className={s.controlPanel}>
         <div className={s.targerSelect}>
