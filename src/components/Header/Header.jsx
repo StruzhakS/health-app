@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import ControlPanel from 'components/ControlPanel/ControlPanel';
 import { logout } from '../../redux/auth/authSlice';
+import { useMediaQuery } from 'react-responsive';
+import MobileMenuModal from 'components/Modal/MobileMenuModal/MobileMenuModal';
 
 export const customStyles = {
   overlay: {
@@ -21,32 +23,58 @@ const Header = () => {
   const avatar = useSelector(state => state?.auth?.user?.avatarURL);
   const userName = useSelector(state => state?.auth?.user?.name);
 
+  const isTabletScreen = useMediaQuery({ minWidth: 834 });
+  const isMobileScreen = useMediaQuery({ maxWidth: 834 });
   const [setingsModalIsOpen, setSetingsModalIsOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOper] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const logOut = useCallback(async () => {
     await dispatch(logout());
+    setSetingsModalIsOpen(false);
     localStorage.removeItem('user_data');
     localStorage.removeItem('user_token');
     navigate('/');
-    setSetingsModalIsOpen(false);
   }, [dispatch, navigate]);
 
   return isAuth ? (
     <div className={s.header}>
-      <NavLink to={'/'} className={s.logoLink}>
-        Your Health
-      </NavLink>
+      <div className={s.logoWrapper}>
+        <NavLink to={'/'} className={s.logoLink}>
+          Your Health
+        </NavLink>
+
+        {isMobileScreen && (
+          <button onClick={() => setMobileMenuOper(true)}>
+            <svg width="16" height="16">
+              <use href={`${iconsSrc}#menu`} />
+            </svg>
+            {/* MobileMenu */}
+          </button>
+        )}
+      </div>
       <div className={s.controlWrapper}>
-        <ControlPanel />
+        {isTabletScreen && <ControlPanel />}
         <button
           type="button"
           className={s.userBtn}
           onClick={() => setSetingsModalIsOpen(true)}
         >
           {userName} <img src={avatar} alt="" className={s.avatarImg} />
-          <svg style={{ fill: 'white' }} width="14" height="14">
+          <svg
+            style={
+              !setingsModalIsOpen
+                ? { fill: 'white' }
+                : {
+                    fill: 'white',
+                    rotate: '180deg',
+                  }
+            }
+            width="14"
+            height="14"
+          >
             <use href={`${iconsSrc}#arrow-down`} />
           </svg>
         </button>
@@ -71,6 +99,10 @@ const Header = () => {
           Log out
         </button>
       </Modal>
+      <MobileMenuModal
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOper={setMobileMenuOper}
+      />
     </div>
   ) : (
     <div className={s.header}>

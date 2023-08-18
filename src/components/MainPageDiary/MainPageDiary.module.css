@@ -1,0 +1,113 @@
+.DiarySection {
+  color: #fff;
+  width: 300px;
+
+  @media (min-width: 834px) {
+    width: 780px;
+    margin-bottom: 20px;
+  }
+   @media (min-width: 1440px) {
+     width: 518px;
+       margin-bottom: 0px;
+   }
+}
+
+.DiaryTitle {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33em;
+
+  @media (min-width: 834px) {
+    font-size: 22px;
+    line-height: 1.45em;
+  }
+}
+
+.DiaryTitleLink {
+  color: #b6b6b6;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42em;
+}
+
+.DiaryTitleContainer {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  @media (min-width: 834px) {
+    width: 780px;
+  }
+}
+
+.mealTitle {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.mealListItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media (min-width: 834px) {
+    flex-direction: row;
+  }
+}
+
+.mealListItemTitle {
+  font-size: 18px;
+
+  font-weight: 500;
+  line-height: 1.33em;
+  @media (min-width: 834px) {
+    width: 100px;
+  }
+}
+
+.mealList {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.mealAdditionalInfoList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (min-width: 834px) {
+    flex-direction: row;
+  }
+}
+
+.mealAdditionalInfoDescription {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42em;
+}
+
+.mealAdditionalInfoValue {
+  display: inline-block;
+  color: #b6b6b6;
+
+  font-weight: 500;
+  width: 36px;
+}
+.recordMealButton {
+  display: flex;
+  align-items: center;
+  width: 148px;
+  color: #e3ffa8;
+
+  font-size: 14px;
+
+  font-weight: 500;
+  line-height: 1.42em;
+
+  cursor: pointer;
+}
+
+.recordMealIcon {
+  stroke: #e3ffa8;
+}

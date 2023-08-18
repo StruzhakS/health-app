@@ -1,7 +1,6 @@
 .weightModal {
   position: absolute;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   background-color: #0f0f0f;
   width: 392px;
@@ -10,5 +9,114 @@
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
   top: 100px;
   right: 36px;
-  padding: 20 24px;
+  padding: 20px 24px;
+}
+
+@media screen and (max-width: 834px) {
+  .weightModal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f0f0f;
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0px 0px 0px 0px rgba(227, 255, 168, 0.2);
+    left: 50%;
+    top: 60px;
+    padding: 10px;
+    transform: translateX(-50%);
+  }
+}
+
+.titleWigth {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
+  margin-bottom: 8px;
+}
+.subTitleWigth {
+  color: #b6b6b6;
+  font-size: 14px;
+  line-height: 1.43;
+  margin-bottom: 16px;
+}
+
+.subDate {
+  font-size: 14px;
+  line-height: 1.42;
+  margin-bottom: 16px;
+}
+
+.calendarDate {
+  color: #b6b6b6;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.43;
+}
+
+.formWeight {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  /* justify-content: space-between; */
+}
+
+@media screen and (min-width: 834px) {
+  .formWeight {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.inputWeigth {
+  background-color: transparent;
+  border-radius: 12px;
+  outline: transparent;
+  border: 1px solid #e3ffa8;
+  padding: 8px 10px;
+  color: white;
+}
+.inputWeigth::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.confirmWeight {
+  display: flex;
+  justify-content: center;
+  color: #0f0f0f;
+  width: 166px;
+  padding: 8px 10px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: #e3ffa8;
+  font-weight: 500;
+  line-height: 1.42;
+}
+
+@media screen and (max-width: 834px) {
+  .confirmWeight {
+    display: flex;
+    justify-content: center;
+    color: #0f0f0f;
+    width: 280px;
+    margin: 0 auto;
+    padding: 8px 10px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 12px;
+    background-color: #e3ffa8;
+    font-weight: 500;
+    line-height: 1.42;
+  }
+}
+
+.closeWeigthModal {
+  position: absolute;
+  top: 20px;
+  right: 32px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #b6b6b6;
 }

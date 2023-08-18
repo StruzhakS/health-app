@@ -1,14 +1,123 @@
-.userSettingsModal {
+.targetModal {
   position: absolute;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   background-color: #0f0f0f;
   width: 392px;
-  height: 352px;
+  height: 200px;
   border-radius: 12px;
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
   top: 100px;
-  right: 248px;
-  padding: 20 24px;
+  right: 36px;
+  padding: 20px 24px;
+}
+
+@media screen and (max-width: 834px) {
+  .targetModal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f0f0f;
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0px 0px 0px 0px rgba(227, 255, 168, 0.2);
+    left: 50%;
+    top: 60px;
+    padding: 10px;
+    transform: translateX(-50%);
+  }
+}
+
+.targetForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.radioImage {
+  width: 20px;
+  height: 20px;
+}
+.inputTarget {
+  display: none;
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #292928;
+  border-radius: 12px;
+}
+
+.targetLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.closeTargetModal {
+  position: absolute;
+  top: 20px;
+  right: 32px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #b6b6b6;
+}
+
+.targetTitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
+  margin-bottom: 8px;
+}
+
+.targetSubTitle {
+  color: #b6b6b6;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+  margin-bottom: 16px;
+}
+
+@media screen and (max-width: 834px) {
+  .confirmTargetBtn {
+    display: flex;
+    justify-content: center;
+    color: #0f0f0f;
+    width: 166px;
+    padding: 8px 10px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 12px;
+    background-color: #e3ffa8;
+    font-weight: 500;
+    line-height: 1.42;
+    margin: 0 auto;
+  }
+}
+
+.confirmTargetBtn {
+  display: flex;
+  justify-content: center;
+  color: #0f0f0f;
+  width: 166px;
+  padding: 8px 10px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: #e3ffa8;
+  font-weight: 500;
+  line-height: 1.42;
+}
+
+.cancelTargetButton {
+  color: #b6b6b6;
+  font-size: 14px;
+  line-height: 1.42;
 }
