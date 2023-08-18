@@ -1,4 +1,4 @@
-.userSettingsModal {
+.targetModal {
   position: absolute;
   display: flex;
   justify-content: space-between;
@@ -10,5 +10,19 @@
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
   top: 100px;
   right: 248px;
-  padding: 20 24px;
+  padding: 20px 24px;
 }
+
+.radioLabel {
+  display: flex;
+}
+
+.radioImage {
+  /* display: block; */
+  width: 20px;
+  height: 20px;
+}
+
+/* .targetInput {
+  display: block;
+} */

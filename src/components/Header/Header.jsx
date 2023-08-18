@@ -30,7 +30,6 @@ const Header = () => {
     localStorage.removeItem('user_data');
     localStorage.removeItem('user_token');
     navigate('/');
-    setSetingsModalIsOpen(false);
   }, [dispatch, navigate]);
 
   return isAuth ? (
@@ -46,7 +45,18 @@ const Header = () => {
           onClick={() => setSetingsModalIsOpen(true)}
         >
           {userName} <img src={avatar} alt="" className={s.avatarImg} />
-          <svg style={{ fill: 'white' }} width="14" height="14">
+          <svg
+            style={
+              !setingsModalIsOpen
+                ? { fill: 'white' }
+                : {
+                    fill: 'white',
+                    rotate: '180deg',
+                  }
+            }
+            width="14"
+            height="14"
+          >
             <use href={`${iconsSrc}#arrow-down`} />
           </svg>
         </button>
