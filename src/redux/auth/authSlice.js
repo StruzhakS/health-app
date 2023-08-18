@@ -4,7 +4,7 @@ import { signUp, signIn, forgotPassword } from './authOperations';
 const initialState = {
   user: null,
   step: null,
-  token: 'null',
+  token: null,
   error: null,
 };
 
@@ -21,6 +21,10 @@ const authSlice = createSlice({
     updateAuthStep: (state, action) => {
       state.step = action.payload;
     },
+    updateAuthUser: (state, action) => {
+      state.token = action.payload.token;
+      state.user = action.payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -28,6 +32,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.error = null;
+        state.avatar = action.payload.avatar;
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -41,10 +46,10 @@ const authSlice = createSlice({
         action => action.type.endsWith('/rejected'),
         (state, action) => {
           state.error = action.payload;
-        }
+        },
       );
   },
 });
 
-export const { logout, updateAuthStep } = authSlice.actions;
+export const { logout, updateAuthStep, updateAuthUser } = authSlice.actions;
 export default authSlice.reducer;

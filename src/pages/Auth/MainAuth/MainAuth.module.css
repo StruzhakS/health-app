@@ -169,6 +169,7 @@
   .auth-img {
     width: 368px;
     height: 259px;
+    margin-right: 104px;
   }
   .auth-content {
     display: flex;
