@@ -46,7 +46,7 @@ const authSlice = createSlice({
         action => action.type.endsWith('/rejected'),
         (state, action) => {
           state.error = action.payload;
-        },
+        }
       );
   },
 });

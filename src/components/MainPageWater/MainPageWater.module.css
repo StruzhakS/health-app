@@ -1,0 +1,145 @@
+.waterTitle {
+  font-size: 18px;
+
+  font-weight: 400;
+  line-height: 1.33em;
+
+  margin-bottom: 6px;
+
+  @media (min-width: 834px) {
+    font-size: 22px;
+    line-height: 1.45em;
+  }
+}
+
+.waterStatisticsContainer {
+  display: flex;
+  gap: 20px;
+  width: 300px;
+  border-radius: 12px;
+  background-color: #0f0f0f;
+  padding: 16px 12px;
+
+  @media (min-width: 834px) {
+    padding: 24px 22px;
+    width: 380px;
+    gap: 40px;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 24px 40px;
+    width: 444px;
+  }
+}
+
+.waterStatisticsScheduleContainer {
+  display: flex;
+  flex-direction: column-reverse;
+
+  width: 88px;
+  height: 192px;
+  border-radius: 20px;
+  border: 1px solid #292928;
+
+  background: #050505;
+
+  padding: 8px;
+}
+
+.waterStatisticsSchedule {
+  position: relative;
+  border-radius: 20px;
+  background: #b6c3ff;
+  box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.12),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.12) inset;
+  color: #b6c3ff;
+}
+
+.schedulePercent {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  font-size: 16px;
+
+  font-weight: 600;
+  line-height: 1.37em;
+}
+
+.waterStatisticsInfoContainer {
+  padding: 22px 0px;
+
+  @media (min-width: 834px) {
+    width: 216px;
+  }
+}
+
+.waterStatisticsInfoTitle {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.37em;
+  margin-bottom: 12px;
+
+  @media (min-width: 834px) {
+    font-size: 18px;
+    line-height: 1.33em;
+  }
+}
+
+.waterStatisticsHelperInfo {
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+  color: #b6b6b6;
+  margin-left: 4px;
+}
+
+.waterStatisticsMainInfo {
+  font-size: 28px;
+
+  font-weight: 500;
+  line-height: 1.21em;
+  margin-bottom: 8px;
+
+  @media (min-width: 834px) {
+    display: inline-block;
+  }
+}
+
+.waterStatisticsAdditionalInfo {
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+  margin-bottom: 16px;
+
+  @media (min-width: 834px) {
+    display: inline-block;
+    margin-left: 40px;
+  }
+}
+
+.waterStatisticsInfoButton {
+  width: 166px;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+
+  gap: 8px;
+  font-size: 14px;
+
+  font-weight: 500;
+  line-height: 1.42em;
+  background-color: #e3ffa8;
+  border-radius: 12px;
+  color: #0f0f0f;
+}
+
+.svgPlus {
+  stroke: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
