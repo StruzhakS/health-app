@@ -35,7 +35,7 @@ const RecomendedFood = () => {
     <section className={s.recomendedFoodSection}>
       <h2 className={s.recomendedFoodTitle}>Recommented food</h2>
       <div className={s.recomendedFoodBox}>
-      <img src={Food} alt='Food' />
+      <img className={s.recomendedFoodImg} src={Food} alt='Food' />
       <ul className={s.recomendedFoodList}>
         {randomArr().map(({ name, amount, calories }) => (
           <li className={s.recomendedFoodListItem} key={name}>
