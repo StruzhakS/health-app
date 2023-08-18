@@ -1,0 +1,43 @@
+.table{
+    width: 300px;
+    height: 232px;
+    border-radius: 12px;
+    background-color: #0f0f0f;
+}
+.table td{
+    /* height: 60px; */
+}
+.table th, .table td{
+    font-size: 14px;
+    line-height: 20px;
+    
+}
+.table th{
+    font-weight: 600;
+   
+}
+.colspanTR{
+    width: 214px;
+    height: 18px;
+}
+.colspanTD{
+    width: 214px;
+    text-align: center;
+}
+.secondTd{
+    width: 178px;
+    
+}
+.btnAdd{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    color:  #E3FFA8;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+}
+.btnEdit{
+    display: flex;
+    gap: 6px;
+}

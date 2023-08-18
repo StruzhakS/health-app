@@ -3,13 +3,14 @@
     padding: 16px 10px 40px;
     display:flex;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .btnNav{
     display: flex;
 }
 .btnDiary{
-    display: inline-block;
+    display: flex;
 }
 
 .textBtn{

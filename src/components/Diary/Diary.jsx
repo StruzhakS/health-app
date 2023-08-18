@@ -2,8 +2,14 @@ import React from 'react';
 import icon from '../../assets/icons/symbol-defs.svg';
 import s from './Diary.module.css';
 import Table from 'components/Table/Table';
+import TableMobile from 'components/Table/TableMobile';
+import { useMediaQuery } from 'react-responsive';
 
 const Diary = () => {
+
+const isMobile = useMediaQuery({maxWidth: 833});
+
+
   return (
     <div className={s.containerDiary}>
       <div className={s.btnNav}>
@@ -29,7 +35,9 @@ const Diary = () => {
       <li className={s.itemTab}>Fat: 0</li>
     </ul>
     </div>
-    <Table />
+
+    {!isMobile ? (<Table />) : (<TableMobile />)}
+  
     </div>
     <div className={s.container}>
     <div className={s.containerLis}>
@@ -45,7 +53,9 @@ const Diary = () => {
       <li className={s.itemTab}>Fat: 0</li>
     </ul>
     </div>
-    <Table />
+    
+    {!isMobile ? (<Table />) : (<TableMobile />)}
+
     </div>
     </div>
     <div className={s.tableRow}>
@@ -63,7 +73,9 @@ const Diary = () => {
       <li className={s.itemTab}>Fat: 0</li>
     </ul>
       </div>
-    <Table />
+  
+      {!isMobile ? (<Table />) : (<TableMobile />)}
+
     </div>
     <div className={s.container}>
     <div className={s.containerLis}>
@@ -79,7 +91,9 @@ const Diary = () => {
       <li className={s.itemTab}>Fat: 0</li>
     </ul>
     </div>
-    <Table />
+    
+    {!isMobile ? (<Table />) : (<TableMobile />)}
+    
     </div>
     </div>
   </div>
