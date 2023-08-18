@@ -108,7 +108,7 @@
   display: none;
 }
 
-@media (min-width: 768px) and (max-width: 1099px) {
+@media (min-width: 834px) and (max-width: 1439.5px) {
   .auth-list-c {
     display: none;
   }
@@ -153,7 +153,7 @@
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1440px) {
   .auth-container {
     display: flex;
     flex-direction: row;

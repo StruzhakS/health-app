@@ -85,7 +85,7 @@
   color: #ffffff;
 }
 
-@media (min-width: 768px) and (max-width: 1099px) {
+@media (min-width: 834px) and (max-width: 1439.5px) {
   .container {
     max-width: 834px;
     margin: 0 auto;
@@ -174,7 +174,7 @@
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1440px) {
   .container {
     max-width: 1440px;
     display: flex;
