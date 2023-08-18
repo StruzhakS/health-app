@@ -1,5 +1,4 @@
 import React from 'react';
-import icon from '../../assets/icons/symbol-defs.svg';
 import s from './Diary.module.css';
 import Table from 'components/Table/Table';
 import TableMobile from 'components/Table/TableMobile';
