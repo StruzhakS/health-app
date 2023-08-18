@@ -5,11 +5,13 @@ import s from './ControlPanel.module.css';
 import Waigth from '../../assets/icons/emoji/Waight.png';
 import TargetSelectionModal from 'components/Modal/TargetSelectionModal/TargetSelectionModal';
 import СurrentWeightModal from '../Modal/СurrentWeightModal/СurrentWeightModal';
+import { useMediaQuery } from 'react-responsive';
 
 const ControlPanel = () => {
   const [targetModalOpen, setTargetModalOpen] = useState(false);
 
   const [weightModalOpen, setWeightModalOpen] = useState(false);
+  const isMobileScreen = useMediaQuery({ maxWidth: 834 });
 
   return (
     <>
@@ -43,7 +45,13 @@ const ControlPanel = () => {
                   width="14"
                   height="14"
                 >
-                  <use href={`${iconsSrc}#arrow-down`} />
+                  <use
+                    href={
+                      isMobileScreen
+                        ? `${iconsSrc}#arrow-right`
+                        : `${iconsSrc}#arrow-down`
+                    }
+                  />
                 </svg>
               </button>
             </div>

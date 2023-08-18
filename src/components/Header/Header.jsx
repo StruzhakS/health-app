@@ -33,6 +33,7 @@ const Header = () => {
 
   const logOut = useCallback(async () => {
     await dispatch(logout());
+    setSetingsModalIsOpen(false);
     localStorage.removeItem('user_data');
     localStorage.removeItem('user_token');
     navigate('/');

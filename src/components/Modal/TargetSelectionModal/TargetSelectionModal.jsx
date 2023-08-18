@@ -6,6 +6,13 @@ import loseFat from '../../../assets/icons/emoji/Lose_fat_men.png';
 import mainTainspa from '../../../assets/icons/emoji/Maintake_men.png';
 import gainMuscle from '../../../assets/icons/emoji/Gain_muscle.png';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
+import { useMediaQuery } from 'react-responsive';
+
+export const customMobileStyles = {
+  overlay: {
+    background: 'black',
+  },
+};
 
 const TargetSelectionModal = ({ targetModalOpen, setTargetModalOpen }) => {
   const [selectTarget, setSelecttarget] = useState('lose fat');
@@ -17,22 +24,26 @@ const TargetSelectionModal = ({ targetModalOpen, setTargetModalOpen }) => {
     //   діспатч на зміну цілі
   };
 
+  const isMobileScreen = useMediaQuery({ maxWidth: 834 });
+
   return (
     <>
       <Modal
         className={s.targetModal}
         isOpen={targetModalOpen}
         onRequestClose={() => setTargetModalOpen(false)}
-        style={customStyles}
+        style={isMobileScreen ? customMobileStyles : customStyles}
         contentLabel="Example Modal"
       >
-        <button
-          type="button"
-          className={s.closeTargetModal}
-          onClick={() => setTargetModalOpen(false)}
-        >
-          {IoIosCloseCircleOutline()}
-        </button>
+        {!isMobileScreen && (
+          <button
+            type="button"
+            className={s.closeTargetModal}
+            onClick={() => setTargetModalOpen(false)}
+          >
+            {IoIosCloseCircleOutline()}
+          </button>
+        )}
         <h2 className={s.targetTitle}>Target selection</h2>
         <p className={s.targetSubTitle}>
           The service will adjust your calorie intake to your goal
@@ -121,13 +132,13 @@ const TargetSelectionModal = ({ targetModalOpen, setTargetModalOpen }) => {
               >
                 <img
                   src={gainMuscle}
-                  alt="gain muscle"
+                  alt="gainMuscle"
                   className={s.radioImage}
                 />
               </div>
               <span
                 style={
-                  selectTarget === 'gain muscle' ? { color: '#B6C3FF' } : null
+                  selectTarget === 'gainMuscle' ? { color: '#B6C3FF' } : null
                 }
               >
                 Gain Muscle
@@ -135,6 +146,15 @@ const TargetSelectionModal = ({ targetModalOpen, setTargetModalOpen }) => {
             </label>
           </div>
           <button className={s.confirmTargetBtn}>Confirm</button>
+          {isMobileScreen && (
+            <button
+              type="button"
+              onClick={() => setTargetModalOpen(false)}
+              className={s.cancelTargetButton}
+            >
+              Cancel
+            </button>
+          )}
         </form>
       </Modal>
     </>

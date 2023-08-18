@@ -3,6 +3,8 @@ import s from './СurrentWeightModal.module.css';
 import { customStyles } from 'components/Header/Header';
 import Modal from 'react-modal';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
+import { useMediaQuery } from 'react-responsive';
+import { customMobileStyles } from '../TargetSelectionModal/TargetSelectionModal';
 
 const СurrentWeightModal = ({ weightModalOpen, setWeightModalOpen }) => {
   const D = new Date();
@@ -27,22 +29,26 @@ const СurrentWeightModal = ({ weightModalOpen, setWeightModalOpen }) => {
     setWeightModalOpen(false);
   };
 
+  const isMobileScreen = useMediaQuery({ maxWidth: 834 });
+
   return (
     <>
       <Modal
         className={s.weightModal}
         isOpen={weightModalOpen}
         onRequestClose={() => setWeightModalOpen(false)}
-        style={customStyles}
+        style={isMobileScreen ? customMobileStyles : customStyles}
         contentLabel="Example Modal"
       >
-        <button
-          type="button"
-          className={s.closeWeigthModal}
-          onClick={() => setWeightModalOpen(false)}
-        >
-          {IoIosCloseCircleOutline()}
-        </button>
+        {!isMobileScreen && (
+          <button
+            type="button"
+            className={s.closeWeigthModal}
+            onClick={() => setWeightModalOpen(false)}
+          >
+            {IoIosCloseCircleOutline()}
+          </button>
+        )}
         <h2 className={s.titleWigth}>Enter your current weight</h2>
         <p className={s.subTitleWigth}>You can record your weight once a day</p>
         <p className={s.subDate}>
@@ -57,6 +63,15 @@ const СurrentWeightModal = ({ weightModalOpen, setWeightModalOpen }) => {
             value={weight}
           />
           <button className={s.confirmWeight}>Confirm</button>
+          {isMobileScreen && (
+            <button
+              type="button"
+              onClick={() => setWeightModalOpen(false)}
+              className={s.cancelTargetButton}
+            >
+              Cancel
+            </button>
+          )}
         </form>
       </Modal>
     </>
