@@ -32,8 +32,6 @@ const TargetSelectionModal = ({
 
   const isMobileScreen = useMediaQuery({ maxWidth: 834 });
 
-  console.log(selectTarget);
-
   return (
     <>
       <Modal

@@ -55,10 +55,9 @@
   cursor: pointer;
   margin-bottom: 16px;
 
-@media (min-width: 834px) {
-        width: 212px;
-            
-    }
+  @media (min-width: 834px) {
+    width: 212px;
+  }
 }
 
 .closeWaterIntakeModal {
@@ -72,11 +71,10 @@
   width: 276px;
   height: 20px;
   cursor: pointer;
-  
-@media (min-width: 834px) {
-        width: 212px;
 
-    }
+  @media (min-width: 834px) {
+    width: 212px;
+  }
 }
 
 .waterIntakeModalFormInput {
@@ -89,10 +87,9 @@
   border: 1px solid #e3ffa8;
   border-radius: 12px;
 
-@media (min-width: 834px) {
-        width: 212px;
-
-    }
+  @media (min-width: 834px) {
+    width: 212px;
+  }
 }
 
 .waterIntakeModalFormLabel {

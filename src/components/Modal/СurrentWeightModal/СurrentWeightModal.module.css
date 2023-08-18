@@ -12,6 +12,12 @@
   padding: 20px 24px;
 }
 
+@media screen and (max-width: 1439px) {
+  .weightModal {
+    right: 148px;
+  }
+}
+
 @media screen and (max-width: 834px) {
   .weightModal {
     position: absolute;
