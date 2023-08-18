@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import recommendedFood from '../../recomended-food.json';
-
-import css from './RecomendedFood.module.css';
+import Food from '../../assets/img/desktop/Food.png';
+import s from './RecomendedFood.module.css';
 
 const RecomendedFood = () => {
   const navigate = useNavigate();
@@ -13,10 +13,11 @@ const RecomendedFood = () => {
       const randomIndex = Math.round(
         Math.random() * (recommendedFood.length - 1)
       );
+      console.log(randomIndex);
       if (!indexArr.includes(randomIndex)) {
         indexArr.push(randomIndex);
       }
-    } while (indexArr.length < 12);
+    } while (indexArr.length < 10);
 
     return [
       recommendedFood[indexArr[0]],
@@ -29,24 +30,22 @@ const RecomendedFood = () => {
       recommendedFood[indexArr[7]],
       recommendedFood[indexArr[8]],
       recommendedFood[indexArr[9]],
-      recommendedFood[indexArr[10]],
-      recommendedFood[indexArr[11]],
     ];
   };
 
   const onSeeMoreButtonClick = evt => {
     evt.preventDefault();
     navigate('/recommented-food');
-  };
-
+  }
+  
   return (
-    <section className={css.recommendedFoodSection}>
-      <h2 className={css.recommendedFoodSectionTitle}>Recommented food</h2>
-      <div className={css.recommendedFoodSectionBox}>
-      <img src='../../assets/img/desktop/Food.png' alt='Food' />
-      <ul className={css.recommendedFoodSectionList}>
+    <section className={s.recomendedFoodSection}>
+      <h2 className={s.recomendedFoodTitle}>Recommented food</h2>
+      <div className={s.recomendedFoodBox}>
+      <img src={Food} alt='Food' />
+      <ul className={s.recomendedFoodList}>
         {randomDataArr().map(({ name, amount, calories }) => (
-          <li className={css.recommendedFoodSectionListItem} key={name}>
+          <li className={s.recomendedFoodListItem} key={name}>
             <img src="" alt={name} />
             <div>
               <p>{name}</p>
