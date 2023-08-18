@@ -8,7 +8,7 @@ import sprite from '../../assets/icons/symbol-defs.svg';
 const Dashboard = () => {
   return (
     <section className={css.dashboardSection}>
-      <h1 className={css.dashboardTitle}>Dashboard</h1>
+     
       <div className={css.dashboardButtonContainer}>
         <button className={css.dashboardBtnLeftArrow}>
           <svg className={css.dashboardSvg}>

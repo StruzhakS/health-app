@@ -1,7 +1,15 @@
 .lineChartContainer{
-width: 656px;
+width: 1076px;
   background-color: #0F0F0F;
   border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chartScrollContainerStyle{
+  width: 1056px;
+  height: 400px;
+  overflow: scroll;
 }
 .lineChartContainer > div::-webkit-scrollbar {
   width: 2px; 

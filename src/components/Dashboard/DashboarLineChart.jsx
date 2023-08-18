@@ -1,31 +1,17 @@
  import React from 'react';
 import ReactECharts from 'echarts-for-react';
-
+import recommendedFood from '../../recomended-food';
 import css from './DashboardLineChart.module.css';
 
 const LineChart = () => {
-  const values = [
-    1.0, 1.5, 1.6, 1.3, 1.4, 1.6, 1.2, 1.1, 1.5, 1.8, 1.1, 1.2, 1.5, 1.7, 1.0,
-    1.5, 1.6, 1.3, 1.4, 1.6, 1.2, 1.1, 1.5, 1.8, 1.1, 1.2, 1.5, 1.7, 1.2, 1.5,
-    1.7,
-  ];
-  const maxValue = Math.max(...values);
-  const maxIndex = values.indexOf(maxValue) + 1;
-  const chartWidth = '715px';
-  const chartHeight = '400px';
+  const values = recommendedFood.map(item => item.calories);
+  console.log(values);
+  const sum = values.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  const average = Math.round(sum * 10) / values.length;
+  console.log(average);
 
-  const chartContainerStyle = {
-    width: chartWidth,
-    height: chartHeight,
-    position: 'relative',
-    overflow: 'hidden', // Відключаємо прокрутку на контейнері
-  };
+  
 
-  const chartScrollContainerStyle = {
-    width: chartWidth,
-    height: chartHeight,
-    overflowY: 'scroll', // Увімкнути прокрутку для графіка
-  };
 
   const data = {
     xAxis: {
@@ -55,45 +41,41 @@ const LineChart = () => {
       },
     },
     yAxis: {
-      type: 'value',
-      color: '#B6B6B6',
-      axisLabel: {
-        formatter: '{value}K',
+    type: 'value',
+    color: '#B6B6B6',
+     axisLabel: {
+        formatter: '{value}K', 
       },
-      axisLine: {
-        lineStyle: {
-          color: 'rgba(182, 182, 182, 1)',
-        },
+    axisLine: {
+      lineStyle: {
+        color: 'rgba(182, 182, 182, 1)',
       },
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: 'rgba(41, 41, 40, 1)',
-        },
-      },
-
-      boundaryGap: true,
-      data: ['1K', '2K', '3K'],
-      interval: 1,
-      min: 0,
-      max: 3,
     },
-    series: [
-      {
-        data: values,
+    splitLine: {
+      show: true,
+      lineStyle: {
+        color: 'rgba(41, 41, 40, 1)',
+      },
+    },
+    interval: 1000, 
+    min: 0,
+    max: 3000, 
+  },
+  series: [
+    {
+      data: values, 
         type: 'line',
-        symbol: 'circle',
-        itemStyle: {
-          color: 'rgba(227, 255, 168, 1)',
-          width: 1,
-        },
-        symbolSize: (value, params) =>
-          params.dataIndex + 1 === maxIndex ? 10 : 0,
-        smooth: true,
-        lineStyle: {
-          color: 'rgba(227, 255, 168, 1)',
-        },
-
+      symbol: 'circle',
+      itemStyle: {
+        color: 'rgba(227, 255, 168, 1)',
+        width: 1,
+      },
+      // symbolSize: (value, params) =>
+      //   params.dataIndex + 1 === maxIndex ? 10 : 0,
+      smooth: true,
+      lineStyle: {
+        color: 'rgba(227, 255, 168, 1)',
+      },
         emphasis: {
           itemStyle: {
             color: 'rgba(227, 255, 168, 1)',
@@ -104,8 +86,8 @@ const LineChart = () => {
             {
               type: 'max',
               name: 'Max Value',
-              value: maxValue,
-              formatter: 'Max Value: {value|0.0a}',
+              value: average,
+              formatter: 'calories',
             },
           ],
           symbol: 'rect',
@@ -127,11 +109,11 @@ const LineChart = () => {
  
   return  (
    <div className={css.lineChartContainer}>
-      <div style={chartContainerStyle}>
-        <div style={chartScrollContainerStyle}>
-          <ReactECharts option={data} opts={{ width: chartWidth, height: chartHeight }} />
+      
+        <div className={css.chartScrollContainerStyle}>
+          <ReactECharts option={data}  />
         </div>
-      </div>
+      
     </div>
   );
 };
