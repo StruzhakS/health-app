@@ -47,7 +47,7 @@ const SignIn = () => {
         You need to login to use the service
       </h3>
       {error && <p className={styles.error}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      <form className={styles.inputContainer} onSubmit={handleSubmit}>
         <input
           className={styles.input}
           type="email"
@@ -65,7 +65,6 @@ const SignIn = () => {
         <button className={styles.button} type="submit">
           Sign In
         </button>
-
         <Link to="/forgot-password" className={styles.forgotPasswordLink}>
           Forgot your password?
         </Link>

@@ -167,9 +167,12 @@
     text-align: left;
   }
   .auth-img {
-    width: 368px;
-    height: 259px;
+    width: 592px;
     margin-right: 104px;
+  }
+
+  .imgIllustration {
+    width: 592px;
   }
   .auth-content {
     display: flex;
