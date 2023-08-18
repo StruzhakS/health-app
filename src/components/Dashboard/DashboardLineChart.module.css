@@ -4,14 +4,14 @@ width: 656px;
   border-radius: 12px;
 }
 .lineChartContainer > div::-webkit-scrollbar {
-  width: 6px; /* Ширина скролу */
+  width: 2px; 
 }
 
 .lineChartContainer > div::-webkit-scrollbar-thumb {
-  background-color: rgba(182, 182, 182, 0.7); /* Колір пальця скролу */
-  border-radius: 6px; /* Закруглені кути пальця скролу */
+  background-color: rgba(182, 182, 182, 0.7); 
+  border-radius: 6px; 
 }
 
 .lineChartContainer > div::-webkit-scrollbar-track {
-  background-color: rgba(41, 41, 40, 1); /* Колір треку скролу */
+  background-color: rgba(41, 41, 40, 1); 
 }
