@@ -199,16 +199,7 @@
       "fat": 0.4
     }
   },
-  {
-    "name": "Nuts",
-    "amount": "100 g",
-    "calories": 650,
-    "nutrition": {
-      "carbohydrates": 15,
-      "protein": 22,
-      "fat": 55
-    }
-  },
+  
   {
     "name": "Broccoli",
     "amount": "100 g",
@@ -309,16 +300,7 @@
       "fat": 0.4
     }
   },
-  {
-    "name": "Nuts",
-    "amount": "100 g",
-    "calories": 650,
-    "nutrition": {
-      "carbohydrates": 15,
-      "protein": 22,
-      "fat": 55
-    }
-  },
+ 
   {
     "name": "Broccoli",
     "amount": "100 g",

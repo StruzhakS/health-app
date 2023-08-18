@@ -1,0 +1,20 @@
+.chartContainer {
+  display: flex;
+}
+
+.weightLine,
+.dayLine {
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px;
+}
+
+.weightPoint,
+.dayPoint {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ padding-left: 23px;
+  margin-bottom: 5px;
+}

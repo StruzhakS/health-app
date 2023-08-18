@@ -4,6 +4,16 @@ width: 1076px;
   border-radius: 12px;
   position: relative;
   overflow: hidden;
+  margin-left: -58px;
+}
+.dashboardCaloriesContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 320px;
+  color: white;
+  padding-right: 20px;
+  margin-bottom: 9px;
 }
 
 .chartScrollContainerStyle{

@@ -1,0 +1,18 @@
+.dashboardWaterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 320px;
+  color: white;
+  padding-right: 20px;
+  margin-bottom: 9px;
+  margin-top: 27px;
+}
+.WaterLineChartContainer{
+width: 1076px;
+  background-color: #0F0F0F;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  margin-left: -58px;
+}

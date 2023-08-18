@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactECharts from 'echarts-for-react';
 import recommendedFood from '../../recomended-food';
-import css from './DashboardLineChart.module.css';
+import css from './WaterLineChart.module.css';
 
-const LineChart = () => {
+const WaterLineChart = () => {
   const values = recommendedFood.map(item => item.calories * 10);
 
   const sum = values.reduce(
@@ -15,7 +15,7 @@ const LineChart = () => {
 
   const yAxisFormatter = value => {
     if (value >= 1000) {
-      return `${value / 1000}K`;
+      return `${value / 1000}L`;
     }
     return value;
   };
@@ -93,13 +93,13 @@ const LineChart = () => {
           data: [
             {
               type: 'max',
-              name: 'calories',
+              name: 'milliliters',
               value: average,
               label: {
                 show: true,
                 position: 'inside',
                 formatter: params => {
-                  return ['{a|1750}', `{b|${params.name}}`].join('\n');
+                  return ['{a|1550}', `{b|${params.name}}`].join('\n');
                 },
                 rich: {
                   a: {
@@ -132,11 +132,11 @@ const LineChart = () => {
 
   return (
     <>
-      <div className={css.dashboardCaloriesContainer}>
-        <span>Calories</span>
-        <span>Average value: 1750</span>
+      <div className={css.dashboardWaterContainer}>
+        <span>Water</span>
+        <span>Average value: 1550</span>
       </div>
-      <div className={css.lineChartContainer}>
+      <div className={css.WaterLineChartContainer}>
         <div className={css.chartScrollContainerStyle}>
           <ReactECharts option={data} />
         </div>
@@ -145,4 +145,4 @@ const LineChart = () => {
   );
 };
 
-export default LineChart;
+export default WaterLineChart;

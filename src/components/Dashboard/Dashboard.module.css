@@ -3,7 +3,6 @@
   margin: 0 auto;
 }
 
-
 .dashboardButton {
   width: 136px;
   height: 30px;
@@ -32,8 +31,8 @@
   height: 16px;
   transform: scaleY(-1);
 }
- .dashboardArrowDownSvgLink{
-    stroke: rgba(182, 182, 182, 1);
+.dashboardArrowDownSvgLink {
+  stroke: rgba(182, 182, 182, 1);
 }
 .dashboardArrowDownSvgLink:hover {
   stroke: rgba(227, 255, 168, 1);
@@ -48,13 +47,15 @@
   align-items: baseline;
   margin-bottom: 16px;
 }
-
-.dashboardCaloriesContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 320px;
-    color: white;
-    padding-right: 20px;
-    margin-bottom: 9px;
+.monthSlect {
+  background-color: black;
+  border: none;
+  color: white;
+  outline: transparent;
+  margin-left: 14px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 137.5;
 }
