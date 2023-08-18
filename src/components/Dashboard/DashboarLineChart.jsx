@@ -4,10 +4,11 @@ import recommendedFood from '../../recomended-food';
 import css from './DashboardLineChart.module.css';
 
 const LineChart = () => {
-  const values = recommendedFood.map(item => item.calories);
+  const values = recommendedFood.map(item => (item.calories * 10));
   console.log(values);
   const sum = values.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-  const average = Math.round(sum * 10) / values.length;
+  console.log(sum);
+  const average = Math.round(sum / values.length);
   console.log(average);
 
   
@@ -81,27 +82,31 @@ const LineChart = () => {
             color: 'rgba(227, 255, 168, 1)',
           },
         },
-        markPoint: {
-          data: [
-            {
-              type: 'max',
-              name: 'Max Value',
-              value: average,
-              formatter: 'calories',
-            },
-          ],
-          symbol: 'rect',
-          symbolSize: [98, 70],
-          symbolOffset: [50, '-60%'],
-
-            
-          itemStyle: {
-            color: '#0F0F0F',
-            borderRadius: 12,
-            shadowBlur: 14,
-            shadowColor: 'rgba(227, 255, 168, 0.20)',
-          },
-        },
+       markPoint: {
+  data: [
+    {
+      type: 'max',
+      name: 'calories',
+      value: average,
+      label: {
+        show: true,
+        position: 'inside',
+        formatter: `1750 {b}`,
+        fontSize: 12,
+        color: 'white',
+      },
+    },
+  ],
+  symbol: 'roundRect',
+  symbolSize: [98, 70],
+  symbolOffset: [50, '-60%'],
+  itemStyle: {
+    color: '#0F0F0F',
+    borderRadius: 12,
+    shadowBlur: 14,
+    shadowColor: 'rgba(227, 255, 168, 0.20)',
+  },
+},
       },
     ],
   };
