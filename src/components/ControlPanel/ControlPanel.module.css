@@ -46,10 +46,24 @@
 
 .controlPanel {
   display: flex;
-  justify-content: space-between;
-  width: 310px;
-  height: 48px;
-  margin-right: 73px;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  gap: 40px;
+  /* width: 310px;
+  height: 48px; */
+  /* margin-right: 73px; */
+}
+
+@media screen and (min-width: 834px) {
+  .controlPanel {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    width: 310px;
+    height: 48px;
+    margin-right: 73px;
+  }
 }
 
 .weigthTargetText {
