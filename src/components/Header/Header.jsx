@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import s from './Header.module.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import iconsSrc from '../../assets/icons/symbol-defs.svg';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import ControlPanel from 'components/ControlPanel/ControlPanel';
+import { logout } from '../../redux/auth/authSlice';
 
 export const customStyles = {
   overlay: {
@@ -16,13 +17,21 @@ export const customStyles = {
 Modal.setAppElement('#root');
 
 const Header = () => {
-  const isAuth = useSelector(state => state.auth.token);
+  const isAuth = useSelector(state => state?.auth?.token);
   const avatar = useSelector(state => state?.auth?.user?.avatarURL);
   const userName = useSelector(state => state?.auth?.user?.name);
 
   const [setingsModalIsOpen, setSetingsModalIsOpen] = useState(false);
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logOut = useCallback(async () => {
+    await dispatch(logout());
+    localStorage.removeItem('user_data');
+    localStorage.removeItem('user_token');
+    navigate('/');
+    setSetingsModalIsOpen(false);
+  }, [dispatch, navigate]);
 
   return isAuth ? (
     <div className={s.header}>
@@ -55,7 +64,7 @@ const Header = () => {
           </svg>
           Settings
         </button>
-        <button className={s.userBtn}>
+        <button onClick={logOut} className={s.userBtn}>
           <svg style={{ fill: 'white' }} width="16" height="16">
             <use href={`${iconsSrc}#icon-logout`} />
           </svg>

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SignIn.module.css';
 import { signIn } from '../../../redux/auth/authOperations';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { updateAuthUser } from '../../../redux/auth/authSlice';
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector(state => state.auth.error);
+  const error = useSelector(state => state.auth?.error);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -16,29 +16,28 @@ const SignIn = () => {
     e.preventDefault();
     if (email && password) {
       const res = await dispatch(signIn({ email, password }));
-
       if (res?.payload?.success) {
-        await dispatch(updateAuthUser(res.payload));
-
-        navigate('/mainpage');
+        await dispatch(updateAuthUser(res.payload?.user));
+        localStorage.setItem('user_token', res?.payload?.user?.token);
+        localStorage.setItem('user_data', JSON.stringify(res?.payload.user));
+        navigate('/');
       } else {
         alert(res?.payload?.message ?? 'error');
       }
     }
   };
-  // const isAuth = useSelector(state => state.auth.token);
 
   const AuthUser = useSelector(state => state.auth.user);
 
   if (AuthUser?.id) {
-    // Пример редиректа, если пользователь авторизован
-    return <Navigate to="/diary" />;
+    navigate('/');
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         <img
+          className={styles.imgIlistration}
           src="https://i.ibb.co/bvdHLJW/Illustration.png"
           alt="Illustration"
         />
