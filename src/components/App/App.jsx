@@ -53,12 +53,7 @@ export const App = () => {
           <Route path="/signup/:params" element={<SignupForm />} />
           <Route path="/forgot-password" element={<ForgotPass />} />
 
-          <Route
-            path="/recomendedfood"
-            element={
-              <PrivateRoute component={<RecomendedFood />} redirect="/" />
-            }
-          />
+          <Route path="/recomended-food" element={<RecomendedFood />} />
 
           <Route
             path="/diary"
@@ -68,7 +63,7 @@ export const App = () => {
             path="/settings"
             element={<PrivateRoute component={<Settings />} />}
           />
-          <Route path="*" element={<MainAuth />} />
+          <Route path="*" element={isAuth ? <MainPage /> : <MainAuth />} />
         </Route>
       </Routes>
     </>
