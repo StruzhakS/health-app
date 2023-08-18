@@ -37,7 +37,7 @@
   color: rgb(0, 0, 0);
 }
 
-.img {
+.imgIlistration {
   margin-bottom: 24px;
 }
 
@@ -90,7 +90,7 @@
     padding: 195px;
     padding-top: 40px;
   }
-  .img {
+  .imgIlistration {
     display: flex;
     width: 380px;
     margin-bottom: 60px;
@@ -144,16 +144,14 @@
     padding-top: 40px;
     display: flex;
   }
-  img {
+  .imgIlistration {
     display: block;
     max-width: 100%;
     height: auto;
     width: 592px;
-  }
-  .img {
     margin-right: 104px;
-    width: 592px;
   }
+
   .center {
     display: flex;
     flex-direction: column;
