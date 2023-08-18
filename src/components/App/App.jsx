@@ -54,12 +54,18 @@ export const App = () => {
           <Route path="/forgot-password" element={<ForgotPass />} />
 
           <Route
-            path="/recomendedFood"
+            path="/recomended-food"
             element={<PrivateRoute component={<RecomendedFood />} />}
           />
 
-          <Route path="/diary" element={<Diary />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route
+            path="/diary"
+            element={<PrivateRoute component={<Diary />} />}
+          />
+          <Route
+            path="/settings"
+            element={<PrivateRoute component={<Settings />} />}
+          />
           <Route path="*" element={<MainAuth />} />
         </Route>
       </Routes>
