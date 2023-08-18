@@ -6,7 +6,8 @@
   gap: 20px;
 
   margin-bottom: 20px;
-
+  margin-left: auto;
+  margin-right: auto;
   @media (min-width: 834px) {
     width: 780px;
   }

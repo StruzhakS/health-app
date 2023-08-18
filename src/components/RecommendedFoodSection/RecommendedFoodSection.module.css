@@ -4,6 +4,9 @@
   gap: 16px;
   color: #fff;
   width: 780px;
+  @media (min-width: 1440px) {
+    width: 678px;
+  }
 }
 
 .recommendedFoodSectionTitle {
@@ -26,6 +29,10 @@
   padding: 20px 24px;
   background-color: #0f0f0f;
   border-radius: 12px;
+
+  @media (min-width: 1440px) {
+    width: 328px;
+  }
 }
 
 .listItemFoodName {
@@ -35,22 +42,22 @@
   margin-bottom: 2px;
 }
 
-.listItemFoodDescription{
-font-size: 14px;    
-    font-weight: 400;
-    line-height: 1.42em;
+.listItemFoodDescription {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42em;
 }
 
-.listItemFoodDescriptionCalories{
-font-weight: 500;
-color: #B6B6B6;
-margin-left: 6px;
+.listItemFoodDescriptionCalories {
+  font-weight: 500;
+  color: #b6b6b6;
+  margin-left: 6px;
 }
 
-.recommendedFoodSectionButton{
-    width: 100px;
-    display: flex;
-    gap: 6px;
-   align-items: center;
-   cursor: pointer;
+.recommendedFoodSectionButton {
+  width: 100px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  cursor: pointer;
 }

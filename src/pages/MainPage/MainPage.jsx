@@ -3,14 +3,18 @@ import MainPageStatisticsSection from 'components/MainPageStatisticsSection/Main
 import RecommendedFoodSection from 'components/RecommendedFoodSection/RecommendedFoodSection';
 import { useMediaQuery } from 'react-responsive';
 
+import css from './MainPage.module.css';
+
 const MainPage = () => {
   const isTabletScreen = useMediaQuery({ minWidth: 834 });
 
   return (
     <>
       <MainPageStatisticsSection />
-      <MainPageDiary />
-      {isTabletScreen && <RecommendedFoodSection />}
+      <div className={css.diaryAndFoodContainer}>
+        <MainPageDiary />
+        {isTabletScreen && <RecommendedFoodSection />}
+      </div>
     </>
   );
 };

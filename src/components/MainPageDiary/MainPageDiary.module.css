@@ -4,7 +4,12 @@
 
   @media (min-width: 834px) {
     width: 780px;
+    margin-bottom: 20px;
   }
+   @media (min-width: 1440px) {
+     width: 518px;
+       margin-bottom: 0px;
+   }
 }
 
 .DiaryTitle {
