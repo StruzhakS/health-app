@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import styles from './MainAuth.module.css';
 import { Link, Navigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
 
 const MainAuth = () => {
   const AuthUser = useAuth();
