@@ -8,10 +8,14 @@ import { customMobileStyles } from '../TargetSelectionModal/TargetSelectionModal
 import { useDispatch } from 'react-redux';
 import { updateWeightOperation } from 'redux/user/userOperations';
 
-const СurrentWeightModal = ({ weightModalOpen, setWeightModalOpen }) => {
+const СurrentWeightModal = ({
+  weightModalOpen,
+  setWeightModalOpen,
+  selectedWeight,
+}) => {
   const D = new Date();
 
-  const [weight, setWeight] = useState(0);
+  const [weight, setWeight] = useState(selectedWeight);
 
   const [day] = useState(
     ('0' + D.getDate()).slice(-2) +
@@ -23,8 +27,9 @@ const СurrentWeightModal = ({ weightModalOpen, setWeightModalOpen }) => {
 
   const dispatch = useDispatch();
 
-  const handleChange = e => {
-    setWeight(e.target.value);
+  const handleCancel = e => {
+    setWeightModalOpen(false);
+    setWeight(selectedWeight);
   };
 
   const handleSubmit = e => {
@@ -40,7 +45,7 @@ const СurrentWeightModal = ({ weightModalOpen, setWeightModalOpen }) => {
       <Modal
         className={s.weightModal}
         isOpen={weightModalOpen}
-        onRequestClose={() => setWeightModalOpen(false)}
+        onRequestClose={handleCancel}
         style={isMobileScreen ? customMobileStyles : customStyles}
         contentLabel="Example Modal"
       >
@@ -48,7 +53,7 @@ const СurrentWeightModal = ({ weightModalOpen, setWeightModalOpen }) => {
           <button
             type="button"
             className={s.closeWeigthModal}
-            onClick={() => setWeightModalOpen(false)}
+            onClick={handleCancel}
           >
             {IoIosCloseCircleOutline()}
           </button>
@@ -63,14 +68,14 @@ const СurrentWeightModal = ({ weightModalOpen, setWeightModalOpen }) => {
             type="number"
             placeholder="Enter your weight"
             className={s.inputWeigth}
-            onChange={handleChange}
+            onChange={e => setWeight(e.target.value)}
             value={weight}
           />
           <button className={s.confirmWeight}>Confirm</button>
           {isMobileScreen && (
             <button
               type="button"
-              onClick={() => setWeightModalOpen(false)}
+              onClick={handleCancel}
               className={s.cancelTargetButton}
             >
               Cancel
