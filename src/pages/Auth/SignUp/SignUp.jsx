@@ -87,7 +87,9 @@ const SignUp = () => {
                 className={`${styles.passwordInput} ${
                   password.length >= 6 && checkPasswordStrength(password)
                     ? styles.securePassword
-                    : styles.invalidPassword
+                    : password
+                    ? styles.invalidPassword
+                    : ''
                 }`}
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"

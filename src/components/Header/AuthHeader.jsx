@@ -9,10 +9,12 @@ import Modal from 'react-modal';
 import { customStyles } from './Header';
 import { logout } from 'redux/auth/authSlice';
 import MobileMenuModal from 'components/Modal/MobileMenuModal/MobileMenuModal';
+import { logoutUser } from 'redux/auth/authOperations';
 
 const AuthHeader = () => {
   const avatar = useSelector(state => state?.auth?.user?.avatarURL);
   const userName = useSelector(state => state?.auth?.user?.name);
+  const token = useSelector(state => state?.auth?.token);
 
   const isTabletScreen = useMediaQuery({ minWidth: 834 });
   const isMobileScreen = useMediaQuery({ maxWidth: 834 });
@@ -24,12 +26,13 @@ const AuthHeader = () => {
   const dispatch = useDispatch();
 
   const logOut = useCallback(async () => {
+    await dispatch(logoutUser(token));
     await dispatch(logout());
     setSetingsModalIsOpen(false);
     localStorage.removeItem('user_data');
     localStorage.removeItem('user_token');
     navigate('/');
-  }, [dispatch, navigate]);
+  }, [dispatch, navigate, token]);
 
   return (
     <div className={s.header}>
