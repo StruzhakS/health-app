@@ -1,3 +1,7 @@
+import 
+
+
+
 .dashboardSection {
   padding: 10px 10px 60px 10px;
   margin: 0 auto;
@@ -36,6 +40,7 @@
 }
 .dashboardArrowDownSvgLink:hover {
   stroke: rgba(227, 255, 168, 1);
+  transform: scaleY(+1);
 }
 
 .dashboardArrowDownSvgLink:focus {
@@ -58,4 +63,20 @@
   font-style: normal;
   font-weight: 500;
   line-height: 137.5;
+}
+.dashboardSelect{
+  background-color: black;
+  color: white;
+  border: unset;
+  outline: unset;
+  font-family: Poppins;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: 1.25;
+ appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg'#arrow-down  </svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem top 50%;
+  background-size: 0.65rem auto;
 }
