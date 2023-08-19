@@ -8,6 +8,8 @@ import { updateAuthUser } from '../../../redux/auth/authSlice';
 import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
 import IllustrationTablet from '../../../assets/img/tablet/Illustration.png';
 import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
+import EyeIcon from '../../../assets/icons/Illustration/eye.svg';
+import EyeOffIcon from '../../../assets/icons/Illustration/eye-off.svg';
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -110,13 +112,19 @@ const SignUp = () => {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
               />
-              <button
-                type="button"
-                className={styles.showPasswordButton}
-                onClick={toggleShowPassword}
-              >
-                {showPassword ? 'Hide' : 'Show'}
-              </button>
+              <div className={styles.passwordInputIcon}>
+                <button
+                  type="button"
+                  className={styles.showPasswordButton}
+                  onClick={toggleShowPassword}
+                >
+                  {showPassword ? (
+                    <img src={EyeOffIcon} alt="Hide" width="16" height="16" />
+                  ) : (
+                    <img src={EyeIcon} alt="Show" width="16" height="16" />
+                  )}
+                </button>
+              </div>
               {password && (
                 <p
                   className={`${styles.passwordMessage} ${
@@ -127,7 +135,7 @@ const SignUp = () => {
                 >
                   {password.length >= 6 && checkPasswordStrength(password)
                     ? 'Password is secure'
-                    : 'Enter a valid Password* (at least 6 characters, including at least 1 uppercase letter, 1 lowercase letter, and 4 digits)'}
+                    : 'Valid Password* (at least 6 characters, including at least 1 uppercase letter, 1 lowercase letter, and 4 digits)'}
                 </p>
               )}
             </div>
