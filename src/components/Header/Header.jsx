@@ -9,6 +9,7 @@ import ControlPanel from 'components/ControlPanel/ControlPanel';
 import { logout } from '../../redux/auth/authSlice';
 import { useMediaQuery } from 'react-responsive';
 import MobileMenuModal from 'components/Modal/MobileMenuModal/MobileMenuModal';
+import { logoutUser } from 'redux/auth/authOperations';
 
 export const customStyles = {
   overlay: {
@@ -32,12 +33,13 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const logOut = useCallback(async () => {
+    const res = await dispatch(logoutUser(isAuth));
     await dispatch(logout());
     setSetingsModalIsOpen(false);
     localStorage.removeItem('user_data');
     localStorage.removeItem('user_token');
     navigate('/');
-  }, [dispatch, navigate]);
+  }, [dispatch, navigate, isAuth]);
 
   return isAuth ? (
     <div className={s.header}>
