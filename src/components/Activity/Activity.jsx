@@ -7,14 +7,27 @@ import * as tab from 'assets/img/tablet';
 import { useMediaQuery } from 'react-responsive';
 import clsx from 'clsx';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { addGoalsThunk } from 'redux/auth/authOperations';
+
 const Activity = () => {
   const [activity, setActivity] = useState('1.2');
+  const step = useSelector(state => state.auth.step);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onOptionChange = e => {
     setActivity(e.target.value);
   };
   const handleSubmit = e => {
     e.preventDefault();
+    const activity = e.target.elements.activity.value;
+    const body = { ...step, activity };
+
+    dispatch(addGoalsThunk(body))
+      .unwrap()
+      .then(() => {
+        navigate('/');
+      });
   };
   const isMobile = useMediaQuery({ maxWidth: 833 });
   const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1439 });
