@@ -1,0 +1,118 @@
+.recordMealModal {
+  border-radius: 12px;
+  background: #0f0f0f;
+  width: 300px;
+  padding: 16px 12px;
+
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.recordMealModalTitle {
+  font-size: 24px;
+
+  font-weight: 500;
+  line-height: 1.25em;
+  margin-bottom: 24px;
+}
+
+.recordMealModalMeal {
+  font-size: 18px;
+
+  font-weight: 400;
+  line-height: 1.44em;
+}
+
+.recordMealModalMealImageContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.recordMealModalInput {
+  width: 276px;
+  padding: 8px 10px;
+  color: #fff;
+
+  border-radius: 12px;
+  border: 1px solid #e3ffa8;
+  background: #0f0f0f;
+  outline: #fff;
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+}
+
+.recordMealModalInput::placeholder {
+  color: #b6b6b6;
+
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+}
+
+.recordMealModalInputsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.recordMealModalInputsListItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recordMealModalAddMoreBtn {
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 40px;
+  color: #e3ffa8;
+
+  font-size: 14px;
+
+  font-weight: 500;
+  line-height: 1.42em;
+}
+
+.svgPlus {
+  stroke: #e3ffa8;
+}
+
+.recordMealModalConfirmBtn {
+  padding: 8px 10px;
+
+  border-radius: 12px;
+  background: #e3ffa8;
+
+  color: #0f0f0f;
+  text-align: center;
+
+  font-size: 14px;
+
+  font-weight: 500;
+  line-height: 1.42em;
+  width: 276px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.recordMealModalCancelBtn {
+  width: 276px;
+  cursor: pointer;
+  color: #b6b6b6;
+  text-align: center;
+
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+}
