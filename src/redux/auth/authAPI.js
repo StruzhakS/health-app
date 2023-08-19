@@ -33,6 +33,7 @@ export const forgotPasswordAPI = async email => {
   }
 };
 
+// Функция для выхода
 export const logoutAPI = async (token) => {
   try {
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
