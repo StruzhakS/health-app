@@ -1,11 +1,12 @@
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import s from '../Goals/Goals.module.css';
 import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
 import { useMediaQuery } from 'react-responsive';
+import { updateAuthStep } from 'redux/auth/authSlice';
 
 const Gender = () => {
   const [form, setForm] = useState({
@@ -13,22 +14,13 @@ const Gender = () => {
     age: '',
   });
   const [gender, setGender] = useState('male');
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onOptionChange = e => {
     setGender(e.target.value);
   };
 
-  // const handleChange = e => {
-  //   const { name, value } = e.target;
-  //   setForm(prevForm => {
-  //     return { ...prevForm, [name]: value };
-  //   });
-  // };
-  // const handleSubmit = e => {
-  //   dispatch(form);
-  // };
   const handleChange = ({ target: { name, value } }) => {
     const regex = /^\d{0,3}$/;
     if (regex.test(value)) {
@@ -37,16 +29,28 @@ const Gender = () => {
       });
     }
   };
+  const handleSubmit = e => {
+    e.preventDefault();
+    const gender = e.target.elements.gender.value;
+    const age = e.target.elements.age.value;
+    const body = {
+      gender,
+      age: Number(age),
+    };
+    dispatch(updateAuthStep(body));
+    navigate('/signup/bodyparams');
+  };
   const isMobile = useMediaQuery({ maxWidth: 833 });
   const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1439 });
   const isDesktop = useMediaQuery({ minWidth: 1440 });
+
   return (
     <div className={s.goals}>
       {isMobile && <img src={mob.gender_and_ageMob} alt="genders" />}
       {isTablet && <img src={tab.gender_and_ageTab} alt="genders" />}
       {isDesktop && <img src={desk.gender_and_ageDesk} alt="genders" />}
 
-      <form className={s.formGoals}>
+      <form onSubmit={handleSubmit} className={s.formGoals}>
         <h1 className={s.goalsTitle}>Select gender, Age</h1>
         <h2 className={s.goalsSubtitle}>
           Choose a goal so that we can <br /> help you effectively
@@ -85,12 +89,7 @@ const Gender = () => {
           maxLength={3}
           autoComplete="off"
         />
-        <button
-          className={s.btnNext}
-          onClick={() => navigate('/signup/bodyparams')}
-        >
-          Next
-        </button>
+        <button className={s.btnNext}>Next</button>
         <button
           className={s.btnBack}
           type="button"

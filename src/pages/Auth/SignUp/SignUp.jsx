@@ -23,6 +23,7 @@ const SignUp = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+
     if (email && password && name && checkPasswordStrength(password)) {
       if (name.length < 2) {
         setNameError('Name should be at least 2 characters long.');
