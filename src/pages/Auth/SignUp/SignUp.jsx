@@ -26,7 +26,7 @@ const SignUp = () => {
             'user_data',
             JSON.stringify(signInRes?.payload?.user)
           );
-          navigate('/');
+          navigate('/signup/goal');
         }
       } else {
         alert(res?.payload?.message ?? 'error');

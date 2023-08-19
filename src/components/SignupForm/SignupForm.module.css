@@ -1,0 +1,16 @@
+.container {
+    padding: 24px 10px;
+}
+
+@media screen and (min-width: 834px) {
+    .container {
+        padding: 40px 195px 0;
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+    .container {
+        padding: 40px 150px 0;
+    }
+}

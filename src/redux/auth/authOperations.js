@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { signUpAPI, signInAPI, forgotPasswordAPI } from './authAPI';
+import { signUpAPI, signInAPI, forgotPasswordAPI, addGoals } from './authAPI';
+import { setHeadersToken } from 'redux/user/userApi';
 
 // const handleAsyncError = (error, rejectWithValue) => {
 //   if (error.response) {
@@ -54,5 +55,14 @@ export const forgotPassword = createAsyncThunk(
     } catch (error) {
       return { success: false, ...error };
     }
+  }
+);
+
+export const addGoalsThunk = createAsyncThunk(
+  'auth/requirements',
+  (body, { getState }) => {
+    setHeadersToken(getState().auth.token);
+    const response = addGoals(body);
+    return response;
   }
 );

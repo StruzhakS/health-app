@@ -32,3 +32,8 @@ export const forgotPasswordAPI = async email => {
     throw error.response.data;
   }
 };
+
+export const addGoals = async body => {
+  const { data } = await axios.post(`${baseURL}/requirements`, body);
+  return data;
+};
