@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/health-app/static/css/main.0cfc6a24.css",
-    "main.js": "/health-app/static/js/main.2e521b38.js",
+    "main.css": "/health-app/static/css/main.ccb3016c.css",
+    "main.js": "/health-app/static/js/main.950db4f6.js",
     "static/media/Food.png": "/health-app/static/media/Food.5cc9426ff336590ddb44.png",
     "static/media/Goals.png": "/health-app/static/media/Goals.91eafec6d607c40ddeeb.png",
     "static/media/Activity.png": "/health-app/static/media/Activity.160914e0cc40aea5f2ca.png",
     "static/media/Gender_and_age.png": "/health-app/static/media/Gender_and_age.f2b7b9c20c4322d9d0f5.png",
     "static/media/Body_parameters.png": "/health-app/static/media/Body_parameters.d0c8aa8ee1e015cad6bd.png",
+    "static/media/symbol-defs.svg": "/health-app/static/media/symbol-defs.28c09bb6f2f3f7835bd5954a7862b1c5.svg",
     "static/media/Illustration.png": "/health-app/static/media/Illustration.3a7e53f7b37971f476d6.png",
-    "static/media/symbol-defs.svg": "/health-app/static/media/symbol-defs.fa16d7c57db374c89e20ce0ebad8dd50.svg",
+    "static/media/Setting.png": "/health-app/static/media/Setting.986a0cfc792fb4757136.png",
     "index.html": "/health-app/index.html",
     "static/media/eye-off.svg": "/health-app/static/media/eye-off.1af1aea00908e644f0dfa9d94f5d0f55.svg",
     "static/media/eye.svg": "/health-app/static/media/eye.7c6cdc5beb99f3e2a9ef43f719411585.svg",
-    "main.0cfc6a24.css.map": "/health-app/static/css/main.0cfc6a24.css.map",
-    "main.2e521b38.js.map": "/health-app/static/js/main.2e521b38.js.map"
+    "main.ccb3016c.css.map": "/health-app/static/css/main.ccb3016c.css.map",
+    "main.950db4f6.js.map": "/health-app/static/js/main.950db4f6.js.map"
   },
   "entrypoints": [
-    "static/css/main.0cfc6a24.css",
-    "static/js/main.2e521b38.js"
+    "static/css/main.ccb3016c.css",
+    "static/js/main.950db4f6.js"
   ]
 }
