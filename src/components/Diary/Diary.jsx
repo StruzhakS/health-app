@@ -1,9 +1,9 @@
 import React from 'react';
-import icon from '../../assets/icons/symbol-defs.svg';
 import s from './Diary.module.css';
 import Table from 'components/Table/Table';
 import TableMobile from 'components/Table/TableMobile';
 import { useMediaQuery } from 'react-responsive';
+import {BsArrowLeft} from 'react-icons/bs'
 
 const Diary = () => {
 
@@ -14,9 +14,7 @@ const isMobile = useMediaQuery({maxWidth: 833});
     <div className={s.containerDiary}>
       <div className={s.btnNav}>
       <button className={s.btnDiary}>
-      <svg fill="white" width="24" height="24">
-        <use href={`${icon}#icon-arrow-right`} />
-      </svg>
+      <BsArrowLeft size="1.5rem"/>
     </button>
     <h2 className={s.textBtn}>Diary</h2>
       </div>

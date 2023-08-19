@@ -196,6 +196,11 @@
     width: 360px;
     margin-bottom: 318px;
   }
+  .input {
+    width: 360px;
+    height: 36px;
+    gap: 16px;
+  }
   .linkContainer {
     display: flex;
   }
