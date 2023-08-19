@@ -138,6 +138,7 @@
     max-width: 834px;
     padding: 195px;
     padding-top: 40px;
+    margin-left: 80px;
   }
   .containerImg {
     display: flex;
@@ -218,7 +219,6 @@
   }
   .imgIllustrationTablet {
     display: block;
-    background-image: url('../../../assets/img/tablet/Illustration.png');
   }
   .imgIllustrationDesktop {
     display: none;
@@ -315,7 +315,6 @@
   .imgIllustrationDesktop {
     display: block;
     margin-left: 2px;
-    background-image: url('../../../assets/img/desktop/Illustration.png');
   }
   .imgIllustrationTablet {
     display: none;

@@ -162,7 +162,6 @@
   }
   .imgIllustrationTablet {
     display: block;
-    background-image: url('../../../assets/img/tablet/Illustration.png');
   }
   .imgIllustrationDesktop {
     display: none;
@@ -208,7 +207,6 @@
 
   .imgIllustrationDesktop {
     display: block;
-    background-image: url('../../../assets/img/desktop/Illustration.png');
   }
   .imgIllustrationTablet {
     display: none;
