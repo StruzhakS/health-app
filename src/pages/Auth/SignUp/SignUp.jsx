@@ -20,10 +20,17 @@ const SignUp = () => {
   const [name, setName] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [nameError, setNameError] = useState('');
+  const [isEmailValid, setIsEmailValid] = useState(true);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (email && password && name && checkPasswordStrength(password)) {
+    if (
+      email &&
+      password &&
+      name &&
+      checkPasswordStrength(password) &&
+      isEmailValid
+    ) {
       if (name.length < 2) {
         setNameError('Name should be at least 2 characters long.');
       } else {
@@ -103,13 +110,21 @@ const SignUp = () => {
             {nameError && <p className={styles.error}>{nameError}</p>}
             <input
               className={`${styles.input} ${
-                error && !email ? styles.invalidInput : ''
+                !isEmailValid ? styles.invalidInput : ''
               }`}
               type="email"
               placeholder="Email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={e => {
+                const inputEmail = e.target.value;
+                setEmail(inputEmail);
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                setIsEmailValid(emailPattern.test(inputEmail));
+              }}
             />
+            {!isEmailValid && (
+              <p className={styles.error}>Invalid email address</p>
+            )}
             <div className={styles.passwordInputContainer}>
               <input
                 className={`${styles.passwordInput} ${
