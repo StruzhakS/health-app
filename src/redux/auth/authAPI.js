@@ -32,3 +32,14 @@ export const forgotPasswordAPI = async email => {
     throw error.response.data;
   }
 };
+
+export const logoutAPI = async (token) => {
+  try {
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    const response = await axios.post(`${baseURL}/logout`);
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+

@@ -214,6 +214,9 @@
     max-width: 1440px;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   .heading {
     font-size: 30px;
