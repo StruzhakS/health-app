@@ -314,6 +314,7 @@
   }
   .imgIllustrationDesktop {
     display: block;
+    margin-left: 2px;
     background-image: url('../../../assets/img/desktop/Illustration.png');
   }
   .imgIllustrationTablet {

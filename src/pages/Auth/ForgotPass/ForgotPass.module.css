@@ -230,8 +230,13 @@
   .account {
     margin-right: 16px;
   }
+  .ContainerDiv {
+    margin-left: 0;
+    padding-left: 39px;
+  }
   .imgIllustrationDesktop {
     display: block;
+    margin-left: 19px;
     background-image: url('../../../assets/img/desktop/Illustration.png');
   }
   .imgIllustrationTablet {

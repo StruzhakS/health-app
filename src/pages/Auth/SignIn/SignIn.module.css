@@ -207,17 +207,18 @@
   }
   .containerImg {
     max-width: 592px;
-    margin-right: 134px;
+    margin-right: 154px;
   }
 
   .imgIlistration {
     width: 592px;
-    margin-right: 134px;
+    margin-right: 154px;
   }
 
   .subheading {
     font-size: 18px;
     line-height: 1.3;
+    margin-right: 34px;
   }
 
   .inputContainer {
@@ -273,6 +274,7 @@
   .imgIllustrationDesktop {
     display: block;
     background-image: url('../../../assets/img/desktop/Illustration.png');
+    margin-right: 140px;
   }
   .imgIllustrationTablet {
     display: none;
