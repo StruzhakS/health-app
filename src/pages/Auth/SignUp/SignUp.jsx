@@ -19,24 +19,30 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [nameError, setNameError] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
     if (email && password && name && checkPasswordStrength(password)) {
-      const res = await dispatch(signUp({ name, email, password }));
-      if (res?.payload?.success) {
-        const signInRes = await dispatch(signIn({ email, password }));
-        if (signInRes?.payload?.success) {
-          await dispatch(updateAuthUser(signInRes.payload?.user));
-          localStorage.setItem('user_token', signInRes?.payload?.user?.token);
-          localStorage.setItem(
-            'user_data',
-            JSON.stringify(signInRes?.payload?.user)
-          );
-          navigate('/signup/goal');
-        }
+      if (name.length < 2) {
+        setNameError('Name should be at least 2 characters long.');
       } else {
-        alert(res?.payload?.message ?? 'error');
+        setNameError('');
+        const res = await dispatch(signUp({ name, email, password }));
+        if (res?.payload?.success) {
+          const signInRes = await dispatch(signIn({ email, password }));
+          if (signInRes?.payload?.success) {
+            await dispatch(updateAuthUser(signInRes.payload?.user));
+            localStorage.setItem('user_token', signInRes?.payload?.user?.token);
+            localStorage.setItem(
+              'user_data',
+              JSON.stringify(signInRes?.payload?.user)
+            );
+            navigate('/signup/goal');
+          }
+        } else {
+          alert(res?.payload?.message ?? 'error');
+        }
       }
     }
   };
@@ -89,8 +95,12 @@ const SignUp = () => {
               type="text"
               placeholder="Name"
               value={name}
-              onChange={e => setName(e.target.value)}
+              onChange={e => {
+                setName(e.target.value);
+                setNameError('');
+              }}
             />
+            {nameError && <p className={styles.error}>{nameError}</p>}
             <input
               className={styles.input}
               type="email"
