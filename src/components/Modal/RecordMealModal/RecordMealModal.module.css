@@ -1,0 +1,164 @@
+.recordMealModal {
+  border-radius: 12px;
+  background: #0f0f0f;
+  width: 300px;
+  padding: 16px 12px;
+
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @media (min-width: 834px) {
+    width: 678px;
+    padding: 24px;
+  }
+}
+
+.recordMealModalTitle {
+  font-size: 24px;
+
+  font-weight: 500;
+  line-height: 1.25em;
+  margin-bottom: 24px;
+
+  @media (min-width: 834px) {
+    font-size: 30px;
+  }
+}
+
+.recordMealModalMeal {
+  font-size: 18px;
+
+  font-weight: 400;
+  line-height: 1.44em;
+
+  @media (min-width: 834px) {
+    font-size: 22px;
+  }
+}
+
+.recordMealModalMealImageContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.recordMealModalInput {
+  width: 276px;
+  padding: 8px 10px;
+  color: #fff;
+
+  border-radius: 12px;
+  border: 1px solid #e3ffa8;
+  background: #0f0f0f;
+  outline: #fff;
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+
+  @media (min-width: 834px) {
+    width: 100px;
+  }
+}
+
+.recordMealModalInput:first-child {
+  @media (min-width: 834px) {
+    width: 280px;
+  }
+}
+
+.recordMealModalInput::placeholder {
+  color: #b6b6b6;
+
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+}
+
+.recordMealModalInputsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.recordMealModalInputsListItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (min-width: 834px) {
+    flex-direction: row;
+  }
+}
+
+.recordMealModalAddMoreBtn {
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 40px;
+  color: #e3ffa8;
+
+  font-size: 14px;
+
+  font-weight: 500;
+  line-height: 1.42em;
+}
+
+.svgPlus {
+  stroke: #e3ffa8;
+}
+
+.recordMealModalConfirmBtn {
+  padding: 8px 10px;
+
+  border-radius: 12px;
+  background: #e3ffa8;
+
+  color: #0f0f0f;
+  text-align: center;
+
+  font-size: 14px;
+
+  font-weight: 500;
+  line-height: 1.42em;
+  width: 276px;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  @media (min-width: 834px) {
+    margin-bottom: 0px;
+    width: 212px;
+  }
+}
+
+.recordMealModalCancelBtn {
+  width: 276px;
+  cursor: pointer;
+  color: #b6b6b6;
+  text-align: center;
+
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+
+@media (min-width: 834px) {
+      
+        width: 192px;
+    }
+}
+
+.recordMealModalBtnContainer {
+  @media (min-width: 834px) {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    gap: 12px;
+  }
+}
