@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import styles from './MainAuth.module.css';
 import { Link, Navigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
+
+import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
+import IllustrationTablet from '../../../assets/img/tablet/Illustration.png';
+import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
 
 const MainAuth = () => {
   const AuthUser = useAuth();
@@ -18,8 +21,18 @@ const MainAuth = () => {
     <div className={styles['auth-container']}>
       <div className={styles['auth-img']}>
         <img
-          className={styles.imgIllustration}
-          src="https://i.ibb.co/bvdHLJW/Illustration.png"
+          className={`${styles.imgIllustrationDesktop} ${styles.imgIllustration}`}
+          src={IllustrationDesktop}
+          alt="Illustration"
+        />
+        <img
+          className={`${styles.imgIllustrationTablet} ${styles.imgIllustration}`}
+          src={IllustrationTablet}
+          alt="Illustration"
+        />
+        <img
+          className={`${styles.imgIllustrationMobile} ${styles.imgIllustration}`}
+          src={IllustrationMobile}
           alt="Illustration"
         />
       </div>

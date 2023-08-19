@@ -123,12 +123,22 @@
 .securePassword .passwordMessage {
   color: #3cbc81;
 }
+.imgIllustrationMobile {
+  display: block;
+}
+.imgIllustrationDesktop {
+  display: none;
+}
+.imgIllustrationTablet {
+  display: none;
+}
 
 @media (min-width: 834px) and (max-width: 1439.5px) {
   .container {
     max-width: 834px;
-    padding: 195px;
     padding-top: 40px;
+    margin-left: 80px;
+    padding-left: 310px;
   }
   .containerImg {
     display: flex;
@@ -148,7 +158,6 @@
     text-align: center;
   }
   .subheading {
-    width: 444px;
     font-size: 22px;
     line-height: 1.3;
     text-align: center;
@@ -206,6 +215,16 @@
 
   .securePassword .passwordMessage {
     color: #3cbc81;
+  }
+  .imgIllustrationTablet {
+    display: block;
+  }
+  .imgIllustrationDesktop {
+    display: none;
+  }
+
+  .imgIllustrationMobile {
+    display: none;
   }
 }
 
@@ -291,5 +310,15 @@
 
   .securePassword .passwordMessage {
     color: #3cbc81;
+  }
+  .imgIllustrationDesktop {
+    display: block;
+    margin-left: 2px;
+  }
+  .imgIllustrationTablet {
+    display: none;
+  }
+  .imgIllustrationMobile {
+    display: none;
   }
 }

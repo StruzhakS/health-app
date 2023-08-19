@@ -57,6 +57,7 @@ export const forgotPassword = createAsyncThunk(
   }
 );
 
+// Асинхронная операция для выхода
 export const logoutUser = createAsyncThunk(
   'auth/logout',
   async (token, { rejectWithValue }) => {
