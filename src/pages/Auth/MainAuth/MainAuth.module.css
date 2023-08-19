@@ -158,6 +158,10 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
   }
   .auth-header {
     width: 424px;
@@ -167,11 +171,13 @@
     text-align: left;
   }
   .auth-img {
+    margin-top: 0px;
     width: 592px;
     margin-right: 104px;
   }
 
   .imgIllustration {
+    margin-top: 0px;
     width: 592px;
   }
   .auth-content {
