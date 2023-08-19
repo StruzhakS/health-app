@@ -184,6 +184,7 @@
   }
   .imgIllustrationTablet {
     display: block;
+    margin-bottom: 60px;
   }
   .imgIllustrationDesktop {
     display: none;
