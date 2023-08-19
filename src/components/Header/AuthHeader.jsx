@@ -77,7 +77,13 @@ const AuthHeader = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button className={s.userBtn} onClick={() => navigate('settings')}>
+        <button
+          className={s.userBtn}
+          onClick={() => {
+            navigate('settings');
+            setSetingsModalIsOpen(false);
+          }}
+        >
           <svg style={{ fill: 'white' }} width="16" height="16">
             <use href={`${iconsSrc}#icon-setting`} />
           </svg>
