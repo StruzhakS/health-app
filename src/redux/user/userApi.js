@@ -19,3 +19,23 @@ export async function updateWeightApi(body) {
   const { data } = await axios.put('/weight', { weight: body });
   return data;
 }
+
+export async function updateSettingsApi(body) {
+  const { data } = await axios.post(
+    '/settings',
+
+    {
+      name: body.name,
+      gender: body.gender,
+      age: body.age,
+      height: body.height,
+      weight: body.weight,
+      activity: body.activity,
+      avatar: body.avatar,
+    },
+    {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    }
+  );
+  return data;
+}

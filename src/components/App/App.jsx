@@ -11,7 +11,7 @@ import SignUp from '../../pages/Auth/SignUp/SignUp';
 import ForgotPass from '../../pages/Auth/ForgotPass/ForgotPass';
 import PublicRoute from 'containers/PublicRoute.jsx';
 import PrivateRoute from 'containers/PrivateRoute';
-import Settings from 'pages/Settings/Settings';
+import Settings from 'components/Settings/Settings';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateAuthUser } from '../../redux/auth/authSlice';
 

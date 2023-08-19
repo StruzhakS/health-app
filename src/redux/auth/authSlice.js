@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { signUp, signIn, forgotPassword } from './authOperations';
 import {
   updateGoalOperation,
+  updateSettingsOperations,
   updateWeightOperation,
 } from 'redux/user/userOperations';
 
@@ -51,6 +52,14 @@ const authSlice = createSlice({
       })
       .addCase(updateWeightOperation.fulfilled, (state, { payload }) => {
         state.user.weight = payload.weight;
+      })
+      .addCase(updateSettingsOperations.fulfilled, (state, { payload }) => {
+        state.user.name = payload.name;
+        state.user.gender = payload.gender;
+        state.user.age = payload.age;
+        state.user.height = payload.height;
+        state.user.weight = payload.weight;
+        state.user.activity = payload.activity;
       })
       .addMatcher(
         action => action.type.endsWith('/rejected'),

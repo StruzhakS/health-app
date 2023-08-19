@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import s from './Settings.module.css';
 import settingsPicture from '../../assets/img/mobile/Setting.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import iconsSrc from '../../assets/icons/symbol-defs.svg';
 import { useNavigate } from 'react-router-dom';
-// import { useMediaQuery } from 'react-responsive';
+import { updateSettingsOperations } from 'redux/user/userOperations';
 
 const Settings = () => {
   const user = useSelector(state => state.auth?.user);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     name: user.name,
     gender: user.gender,
@@ -18,6 +18,7 @@ const Settings = () => {
     weight: user.weight,
     activity: user.activity,
   });
+  const [file, setFile] = useState(null);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -33,10 +34,41 @@ const Settings = () => {
       return { ...prevForm, [name]: value };
     });
   };
+  const formData = new FormData();
+  // formData.name = form.name;
+  // formData.age = form.age;
+  // formData.weight = form.weight;
+  // formData.height = form.height;
+  // formData.activity = form.activity;
+  // formData.gender = form.gender;
+  // formData.token = token;
 
-  const handleSubmit = e => {
+  const handleFileChange = e => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    // formData.avatar = selectedFile;
+    // setForm(prevForm => {
+    //   return { ...prevForm, avatar: selectedFile };
+    // });
+    // console.log(formData);
+  };
+  console.log(file);
+  // const isMobile = useMediaQuery({ maxWidth: 833 });
+  // const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1439 });
+  // const isDesktop = useMediaQuery({ minWidth: 1440 });
+  const handleSubmit = async e => {
     e.preventDefault();
-    // dispatch якийсь
+
+    formData.name = form.name;
+    formData.age = form.age;
+    formData.gender = form.gender;
+    formData.height = form.height;
+    formData.weight = form.weight;
+    formData.activity = form.activity;
+    formData.avatar = file;
+
+    dispatch(updateSettingsOperations(formData));
+
     setForm({
       name: user.name,
       gender: user.gender,
@@ -46,18 +78,6 @@ const Settings = () => {
       activity: user.activity,
     });
   };
-
-  const handleFileChange = e => {
-    const selectedFile = e.target.files[0];
-    // console.log(e.target.files[0]);
-    setForm(prevForm => {
-      return { ...prevForm, avatarURL: selectedFile };
-    });
-  };
-
-  // const isMobile = useMediaQuery({ maxWidth: 833 });
-  // const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1439 });
-  // const isDesktop = useMediaQuery({ minWidth: 1440 });
 
   return (
     <div className={s.settingsWrapper}>
@@ -84,11 +104,11 @@ const Settings = () => {
             <use href={`${iconsSrc}#direct-inbox`} />
           </svg>
 
-          <span>{form.avatarURL?.name || 'Download new photo'}</span>
+          <span>{file?.name || 'Download new photo'}</span>
           <input
             type="file"
             name="avatar"
-            value={form.avatar}
+            // value={form.avatar}
             onChange={handleFileChange}
             placeholder="Download new photo"
             style={{ display: 'none' }}
