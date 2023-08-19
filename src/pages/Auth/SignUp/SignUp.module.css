@@ -138,6 +138,11 @@
   left: 260px;
 }
 
+.error {
+  color: white;
+  font-size: 10px;
+}
+
 @media (min-width: 834px) and (max-width: 1439.5px) {
   .container {
     max-width: 834px;
