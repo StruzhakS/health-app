@@ -91,7 +91,7 @@
 }
 
 .passwordInput {
-  width: 300px;
+  width: 250px;
   height: 36px;
   padding: 8px 10px;
   border-radius: 12px;
@@ -113,7 +113,7 @@
 .passwordMessage {
   font-size: 14px;
   margin-top: 5px;
-  max-width: 192px;
+  max-width: 300px;
 }
 
 .invalidPassword .passwordMessage {
@@ -184,6 +184,28 @@
     height: 36px;
     margin-left: 24px;
     border: 1px solid #e3ffa8;
+  }
+  .invalidPassword {
+    border-color: #e74a3b;
+  }
+
+  .securePassword {
+    border-color: #3cbc81;
+  }
+
+  .passwordMessage {
+    font-size: 14px;
+    margin-top: 5px;
+    max-width: 380px;
+    margin-left: 26px;
+  }
+
+  .invalidPassword .passwordMessage {
+    color: #e74a3b;
+  }
+
+  .securePassword .passwordMessage {
+    color: #3cbc81;
   }
 }
 
