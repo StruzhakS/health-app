@@ -103,25 +103,25 @@
 }
 
 .invalidPassword {
-  border-color: red;
+  border-color: #e74a3b;
 }
 
 .securePassword {
-  border-color: green;
+  border-color: #3cbc81;
 }
 
 .passwordMessage {
   font-size: 14px;
   margin-top: 5px;
-  max-width: 192px;
+  max-width: 300px;
 }
 
 .invalidPassword .passwordMessage {
-  color: red;
+  color: #e74a3b;
 }
 
 .securePassword .passwordMessage {
-  color: green;
+  color: #3cbc81;
 }
 
 @media (min-width: 834px) and (max-width: 1439.5px) {
@@ -183,6 +183,29 @@
     width: 380px;
     height: 36px;
     margin-left: 24px;
+    border: 1px solid #e3ffa8;
+  }
+  .invalidPassword {
+    border-color: #e74a3b;
+  }
+
+  .securePassword {
+    border-color: #3cbc81;
+  }
+
+  .passwordMessage {
+    font-size: 14px;
+    margin-top: 5px;
+    max-width: 380px;
+    margin-left: 26px;
+  }
+
+  .invalidPassword .passwordMessage {
+    color: #e74a3b;
+  }
+
+  .securePassword .passwordMessage {
+    color: #3cbc81;
   }
 }
 
@@ -223,7 +246,6 @@
     height: 36px;
     padding: 8px 10px;
     border-radius: 12px;
-    border-color: #e3ffa8;
     border: 1px solid #e3ffa8;
     gap: 10px;
     color: #b6b6b6;
@@ -247,11 +269,11 @@
     font-size: 12px;
   }
   .invalidPassword {
-    border-color: red;
+    border-color: #e74a3b;
   }
 
   .securePassword {
-    border-color: green;
+    border-color: #3cbc81;
   }
 
   .passwordMessage {
@@ -261,10 +283,10 @@
   }
 
   .invalidPassword .passwordMessage {
-    color: red;
+    color: #e74a3b;
   }
 
   .securePassword .passwordMessage {
-    color: green;
+    color: #3cbc81;
   }
 }
