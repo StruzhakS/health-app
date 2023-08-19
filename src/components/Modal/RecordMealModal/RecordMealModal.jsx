@@ -38,6 +38,16 @@ const RecordMealModal = ({
     setFatArr(prev => [...prev, 0]);
   };
 
+  const onCloseButtonClick = () => {
+    document.body.style.overflow = 'auto';
+    setNumberOfItems([0]);
+    setRecordMealModalOpen(false);
+    setProductNameArr(['']);
+    setCarbonohidratesArr([0]);
+    setProteinArr([0]);
+    setFatArr([0]);
+  };
+
   const handleSubmit = evt => {
     evt.preventDefault();
     document.body.style.overflow = 'auto';
@@ -49,13 +59,8 @@ const RecordMealModal = ({
       protein: proteinArr,
     };
     console.log(sendedObj);
-    setRecordMealModalOpen(false);
-  };
 
-  const onCloseButtonClick = () => {
-    document.body.style.overflow = 'auto';
-    setNumberOfItems([0]);
-    setRecordMealModalOpen(false);
+    onCloseButtonClick();
   };
 
   const onNameChange = (evt, index) => {
@@ -185,20 +190,22 @@ const RecordMealModal = ({
           </svg>
           Add more
         </button>
-        <button
-          className={css.recordMealModalConfirmBtn}
-          onClick={handleSubmit}
-          type="submit"
-        >
-          Confirm
-        </button>
-        <button
-          className={css.recordMealModalCancelBtn}
-          type="button"
-          onClick={onCloseButtonClick}
-        >
-          Cancel
-        </button>
+        <div className={css.recordMealModalBtnContainer}>
+          <button
+            className={css.recordMealModalConfirmBtn}
+            onClick={handleSubmit}
+            type="submit"
+          >
+            Confirm
+          </button>
+          <button
+            className={css.recordMealModalCancelBtn}
+            type="button"
+            onClick={onCloseButtonClick}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </Modal>
   );
