@@ -1,6 +1,7 @@
 import React from 'react';
-import icon from '../../assets/icons/symbol-defs.svg';
 import s from './Table.module.css';
+import {PiPencilLineLight} from 'react-icons/pi';
+import {BsPlus} from 'react-icons/bs';
 
 
 const Table = ()=>{
@@ -16,9 +17,7 @@ const Table = ()=>{
         <td className={s.allTd}>12</td>
         <td className={s.btn}>
           <button className={s.btnEdit}>
-          <svg stroke="#B6B6B6" width="16" height="16">
-        <use href={`${icon}#edit-2`} />
-      </svg>
+          <PiPencilLineLight size="1rem"/>
       Edit
           </button>
       </td>
@@ -27,9 +26,7 @@ const Table = ()=>{
         <th className={s.firstTd}>2</th>
         <td className={s.secondTd}>
           <button className={s.btnAdd}>
-          <svg stroke="#E3FFA8" width="16" height="16">
-        <use href={`${icon}#add`} />
-      </svg>
+         <BsPlus size="1rem"/>
             Record your meal</button>
           </td>
         <td className={s.allTd}></td>

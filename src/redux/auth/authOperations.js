@@ -1,5 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { signUpAPI, signInAPI, forgotPasswordAPI, addGoals } from './authAPI';
+import {
+  signUpAPI,
+  signInAPI,
+  forgotPasswordAPI,
+  logoutAPI,
+  addGoals,
+} from './authAPI';
 import { setHeadersToken } from 'redux/user/userApi';
 
 // const handleAsyncError = (error, rejectWithValue) => {
@@ -64,5 +70,17 @@ export const addGoalsThunk = createAsyncThunk(
     setHeadersToken(getState().auth.token);
     const response = addGoals(body);
     return response;
+  }
+);
+// Асинхронная операция для выхода
+export const logoutUser = createAsyncThunk(
+  'auth/logout',
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await logoutAPI(token);
+      return { success: true, ...response };
+    } catch (error) {
+      return { success: false, ...error };
+    }
   }
 );

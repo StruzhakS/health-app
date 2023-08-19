@@ -37,3 +37,13 @@ export const addGoals = async body => {
   const { data } = await axios.post(`${baseURL}/requirements`, body);
   return data;
 };
+// Функция для выхода
+export const logoutAPI = async token => {
+  try {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    const response = await axios.post(`${baseURL}/logout`);
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};

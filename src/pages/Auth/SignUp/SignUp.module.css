@@ -5,6 +5,7 @@
 }
 
 .input {
+  outline: none;
   width: 300px;
   height: 36px;
   padding: 8px 10px;
@@ -17,6 +18,7 @@
 }
 
 .button {
+  margin-top: 16px;
   width: 300px;
   height: 36px;
   padding: 8px 10px 8px 10px;
@@ -84,11 +86,69 @@
   height: 20px;
 }
 
+.passwordInputContainer {
+  position: relative;
+}
+
+.passwordInput {
+  width: 300px;
+  height: 36px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border-color: #e3ffa8;
+  border: 1px solid #e3ffa8;
+  gap: 10px;
+  color: #b6b6b6;
+  background-color: #0f0f0f;
+}
+
+.invalidPassword {
+  border-color: #e74a3b;
+}
+
+.securePassword {
+  border-color: #3cbc81;
+}
+
+.passwordMessage {
+  font-size: 14px;
+  margin-top: 5px;
+  max-width: 300px;
+}
+
+.invalidPassword .passwordMessage {
+  color: #e74a3b;
+}
+
+.securePassword .passwordMessage {
+  color: #3cbc81;
+}
+.imgIllustrationMobile {
+  display: block;
+}
+.imgIllustrationDesktop {
+  display: none;
+}
+.imgIllustrationTablet {
+  display: none;
+}
+.passwordInputIcon {
+  position: absolute;
+  top: 10px;
+  left: 260px;
+}
+
+.error {
+  color: white;
+  font-size: 10px;
+}
+
 @media (min-width: 834px) and (max-width: 1439.5px) {
   .container {
     max-width: 834px;
-    padding: 195px;
     padding-top: 40px;
+    margin-left: 80px;
+    padding-left: 310px;
   }
   .containerImg {
     display: flex;
@@ -108,7 +168,6 @@
     text-align: center;
   }
   .subheading {
-    width: 444px;
     font-size: 22px;
     line-height: 1.3;
     text-align: center;
@@ -138,6 +197,49 @@
     font-size: 14px;
     margin-right: 16px;
   }
+
+  .passwordInput {
+    width: 380px;
+    height: 36px;
+    border: 1px solid #e3ffa8;
+  }
+  .invalidPassword {
+    border-color: #e74a3b;
+  }
+
+  .securePassword {
+    border-color: #3cbc81;
+  }
+
+  .passwordMessage {
+    font-size: 14px;
+    margin-top: 5px;
+    max-width: 380px;
+    margin-left: 26px;
+  }
+
+  .passwordInputIcon {
+    top: 10px;
+    left: 350px;
+  }
+
+  .invalidPassword .passwordMessage {
+    color: #e74a3b;
+  }
+
+  .securePassword .passwordMessage {
+    color: #3cbc81;
+  }
+  .imgIllustrationTablet {
+    display: block;
+  }
+  .imgIllustrationDesktop {
+    display: none;
+  }
+
+  .imgIllustrationMobile {
+    display: none;
+  }
 }
 
 @media (min-width: 1440px) {
@@ -145,6 +247,9 @@
     max-width: 1440px;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   .heading {
     font-size: 30px;
@@ -171,6 +276,18 @@
   .input {
     width: 192px;
   }
+
+  .passwordInput {
+    width: 192px;
+    height: 36px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid #e3ffa8;
+    gap: 10px;
+    color: #b6b6b6;
+    background-color: #0f0f0f;
+  }
+
   .button {
     width: 192px;
     margin-bottom: 200px;
@@ -186,5 +303,41 @@
   }
   .link {
     font-size: 12px;
+  }
+  .invalidPassword {
+    border-color: #e74a3b;
+  }
+
+  .securePassword {
+    border-color: #3cbc81;
+  }
+
+  .passwordMessage {
+    font-size: 10px;
+    margin-top: 5px;
+    max-width: 192px;
+  }
+
+  .invalidPassword .passwordMessage {
+    color: #e74a3b;
+  }
+
+  .securePassword .passwordMessage {
+    color: #3cbc81;
+  }
+
+  .passwordInputIcon {
+    top: 10px;
+    left: 160px;
+  }
+  .imgIllustrationDesktop {
+    display: block;
+    margin-left: 2px;
+  }
+  .imgIllustrationTablet {
+    display: none;
+  }
+  .imgIllustrationMobile {
+    display: none;
   }
 }

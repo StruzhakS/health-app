@@ -13,6 +13,7 @@ import { updateGoalOperation } from 'redux/user/userOperations';
 export const customMobileStyles = {
   overlay: {
     background: 'black',
+    overflow: 'hidden',
   },
 };
 
@@ -30,16 +31,19 @@ const TargetSelectionModal = ({
     dispatch(updateGoalOperation(selectTarget));
   };
 
-  const isMobileScreen = useMediaQuery({ maxWidth: 834 });
+  const handleCancel = () => {
+    setTargetModalOpen(false);
+    setSelecttarget(goal);
+  };
 
-  console.log(selectTarget);
+  const isMobileScreen = useMediaQuery({ maxWidth: 834 });
 
   return (
     <>
       <Modal
         className={s.targetModal}
         isOpen={targetModalOpen}
-        onRequestClose={() => setTargetModalOpen(false)}
+        onRequestClose={handleCancel}
         style={isMobileScreen ? customMobileStyles : customStyles}
         contentLabel="Example Modal"
       >
@@ -47,7 +51,7 @@ const TargetSelectionModal = ({
           <button
             type="button"
             className={s.closeTargetModal}
-            onClick={() => setTargetModalOpen(false)}
+            onClick={handleCancel}
           >
             {IoIosCloseCircleOutline()}
           </button>
@@ -142,7 +146,7 @@ const TargetSelectionModal = ({
               </div>
               <span
                 style={
-                  selectTarget === 'gainMuscle' ? { color: '#B6C3FF' } : null
+                  selectTarget === 'gain muscle' ? { color: '#B6C3FF' } : null
                 }
               >
                 Gain Muscle
@@ -153,7 +157,7 @@ const TargetSelectionModal = ({
           {isMobileScreen && (
             <button
               type="button"
-              onClick={() => setTargetModalOpen(false)}
+              onClick={handleCancel}
               className={s.cancelTargetButton}
             >
               Cancel
