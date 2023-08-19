@@ -102,7 +102,9 @@ const SignUp = () => {
             />
             {nameError && <p className={styles.error}>{nameError}</p>}
             <input
-              className={styles.input}
+              className={`${styles.input} ${
+                error && !email ? styles.invalidInput : ''
+              }`}
               type="email"
               placeholder="Email"
               value={email}

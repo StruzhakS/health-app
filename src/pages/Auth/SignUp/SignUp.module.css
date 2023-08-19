@@ -148,6 +148,10 @@
   border-color: #e74a3b;
 }
 
+.invalidInput {
+  border-color: red;
+}
+
 @media (min-width: 834px) and (max-width: 1439.5px) {
   .container {
     max-width: 834px;
