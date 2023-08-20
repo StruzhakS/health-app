@@ -1,9 +1,10 @@
  import React from 'react';
 import css from './Dashboard.module.css';
 
-import LineChart from './DashboarLineChart';
-import WaterLineChart from './WaterLineChart';
+import CaloriesLineChart from './CaloriesLineChart';
+
 import WeightChart from './WeightChart';
+import WaterLineChart from './WaterLineChart';
 
 import sprite from '../../assets/icons/symbol-defs.svg';
 import { useState } from 'react';
@@ -75,8 +76,9 @@ const Dashboard = () => {
       </div>
      
       <div>
-        <LineChart />
-        <WaterLineChart />
+        <CaloriesLineChart />
+        <WaterLineChart/>
+      
         <WeightChart/>
       </div>
     </section>

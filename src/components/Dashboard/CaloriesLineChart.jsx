@@ -11,9 +11,8 @@ import {
   Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-
 import recommendedFood from '../../recomended-food';
-import css from './WaterLineChart.module.css';
+import css from './CaloriesLineChart.module.css';
 
 ChartJS.register(
   CategoryScale,
@@ -26,26 +25,28 @@ ChartJS.register(
   Filler
 );
 
-const WaterLineChart = () => {
+const CaloriesLineChart = () => {
   const values = recommendedFood.map(item => item.calories * 10);
 
   const sum = values.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
   );
+
   const average = Math.round(sum / values.length);
+
   const yAxisFormatter = value => {
     if (value >= 1000) {
-      return `${value / 1000}L`;
+      return `${value / 1000}K`;
     }
     return value;
   };
 
-  const data = {
+ const data = {
     labels: Array.from({ length: 31 }, (_, index) => (index + 1).toString()),
     datasets: [
       {
-        label: 'milliliters',
+        label: 'calories',
         data: values,
         borderColor: 'rgba(227, 255, 168, 1)',
         backgroundColor: 'rgba(227, 255, 168, 0.2)',
@@ -89,13 +90,12 @@ const WaterLineChart = () => {
 
   return (
     <>
-      <div className={css.dashboardWaterContainer}>
-        <span className={css.waterTitle}>Water</span>
-        <span className={css.averageTitle}>Average value: {average} ml</span>
+      <div className={css.dashboardCaloriesContainer}>
+        <span>Calories</span>
+        <span>Average value: {average} cal</span>
       </div>
-
-      <div className={css.chartWrapper}>
-        <div className={`${css.chartContainer} ${css.waterLineChartContainer}`}>
+      <div className={css.caloriesChartWrapper}>
+        <div className={`${css.caloriesChartContainer} ${css.lineChartContainer}`}>
           <Line data={data} options={options} />
         </div>
       </div>
@@ -103,4 +103,4 @@ const WaterLineChart = () => {
   );
 };
 
-export default WaterLineChart;
+export default CaloriesLineChart;

@@ -1,20 +1,82 @@
+
+
+
+.titleContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.titleWeight{
+  font-size: 18px;
+font-style: normal;
+font-weight: 400;
+}
+.titleAverage{
+  font-size: 14px;
+font-style: normal;
+font-weight: 400;
+}
 .chartContainer {
   display: flex;
 }
 
-.weightLine,
-.dayLine {
+.weightLine {
   display: flex;
   flex-direction: row;
-  margin: 0 10px;
+  margin: 0 auto;
 }
 
-.weightPoint,
-.dayPoint {
-  height: 20px;
+.weightPoint {
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
- padding-left: 23px;
+ padding: 24px 0 16px 21px;
   margin-bottom: 5px;
+}
+.dayLine{
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  gap: 29px;
+  padding-left: 24px;
+  padding-bottom: 36px;
+}
+.dayPoint{
+  font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: 14px;
+color: #B6B6B6;
+}
+.weighChartContainer{
+   background-color: #0F0F0F;
+  border-radius: 12px;
+  width: 1173px;
+}
+.weighChartContainerScroll {
+  display: flex;
+  overflow-x: auto; 
+  max-width: 100%; 
+  white-space: nowrap; 
+   scroll-behavior: smooth; 
+  scrollbar-width: thin;
+}
+.weighChartContainer::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.weighChartContainer::-webkit-scrollbar-thumb {
+  background-color: #0F0F0F;
+  border-radius: 12px;
+   height: 94px;
+    width: 8px;
+}
+
+.weighChartContainer::-webkit-scrollbar-thumb:hover {
+  background-color:rgba(255, 255, 255, 0.10); 
 }
