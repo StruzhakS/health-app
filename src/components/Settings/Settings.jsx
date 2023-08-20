@@ -35,24 +35,11 @@ const Settings = () => {
     });
   };
   const formData = new FormData();
-  // formData.name = form.name;
-  // formData.age = form.age;
-  // formData.weight = form.weight;
-  // formData.height = form.height;
-  // formData.activity = form.activity;
-  // formData.gender = form.gender;
-  // formData.token = token;
 
   const handleFileChange = e => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
-    // formData.avatar = selectedFile;
-    // setForm(prevForm => {
-    //   return { ...prevForm, avatar: selectedFile };
-    // });
-    // console.log(formData);
   };
-  console.log(file);
   // const isMobile = useMediaQuery({ maxWidth: 833 });
   // const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1439 });
   // const isDesktop = useMediaQuery({ minWidth: 1440 });
@@ -67,16 +54,19 @@ const Settings = () => {
     formData.activity = form.activity;
     formData.avatar = file;
 
-    dispatch(updateSettingsOperations(formData));
-
-    setForm({
-      name: user.name,
-      gender: user.gender,
-      age: user.age,
-      height: user.height,
-      weight: user.weight,
-      activity: user.activity,
-    });
+    dispatch(updateSettingsOperations(formData))
+      .unwrap()
+      .then(() =>
+        setForm({
+          name: user.name,
+          gender: user.gender,
+          age: user.age,
+          height: user.height,
+          weight: user.weight,
+          activity: user.activity,
+        })
+      )
+      .then(() => navigate('/'));
   };
 
   return (
@@ -108,7 +98,6 @@ const Settings = () => {
           <input
             type="file"
             name="avatar"
-            // value={form.avatar}
             onChange={handleFileChange}
             placeholder="Download new photo"
             style={{ display: 'none' }}

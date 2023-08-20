@@ -37,12 +37,11 @@ export const updateSettingsOperations = createAsyncThunk(
   async (body, { rejectWithValue, getState }) => {
     try {
       setHeadersToken(getState().auth.token);
-      console.log(body);
       const data = await updateSettingsApi(body);
       console.log(data);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.request.response);
     }
   }
 );
