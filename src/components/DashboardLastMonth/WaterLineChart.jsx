@@ -55,6 +55,7 @@ const WaterLineChart = () => {
   };
 
   const options = {
+     maintainAspectRatio: false,
     scales: {
       x: {
         grid: {

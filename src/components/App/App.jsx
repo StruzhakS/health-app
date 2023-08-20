@@ -4,7 +4,7 @@ import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
 import MainAuth from 'pages/Auth/MainAuth/MainAuth';
 // import HomePage from '../../pages/';
 // import MainPage from 'pages/MainPage';
-import Dashboard from '../Dashboard/Dashboard';
+import DashboardLastMonth from '../DashboardLastMonth/DashboardLastMonth';
 
 import { Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
@@ -59,6 +59,10 @@ export const App = () => {
           <Route
             path="/diary"
             element={<PrivateRoute component={<Diary />} redirect={'/diary'} />}
+          />
+          <Route
+            path="/dashboard"
+            element={<PrivateRoute component={<DashboardLastMonth />} redirect={'/dashboard'} />}
           />
           <Route
             path="/settings"

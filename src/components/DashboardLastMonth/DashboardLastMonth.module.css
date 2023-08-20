@@ -1,0 +1,49 @@
+.dashboardSection {
+  margin: 0 auto;
+}
+
+.dashboardBtnLeftArrow {
+  margin-right: 8px;
+}
+@media screen and (min-width: 834px) {
+  .dashboardBtnLeftArrow {
+    margin-right: 0px;
+    width: 24px;
+  }
+}
+
+.dashboardSvg {
+  width: 16px;
+  height: 16px;
+  transform: scaleX(-1);
+}
+@media screen and (min-width: 834px) {
+  .dashboardSvg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.dashboardSvgLink {
+  stroke: rgba(182, 182, 182, 1);
+}
+
+.dashboardButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.monthSlect {
+  color: white;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  margin-left: auto;
+}
+@media screen and (min-width: 834px) {
+  .monthSlect {
+    font-size: 18px;
+  }
+}

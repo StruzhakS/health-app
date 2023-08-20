@@ -6,11 +6,23 @@
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 6px;
+  align-items: center;
+}
+@media screen and (min-width: 834px) {
+  .titleContainer {
+   width: 335px;
+  }
 }
 .titleWeight{
   font-size: 18px;
 font-style: normal;
 font-weight: 400;
+}
+@media screen and (min-width: 834px) {
+  .titleWeight {
+    font-size: 18px;
+    line-height: 32px;
+  }
 }
 .titleAverage{
   font-size: 14px;
@@ -24,27 +36,38 @@ font-weight: 400;
 .weightLine {
   display: flex;
   flex-direction: row;
-  margin: 0 auto;
+  margin: 0 auto; 
+  gap: 23px;
+  margin-left: 21px;
 }
-
+@media screen and (min-width: 834px) {
+  .weightLine {
+  gap: 8px;
+  }
+}
 .weightPoint {
 font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: 20px;
-  display: flex;
+  padding-top: 24px;
   align-items: center;
   justify-content: center;
- padding: 24px 0 16px 21px;
-  margin-bottom: 5px;
 }
+
 .dayLine{
   display: flex;
   flex-direction: row;
-  margin: 0 auto;
+
   gap: 29px;
+  padding-top: 16px;
   padding-left: 24px;
   padding-bottom: 36px;
+}
+@media screen and (min-width: 834px) {
+  .dayLine {
+  gap: 15px;
+  }
 }
 .dayPoint{
   font-size: 10px;
@@ -57,6 +80,7 @@ color: #B6B6B6;
    background-color: #0F0F0F;
   border-radius: 12px;
   width: 1173px;
+  margin-bottom: 8px;
 }
 .weighChartContainerScroll {
   display: flex;
@@ -64,19 +88,20 @@ color: #B6B6B6;
   max-width: 100%; 
   white-space: nowrap; 
    scroll-behavior: smooth; 
-  scrollbar-width: thin;
+  
 }
-.weighChartContainer::-webkit-scrollbar {
-  width: 8px; 
-}
-
-.weighChartContainer::-webkit-scrollbar-thumb {
+.weighChartContainerScroll::-webkit-scrollbar {
+  /* width: 8px !important;  */
   background-color: #0F0F0F;
-  border-radius: 12px;
-   height: 94px;
-    width: 8px;
 }
 
-.weighChartContainer::-webkit-scrollbar-thumb:hover {
+.weighChartContainerScroll::-webkit-scrollbar-thumb {
+  background-color:rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
+ /* height: 94px !important; */
+    /* width: 8px !important; */
+}
+
+.weighChartContainerScroll::-webkit-scrollbar-thumb:hover {
   background-color:rgba(255, 255, 255, 0.10); 
 }

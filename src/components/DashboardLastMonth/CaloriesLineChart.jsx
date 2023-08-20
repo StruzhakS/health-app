@@ -42,7 +42,7 @@ const CaloriesLineChart = () => {
     return value;
   };
 
- const data = {
+  const data = {
     labels: Array.from({ length: 31 }, (_, index) => (index + 1).toString()),
     datasets: [
       {
@@ -56,6 +56,7 @@ const CaloriesLineChart = () => {
   };
 
   const options = {
+    maintainAspectRatio: false,
     scales: {
       x: {
         grid: {
@@ -91,11 +92,15 @@ const CaloriesLineChart = () => {
   return (
     <>
       <div className={css.dashboardCaloriesContainer}>
-        <span>Calories</span>
-        <span>Average value: {average} cal</span>
+        <span className={css.caloriesTitle}>Calories</span>
+        <span className={css.averageCalTitle}>
+          Average value: {average} cal
+        </span>
       </div>
       <div className={css.caloriesChartWrapper}>
-        <div className={`${css.caloriesChartContainer} ${css.lineChartContainer}`}>
+        <div
+          className={`${css.caloriesChartContainer} ${css.lineChartContainer}`}
+        >
           <Line data={data} options={options} />
         </div>
       </div>
