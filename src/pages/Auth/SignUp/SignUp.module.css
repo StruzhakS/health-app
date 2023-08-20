@@ -142,13 +142,25 @@
   color: white;
   font-size: 10px;
 }
+.redBorder {
+  background-color: #3cbc81;
+  border: 4px solid #e74a3b;
+  border-color: #e74a3b;
+}
+
+.invalidInput {
+  border-color: red;
+}
 
 @media (min-width: 834px) and (max-width: 1439.5px) {
   .container {
     max-width: 834px;
     padding-top: 40px;
-    margin-left: 80px;
-    padding-left: 310px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    align-items: center;
   }
   .containerImg {
     display: flex;
@@ -156,10 +168,12 @@
     margin-bottom: 60px;
     align-items: stretch;
     justify-content: center;
+    max-width: 380px;
   }
 
   .imgIllustration {
     width: 380px;
+    max-width: 380px;
   }
   .heading {
     font-family: Poppins;
@@ -215,7 +229,6 @@
     font-size: 14px;
     margin-top: 5px;
     max-width: 380px;
-    margin-left: 26px;
   }
 
   .passwordInputIcon {
