@@ -78,14 +78,17 @@ const authSlice = createSlice({
         state.user.height = payload.height;
         state.user.weight = payload.weight;
         state.user.activity = payload.activity;
+        state.user.avatarURL = payload.avatarURL;
       })
+      .addCase(updateSettingsOperations.rejected, handleRejected)
       .addCase(addGoalsThunk.fulfilled, handleAddGoals)
       .addCase(addGoalsThunk.rejected, handleRejected)
       .addCase(addGoalsThunk.pending, handlePending)
       .addMatcher(
         action => action.type.endsWith('/rejected'),
-        (state, action) => {
-          state.error = action.payload;
+        (state, { payload }) => {
+          console.log(payload);
+          state.error = payload;
         }
       );
   },
