@@ -199,16 +199,7 @@
       "fat": 0.4
     }
   },
-  {
-    "name": "Nuts",
-    "amount": "100 g",
-    "calories": 650,
-    "nutrition": {
-      "carbohydrates": 15,
-      "protein": 22,
-      "fat": 55
-    }
-  },
+  
   {
     "name": "Broccoli",
     "amount": "100 g",
@@ -216,6 +207,177 @@
     "nutrition": {
       "carbohydrates": 6.6,
       "protein": 2.8,
+      "fat": 0.4
+    }
+  },
+  {
+    "name": "Oats",
+    "amount": "100 g",
+    "calories": 65,
+    "nutrition": {
+      "carbohydrates": 15.5,
+      "protein": 5.7,
+      "fat": 3.1
+    }
+  },
+  {
+    "name": "Lentils",
+    "amount": "100 g",
+    "calories": 90,
+    "nutrition": {
+      "carbohydrates": 23.8,
+      "protein": 9.2,
+      "fat": 1.2
+    }
+  },
+  {
+    "name": "Salmon",
+    "amount": "100 g",
+    "calories": 202,
+    "nutrition": {
+      "carbohydrates": 0,
+      "protein": 21.8,
+      "fat": 12.6
+    }
+  },
+  {
+    "name": "Tuna",
+    "amount": "100 g",
+    "calories": 149,
+    "nutrition": {
+      "carbohydrates": 0,
+      "protein": 26.7,
+      "fat": 3.6
+    }
+  },
+  {
+    "name": "Yogurt",
+    "amount": "100 g",
+    "calories": 100,
+    "nutrition": {
+      "carbohydrates": 5.3,
+      "protein": 8.0,
+      "fat": 3.2
+    }
+  },
+  {
+    "name": "Berries",
+    "amount": "100 g",
+    "calories": 54,
+    "nutrition": {
+      "carbohydrates": 14.7,
+      "protein": 1.7,
+      "fat": 0.7
+    }
+  },
+  {
+    "name": "Dark leafy greens",
+    "amount": "100 g",
+    "calories": 25,
+    "nutrition": {
+      "carbohydrates": 4.7,
+      "protein": 4.3,
+      "fat": 0.4
+    }
+  },
+  {
+    "name": "Avocado",
+    "amount": "100 g",
+    "calories": 160,
+    "nutrition": {
+      "carbohydrates": 8.5,
+      "protein": 2,
+      "fat": 14.7
+    }
+  },
+  {
+    "name": "Beans",
+    "amount": "100 g",
+    "calories": 123,
+    "nutrition": {
+      "carbohydrates": 22.3,
+      "protein": 8.7,
+      "fat": 0.4
+    }
+  },
+ 
+  {
+    "name": "Broccoli",
+    "amount": "100 g",
+    "calories": 34,
+    "nutrition": {
+      "carbohydrates": 6.6,
+      "protein": 2.8,
+      "fat": 0.4
+    }
+  },
+  {
+    "name": "Oats",
+    "amount": "100 g",
+    "calories": 65,
+    "nutrition": {
+      "carbohydrates": 15.5,
+      "protein": 5.7,
+      "fat": 3.1
+    }
+  },
+  {
+    "name": "Lentils",
+    "amount": "100 g",
+    "calories": 90,
+    "nutrition": {
+      "carbohydrates": 23.8,
+      "protein": 9.2,
+      "fat": 1.2
+    }
+  },
+  {
+    "name": "Salmon",
+    "amount": "100 g",
+    "calories": 202,
+    "nutrition": {
+      "carbohydrates": 0,
+      "protein": 21.8,
+      "fat": 12.6
+    }
+  },
+  {
+    "name": "Tuna",
+    "amount": "100 g",
+    "calories": 149,
+    "nutrition": {
+      "carbohydrates": 0,
+      "protein": 26.7,
+      "fat": 3.6
+    }
+  },
+  {
+    "name": "Yogurt",
+    "amount": "100 g",
+    "calories": 100,
+    "nutrition": {
+      "carbohydrates": 5.3,
+      "protein": 8.0,
+      "fat": 3.2
+    }
+  },
+  {
+    "name": "Berries",
+    "amount": "100 g",
+    "calories": 54,
+    "nutrition": {
+      "carbohydrates": 14.7,
+      "protein": 1.7,
+      "fat": 0.7
+    }
+  },
+  {
+    "name": "Dark leafy greens",
+    "amount": "100 g",
+    "calories": 25,
+    "nutrition": {
+      "carbohydrates": 4.7,
+      "protein": 4.3,
       "fat": 0.4
     }
   },

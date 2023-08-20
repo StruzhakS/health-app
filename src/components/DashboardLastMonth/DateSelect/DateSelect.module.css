@@ -1,0 +1,119 @@
+
+
+.dateSelectorContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+.lastMonthBtn{
+  font-family: Poppins;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: 30px;
+margin-left: 8px;
+}
+@media screen and (min-width: 834px) {
+  .lastMonthBtn {
+     width: 212px;
+  height: 64px;
+    font-size: 30px;
+    margin-left: 0px;
+  }
+}
+/* @media screen and (min-width: 1440px) {
+  .dashboardSelect {
+    width: 212px;
+  height: 64px;
+
+  }
+} */
+
+.dashboardArrowDownSvg {
+  width: 16px;
+  height: 16px;
+  transform: scaleY(-1);
+  margin-left: 10px;
+}
+@media screen and (min-width: 834px) {
+  .dashboardArrowDownSvg {
+    margin-left: 12px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .dashboardArrowDownSvg {
+    width: 24px;
+  height: 24px;
+
+  }
+}
+
+.dashboardArrowDownSvgLink {
+  stroke: rgba(182, 182, 182, 1);
+  fill:rgba(182, 182, 182, 1) ;
+}
+.dashboardArrowDownSvgLink:hover {
+  stroke: rgba(227, 255, 168, 1);
+  fill: rgba(227, 255, 168, 1);
+  
+}
+
+.dashboardArrowDownSvgLink:focus {
+  fill: rgba(227, 255, 168, 1);
+  stroke: rgba(227, 255, 168, 1);
+}
+
+
+.dashboardSelect{
+    display: flex;
+  background-color: black;
+  color: white;
+  font-family: Poppins;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+width: 155px;
+height: 54px;
+padding: 15px;
+border-radius: 12px;
+box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
+justify-content: center;
+}
+@media screen and (min-width: 834px) {
+  .dashboardSelect {
+     width: 212px;
+  height: 64px;
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .dashboardSelect {
+    width: 212px;
+  height: 64px;
+  }
+}
+.modalOverlay {
+  position: fixed;
+  top: -336px;
+  left: -114px;
+  right: 0;
+  bottom: 0;
+  background-color: transparent; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+@media screen and (min-width: 834px) {
+  .modalOverlay {
+    top: -263px;
+  left: -496px;
+    
+  }
+}
+@media screen and (min-width: 1440px) {
+  .modalOverlay {
+   top: -414px;
+  left: -1111px;
+  }
+}

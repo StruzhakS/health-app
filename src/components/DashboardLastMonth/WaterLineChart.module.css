@@ -1,0 +1,84 @@
+.dashboardWaterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+ 
+}
+@media screen and (min-width: 834px) {
+  .dashboardWaterContainer {
+   width: 345px;
+  }
+}
+.waterTitle {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+@media screen and (min-width: 834px) {
+  .waterTitle {
+    font-size: 18px;
+    line-height: 32px;
+  }
+}
+.averageTitle {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.waterLineChartContainer {
+  border-radius: 12px;
+  padding: 25px 5px 24px 14px;
+  background-color: #0f0f0f;
+}
+@media screen and (min-width: 1440px) {
+  .waterLineChartContainer {
+ padding: 25px 20px 24px 14px;
+  }
+}
+
+
+.chartWrapper {
+  display: inline-block;
+  overflow-x: auto;
+  width: 100%;
+   margin-bottom: 17px;
+}
+
+.chartContainer {
+  width: 740px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  margin-bottom: 17px;
+  height: 313px;
+}
+@media screen and (min-width: 834px) {
+  .chartContainer {
+     width: 780px;
+     overflow: hidden;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .chartContainer {
+   width: 667px; 
+     height: 382px;
+       margin-bottom: 0px;
+  }
+}
+
+.chartContainer::-webkit-scrollbar {
+  background-color: #0f0f0f; 
+  width: 8px;
+}
+
+.chartContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  height: 94px;
+ 
+}

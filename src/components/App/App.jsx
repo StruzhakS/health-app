@@ -1,9 +1,17 @@
+import Diary from 'components/Diary/Diary';
+import Layout from 'components/Layout/Layout';
+import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
+import MainAuth from 'pages/Auth/MainAuth/MainAuth';
+// import HomePage from '../../pages/';
+// import MainPage from 'pages/MainPage';
+import DashboardLastMonth from '../DashboardLastMonth/DashboardLastMonth';
+
+import { Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Diary from '../Diary/Diary';
-import Layout from '../Layout/Layout';
-import RecomendedFood from '../RecomendedFood/RecomendedFood';
-import MainAuth from '../../pages/Auth/MainAuth/MainAuth';
+
+
+
+
 import SignupForm from 'components/SignupForm/SignupForm';
 import MainPage from 'pages/MainPage/MainPage';
 import SignIn from '../../pages/Auth/SignIn/SignIn';
@@ -54,6 +62,10 @@ export const App = () => {
           <Route
             path="/diary"
             element={<PrivateRoute component={<Diary />} redirect={'/diary'} />}
+          />
+          <Route
+            path="/dashboard"
+            element={<PrivateRoute component={<DashboardLastMonth />} redirect={'/dashboard'} />}
           />
           <Route
             path="/settings"
