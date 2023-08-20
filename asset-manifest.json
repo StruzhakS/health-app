@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/health-app/static/css/main.3fc46a3e.css",
-    "main.js": "/health-app/static/js/main.4a84e55c.js",
+    "main.js": "/health-app/static/js/main.bf331760.js",
     "static/media/Food.png": "/health-app/static/media/Food.5cc9426ff336590ddb44.png",
     "static/media/Goals.png": "/health-app/static/media/Goals.91eafec6d607c40ddeeb.png",
     "static/media/Activity.png": "/health-app/static/media/Activity.160914e0cc40aea5f2ca.png",
@@ -14,10 +14,10 @@
     "static/media/eye-off.svg": "/health-app/static/media/eye-off.1af1aea00908e644f0dfa9d94f5d0f55.svg",
     "static/media/eye.svg": "/health-app/static/media/eye.7c6cdc5beb99f3e2a9ef43f719411585.svg",
     "main.3fc46a3e.css.map": "/health-app/static/css/main.3fc46a3e.css.map",
-    "main.4a84e55c.js.map": "/health-app/static/js/main.4a84e55c.js.map"
+    "main.bf331760.js.map": "/health-app/static/js/main.bf331760.js.map"
   },
   "entrypoints": [
     "static/css/main.3fc46a3e.css",
-    "static/js/main.4a84e55c.js"
+    "static/js/main.bf331760.js"
   ]
 }
