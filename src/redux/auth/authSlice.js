@@ -1,11 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, signIn, forgotPassword } from './authOperations';
+import {
+  signUp,
+  signIn,
+  forgotPassword,
+  addGoalsThunk,
+} from './authOperations';
+import {
+  updateGoalOperation,
+  updateSettingsOperations,
+  updateWeightOperation,
+} from 'redux/user/userOperations';
 
 const initialState = {
   user: null,
   step: null,
   token: null,
   error: null,
+  isLoading: false,
+};
+
+const handleAddGoals = (state, { payload }) => {
+  state.user = payload;
+  state.token = payload.token;
+};
+const handlePending = state => {
+  state.isLoading = true;
+};
+const handleRejected = (state, { error }) => {
+  state.error = error.message;
+  state.isLoading = false;
 };
 
 const authSlice = createSlice({
@@ -18,8 +41,8 @@ const authSlice = createSlice({
       state.step = null;
       state.error = null;
     },
-    updateAuthStep: (state, action) => {
-      state.step = action.payload;
+    updateAuthStep: (state, { payload }) => {
+      state.step = { ...state.step, ...payload };
     },
     updateAuthUser: (state, action) => {
       state.token = action.payload.token;
@@ -42,11 +65,28 @@ const authSlice = createSlice({
       .addCase(forgotPassword.fulfilled, (state, action) => {
         state.error = null;
       })
+      .addCase(updateGoalOperation.fulfilled, (state, { payload }) => {
+        state.user.goal = payload.goal;
+      })
+      .addCase(updateWeightOperation.fulfilled, (state, { payload }) => {
+        state.user.weight = payload.weight;
+      })
+      .addCase(updateSettingsOperations.fulfilled, (state, { payload }) => {
+        state.user.name = payload.name;
+        state.user.gender = payload.gender;
+        state.user.age = payload.age;
+        state.user.height = payload.height;
+        state.user.weight = payload.weight;
+        state.user.activity = payload.activity;
+      })
+      .addCase(addGoalsThunk.fulfilled, handleAddGoals)
+      .addCase(addGoalsThunk.rejected, handleRejected)
+      .addCase(addGoalsThunk.pending, handlePending)
       .addMatcher(
         action => action.type.endsWith('/rejected'),
         (state, action) => {
           state.error = action.payload;
-        },
+        }
       );
   },
 });

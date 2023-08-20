@@ -35,7 +35,7 @@ export const App = () => {
   }, [dispatch]);
 
   const isAuth = useSelector(state => state.auth.token);
-  console.log(isAuth);
+
   return (
     <>
       <Routes>
@@ -43,15 +43,8 @@ export const App = () => {
           <Route index element={isAuth ? <MainPage /> : <MainAuth />} />
           <Route
             path="/signin"
-            element={
-              <PublicRoute component={<SignIn />} redirect="/mainpage" />
-            }
+            element={<PublicRoute component={<SignIn />} redirect="/" />}
           />
-          <Route
-            path="/mainpage"
-            element={<PrivateRoute component={<MainPage />} />}
-          />
-          {/* <Route path="/signin" element={<SignIn />} /> */}
           <Route
             path="/signup"
             element={
@@ -61,16 +54,19 @@ export const App = () => {
           <Route path="/signup/:params" element={<SignupForm />} />
           <Route path="/forgot-password" element={<ForgotPass />} />
 
-          <Route
-            path="/recomendedFood"
-            element={<PrivateRoute component={<RecomendedFood />} />}
-          />
+          <Route path="/recomended-food" element={<RecomendedFood />} />
 
-          <Route path="/diary" element={<Diary />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          {/* <Route path="*" element={<HomePage />} /> */}
-          <Route path="/settings" element={<Settings />} />
-          <Route path="*" element={<MainAuth />} />
+          <Route
+            path="/diary"
+            element={<PrivateRoute component={<Diary />} redirect={'/diary'} />}
+          />
+          <Route
+            path="/settings"
+            element={
+              <PrivateRoute component={<Settings />} redirect={'/settings'} />
+            }
+          />
+          <Route path="*" element={isAuth ? <MainPage /> : <MainAuth />} />
         </Route>
       </Routes>
     </>

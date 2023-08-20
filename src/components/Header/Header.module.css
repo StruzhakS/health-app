@@ -101,3 +101,9 @@
 .controlWrapper {
   display: flex;
 }
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

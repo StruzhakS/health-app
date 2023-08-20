@@ -1,0 +1,86 @@
+.dailyGoalStatisticsContainer {
+  width: 300px;
+  border-radius: 12px;
+  background-color: #0f0f0f;
+  padding: 16px 12px;
+
+  @media (min-width: 834px) {
+    padding: 24px 40px;
+    width: 380px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 328px;
+  }
+}
+
+.dailyGoalStatisticsList {
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (min-width: 834px) {
+    gap: 32px;
+  }
+}
+
+.dailyGoalStatisticsListItem {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+
+.svgBubble {
+  stroke: #45ffbc;
+  fill: transparent;
+}
+
+.svgMilk {
+  stroke: #b6c3ff;
+  fill: transparent;
+}
+
+.dailyGoalTitle {
+  font-size: 18px;
+
+  font-weight: 400;
+  line-height: 1.33em;
+
+  margin-bottom: 6px;
+
+  @media (min-width: 834px) {
+    font-size: 22px;
+    line-height: 1.45em;
+  }
+}
+
+.dailyGoalStatisticsListItemTitle {
+  font-size: 18px;
+
+  font-weight: 500;
+  line-height: 1.33em;
+  color: #b6b6b6;
+}
+
+.dailyGoalStatisticsListItemData {
+  font-size: 34px;
+
+  font-weight: 600;
+  line-height: 1.11em;
+}
+
+.dailyGoalStatisticsListItemDataDescription {
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+  color: #b6b6b6;
+  margin-left: 4px;
+}
+
+.dailyGoalStatisticsListItemContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

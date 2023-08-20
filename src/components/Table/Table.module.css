@@ -1,11 +1,22 @@
 .table{
-    width: 676px;
+    width: 768px;
     height: 240px;
     border-radius: 12px;
     background-color: #0f0f0f;
 }
+@media screen and (min-width: 1440px) {
+    .table {
+      width: 676px;
+    }
+  }
 .table td{
     height: 60px;
+}
+.firstTd{
+width: 16px;
+}
+.allTd{
+    width: 80px;
 }
 .table th, .table td{
     padding: 20px 14px 20px;
@@ -29,4 +40,12 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 22px;
+}
+.btnEdit{
+    display: flex;
+    gap: 6px;
+    color:#B6B6B6;
+}
+.btn{
+    width: 49px;
 }

@@ -1,5 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { signUpAPI, signInAPI, forgotPasswordAPI } from './authAPI';
+import {
+  signUpAPI,
+  signInAPI,
+  forgotPasswordAPI,
+  logoutAPI,
+  addGoals,
+} from './authAPI';
+import { setHeadersToken } from 'redux/user/userApi';
 
 // const handleAsyncError = (error, rejectWithValue) => {
 //   if (error.response) {
@@ -50,6 +57,27 @@ export const forgotPassword = createAsyncThunk(
   async (email, { rejectWithValue }) => {
     try {
       const response = await forgotPasswordAPI(email);
+      return { success: true, ...response };
+    } catch (error) {
+      return { success: false, ...error };
+    }
+  }
+);
+
+export const addGoalsThunk = createAsyncThunk(
+  'auth/requirements',
+  (body, { getState }) => {
+    setHeadersToken(getState().auth.token);
+    const response = addGoals(body);
+    return response;
+  }
+);
+// Асинхронная операция для выхода
+export const logoutUser = createAsyncThunk(
+  'auth/logout',
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await logoutAPI(token);
       return { success: true, ...response };
     } catch (error) {
       return { success: false, ...error };

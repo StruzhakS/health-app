@@ -1,0 +1,268 @@
+.goals {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.formGoals {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.goalsTitle {
+  color: white;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  padding: 0 10px;
+}
+
+.goalsSubtitle {
+  color: #b6b6b6;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.33;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 24px;
+  padding: 0 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.42;
+  margin-bottom: 12px;
+}
+
+.inputData {
+  width: 300px;
+  height: 36px;
+  background-color: #0f0f0f;
+  border-radius: 12px;
+  border: 1px solid #e3ffa8;
+  color: #b6b6b6;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.42;
+  margin-bottom: 24px;
+}
+
+.btnNext {
+  width: 300px;
+  height: 36px;
+  background-color: #e3ffa8;
+  border-radius: 12px;
+  color: #0f0f0f;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.42;
+  margin-bottom: 16px;
+}
+
+.btnBack {
+  width: 300px;
+  height: 36px;
+  background-color: #050505;
+  border-radius: 12px;
+  color: #b6b6b6;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.42;
+}
+
+@media screen and (min-width: 834px) {
+  .goals {
+
+    text-align: start;
+  }
+
+  .formGoals {
+    margin-top: 60px;
+    display: inline;
+    width: 444px;
+    padding: 0 32px;
+  }
+
+  .goalsTitle {
+    text-align: center;
+    padding: 0;
+    font-size: 30px;
+
+    line-height: 1.2;
+  }
+
+  .goalsSubtitle {
+    font-size: 22px;
+
+    line-height: 1.45;
+    text-align: center;
+    padding: 0;
+  }
+
+  .subtitle:last-of-type {
+    margin-top: 24px;
+  }
+
+  .inputData {
+    width: 380px;
+    margin-bottom: 0;
+  }
+
+  .btnNext {
+    margin-top: 24px;
+    width: 380px;
+  }
+
+  .btnBack {
+    width: 380px;
+  }
+
+  .customRadio:not(:last-of-type) {
+    margin-right: 50px;
+  }
+
+  .gap {
+    margin-bottom: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .goals {
+    flex-direction: row;
+    gap: 104px;
+  }
+
+  .gap {
+    margin-bottom: 0;
+  }
+
+  .formGoals {
+    margin-top: 80px;
+    width: 444px;
+  }
+
+  .goalsTitle {
+    text-align: start;
+  }
+
+  .goalsSubtitle {
+    text-align: start;
+  }
+
+  .subtitle:last-of-type {
+    margin-top: 0;
+  }
+
+  .customRadio:not(:last-of-type) {
+    margin-right: 0;
+  }
+
+  .customRadio {
+    display: flex;
+    align-items: center;
+    width: 328px;
+  }
+
+  .btnNext {
+    margin-top: 0;
+    width: 212px;
+  }
+
+  .btnBack {
+    width: 212px;
+  }
+
+  .inputData {
+    width: 212px;
+    margin-bottom: 24px;
+  }
+}
+
+.customRadio:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.customRadio:last-of-type {
+  margin-bottom: 24px;
+}
+
+.customRadio>input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.customRadio>span::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #b6b6b6;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.customRadio>input:not(:disabled):not(:checked)+span:hover::before {
+  border: 3px solid #0f0f0f;
+  background-color: #e3ffa8;
+  /* background-image: url("data:image/svg+xml,%3csvg xmlns 'http: //www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'"); */
+}
+
+.customRadio>input:focus+span::before {
+  border: 3px solid #0f0f0f;
+  box-shadow: 0 0 0 1px #e3ffa8;
+}
+
+.customRadio>input:focus:not(:checked)+span::before {
+  border: 3px solid #0f0f0f;
+  box-shadow: 0 0 0 1px #e3ffa8;
+}
+
+.customRadio>input:checked+span::before {
+  border: 3px solid #0f0f0f;
+  box-shadow: 0 0 0 1px #e3ffa8;
+  background-color: #e3ffa8;
+  /* background-image: url("data:image/svg+xml,%3csvg xmlns 'http: //www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'"); */
+}
+
+.goalList {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.42;
+}
+
+.inputData::-webkit-inner-spin-button,
+.inputData::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputData:hover,
+.inputData:focus {
+  outline: none;
+}

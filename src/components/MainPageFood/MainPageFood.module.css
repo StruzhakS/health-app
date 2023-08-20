@@ -1,0 +1,177 @@
+.foodTitle {
+  font-size: 18px;
+
+  font-weight: 400;
+  line-height: 1.33em;
+
+  margin-bottom: 6px;
+
+  @media (min-width: 834px) {
+    font-size: 22px;
+    line-height: 1.45em;
+  }
+}
+
+.foodStatisticsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 300px;
+  border-radius: 12px;
+  background-color: #0f0f0f;
+  padding: 16px 12px;
+
+  @media (min-width: 834px) {
+    width: 780px;
+    padding: 36px 40px;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 560px;
+    padding: 32.5px 40px;
+  }
+}
+
+/* /////////////////////////// */
+.caloriesScheduleContainer {
+  width: 175px;
+  height: 175px;
+  position: relative;
+}
+
+.caloriesScheduleSvg {
+  position: relative;
+  width: 175px;
+  height: 175px;
+  transform: rotate(-85deg);
+}
+
+.caloriesScheduleSvg circle {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #292928;
+  stroke-width: 17;
+  stroke-linecap: round;
+  transform: translate(8.5px, 8.5px);
+}
+
+.caloriesScheduleSvg circle:nth-child(2) {
+  stroke-dasharray: 480;
+  stroke-dashoffset: 480;
+}
+
+.caloriesScheduleContainer svg circle:nth-child(2) {
+  stroke: #45ffbc;
+}
+
+.caloriesScheduleDescription {
+  position: absolute;
+  width: 74px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* z-index: 10; */
+  font-size: 32px;
+
+  font-weight: 500;
+  line-height: 1.18em;
+}
+
+.caloriesScheduleAdditionDescription {
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+  color: #b6b6b6;
+}
+/* /////////////////////////// */
+.scheduleListItem {
+  display: flex;
+  gap: 12px;
+}
+
+.scheduleListItemTitle {
+  font-size: 18px;
+
+  font-weight: 500;
+  line-height: 1.33em;
+  margin-bottom: 2px;
+}
+
+.scheduleListItemDescription {
+  margin: 0;
+  display: inline-block;
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+}
+
+div .scheduleListItemDescription:last-child {
+  margin-left: 12px;
+}
+
+.scheduleListItemAdditionalDescription {
+  display: inline-block;
+  font-weight: 500;
+  color: #b6b6b6;
+  width: 36px;
+}
+
+.scheduleList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+/* /////////////////////////// */
+.carbohydratesScheduleContainer {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.carbohydratesScheduleSvg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  transform: rotate(-85deg);
+}
+
+.carbohydratesScheduleSvg circle {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #292928;
+  stroke-width: 5;
+  stroke-linecap: round;
+  transform: translate(2.5px, 2.5px);
+}
+
+.carbohydratesScheduleSvg circle:nth-child(2) {
+  stroke-dasharray: 135;
+  stroke-dashoffset: 135;
+}
+
+.carbohydratesScheduleContainer svg:nth-child(1) circle:nth-child(2) {
+  stroke: #ffc4f7;
+}
+
+.carbohydratesScheduleDescription {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #b6b6b6;
+
+  font-size: 14px;
+
+  font-weight: 400;
+  line-height: 1.42em;
+}
