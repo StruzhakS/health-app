@@ -4,12 +4,13 @@ import Gender from 'components/Gender/Gender';
 import Goal from 'components/Goals/Goals';
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import s from './SignupForm.module.css';
 
 const SignupForm = () => {
   const { params } = useParams();
 
   return (
-    <div>
+    <div className={s.container}>
       {(() => {
         switch (params) {
           case 'goal':

@@ -6,6 +6,8 @@ import Breakfast from '../../assets/img/mobile/Breakfast.png';
 import Lunch from '../../assets/img/mobile/Lunch.png';
 import Dinner from '../../assets/img/mobile/Dinner.png';
 import Snack from '../../assets/img/mobile/Snack.png';
+import { useState } from 'react';
+import RecordMealModal from 'components/Modal/RecordMealModal/RecordMealModal';
 
 const Data = [
   { carbonohidrates: 60, protein: 40, fat: 20 },
@@ -15,10 +17,24 @@ const Data = [
 ];
 
 const MainPageDiary = () => {
+  const [recordMealModalOpen, setRecordMealModalOpen] = useState(false);
+  const [selectedMeal, setSelectedMeal] = useState('');
+
+  const onRecordMealButtonClick = evt => {
+    setSelectedMeal(evt.target.name);
+    setRecordMealModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
   return (
     <section className={css.DiarySection}>
+      <RecordMealModal
+        selectedMeal={selectedMeal}
+        recordMealModalOpen={recordMealModalOpen}
+        setRecordMealModalOpen={setRecordMealModalOpen}
+      />
       <div className={css.DiaryTitleContainer}>
-        <h2 className={css.DiaryTitle}>Daily goal</h2>
+        <h2 className={css.DiaryTitle}>Diary</h2>
         <Link className={css.DiaryTitleLink} to={`/diary`}>
           See more
         </Link>
@@ -81,7 +97,19 @@ const MainPageDiary = () => {
               </ul>
             )}
             {!carbonohidrates && (
-              <button className={css.recordMealButton}>
+              <button
+                name={
+                  i === 0
+                    ? 'Breakfast'
+                    : i === 1
+                    ? 'Lunch'
+                    : i === 2
+                    ? 'Dinner'
+                    : 'Snack'
+                }
+                onClick={onRecordMealButtonClick}
+                className={css.recordMealButton}
+              >
                 <svg width="16px" height="16px" className={css.recordMealIcon}>
                   <use xlinkHref={`${Icons}#add`} />
                 </svg>
