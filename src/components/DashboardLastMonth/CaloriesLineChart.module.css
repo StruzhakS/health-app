@@ -14,11 +14,11 @@
    width: 345px;
   }
 }
-/* @media screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .dashboardCaloriesContainer {
-   width: 345px;
+   width: 382px;
   }
-} */
+}
 .caloriesTitle{
     font-size: 18px;
 font-style: normal;
@@ -50,13 +50,22 @@ line-height: 20px;
   width: 780px; 
   }
 }
+@media screen and (min-width: 1440px) {
+  .caloriesChartWrapper {
+   width: 667px; 
+  }
+}
 .lineChartContainer{
 padding: 25px 5px 24px 14px;
   background-color: #0F0F0F;
   border-radius: 12px;
 }
 
-
+@media screen and (min-width: 1440px) {
+  .lineChartContainer {
+   padding: 25px 20px 24px 14px;
+  }
+}
 .caloriesChartContainer {
   width: 740px;
   overflow-x: auto; 
@@ -71,7 +80,13 @@ height: 313px;
   
   }
 }
-
+@media screen and (min-width: 1440px) {
+  .caloriesChartContainer {
+   width: 667px;
+   height: 382px;
+   margin-bottom: 0px;
+  }
+}
 .lineChartContainer > div::-webkit-scrollbar {
   width: 2px; 
 }

@@ -40,7 +40,7 @@ font-weight: 400;
 }
 @media screen and (min-width: 834px) {
   .weightLine {
-  gap: 8px;
+  gap: 7px;
   }
 }
 @media only screen and (min-width: 1440px) {
@@ -75,7 +75,7 @@ line-height: 20px;
 }
 @media only screen and (min-width: 1440px) {
  .dayLine {
-     gap: 27px;
+     gap: 34px;
   }
 }
 .dayPoint{
@@ -100,7 +100,7 @@ color: #B6B6B6;
 @media only screen and (min-width: 1440px) {
  .weighChartContainer {
      width: 1372px;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
   }
 }
 .weighChartContainerScroll {

@@ -34,8 +34,13 @@
   border-radius: 12px;
   padding: 25px 5px 24px 14px;
   background-color: #0f0f0f;
-  
 }
+@media screen and (min-width: 1440px) {
+  .waterLineChartContainer {
+ padding: 25px 20px 24px 14px;
+  }
+}
+
 
 .chartWrapper {
   display: inline-block;
@@ -51,10 +56,18 @@
   scroll-behavior: smooth;
   margin-bottom: 17px;
   height: 313px;
-}@media screen and (min-width: 834px) {
+}
+@media screen and (min-width: 834px) {
   .chartContainer {
      width: 780px;
      overflow: hidden;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .chartContainer {
+   width: 667px; 
+     height: 382px;
+       margin-bottom: 0px;
   }
 }
 

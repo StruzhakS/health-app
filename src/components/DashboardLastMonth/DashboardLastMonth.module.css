@@ -1,6 +1,13 @@
 .dashboardSection {
   margin: 0 auto;
+ 
 }
+@media screen and (min-width: 1440px) {
+  .dashboardSection {
+   padding-bottom: 40px;
+  }
+}
+
 
 .dashboardBtnLeftArrow {
   margin-right: 8px;
@@ -47,6 +54,7 @@
     font-size: 18px;
   }
 }
+@media screen and (min-width: 1440px) {
 .dashboardDesctopGraph{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -61,4 +69,4 @@
 .gridItem3{
   grid-column: 1/-1;
   grid-row: 2/3;
-}
+}}
