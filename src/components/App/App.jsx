@@ -11,9 +11,9 @@ import SignUp from '../../pages/Auth/SignUp/SignUp';
 import ForgotPass from '../../pages/Auth/ForgotPass/ForgotPass';
 import PublicRoute from 'containers/PublicRoute.jsx';
 import PrivateRoute from 'containers/PrivateRoute';
-import Settings from 'components/Settings/Settings';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateAuthUser } from '../../redux/auth/authSlice';
+import SettingsPage from 'pages/Settings/SettingsPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ export const App = () => {
           />
           <Route
             path="/settings"
-            element={<PrivateRoute component={<Settings />} />}
+            element={<PrivateRoute component={<SettingsPage />} />}
           />
           <Route path="*" element={isAuth ? <MainPage /> : <MainAuth />} />
         </Route>
