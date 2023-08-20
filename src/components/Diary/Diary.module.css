@@ -1,110 +1,109 @@
-.containerDiary{
-    padding: 16px 10px 40px;
-    display:flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+.containerDiary {
+  padding: 16px 10px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 @media screen and (min-width: 834px) {
-    .containerDiary {
-      padding: 24px 27px 40px;
-    }
+  .containerDiary {
+    padding: 24px 27px 40px;
   }
-  @media screen and (min-width: 1440px) {
-    .containerDiary {
-      padding: 20px 34px 52px;
-    }
-  }
-.foodIMG{
-    display: flex;
-    gap:12px;
-    margin-bottom: 12px;
-}
-@media screen and (min-width: 834px) {
-    .foodIMG {
-      margin-bottom: 0;
-    }
-  }
-.btnNav{
-    display: flex;
-    margin-bottom: 16px;
-    align-items:center;
-}
-.btnDiary{
-    display: flex;
-}
-
-.textBtn{
-    /* width: 79px;
-    height: 36px; */
-    width: 63px;
-    height: 30px;
-    font-size: 24px;
-    line-height: 30px;
-    display: flex;
-    margin-left: 12px;
-    font-weight: 500;
-    align-items:center;
-}
-.container{
-    align-items:center;
-    
-}
-.containerLis{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 12px;
-}
-@media screen and (min-width: 834px) {
-    .containerLis {
-      flex-direction: row;
-      align-items:center;
-      margin-bottom: 6px;
-      justify-content: space-between;
-    }
-  }
-.titleTab{
-    width: 148px;
-    height: 32px;
-    gap: 12px;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 26px;
-    display: flex;
-    align-items:center;
-}
-@media screen and (min-width: 834px) {
-    .titleTab{
-        font-size: 22px;
-        line-height: 32px;
-    }
-  }
-.listTab{
-    display: flex;
-    width: 178px;
-    gap: 12px;
-    align-items:center;
-    flex-wrap: wrap;
-}
-@media screen and (min-width: 834px) {
-    .listTab{
-        width: 362px;
-    }
-  }
-.itemTab{
-    display: inline-block;
-    font-size: 14px;
-    line-height: 20px;
-    margin-right: 20px;
-}
-.tableRow{
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
 }
 @media screen and (min-width: 1440px) {
-    .tableRow{
-        flex-wrap: nowrap;
-    }
+  .containerDiary {
+    padding: 20px 34px 52px;
   }
+}
+.foodIMG {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+@media screen and (min-width: 834px) {
+  .foodIMG {
+    margin-bottom: 0;
+  }
+}
+.btnNav {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center;
+}
+.btnDiary {
+  display: flex;
+}
+
+.textBtn {
+  /* width: 79px;
+    height: 36px; */
+  width: 63px;
+  height: 30px;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  margin-left: 12px;
+  font-weight: 500;
+  align-items: center;
+}
+.container {
+  align-items: center;
+}
+.containerLis {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+@media screen and (min-width: 834px) {
+  .containerLis {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+    justify-content: space-between;
+  }
+}
+.titleTab {
+  width: 148px;
+  height: 32px;
+  gap: 12px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+}
+@media screen and (min-width: 834px) {
+  .titleTab {
+    font-size: 22px;
+    line-height: 32px;
+  }
+}
+.listTab {
+  display: flex;
+  width: 178px;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@media screen and (min-width: 834px) {
+  .listTab {
+    width: 362px;
+  }
+}
+.itemTab {
+  display: inline-block;
+  line-height: 20px;
+  font-size: 14px;
+  margin-right: 20px;
+}
+.tableRow {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+@media screen and (min-width: 1440px) {
+  .tableRow {
+    flex-wrap: nowrap;
+  }
+}

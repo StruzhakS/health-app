@@ -1,0 +1,146 @@
+.settingsWrapper {
+  width: 300px;
+  margin: 0 auto;
+  padding-top: 16px;
+  padding-bottom: 40px;
+}
+
+.settingsTitle {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.nameTitle {
+  font-weight: 500;
+  line-height: 1.42;
+  margin-bottom: 12px;
+}
+.nameInput {
+  display: flex;
+  width: 300px;
+  padding: 8px 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  color: #fff;
+  border-radius: 12px;
+  border: 1px solid #b6b6b6;
+  background-color: #0f0f0f;
+}
+
+.labelWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.settingsAvatar {
+  width: 36px;
+  border-radius: 50%;
+}
+
+.settingsForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.photoLabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 8px;
+}
+.photoLabel > span {
+  cursor: pointer;
+}
+.photoLabel > span:hover {
+  color: rgba(227, 255, 168, 1);
+}
+
+.genderLabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 16px;
+}
+
+.imageSettings {
+  width: 300px;
+  height: 296px;
+}
+
+.radioInput {
+  position: relative;
+  height: 12px;
+  width: 12px;
+  margin-right: 8px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+.actvityLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+}
+
+.actvityLabel > span {
+  color: rgba(255, 255, 255, 1);
+  line-height: 1.43;
+}
+.activityWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  line-height: 1.42;
+  gap: 24px;
+}
+
+.radioInput::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(15, 15, 15, 1);
+  border: 1px solid rgba(182, 182, 182, 1);
+}
+
+.radioInput:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: rgba(227, 255, 168, 1);
+  transform: translate(-50%, -50%);
+  visibility: visible;
+}
+
+.settingsBtnWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.saveBtn {
+  padding: 8px 10px;
+  text-align: center;
+  color: #0f0f0f;
+  font-weight: 500;
+  border-radius: 12px;
+  background-color: #e3ffa8;
+}
+.cancelBtn {
+  color: #b6b6b6;
+}
