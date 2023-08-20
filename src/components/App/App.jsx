@@ -35,15 +35,8 @@ export const App = () => {
           <Route index element={isAuth ? <MainPage /> : <MainAuth />} />
           <Route
             path="/signin"
-            element={
-              <PublicRoute component={<SignIn />} redirect="/mainpage" />
-            }
+            element={<PublicRoute component={<SignIn />} redirect="/" />}
           />
-          <Route
-            path="/mainpage"
-            element={<PrivateRoute component={<MainPage />} />}
-          />
-          {/* <Route path="/signin" element={<SignIn />} /> */}
           <Route
             path="/signup"
             element={
@@ -57,11 +50,13 @@ export const App = () => {
 
           <Route
             path="/diary"
-            element={<PrivateRoute component={<Diary />} />}
+            element={<PrivateRoute component={<Diary />} redirect={'/diary'} />}
           />
           <Route
             path="/settings"
-            element={<PrivateRoute component={<Settings />} />}
+            element={
+              <PrivateRoute component={<Settings />} redirect={'/settings'} />
+            }
           />
           <Route path="*" element={isAuth ? <MainPage /> : <MainAuth />} />
         </Route>

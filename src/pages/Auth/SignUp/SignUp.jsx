@@ -118,6 +118,7 @@ const SignUp = () => {
               onChange={e => {
                 const inputEmail = e.target.value;
                 setEmail(inputEmail);
+                // Проверка валидности email
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 setIsEmailValid(emailPattern.test(inputEmail));
               }}
