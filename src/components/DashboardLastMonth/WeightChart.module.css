@@ -1,6 +1,4 @@
 
-
-
 .titleContainer{
   display: flex;
   flex-direction: row;
@@ -45,6 +43,12 @@ font-weight: 400;
   gap: 8px;
   }
 }
+@media only screen and (min-width: 1440px) {
+ .weightLine {
+     gap: 25px;
+     align-items: center;
+  }
+}
 .weightPoint {
 font-size: 14px;
 font-style: normal;
@@ -69,6 +73,11 @@ line-height: 20px;
   gap: 15px;
   }
 }
+@media only screen and (min-width: 1440px) {
+ .dayLine {
+     gap: 27px;
+  }
+}
 .dayPoint{
   font-size: 10px;
 font-style: normal;
@@ -81,6 +90,18 @@ color: #B6B6B6;
   border-radius: 12px;
   width: 1173px;
   margin-bottom: 8px;
+}
+@media screen and (min-width: 834px) {
+  .weighChartContainer {
+   width: 780px;
+  margin-bottom: 60px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+ .weighChartContainer {
+     width: 1372px;
+  margin-bottom: 40px;
+  }
 }
 .weighChartContainerScroll {
   display: flex;

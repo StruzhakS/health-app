@@ -55,11 +55,16 @@ const DashboardLastMonth = () => {
         </div>
         <div className={css.monthSlect}>{currentMonth}</div>
       </div>
-
-      <div>
-        <CaloriesLineChart />
-        <WaterLineChart />
-        <WeightChart />
+      <div className={css.dashboardDesctopGraph}>
+        <div className={css.gridItem1} >
+          <CaloriesLineChart />
+        </div>
+        <div className={css.gridItem2}>
+          <WaterLineChart />
+        </div>
+        <div className={css.gridItem3} >
+          <WeightChart />
+        </div>
       </div>
     </section>
   );
