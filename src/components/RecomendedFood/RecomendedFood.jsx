@@ -10,7 +10,6 @@ const RecomendedFood = () => {
       const randomIndex = Math.round(
         Math.random() * (recommendedFood.length - 1)
       );
-      // console.log(randomIndex);
       if (!indexArr.includes(randomIndex)) {
         indexArr.push(randomIndex);
       }
