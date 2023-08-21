@@ -42,6 +42,10 @@ export async function updateSettingsApi(body) {
 
 export async function getFoodIntake() {
   const { data } = await axios.get('/food-intake');
-  console.log(data);
+  return data;
+}
+
+export async function setWaterIntake(body) {
+  const { data } = await axios.post('/water-intake', body);
   return data;
 }
