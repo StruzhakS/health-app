@@ -36,9 +36,9 @@ const RecomendedFood = () => {
       <div className={s.recomendedFoodBox}>
         <img className={s.recomendedFoodImg} src={Food} alt="Food" />
         <ul className={s.recomendedFoodList}>
-          {randomArr().map(({ name, amount, calories }) => (
+          {randomArr().map(({ name, amount, calories, img }) => (
             <li className={s.recomendedFoodListItem} key={name}>
-              <img src="" alt={name} width="46px" height="46px" />
+              <img src={img} alt={name} width="46px" height="46px" />
               <div className={s.recomendedFoodItemBox}>
                 <p className={s.recomendedFoodName}>{name}</p>
                 <p className={s.recomendedFoodWeight}>
