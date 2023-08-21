@@ -28,7 +28,7 @@ const SignUp = () => {
       email &&
       password &&
       name &&
-      checkPasswordStrength(password) &&
+      // checkPasswordStrength(password) &&
       isEmailValid
     ) {
       if (name.length < 2) {
@@ -64,11 +64,11 @@ const SignUp = () => {
     setShowPassword(!showPassword);
   };
 
-  const checkPasswordStrength = password => {
-    const passwordPattern =
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d.*\d.*\d.*\d)[A-Za-z\d]{6,}$/;
-    return passwordPattern.test(password);
-  };
+  // const checkPasswordStrength = password => {
+  //   const passwordPattern =
+  //     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d.*\d.*\d.*\d)[A-Za-z\d]{6,}$/;
+  //   return passwordPattern.test(password);
+  // };
 
   return (
     <div className={styles.container}>
@@ -129,8 +129,9 @@ const SignUp = () => {
             <div className={styles.passwordInputContainer}>
               <input
                 className={`${styles.passwordInput} ${
-                  password.length >= 6 && checkPasswordStrength(password)
-                    ? styles.securePassword
+                  password.length >= 6
+                    ? // && checkPasswordStrength(password)
+                      styles.securePassword
                     : password
                     ? styles.invalidPassword
                     : ''
@@ -156,13 +157,15 @@ const SignUp = () => {
               {password && (
                 <p
                   className={`${styles.passwordMessage} ${
-                    password.length >= 6 && checkPasswordStrength(password)
-                      ? styles.securePassword
+                    password.length >= 6
+                      ? // && checkPasswordStrength(password)
+                        styles.securePassword
                       : styles.invalidPassword
                   }`}
                 >
-                  {password.length >= 6 && checkPasswordStrength(password)
-                    ? 'Password is secure'
+                  {password.length >= 6
+                    ? // && checkPasswordStrength(password)
+                      'Password is secure'
                     : 'Valid Password* (at least 6 characters, including at least 1 uppercase letter, 1 lowercase letter, and 4 digits)'}
                 </p>
               )}
