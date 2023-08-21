@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import iconsSrc from '../../assets/icons/symbol-defs.svg';
-import Lose_fat_men from '../../assets/icons/emoji/Lose_fat_men.png';
+import * as goalPicture from 'assets/icons/emoji';
 import s from './ControlPanel.module.css';
 import Waigth from '../../assets/icons/emoji/Waight.png';
 import TargetSelectionModal from 'components/Modal/TargetSelectionModal/TargetSelectionModal';
 import СurrentWeightModal from '../Modal/СurrentWeightModal/СurrentWeightModal';
 import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
+import { imagesByGoalAndGender } from 'helpers/setTargetLogoByGender';
 
 const ControlPanel = () => {
   const [targetModalOpen, setTargetModalOpen] = useState(false);
@@ -14,6 +15,7 @@ const ControlPanel = () => {
   const [weightModalOpen, setWeightModalOpen] = useState(false);
   const isMobileScreen = useMediaQuery({ maxWidth: 834 });
   const weight = useSelector(state => state?.auth?.user?.weight) || 0;
+  const userGender = useSelector(state => state?.auth?.user?.gender);
   const goal = useSelector(state => state?.auth?.user?.goal);
 
   return (
@@ -31,7 +33,11 @@ const ControlPanel = () => {
       <div className={s.controlPanel}>
         <div className={s.targerSelect}>
           <div className={s.imageWrapper}>
-            <img src={Lose_fat_men} alt="" className={s.targetImg} />
+            <img
+              src={imagesByGoalAndGender(userGender, goal, goalPicture)}
+              alt=""
+              className={s.targetImg}
+            />
           </div>
           <div className={s.targetTextWrapper}>
             <h3 className={s.titleTarget}>Goal</h3>
