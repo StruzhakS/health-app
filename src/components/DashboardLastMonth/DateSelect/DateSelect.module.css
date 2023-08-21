@@ -1,82 +1,34 @@
-.dateSelectorContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
+
+
+.dateSelectorContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
 }
-.lastMonthBtn {
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 30px;
-  margin-left: 8px;
+.lastMonthBtn{
+  font-family: Poppins;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: 30px;
+margin-left: 8px;
 }
 @media screen and (min-width: 834px) {
   .lastMonthBtn {
-    width: 212px;
-    height: 64px;
+     width: 212px;
+  height: 64px;
     font-size: 30px;
     margin-left: 0px;
   }
 }
-.lastYearBtn {
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 30px;
-
-  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
-  border-radius: 12px;
-  width: 145px;
-  height: 40px;
- 
-}
-@media screen and (min-width: 834px) {
-  .lastYearBtn {
+/* @media screen and (min-width: 1440px) {
+  .dashboardSelect {
     width: 212px;
-    height: 64px;
-    font-size: 30px;
-    margin-left: 0px;
+  height: 64px;
+
   }
-}
+} */
 
-.selectBox {
-  padding: 5px;
-  background-repeat: no-repeat;
-
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-
-  color: #07f5f5 !important;
-
-  background-color: transparent;
-  outline: transparent;
-}
-.selectBox:after {
-  content: '<';
-  font: 21px 'Poppins', monospace;
-  color: #8bf35e;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  left: 206px;
-
-  top: 107px;
-
-  z-index: 999;
-  position: absolute;
-}
-.selectBox select {
-  width: 190px;
-  border: 0;
-  position: relative;
-  z-index: 99;
-  background: black !important;
-  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
-}
-
-/*  */
 .dashboardArrowDownSvg {
   width: 16px;
   height: 16px;
@@ -91,17 +43,19 @@
 @media screen and (min-width: 1440px) {
   .dashboardArrowDownSvg {
     width: 24px;
-    height: 24px;
+  height: 24px;
+
   }
 }
 
 .dashboardArrowDownSvgLink {
   stroke: rgba(182, 182, 182, 1);
-  fill: rgba(182, 182, 182, 1);
+  fill:rgba(182, 182, 182, 1) ;
 }
 .dashboardArrowDownSvgLink:hover {
   stroke: rgba(227, 255, 168, 1);
   fill: rgba(227, 255, 168, 1);
+  
 }
 
 .dashboardArrowDownSvgLink:focus {
@@ -109,31 +63,56 @@
   stroke: rgba(227, 255, 168, 1);
 }
 
-.dashboardSelect {
+
+.dashboardSelect{
+    display: flex;
   background-color: black;
   color: white;
-
-  font-size: 24px;
-
-  font-weight: 500;
-  width: 155px;
-  height: 54px;
-  padding: 15px;
-  border-radius: 12px;
-  /* box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
-justify-content: center; */
+  font-family: Poppins;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+width: 155px;
+height: 54px;
+padding: 15px;
+border-radius: 12px;
+box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
+justify-content: center;
 }
-
 @media screen and (min-width: 834px) {
   .dashboardSelect {
-    width: 212px;
-    height: 64px;
+     width: 212px;
+  height: 64px;
     font-size: 30px;
   }
 }
 @media screen and (min-width: 1440px) {
   .dashboardSelect {
     width: 212px;
-    height: 64px;
+  height: 64px;
+  }
+}
+.modalOverlay {
+  position: absolute;
+  top: 129px;
+  left: 39px;
+  
+  background-color: transparent; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+@media screen and (min-width: 834px) {
+  .modalOverlay {
+    top: -263px;
+  left: -496px;
+    
+  }
+}
+@media screen and (min-width: 1440px) {
+  .modalOverlay {
+   top: -414px;
+  left: -1111px;
   }
 }
