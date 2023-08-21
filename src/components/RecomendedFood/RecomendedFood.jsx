@@ -3,7 +3,6 @@ import Food from '../../assets/img/desktop/Food.png';
 import s from './RecomendedFood.module.css';
 
 const RecomendedFood = () => {
-
   const randomArr = () => {
     const indexArr = [];
 
@@ -30,27 +29,30 @@ const RecomendedFood = () => {
       recommendedFood[indexArr[9]],
     ];
   };
-  
+
   return (
-    <section className={s.recomendedFoodSection}>
+    <div className={s.recomendedFoodSection}>
       <h2 className={s.recomendedFoodTitle}>Recommented food</h2>
       <div className={s.recomendedFoodBox}>
-      <img className={s.recomendedFoodImg} src={Food} alt='Food' />
-      <ul className={s.recomendedFoodList}>
-        {randomArr().map(({ name, amount, calories }) => (
-          <li className={s.recomendedFoodListItem} key={name}>
-            <img src="" alt={name} width="46px" height="46px"/>
-            <div className={s.recomendedFoodItemBox}>
-              <p className={s.recomendedFoodName}>{name}</p>
-              <p className={s.recomendedFoodWeight}>
-                {amount} <span className={s.recomendedFoodColories}>{`${calories} calories`}</span>
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
+        <img className={s.recomendedFoodImg} src={Food} alt="Food" />
+        <ul className={s.recomendedFoodList}>
+          {randomArr().map(({ name, amount, calories }) => (
+            <li className={s.recomendedFoodListItem} key={name}>
+              <img src="" alt={name} width="46px" height="46px" />
+              <div className={s.recomendedFoodItemBox}>
+                <p className={s.recomendedFoodName}>{name}</p>
+                <p className={s.recomendedFoodWeight}>
+                  {amount}{' '}
+                  <span
+                    className={s.recomendedFoodColories}
+                  >{`${calories} calories`}</span>
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
-    </section>
+    </div>
   );
 };
 

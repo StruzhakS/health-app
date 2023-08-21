@@ -29,7 +29,7 @@ const RecommendedFoodSection = () => {
 
   const onSeeMoreButtonClick = evt => {
     evt.preventDefault();
-    navigate('/recommented-food');
+    navigate('/recommended-food');
   };
 
   return (

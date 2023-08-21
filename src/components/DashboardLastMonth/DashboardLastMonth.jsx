@@ -36,7 +36,7 @@ const DashboardLastMonth = () => {
   const navigate = useNavigate();
   const onButtonClick = evt => {
     evt.preventDefault();
-    navigate('/mainpage');
+    navigate('/');
   };
 
   return (
@@ -56,13 +56,13 @@ const DashboardLastMonth = () => {
         <div className={css.monthSlect}>{currentMonth}</div>
       </div>
       <div className={css.dashboardDesctopGraph}>
-        <div className={css.gridItem1} >
+        <div className={css.gridItem1}>
           <CaloriesLineChart />
         </div>
         <div className={css.gridItem2}>
           <WaterLineChart />
         </div>
-        <div className={css.gridItem3} >
+        <div className={css.gridItem3}>
           <WeightChart />
         </div>
       </div>

@@ -5,13 +5,8 @@ import MainAuth from 'pages/Auth/MainAuth/MainAuth';
 // import HomePage from '../../pages/';
 // import MainPage from 'pages/MainPage';
 import DashboardLastMonth from '../DashboardLastMonth/DashboardLastMonth';
-
 import { Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
-
-
-
-
 import SignupForm from 'components/SignupForm/SignupForm';
 import MainPage from 'pages/MainPage/MainPage';
 import SignIn from '../../pages/Auth/SignIn/SignIn';
@@ -55,7 +50,7 @@ export const App = () => {
           <Route path="/forgot-password" element={<ForgotPass />} />
 
           <Route
-            path="recomended-food"
+            path="recommended-food"
             element={<PrivateRoute component={<RecomendedFood />} />}
           />
 
@@ -65,7 +60,12 @@ export const App = () => {
           />
           <Route
             path="/dashboard"
-            element={<PrivateRoute component={<DashboardLastMonth />} redirect={'/dashboard'} />}
+            element={
+              <PrivateRoute
+                component={<DashboardLastMonth />}
+                redirect={'/dashboard'}
+              />
+            }
           />
           <Route
             path="/settings"
