@@ -1,21 +1,54 @@
 .settingsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   width: 300px;
   margin: 0 auto;
   padding-top: 16px;
   padding-bottom: 40px;
+
+  @media (min-width: 834px) {
+    width: 780px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 1372px;
+  }
 }
 
 .settingsTitle {
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
-  margin-bottom: 16px;
 }
+
+.settingsBtnTablet {
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 834px) {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.settingsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    gap: 160px;
+  }
+}
+
 .nameTitle {
   font-weight: 500;
   line-height: 1.42;
-  margin-bottom: 12px;
 }
+
 .nameInput {
   display: flex;
   width: 300px;
@@ -27,12 +60,21 @@
   border-radius: 12px;
   border: 1px solid #b6b6b6;
   background-color: #0f0f0f;
+
+  @media (min-width: 834px) {
+    width: 212px;
+  }
 }
 
 .labelWrapper {
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
+  gap: 12px;
+
+  @media (min-width: 834px) {
+    align-items: flex-start;
+    width: 212px;
+  }
 }
 
 .settingsAvatar {
@@ -40,20 +82,66 @@
   border-radius: 50%;
 }
 
+.mainSettingsForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @media (min-width: 834px) {
+    width: 780px;
+  }
+  @media (min-width: 1440px) {
+    width: 1372px;
+  }
+}
+
 .settingsForm {
   display: flex;
   flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: 834px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px 60px;
+    width: 491px;
+  }
 }
 
 .photoLabel {
   display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-  gap: 8px;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 0;
+  align-content: center;
+
+  @media (min-width: 834px) {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 0;
+    align-content: center;
+  }
 }
+
+.photoLabelBox {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  gap: 12px;
+}
+
+.photoInfoBox {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  gap: 6px;
+}
+
 .photoLabel > span {
   cursor: pointer;
 }
+
 .photoLabel > span:hover {
   color: rgba(227, 255, 168, 1);
 }
@@ -61,13 +149,38 @@
 .genderLabel {
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (min-width: 834px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.customRadioBox {
+  display: flex;
   gap: 16px;
+  height: 36px;
+  align-items: center;
 }
 
 .imageSettings {
   width: 300px;
   height: 296px;
+
+  @media (min-width: 834px) {
+    margin-right: auto;
+    margin-left: auto;
+    width: 375px;
+    height: 374px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 530px;
+    height: 528px;
+  }
 }
 
 .radioInput {
@@ -75,18 +188,19 @@
   height: 12px;
   width: 12px;
   margin-right: 8px;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  margin-left: 0;
   outline: none;
 }
 
 .actvityLabel {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 300px;
+
+  @media (min-width: 834px) {
+    width: 100%;
+  }
 }
 
 .actvityLabel > span {
@@ -96,9 +210,18 @@
 .activityWrapper {
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
   line-height: 1.42;
+  gap: 12px;
+}
+
+.activityContent {
+  display: flex;
+  flex-direction: column;
   gap: 24px;
+}
+
+.fullWidth {
+  grid-column: span 2;
 }
 
 .radioInput::before {
@@ -131,6 +254,10 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  @media (min-width: 834px) {
+    flex-direction: row-reverse;
+  }
 }
 
 .saveBtn {
@@ -140,7 +267,19 @@
   font-weight: 500;
   border-radius: 12px;
   background-color: #e3ffa8;
+
+  @media (min-width: 834px) {
+    width: 212px;
+    height: 36px;
+  }
 }
 .cancelBtn {
   color: #b6b6b6;
+
+  @media (min-width: 834px) {
+    width: 212px;
+    height: 36px;
+  }
 }
+
+/*  */
