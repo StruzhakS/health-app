@@ -13,7 +13,7 @@
   }
 
   @media (min-width: 1440px) {
-    width: 1440px;
+    width: 1372px;
   }
 }
 
@@ -47,8 +47,8 @@
 .nameTitle {
   font-weight: 500;
   line-height: 1.42;
-  /* margin-bottom: 12px; */
 }
+
 .nameInput {
   display: flex;
   width: 300px;
@@ -80,6 +80,20 @@
 .settingsAvatar {
   width: 36px;
   border-radius: 50%;
+}
+
+.mainSettingsForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @media (min-width: 834px) {
+    width: 780px;
+  }
+  @media (min-width: 1440px) {
+    width: 1372px;
+  }
 }
 
 .settingsForm {
