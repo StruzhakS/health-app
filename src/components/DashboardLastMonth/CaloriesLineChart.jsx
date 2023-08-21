@@ -88,7 +88,34 @@ const CaloriesLineChart = () => {
         display: false,
       },
       tooltip: {
+        titleMarginBottom: 20,
+        titleAlign: 'center',
+        position: 'nearest',
         enabled: true,
+        bodyFontFamily: 'Poppins',
+        bodyFontSize: 32,
+        bodyFontColor: '#FFF',
+        bodyAlign: 'center',
+        backgroundColor: '#0F0F0F',
+        borderColor: 'rgba(227, 255, 168, 0.20)',
+        borderWidth: 1,
+
+        bodySpacing: 6,
+        displayColors: false,
+        padding: 10,
+        caretPadding: 5,
+        caretSize: 0,
+        cornerRadius: 8,
+        boxHeight: 98,
+        callbacks: {
+          title: context => {
+            const dataIndex = context[0].dataIndex;
+            const value = values[dataIndex];
+            return value.toString();
+          },
+          label: () => '',
+          footer: () => 'calories',
+        },
       },
     },
   };
