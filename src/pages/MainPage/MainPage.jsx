@@ -4,9 +4,15 @@ import RecommendedFoodSection from 'components/RecommendedFoodSection/Recommende
 import { useMediaQuery } from 'react-responsive';
 
 import css from './MainPage.module.css';
+import { useEffect } from 'react';
+import { getFoodIntake } from 'redux/user/userApi';
 
 const MainPage = () => {
   const isTabletScreen = useMediaQuery({ minWidth: 834 });
+
+  useEffect(() => {
+    getFoodIntake();
+  });
 
   return (
     <>

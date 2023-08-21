@@ -39,3 +39,9 @@ export async function updateSettingsApi(body) {
   );
   return data;
 }
+
+export async function getFoodIntake() {
+  const { data } = await axios.get('/food-intake');
+  console.log(data);
+  return data;
+}
