@@ -1,7 +1,11 @@
+import { useSelector } from 'react-redux';
 import Icons from '../../assets/icons/symbol-defs.svg';
 import css from './MainPageDailyGoal.module.css';
 
 const MainPageDailyGoal = () => {
+  const defaultWater = useSelector(state => state.user.defaultWater);
+  const defaultCalories = useSelector(state => state.user.defaultCalories);
+
   return (
     <div>
       <h2 className={css.dailyGoalTitle}>Daily goal</h2>
@@ -13,7 +17,9 @@ const MainPageDailyGoal = () => {
             </svg>
             <div className={css.dailyGoalStatisticsListItemContainer}>
               <p className={css.dailyGoalStatisticsListItemTitle}>Calories</p>
-              <p className={css.dailyGoalStatisticsListItemData}>1700</p>
+              <p className={css.dailyGoalStatisticsListItemData}>
+                {defaultCalories}
+              </p>
             </div>
           </li>
           <li className={css.dailyGoalStatisticsListItem}>
@@ -23,7 +29,7 @@ const MainPageDailyGoal = () => {
             <div className={css.dailyGoalStatisticsListItemContainer}>
               <p className={css.dailyGoalStatisticsListItemTitle}>Water</p>
               <p className={css.dailyGoalStatisticsListItemData}>
-                1500
+                {defaultWater}
                 <span
                   className={css.dailyGoalStatisticsListItemDataDescription}
                 >

@@ -57,6 +57,7 @@ const RecordMealModal = ({
       carbonohidrates: carbonohidratesArr,
       fat: fatArr,
       protein: proteinArr,
+      dish: productNameArr,
     };
     console.log(sendedObj);
 
