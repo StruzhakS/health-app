@@ -1,9 +1,12 @@
+import Diary from 'components/Diary/Diary';
+import Layout from 'components/Layout/Layout';
+import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
+import MainAuth from 'pages/Auth/MainAuth/MainAuth';
+// import HomePage from '../../pages/';
+// import MainPage from 'pages/MainPage';
+import DashboardLastMonth from '../DashboardLastMonth/DashboardLastMonth';
+import { Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Diary from '../Diary/Diary';
-import Layout from '../Layout/Layout';
-import RecomendedFood from '../RecomendedFood/RecomendedFood';
-import MainAuth from '../../pages/Auth/MainAuth/MainAuth';
 import SignupForm from 'components/SignupForm/SignupForm';
 import MainPage from 'pages/MainPage/MainPage';
 import SignIn from '../../pages/Auth/SignIn/SignIn';
@@ -11,9 +14,9 @@ import SignUp from '../../pages/Auth/SignUp/SignUp';
 import ForgotPass from '../../pages/Auth/ForgotPass/ForgotPass';
 import PublicRoute from 'containers/PublicRoute.jsx';
 import PrivateRoute from 'containers/PrivateRoute';
-import Settings from 'components/Settings/Settings';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateAuthUser } from '../../redux/auth/authSlice';
+import SettingsPage from 'pages/Settings/SettingsPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -35,15 +38,8 @@ export const App = () => {
           <Route index element={isAuth ? <MainPage /> : <MainAuth />} />
           <Route
             path="/signin"
-            element={
-              <PublicRoute component={<SignIn />} redirect="/mainpage" />
-            }
+            element={<PublicRoute component={<SignIn />} redirect="/" />}
           />
-          <Route
-            path="/mainpage"
-            element={<PrivateRoute component={<MainPage />} />}
-          />
-          {/* <Route path="/signin" element={<SignIn />} /> */}
           <Route
             path="/signup"
             element={
@@ -53,15 +49,27 @@ export const App = () => {
           <Route path="/signup/:params" element={<SignupForm />} />
           <Route path="/forgot-password" element={<ForgotPass />} />
 
-          <Route path="/recomended-food" element={<RecomendedFood />} />
+          <Route
+            path="recommended-food"
+            element={<PrivateRoute component={<RecomendedFood />} />}
+          />
 
           <Route
             path="/diary"
-            element={<PrivateRoute component={<Diary />} />}
+            element={<PrivateRoute component={<Diary />} redirect={'/diary'} />}
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute
+                component={<DashboardLastMonth />}
+                redirect={'/dashboard'}
+              />
+            }
           />
           <Route
             path="/settings"
-            element={<PrivateRoute component={<Settings />} />}
+            element={<PrivateRoute component={<SettingsPage />} />}
           />
           <Route path="*" element={isAuth ? <MainPage /> : <MainAuth />} />
         </Route>

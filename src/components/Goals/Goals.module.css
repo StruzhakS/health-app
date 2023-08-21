@@ -1,5 +1,4 @@
 .goals {
-  margin-top: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,7 +84,6 @@
 
 @media screen and (min-width: 834px) {
   .goals {
-    margin-top: 40px;
     text-align: start;
   }
 

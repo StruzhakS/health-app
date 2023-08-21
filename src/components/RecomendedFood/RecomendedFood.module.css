@@ -1,3 +1,152 @@
-.Box {
-  text-align: center;
+.recomendedFoodSection {
+  margin: 0 auto;
+  width: 300px;
+}
+
+@media screen and (min-width: 834px) {
+  .recomendedFoodSection{
+    width: 780px;
+  }
+}
+
+@media screen and (min-width: 1440px){
+  .recomendedFoodSection {
+    width: 1440px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.recomendedFoodBox{
+
+}
+
+@media screen and (min-width: 1440px){
+  .recomendedFoodBox{
+    display: flex;
+  }
+}
+
+.recomendedFoodImg{
+  width: 300px;
+  height: 312px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 834px){
+  .recomendedFoodImg{
+   width: 380px;
+   height: 396px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px){
+  .recomendedFoodImg{
+    width: 536px;
+    height: 560px;
+    margin-left: 150px;
+    margin-top: 24px;
+    margin-right: 44px;
+    margin-bottom: 0px;
+  }
+}
+
+.recomendedFoodTitle {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  width: 242px;
+  margin-top: 16px;
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 834px){
+  .recomendedFoodTitle{
+    font-size: 30px;
+    line-height: 1.2;
+    width: 302px;
+    margin-top: 24px;
+    margin-left: 27px;
+  }
+}
+
+@media screen and (min-width: 1440px){
+  .recomendedFoodTitle{
+    margin-top: 20px;
+    margin-left: 34px;
+  }
+}
+
+.recomendedFoodList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media screen and (min-width: 834px){
+  .recomendedFoodList{
+    margin-left: 27px;
+    margin-right: 27px;
+  }
+}
+
+@media screen and (min-width: 1440px){
+  .recomendedFoodList{
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.recomendedFoodListItem {
+    width: 300px;
+    border-radius: 12px;
+    padding: 20px 24px;
+    background-color: #0F0F0F;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (min-width: 834px){
+  .recomendedFoodListItem{
+    width: 380px;
+  }
+}
+
+@media screen and (min-width: 1440px){
+  .recomendedFoodListItem{
+    width: 324px;
+  }
+}
+
+.recomendedFoodItemBox{
+  margin-left: 20px;
+}
+
+.recomendedFoodName{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  margin-bottom: 2px;
+}
+
+.recomendedFoodWeight{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+}
+
+.recomendedFoodColories{
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #B6B6B6;
 }
