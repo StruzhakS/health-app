@@ -61,19 +61,23 @@ const CaloriesLineChart = () => {
       x: {
         grid: {
           color: 'rgba(41, 41, 40, 1)',
+          drawTicks: false,
         },
         ticks: {
           color: '#B6B6B6',
+          padding: 6,
         },
       },
       y: {
         grid: {
           color: 'rgba(41, 41, 40, 1)',
+          drawTicks: false,
         },
         ticks: {
           color: '#B6B6B6',
           callback: yAxisFormatter,
           stepSize: 1000,
+          padding: 8,
         },
         suggestedMin: 0,
         suggestedMax: 2000,
@@ -94,7 +98,8 @@ const CaloriesLineChart = () => {
       <div className={css.dashboardCaloriesContainer}>
         <span className={css.caloriesTitle}>Calories</span>
         <span className={css.averageCalTitle}>
-          Average value: {average} cal
+          Average value:
+          <span className={css.caloriesSubtitle}> {average} cal</span>
         </span>
       </div>
       <div className={css.caloriesChartWrapper}>

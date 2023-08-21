@@ -1,40 +1,34 @@
 import React, { useState } from 'react';
-import Modal from 'react-modal'; // Імпорт бібліотеки react-modal
 import sprite from '../../../assets/icons/symbol-defs.svg';
 import s from './DateSelect.module.css';
 
 const DateSelector = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('lastMonth');
 
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
   return (
-    <div className={s.dateSelectorContainer}>
-      <button onClick={handleModalOpen} className={s.lastMonthBtn} >Last Month
-        <svg className={s.dashboardArrowDownSvg}>
-          <use
-            className={s.dashboardArrowDownSvgLink}
-            xlinkHref={`${sprite}#arrow-down`}
-          ></use>
-        </svg>
-      </button>
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={handleModalClose}
-        contentLabel="ModalDashBoard"
-        className={s.dashboardSelect} 
-        overlayClassName={s.modalOverlay} 
+    <div className={s.selectBox}>
+      <select
+        className={s.selectBox}
+        value={selectedOption}
+        onChange={handleOptionChange}
       >
-        <p onClick={handleModalClose}>Last Year</p>
-      </Modal>
+        <option className={s.lastYearBtn} value="lastMonth">Last Month</option>
+        <option   className={s.lastYearBtn} value="lastYear">Last Year</option>
+      </select>
     </div>
   );
 };
 
 export default DateSelector;
+
+
+// <div class="select_box">
+//  <select>
+//    <option>Test This Select</option>
+//    <option>Test This Select</option>
+//  </select>
+// </div>
