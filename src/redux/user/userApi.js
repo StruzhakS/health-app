@@ -39,3 +39,13 @@ export async function updateSettingsApi(body) {
   );
   return data;
 }
+
+export async function getFoodIntake() {
+  const { data } = await axios.get('/food-intake');
+  return data;
+}
+
+export async function setWaterIntake(body) {
+  const { data } = await axios.post('/water-intake', body);
+  return data;
+}

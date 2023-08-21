@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import css from './WaterIntakeModal.module.css';
+import { useDispatch } from 'react-redux';
+import { updateWaterOperations } from 'redux/user/userOperations';
 
 export const customStyles = {
   overlay: {
@@ -15,10 +17,18 @@ const WaterIntakeModal = ({
 }) => {
   const [milliliters, setMilliliters] = useState(0);
 
+  const dispatch = useDispatch();
+
   const handleSubmit = evt => {
     evt.preventDefault();
+
+    if (milliliters <= 0) {
+      return;
+    }
     document.body.style.overflow = 'auto';
     setWaterIntakeModalOpen(false);
+    setMilliliters(0);
+    dispatch(updateWaterOperations({ water: milliliters }));
   };
 
   const onCloseButtonClick = () => {
