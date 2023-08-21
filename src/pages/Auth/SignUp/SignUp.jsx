@@ -96,7 +96,7 @@ const SignUp = () => {
         </h3>
         {error && <p className={styles.error}>{error}</p>}
         <div className={styles.center}>
-          <form className={styles.center} onSubmit={handleSubmit}>
+          <form noValidate className={styles.center} onSubmit={handleSubmit}>
             <input
               className={styles.input}
               type="text"
