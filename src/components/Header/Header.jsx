@@ -14,7 +14,7 @@ export const customStyles = {
 Modal.setAppElement('#root');
 
 const Header = () => {
-  const isAuth = useSelector(state => state?.auth?.token);
+  const isAuth = useSelector(state => state.auth?.user?.requirements);
 
   return isAuth ? <AuthHeader /> : <UnAuthHeader />;
 };
