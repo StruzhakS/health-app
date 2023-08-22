@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { forgotPassword } from '../../../redux/auth/authOperations';
 import styles from './ForgotPass.module.css';
+import a from '../../../animations/animations.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
@@ -28,7 +29,7 @@ const ForgotPass = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.imgContainer}>
+      <div className={`${styles.imgContainer} ${a.slideUpToDown}`}>
         <img
           className={`${styles.imgIllustrationDesktop} ${styles.imgIllustration}`}
           src={IllustrationDesktop}
@@ -45,7 +46,7 @@ const ForgotPass = () => {
           alt="Illustration"
         />
       </div>
-      <div className={styles.ContainerDiv}>
+      <div className={`${styles.ContainerDiv} ${a.slideDownToUp}`}>
         <h2 className={styles.heading}>Forgot Password</h2>
         <h3 className={styles.h3}>
           We will send you an email with recovery instructions

@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import s from './Header.module.css';
+import a from '../../animations/animations.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -37,7 +38,7 @@ const AuthHeader = () => {
   return (
     <div className={s.header}>
       <div className={s.logoWrapper}>
-        <NavLink to={'/'} className={s.logoLink}>
+        <NavLink to={'/'} className={`${s.logoLink} ${a.logoHover}`}>
           Your Health
         </NavLink>
 
@@ -74,7 +75,7 @@ const AuthHeader = () => {
         </button>
       </div>
       <Modal
-        className={s.userSettingsModal}
+        className={`${s.userSettingsModal} ${a.scaleInVerTop}`}
         isOpen={setingsModalIsOpen}
         onRequestClose={() => setSetingsModalIsOpen(false)}
         style={customStyles}
