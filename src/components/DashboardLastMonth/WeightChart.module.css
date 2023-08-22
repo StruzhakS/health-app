@@ -119,7 +119,7 @@ color: #B6B6B6;
 .weighChartContainerScroll::-webkit-scrollbar {
  height: 8px;
   background-color: #0F0F0F;
-  border-radius: 8px;
+  border-radius: 12px;
 }  
 
 .weighChartContainerScroll::-webkit-scrollbar-thumb {

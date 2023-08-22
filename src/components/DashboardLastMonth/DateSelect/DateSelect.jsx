@@ -40,7 +40,7 @@ const DateSelector = () => {
         className={s.dashboardSelect} 
         overlayClassName={s.modalOverlay} 
       >
-        <p onClick={handleButtonClick} >Last Year</p>
+        <p onClick={handleButtonClick} >{ buttonText}</p>
       </Modal>
     </div>
   );

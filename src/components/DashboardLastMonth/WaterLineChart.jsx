@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,8 +12,10 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
+import { useDispatch } from 'react-redux';
 import recommendedFood from '../../recomended-food';
 import css from './WaterLineChart.module.css';
+import { getDefaultWaterAndCalories } from 'redux/user/userOperations';
 
 ChartJS.register(
   CategoryScale,
@@ -26,8 +28,27 @@ ChartJS.register(
   Filler
 );
 
+
 const WaterLineChart = () => {
-  const values = recommendedFood.map(item => item.calories * 10);
+
+ const [chartData, setChartData] = useState([]);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDefaultWaterAndCalories()).then((response) => {
+      const waterData = response.payload.defaultWater;
+      setChartData(waterData);
+    });
+  }, [dispatch]);
+
+  const values = chartData; 
+console.log(values);
+
+
+
+  // const values = recommendedFood.map(item => item.calories * 10);
+  
 
   const sum = values.reduce(
     (accumulator, currentValue) => accumulator + currentValue,

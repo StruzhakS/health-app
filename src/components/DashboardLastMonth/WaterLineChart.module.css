@@ -76,12 +76,13 @@
 
 .chartContainer::-webkit-scrollbar {
   background-color: #0f0f0f; 
-  width: 8px;
+  height: 8px;
+   border-radius: 12px;
 }
 
 .chartContainer::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  height: 94px;
+  height: 8px;
  
 }
