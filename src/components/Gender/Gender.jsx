@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import s from '../Goals/Goals.module.css';
+import a from '../../animations/animations.module.css';
 import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
@@ -46,11 +47,32 @@ const Gender = () => {
 
   return (
     <div className={s.goals}>
-      {isMobile && <img src={mob.gender_and_ageMob} alt="genders" />}
-      {isTablet && <img src={tab.gender_and_ageTab} alt="genders" />}
-      {isDesktop && <img src={desk.gender_and_ageDesk} alt="genders" />}
+      {isMobile && (
+        <img
+          className={a.slideUpToDown}
+          src={mob.gender_and_ageMob}
+          alt="genders"
+        />
+      )}
+      {isTablet && (
+        <img
+          className={a.slideUpToDown}
+          src={tab.gender_and_ageTab}
+          alt="genders"
+        />
+      )}
+      {isDesktop && (
+        <img
+          className={a.slideUpToDown}
+          src={desk.gender_and_ageDesk}
+          alt="genders"
+        />
+      )}
 
-      <form onSubmit={handleSubmit} className={s.formGoals}>
+      <form
+        onSubmit={handleSubmit}
+        className={`${s.formGoals} ${a.slideDownToUp}`}
+      >
         <h1 className={s.goalsTitle}>Select gender, Age</h1>
         <h2 className={s.goalsSubtitle}>
           Choose a goal so that we can <br /> help you effectively
@@ -89,9 +111,9 @@ const Gender = () => {
           maxLength={3}
           autoComplete="off"
         />
-        <button className={s.btnNext}>Next</button>
+        <button className={`${s.btnNext} ${a.hoverYellowBtn}`}>Next</button>
         <button
-          className={s.btnBack}
+          className={`${s.btnBack} ${a.hoverCloseBtn}`}
           type="button"
           onClick={() => navigate(-1)}
         >

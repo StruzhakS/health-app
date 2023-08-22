@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './SignUp.module.css';
+
+import a from '../../../animations/animations.module.css';
 import { signUp } from '../../../redux/auth/authOperations';
+
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Formik } from 'formik';
@@ -61,8 +64,10 @@ const SignUp = () => {
 
   return (
     <div className={styles.container}>
+
       <ToastContainer />
-      <div className={styles.containerImg}>
+      <div className={`${styles.containerImg} ${a.slideUpToDown}`}>
+
         <img
           className={`${styles.imgIllustrationDesktop} ${styles.imgIllustration}`}
           src={IllustrationDesktop}
@@ -79,7 +84,7 @@ const SignUp = () => {
           alt="Illustration"
         />
       </div>
-      <div className={styles.ContainerDiv}>
+      <div className={`${styles.ContainerDiv} ${a.slideDownToUp}`}>
         <h2 className={styles.heading}>Sign Up</h2>
         <h3 className={styles.subheading}>
           You need to register to use the service

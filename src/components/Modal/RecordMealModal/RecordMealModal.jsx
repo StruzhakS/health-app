@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import css from './RecordMealModal.module.css';
-
+import a from '../../../animations/animations.module.css';
 import Icons from '../../../assets/icons/symbol-defs.svg';
 import Breakfast from '../../../assets/img/mobile/Breakfast.png';
 import Lunch from '../../../assets/img/mobile/Lunch.png';
 import Dinner from '../../../assets/img/mobile/Dinner.png';
 import Snack from '../../../assets/img/mobile/Snack.png';
+import { useDispatch } from 'react-redux';
+import { updateFoodOperations } from 'redux/user/userOperations';
 
 const imageObject = { Breakfast, Lunch, Dinner, Snack };
 
@@ -28,6 +30,8 @@ const RecordMealModal = ({
   const [carbonohidratesArr, setCarbonohidratesArr] = useState([0]);
   const [proteinArr, setProteinArr] = useState([0]);
   const [fatArr, setFatArr] = useState([0]);
+
+  const dispatch = useDispatch();
 
   const onAddMoreButtonClick = () => {
     const newValue = numberOfItems.length;
@@ -60,9 +64,8 @@ const RecordMealModal = ({
       protein: proteinArr[i],
     }));
 
-    console.log(sendedObj);
-
     onCloseButtonClick();
+    dispatch(updateFoodOperations(sendedObj));
   };
 
   const onNameChange = (evt, index) => {
@@ -131,7 +134,7 @@ const RecordMealModal = ({
 
   return (
     <Modal
-      className={css.recordMealModal}
+      className={`${css.recordMealModal} ${a.scaleInCenter}`}
       isOpen={recordMealModalOpen}
       onRequestClose={onCloseButtonClick}
       style={customStyles}
@@ -194,14 +197,14 @@ const RecordMealModal = ({
         </button>
         <div className={css.recordMealModalBtnContainer}>
           <button
-            className={css.recordMealModalConfirmBtn}
+            className={`${css.recordMealModalConfirmBtn} ${a.hoverYellowBtn}`}
             onClick={handleSubmit}
             type="submit"
           >
             Confirm
           </button>
           <button
-            className={css.recordMealModalCancelBtn}
+            className={`${css.recordMealModalCancelBtn} ${a.hoverCloseBtn}`}
             type="button"
             onClick={onCloseButtonClick}
           >

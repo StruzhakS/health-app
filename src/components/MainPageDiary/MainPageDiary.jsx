@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import css from './MainPageDiary.module.css';
-
+import a from '../../animations/animations.module.css';
 import Icons from '../../assets/icons/symbol-defs.svg';
 import Breakfast from '../../assets/img/mobile/Breakfast.png';
 import Lunch from '../../assets/img/mobile/Lunch.png';
@@ -8,17 +8,43 @@ import Dinner from '../../assets/img/mobile/Dinner.png';
 import Snack from '../../assets/img/mobile/Snack.png';
 import { useState } from 'react';
 import RecordMealModal from 'components/Modal/RecordMealModal/RecordMealModal';
-
-const Data = [
-  { carbonohidrates: 60, protein: 40, fat: 20 },
-  { carbonohidrates: 110, protein: 79.5, fat: 24.8 },
-  {},
-  {},
-];
+import { useSelector } from 'react-redux';
 
 const MainPageDiary = () => {
   const [recordMealModalOpen, setRecordMealModalOpen] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState('');
+
+  const breakfast = useSelector(state => state.user.breakfast);
+  const lunch = useSelector(state => state.user.lunch);
+  const dinner = useSelector(state => state.user.dinner);
+  const snack = useSelector(state => state.user.snack);
+
+  const calculetedData = () => {
+    const sendedArr = [];
+    const calculetedArr = [breakfast, lunch, dinner, snack];
+
+    calculetedArr.map((el, i) => {
+      if (!el.length) {
+        sendedArr[i] = {};
+      } else {
+        el.map(
+          ({ carbonohidrates, fat, protein }) =>
+            (sendedArr[i] = {
+              carbonohidrates: sendedArr[i]?.carbonohidrates
+                ? +sendedArr[i].carbonohidrates + +carbonohidrates
+                : +carbonohidrates,
+              fat: sendedArr[i]?.fat ? +sendedArr[i].fat + +fat : +fat,
+              protein: sendedArr[i]?.protein
+                ? +sendedArr[i].protein + +protein
+                : +protein,
+            })
+        );
+      }
+      return null;
+    });
+
+    return sendedArr;
+  };
 
   const onRecordMealButtonClick = evt => {
     setSelectedMeal(evt.target.name);
@@ -27,7 +53,7 @@ const MainPageDiary = () => {
   };
 
   return (
-    <section className={css.DiarySection}>
+    <section className={`${css.DiarySection} ${a.slideLeftToRight}`}>
       <RecordMealModal
         selectedMeal={selectedMeal}
         recordMealModalOpen={recordMealModalOpen}
@@ -41,7 +67,7 @@ const MainPageDiary = () => {
       </div>
 
       <ul className={css.mealList}>
-        {Data.map(({ carbonohidrates, protein, fat }, i) => (
+        {calculetedData().map(({ carbonohidrates, protein, fat }, i) => (
           <li className={css.mealListItem} key={i}>
             <div className={css.mealTitle}>
               <img

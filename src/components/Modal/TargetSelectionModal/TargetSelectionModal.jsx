@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import s from './TargetSelectionModal.module.css';
+import a from '../../../animations/animations.module.css';
 import { customStyles } from 'components/Header/Header';
 import loseFat from '../../../assets/icons/emoji/Lose_fat_men.png';
 import maintain from '../../../assets/icons/emoji/Maintake_men.png';
@@ -41,7 +42,7 @@ const TargetSelectionModal = ({
   return (
     <>
       <Modal
-        className={s.targetModal}
+        className={`${s.targetModal} ${a.scaleInCenter}`}
         isOpen={targetModalOpen}
         onRequestClose={handleCancel}
         style={isMobileScreen ? customMobileStyles : customStyles}
@@ -153,12 +154,14 @@ const TargetSelectionModal = ({
               </span>
             </label>
           </div>
-          <button className={s.confirmTargetBtn}>Confirm</button>
+          <button className={`${s.confirmTargetBtn} ${a.hoverYellowBtn}`}>
+            Confirm
+          </button>
           {isMobileScreen && (
             <button
               type="button"
               onClick={handleCancel}
-              className={s.cancelTargetButton}
+              className={`${s.cancelTargetButton} ${a.hoverCloseBtn}`}
             >
               Cancel
             </button>

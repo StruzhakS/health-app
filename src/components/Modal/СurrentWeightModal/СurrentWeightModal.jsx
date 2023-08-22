@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import s from './СurrentWeightModal.module.css';
+import a from '../../../animations/animations.module.css';
 import { customStyles } from 'components/Header/Header';
 import Modal from 'react-modal';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
@@ -43,7 +44,7 @@ const СurrentWeightModal = ({
   return (
     <>
       <Modal
-        className={s.weightModal}
+        className={`${s.weightModal} ${a.scaleInCenter}`}
         isOpen={weightModalOpen}
         onRequestClose={handleCancel}
         style={isMobileScreen ? customMobileStyles : customStyles}
@@ -71,12 +72,14 @@ const СurrentWeightModal = ({
             onChange={e => setWeight(e.target.value)}
             value={weight}
           />
-          <button className={s.confirmWeight}>Confirm</button>
+          <button className={`${s.confirmWeight} ${a.hoverYellowBtn}`}>
+            Confirm
+          </button>
           {isMobileScreen && (
             <button
               type="button"
               onClick={handleCancel}
-              className={s.cancelTargetButton}
+              className={`${s.cancelTargetButton} ${a.hoverCloseBtn}`}
             >
               Cancel
             </button>
