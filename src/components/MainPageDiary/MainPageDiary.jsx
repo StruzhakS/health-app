@@ -46,8 +46,6 @@ const MainPageDiary = () => {
     return sendedArr;
   };
 
-  console.log(calculetedData());
-
   const onRecordMealButtonClick = evt => {
     setSelectedMeal(evt.target.name);
     setRecordMealModalOpen(true);
