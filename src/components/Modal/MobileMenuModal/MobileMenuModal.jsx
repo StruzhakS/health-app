@@ -9,7 +9,7 @@ import ControlPanel from 'components/ControlPanel/ControlPanel';
 const MobileMenuModal = ({ mobileMenuOpen, setMobileMenuOper }) => {
   return (
     <Modal
-      className={`${s.mobileMenuModal} ${a.slideRightToLeft}`}
+      className={`${s.mobileMenuModal} ${a.scaleInCenter}`}
       isOpen={mobileMenuOpen}
       onRequestClose={() => setMobileMenuOper(false)}
       style={customStyles}
