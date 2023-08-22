@@ -49,3 +49,8 @@ export async function setWaterIntake(body) {
   const { data } = await axios.post('/water-intake', body);
   return data;
 }
+
+export async function setFoodIntake(body) {
+  const { data } = await axios.post('/food-intake', body);
+  return data;
+}
