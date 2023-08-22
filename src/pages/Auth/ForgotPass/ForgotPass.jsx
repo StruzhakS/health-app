@@ -11,8 +11,8 @@ import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
 const ForgotPass = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector(state => state.auth.error);
   const [email, setEmail] = useState('');
+  const error = useSelector(state => state.auth.error);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const ForgotPass = () => {
       if (res?.payload?.success) {
         navigate('/signIn');
       } else {
-        alert(res?.payload?.message ?? 'error');
+        alert(error?.message);
       }
     }
   };

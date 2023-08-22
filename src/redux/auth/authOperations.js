@@ -52,17 +52,11 @@ export const signIn = createAsyncThunk(
 );
 
 // Асинхронная операция для восстановления пароля
-export const forgotPassword = createAsyncThunk(
-  'auth/forgotPassword',
-  async (email, { rejectWithValue }) => {
-    try {
-      const response = await forgotPasswordAPI(email);
-      return { success: true, ...response };
-    } catch (error) {
-      return { success: false, ...error };
-    }
-  }
-);
+export const forgotPassword = createAsyncThunk('auth/forgotPassword', email => {
+  const response = forgotPasswordAPI(email);
+  console.log(response);
+  return response;
+});
 
 export const addGoalsThunk = createAsyncThunk(
   'auth/requirements',

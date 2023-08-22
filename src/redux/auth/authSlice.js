@@ -28,7 +28,8 @@ const handlePending = state => {
   state.isLoading = true;
 };
 const handleRejected = (state, { error }) => {
-  state.error = error.message;
+  // state.error = error.message;
+  console.log(error);
   state.isLoading = false;
 };
 const handleLogout = state => {
@@ -97,9 +98,9 @@ const authSlice = createSlice({
 
       .addMatcher(
         action => action.type.endsWith('/rejected'),
-        (state, { payload }) => {
-          console.log(payload);
-          state.error = payload;
+        (state, { error }) => {
+          console.log(error.message);
+          state.error = error.message;
         }
       );
   },
