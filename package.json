@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://struzhaks.github.io/health-app/",
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
@@ -12,7 +14,7 @@
     "clsx": "^2.0.0",
     "echarts": "^5.4.3",
     "nanoid": "^4.0.2",
-    "react": "^18.1.0",
+    "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.10.1",
@@ -24,6 +26,7 @@
     "react-select": "^5.7.4",
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
+    "select": "^1.1.2",
     "styled-components": "^5.3.10",
     "web-vitals": "^2.1.3"
   },

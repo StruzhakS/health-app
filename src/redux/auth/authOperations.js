@@ -73,14 +73,7 @@ export const addGoalsThunk = createAsyncThunk(
   }
 );
 // Асинхронная операция для выхода
-export const logoutUser = createAsyncThunk(
-  'auth/logout',
-  async (token, { rejectWithValue }) => {
-    try {
-      const response = await logoutAPI(token);
-      return { success: true, ...response };
-    } catch (error) {
-      return { success: false, ...error };
-    }
-  }
-);
+export const logoutUserThunk = createAsyncThunk('auth/logout', () => {
+  logoutAPI();
+  return;
+});
