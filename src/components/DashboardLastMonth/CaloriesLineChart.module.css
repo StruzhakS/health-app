@@ -25,6 +25,10 @@ font-style: normal;
 font-weight: 400;
 line-height: 26px;
 }
+.caloriesSubtitle{
+  font-size: 14px;
+  color: #B6B6B6;
+}
 @media screen and (min-width: 834px) {
   .caloriesTitle {
     font-size: 18px;
@@ -52,7 +56,7 @@ line-height: 20px;
 }
 @media screen and (min-width: 1440px) {
   .caloriesChartWrapper {
-   width: 667px; 
+   width: 670px; 
   }
 }
 .lineChartContainer{
@@ -82,7 +86,7 @@ height: 313px;
 }
 @media screen and (min-width: 1440px) {
   .caloriesChartContainer {
-   width: 667px;
+   width: 672px;
    height: 382px;
    margin-bottom: 0px;
   }

@@ -29,7 +29,10 @@
   font-weight: 400;
   line-height: 20px;
 }
-
+.waterSubtitle{
+  font-size: 14px;
+  color: #B6B6B6;
+}
 .waterLineChartContainer {
   border-radius: 12px;
   padding: 25px 5px 24px 14px;
@@ -65,7 +68,7 @@
 }
 @media screen and (min-width: 1440px) {
   .chartContainer {
-   width: 667px; 
+   width: 671px; 
      height: 382px;
        margin-bottom: 0px;
   }
