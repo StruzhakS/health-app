@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import a from '../../animations/animations.module.css';
 import s from '../Goals/Goals.module.css';
 import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
@@ -35,11 +36,24 @@ const Activity = () => {
   const multiplyClass = clsx(s.goalList, s.gap);
   return (
     <div className={s.goals}>
-      {isMobile && <img src={mob.activityMob} alt="activity" />}
-      {isTablet && <img src={tab.activityTab} alt="activity" />}
-      {isDesktop && <img src={desk.activityDesk} alt="activity" />}
+      {isMobile && (
+        <img className={a.slideUpToDown} src={mob.activityMob} alt="activity" />
+      )}
+      {isTablet && (
+        <img className={a.slideUpToDown} src={tab.activityTab} alt="activity" />
+      )}
+      {isDesktop && (
+        <img
+          className={a.slideUpToDown}
+          src={desk.activityDesk}
+          alt="activity"
+        />
+      )}
 
-      <form onSubmit={handleSubmit} className={s.formGoals}>
+      <form
+        onSubmit={handleSubmit}
+        className={`${s.formGoals} ${a.slideDownToUp}`}
+      >
         <h1 className={s.goalsTitle}>Your Activity</h1>
         <h2 className={s.goalsSubtitle}>
           To correctly calculate calorie <br /> and water intake
@@ -105,9 +119,9 @@ const Activity = () => {
             day and include strength exercises in your training program
           </span>
         </label>
-        <button className={s.btnNext}>Next</button>
+        <button className={`${s.btnNext} ${a.hoverYellowBtn}`}>Next</button>
         <button
-          className={s.btnBack}
+          className={`${s.btnBack} ${a.hoverCloseBtn}`}
           type="button"
           onClick={() => navigate(-1)}
         >

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import s from './Goals.module.css';
+import a from '../../animations/animations.module.css';
 import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
@@ -30,11 +31,20 @@ const Goal = () => {
 
   return (
     <div className={s.goals}>
-      {isMobile && <img src={mob.goalsMob} alt="goals" />}
-      {isTablet && <img src={tab.goalsTab} alt="goals" />}
-      {isDesktop && <img src={desk.goalsDesk} alt="goals" />}
+      {isMobile && (
+        <img className={a.slideUpToDown} src={mob.goalsMob} alt="goals" />
+      )}
+      {isTablet && (
+        <img className={a.slideUpToDown} src={tab.goalsTab} alt="goals" />
+      )}
+      {isDesktop && (
+        <img className={a.slideUpToDown} src={desk.goalsDesk} alt="goals" />
+      )}
 
-      <form onSubmit={handleSubmit} className={s.formGoals}>
+      <form
+        onSubmit={handleSubmit}
+        className={`${s.formGoals} ${a.slideDownToUp}`}
+      >
         <h1 className={s.goalsTitle}>Your goal</h1>
         <h2 className={s.goalsSubtitle}>
           Choose a goal so that we can help you effectively
@@ -69,7 +79,7 @@ const Goal = () => {
           />
           <span className={s.goalList}>Gain Muscle</span>
         </label>
-        <button className={s.btnNext}>Next</button>
+        <button className={`${s.btnNext} ${a.hoverYellowBtn}`}>Next</button>
       </form>
     </div>
   );
