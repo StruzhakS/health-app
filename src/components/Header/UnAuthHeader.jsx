@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Header.module.css';
+import a from '../../animations/animations.module.css';
 import { NavLink } from 'react-router-dom';
 import iconsSrc from '../../assets/icons/symbol-defs.svg';
 import clsx from 'clsx';
@@ -7,7 +8,7 @@ import clsx from 'clsx';
 const UnAuthHeader = () => {
   return (
     <div className={s.header}>
-      <NavLink to={'/'} className={s.logoLink}>
+      <NavLink to={'/'} className={`${s.logoLink} ${a.logoHover}`}>
         HealthyHub
       </NavLink>
       <nav className={s.navlink}>

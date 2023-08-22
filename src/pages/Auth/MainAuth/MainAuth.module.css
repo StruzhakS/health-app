@@ -71,11 +71,6 @@
   text-align: center;
 }
 
-.auth-button:hover {
-  background-color: #e3ffa8;
-  color: #000000;
-}
-
 .main-auth-button {
   display: flex;
   justify-content: center;

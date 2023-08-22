@@ -75,7 +75,7 @@ const AuthHeader = () => {
         </button>
       </div>
       <Modal
-        className={`${s.userSettingsModal} ${a.scaleInVerTop}`}
+        className={`${s.userSettingsModal} ${a.scaleInCenter}`}
         isOpen={setingsModalIsOpen}
         onRequestClose={() => setSetingsModalIsOpen(false)}
         style={customStyles}
