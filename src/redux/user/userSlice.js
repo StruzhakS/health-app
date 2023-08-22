@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   getDefaultWaterAndCalories,
+  updateFoodOperations,
   updateWaterOperations,
 } from './userOperations';
 
@@ -21,6 +22,11 @@ const initialState = {
 
   error: null,
   isLoading: false,
+
+  breakfast: [],
+  lunch: [],
+  dinner: [],
+  snack: [],
 };
 
 const userSlice = createSlice({
@@ -29,7 +35,6 @@ const userSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getDefaultWaterAndCalories.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.defaultWater = payload.defaultWater;
         state.defaultCalories = payload.defaultCalories;
 
@@ -43,9 +48,26 @@ const userSlice = createSlice({
         state.fat = payload.fat;
         state.carbo = payload.carbonohidrates;
         state.protein = payload.protein;
+
+        state.breakfast = payload.breakfast;
+        state.lunch = payload.lunch;
+        state.dinner = payload.dinner;
+        state.snack = payload.snack;
       })
       .addCase(updateWaterOperations.fulfilled, (state, { payload }) => {
         state.water = payload.water;
+      })
+      .addCase(updateFoodOperations.fulfilled, (state, { payload }) => {
+        state.fat = payload.fat;
+        state.carbo = payload.carbonohidrates;
+        state.protein = payload.protein;
+
+        state.calories += payload.calories;
+
+        state.breakfast = payload.breakfast;
+        state.lunch = payload.lunch;
+        state.dinner = payload.dinner;
+        state.snack = payload.snack;
       })
       .addMatcher(
         action => action.type.endsWith('/rejected'),
