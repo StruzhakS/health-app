@@ -7,6 +7,8 @@ import Breakfast from '../../../assets/img/mobile/Breakfast.png';
 import Lunch from '../../../assets/img/mobile/Lunch.png';
 import Dinner from '../../../assets/img/mobile/Dinner.png';
 import Snack from '../../../assets/img/mobile/Snack.png';
+import { useDispatch } from 'react-redux';
+import { updateFoodOperations } from 'redux/user/userOperations';
 
 const imageObject = { Breakfast, Lunch, Dinner, Snack };
 
@@ -28,6 +30,8 @@ const RecordMealModal = ({
   const [carbonohidratesArr, setCarbonohidratesArr] = useState([0]);
   const [proteinArr, setProteinArr] = useState([0]);
   const [fatArr, setFatArr] = useState([0]);
+
+  const dispatch = useDispatch();
 
   const onAddMoreButtonClick = () => {
     const newValue = numberOfItems.length;
@@ -60,9 +64,8 @@ const RecordMealModal = ({
       protein: proteinArr[i],
     }));
 
-    console.log(sendedObj);
-
     onCloseButtonClick();
+    dispatch(updateFoodOperations(sendedObj));
   };
 
   const onNameChange = (evt, index) => {
