@@ -78,6 +78,7 @@ padding: 15px;
 border-radius: 12px;
 box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
 justify-content: center;
+position: relative;
 }
 @media screen and (min-width: 834px) {
   .dashboardSelect {
@@ -93,7 +94,7 @@ justify-content: center;
   }
 }
 .modalOverlay {
-  position: absolute;
+  position:absolute;
   top: 129px;
   left: 39px;
   
@@ -105,14 +106,14 @@ justify-content: center;
 }
 @media screen and (min-width: 834px) {
   .modalOverlay {
-    top: -263px;
-  left: -496px;
+    top: 148px;
+  left: 49px;
     
   }
 }
 @media screen and (min-width: 1440px) {
   .modalOverlay {
-   top: -414px;
-  left: -1111px;
+   top: 148px;
+  left: 58px;
   }
 }
