@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import css from './MainPageFood.module.css';
+import a from '../../animations/animations.module.css';
 import { leftCount, percentageCount } from 'helpers/percentageCount';
 
 const MainPageFood = () => {
@@ -14,7 +15,7 @@ const MainPageFood = () => {
   const protein = useSelector(state => state.user.protein);
 
   return (
-    <div>
+    <div className={a.slideRightToLeft}>
       <h2 className={css.foodTitle}>Food</h2>
       <div className={css.foodStatisticsContainer}>
         {/* //////////////////////////////// */}
