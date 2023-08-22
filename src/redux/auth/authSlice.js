@@ -4,6 +4,7 @@ import {
   signIn,
   forgotPassword,
   addGoalsThunk,
+  logoutUserThunk,
 } from './authOperations';
 import {
   updateGoalOperation,
@@ -30,7 +31,13 @@ const handleRejected = (state, { error }) => {
   state.error = error.message;
   state.isLoading = false;
 };
-
+const handleLogout = state => {
+  state.user = null;
+  state.step = null;
+  state.token = null;
+  state.error = '';
+  state.isLoading = false;
+};
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -84,6 +91,10 @@ const authSlice = createSlice({
       .addCase(addGoalsThunk.fulfilled, handleAddGoals)
       .addCase(addGoalsThunk.rejected, handleRejected)
       .addCase(addGoalsThunk.pending, handlePending)
+      .addCase(logoutUserThunk.fulfilled, handleLogout)
+      .addCase(logoutUserThunk.rejected, handlePending)
+      .addCase(logoutUserThunk.pending, handlePending)
+
       .addMatcher(
         action => action.type.endsWith('/rejected'),
         (state, { payload }) => {
