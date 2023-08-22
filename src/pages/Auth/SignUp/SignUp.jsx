@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SignUp.module.css';
+import a from '../../../animations/animations.module.css';
 import { signUp, signIn } from '../../../redux/auth/authOperations';
 import { Link, useNavigate } from 'react-router-dom';
 import { updateAuthUser } from '../../../redux/auth/authSlice';
@@ -72,7 +73,7 @@ const SignUp = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.containerImg}>
+      <div className={`${styles.containerImg} ${a.slideUpToDown}`}>
         <img
           className={`${styles.imgIllustrationDesktop} ${styles.imgIllustration}`}
           src={IllustrationDesktop}
@@ -89,7 +90,7 @@ const SignUp = () => {
           alt="Illustration"
         />
       </div>
-      <div className={styles.ContainerDiv}>
+      <div className={`${styles.ContainerDiv} ${a.slideDownToUp}`}>
         <h2 className={styles.heading}>Sign Up</h2>
         <h3 className={styles.subheading}>
           You need to register to use the service

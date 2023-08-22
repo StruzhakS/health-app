@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import Icons from '../../assets/icons/symbol-defs.svg';
 import css from './MainPageWater.module.css';
+import a from '../../animations/animations.module.css';
 import WaterIntakeModal from 'components/Modal/WaterIntakeModal/WaterIntakeModal';
 import { useSelector } from 'react-redux';
-import { percentageCount } from 'helpers/percentageCount';
+import { leftCount, percentageCount } from 'helpers/percentageCount';
 
 const MainPageWater = () => {
   const [waterIntakeModalOpen, setWaterIntakeModalOpen] = useState(false);
@@ -18,7 +19,7 @@ const MainPageWater = () => {
   };
 
   return (
-    <div>
+    <div className={a.slideLeftToRight}>
       <h2 className={css.waterTitle}>Water</h2>
       <div className={css.waterStatisticsContainer}>
         <div className={css.waterStatisticsScheduleContainer}>
@@ -40,14 +41,15 @@ const MainPageWater = () => {
           </p>
           <p className={css.waterStatisticsAdditionalInfo}>
             left:
-            <span className={css.waterStatisticsHelperInfo}>{`${
-              defaultWater - water
-            } ml`}</span>
+            <span className={css.waterStatisticsHelperInfo}>{`${leftCount(
+              defaultWater,
+              water
+            )} ml`}</span>
           </p>
           <button
             onClick={onAddWaterButtonClick}
             type="button"
-            className={css.waterStatisticsInfoButton}
+            className={`${css.waterStatisticsInfoButton} ${a.hoverYellowBtn}`}
           >
             <svg width="16px" height="16px" className={css.svgPlus}>
               <use xlinkHref={`${Icons}#add`} />

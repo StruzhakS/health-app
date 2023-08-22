@@ -1,6 +1,7 @@
 import recommendedFood from '../../recomended-food.json';
 import Food from '../../assets/img/desktop/Food.png';
 import s from './RecomendedFood.module.css';
+import a from '../../animations/animations.module.css';
 
 const RecomendedFood = () => {
   const randomArr = () => {
@@ -32,10 +33,16 @@ const RecomendedFood = () => {
 
   return (
     <div className={s.recomendedFoodSection}>
-      <h2 className={s.recomendedFoodTitle}>Recommented food</h2>
+      <h2 className={`${s.recomendedFoodTitle} ${a.slideUpToDown}`}>
+        Recommented food
+      </h2>
       <div className={s.recomendedFoodBox}>
-        <img className={s.recomendedFoodImg} src={Food} alt="Food" />
-        <ul className={s.recomendedFoodList}>
+        <img
+          className={`${s.recomendedFoodImg} ${a.slideUpToDown}`}
+          src={Food}
+          alt="Food"
+        />
+        <ul className={`${s.recomendedFoodList} ${a.slideDownToUp}`}>
           {randomArr().map(({ name, amount, calories, img }) => (
             <li className={s.recomendedFoodListItem} key={name}>
               <img src={img} alt={name} width="46px" height="46px" />

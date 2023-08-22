@@ -1,13 +1,21 @@
+import { useSelector } from 'react-redux';
 import css from './MainPageFood.module.css';
-
-const percent = 30;
-const percent1 = 28;
-const percent2 = 90;
-const percent3 = 35;
+import a from '../../animations/animations.module.css';
+import { leftCount, percentageCount } from 'helpers/percentageCount';
 
 const MainPageFood = () => {
+  const goalCalories = useSelector(state => state.user.defaultCalories);
+  const goalFat = useSelector(state => state.user.goalFat);
+  const goalCarbo = useSelector(state => state.user.goalCarbo);
+  const goalProtein = useSelector(state => state.user.goalProtein);
+
+  const calories = useSelector(state => state.user.calories);
+  const fat = useSelector(state => state.user.fat);
+  const carbo = useSelector(state => state.user.carbo);
+  const protein = useSelector(state => state.user.protein);
+
   return (
-    <div>
+    <div className={a.slideRightToLeft}>
       <h2 className={css.foodTitle}>Food</h2>
       <div className={css.foodStatisticsContainer}>
         {/* //////////////////////////////// */}
@@ -15,14 +23,22 @@ const MainPageFood = () => {
           <svg className={css.caloriesScheduleSvg}>
             <circle cx="77.5" cy="77.5" r="77.5"></circle>
             <circle
-              style={{ strokeDashoffset: `${480 - percent * 4.8}` }}
+              style={{
+                strokeDashoffset: `${
+                  480 -
+                  (percentageCount(goalCalories, calories) > 100
+                    ? 100
+                    : percentageCount(goalCalories, calories)) *
+                    4.8
+                }`,
+              }}
               cx="77.5"
               cy="77.5"
               r="77.5"
             ></circle>
           </svg>
           <p className={css.caloriesScheduleDescription}>
-            1360
+            {calories}
             <span className={css.caloriesScheduleAdditionDescription}>
               calories
             </span>
@@ -35,7 +51,15 @@ const MainPageFood = () => {
               <svg className={css.carbohydratesScheduleSvg}>
                 <circle cx="22.2" cy="22.2" r="22.2"></circle>
                 <circle
-                  style={{ strokeDashoffset: `${135 - percent1 * 1.35}` }}
+                  style={{
+                    strokeDashoffset: `${
+                      135 -
+                      (percentageCount(goalCarbo, carbo) > 100
+                        ? 100
+                        : percentageCount(goalCarbo, carbo)) *
+                        1.35
+                    }`,
+                  }}
                   cx="22.2"
                   cy="22.2"
                   r="22.2"
@@ -43,20 +67,20 @@ const MainPageFood = () => {
               </svg>
               <p
                 className={css.carbohydratesScheduleDescription}
-              >{`${percent1}%`}</p>
+              >{`${percentageCount(goalCarbo, carbo)}%`}</p>
             </div>
             <div>
               <h3 className={css.scheduleListItemTitle}>Carbonohidrates</h3>
               <p className={css.scheduleListItemDescription}>
                 Goal:
                 <span className={css.scheduleListItemAdditionalDescription}>
-                  &nbsp;170
+                  &nbsp;{goalCarbo}
                 </span>
               </p>
               <p className={css.scheduleListItemDescription}>
                 left:
                 <span className={css.scheduleListItemAdditionalDescription}>
-                  &nbsp;34
+                  &nbsp;{leftCount(goalCarbo, carbo)}
                 </span>
               </p>
             </div>
@@ -67,7 +91,13 @@ const MainPageFood = () => {
                 <circle cx="22.2" cy="22.2" r="22.2"></circle>
                 <circle
                   style={{
-                    strokeDashoffset: `${135 - percent2 * 1.35}`,
+                    strokeDashoffset: `${
+                      135 -
+                      (percentageCount(goalProtein, protein) > 100
+                        ? 100
+                        : percentageCount(goalProtein, protein)) *
+                        1.35
+                    }`,
                     stroke: '#FFF3B7',
                   }}
                   cx="22.2"
@@ -77,20 +107,20 @@ const MainPageFood = () => {
               </svg>
               <p
                 className={css.carbohydratesScheduleDescription}
-              >{`${percent2}%`}</p>
+              >{`${percentageCount(goalProtein, protein)}%`}</p>
             </div>
             <div>
               <h3 className={css.scheduleListItemTitle}>Protein</h3>
               <p className={css.scheduleListItemDescription}>
                 Goal:
                 <span className={css.scheduleListItemAdditionalDescription}>
-                  &nbsp;127.5
+                  &nbsp;{goalProtein}
                 </span>
               </p>
               <p className={css.scheduleListItemDescription}>
                 left:
                 <span className={css.scheduleListItemAdditionalDescription}>
-                  &nbsp;8
+                  &nbsp;{leftCount(goalProtein, protein)}
                 </span>
               </p>
             </div>
@@ -101,7 +131,13 @@ const MainPageFood = () => {
                 <circle cx="22.2" cy="22.2" r="22.2"></circle>
                 <circle
                   style={{
-                    strokeDashoffset: `${135 - percent3 * 1.35}`,
+                    strokeDashoffset: `${
+                      135 -
+                      (percentageCount(goalFat, fat) > 100
+                        ? 100
+                        : percentageCount(goalFat, fat)) *
+                        1.35
+                    }`,
                     stroke: '#B6B6B6',
                   }}
                   cx="22.2"
@@ -111,20 +147,20 @@ const MainPageFood = () => {
               </svg>
               <p
                 className={css.carbohydratesScheduleDescription}
-              >{`${percent3}%`}</p>
+              >{`${percentageCount(goalFat, fat)}%`}</p>
             </div>
             <div>
               <h3 className={css.scheduleListItemTitle}>Fat</h3>
               <p className={css.scheduleListItemDescription}>
                 Goal:
                 <span className={css.scheduleListItemAdditionalDescription}>
-                  &nbsp;56
+                  &nbsp;{goalFat}
                 </span>
               </p>
               <p className={css.scheduleListItemDescription}>
                 left:
                 <span className={css.scheduleListItemAdditionalDescription}>
-                  &nbsp;11.2
+                  &nbsp;{leftCount(goalFat, fat)}
                 </span>
               </p>
             </div>
