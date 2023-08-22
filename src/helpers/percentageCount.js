@@ -5,5 +5,5 @@ export function percentageCount(maxValue, value) {
 export function leftCount(maxValue, value) {
   const result = maxValue - value;
 
-  return result < 0 ? 0 : result;
+  return result < 0 ? 0 : result.toFixed(1);
 }

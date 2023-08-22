@@ -25,7 +25,11 @@ const MainPageFood = () => {
             <circle
               style={{
                 strokeDashoffset: `${
-                  480 - percentageCount(goalCalories, calories) * 4.8
+                  480 -
+                  (percentageCount(goalCalories, calories) > 100
+                    ? 100
+                    : percentageCount(goalCalories, calories)) *
+                    4.8
                 }`,
               }}
               cx="77.5"
@@ -49,7 +53,11 @@ const MainPageFood = () => {
                 <circle
                   style={{
                     strokeDashoffset: `${
-                      135 - percentageCount(goalCarbo, carbo) * 1.35
+                      135 -
+                      (percentageCount(goalCarbo, carbo) > 100
+                        ? 100
+                        : percentageCount(goalCarbo, carbo)) *
+                        1.35
                     }`,
                   }}
                   cx="22.2"
@@ -84,7 +92,11 @@ const MainPageFood = () => {
                 <circle
                   style={{
                     strokeDashoffset: `${
-                      135 - percentageCount(goalProtein, protein) * 1.35
+                      135 -
+                      (percentageCount(goalProtein, protein) > 100
+                        ? 100
+                        : percentageCount(goalProtein, protein)) *
+                        1.35
                     }`,
                     stroke: '#FFF3B7',
                   }}
@@ -120,7 +132,11 @@ const MainPageFood = () => {
                 <circle
                   style={{
                     strokeDashoffset: `${
-                      135 - percentageCount(goalFat, fat) * 1.35
+                      135 -
+                      (percentageCount(goalFat, fat) > 100
+                        ? 100
+                        : percentageCount(goalFat, fat)) *
+                        1.35
                     }`,
                     stroke: '#B6B6B6',
                   }}
