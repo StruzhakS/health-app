@@ -1,26 +1,21 @@
 import axios from 'axios';
+import { setHeadersToken, unSetHeadersToken } from 'redux/user/userApi';
 
 // Базовый URL для API
 const baseURL = 'https://health-app-1rfu.onrender.com/api/auth';
 
 // Функция для регистрации
 export const signUpAPI = async userData => {
-  try {
-    const response = await axios.post(`${baseURL}/signup`, userData);
-    return response.data;
-  } catch (error) {
-    throw error.response.data;
-  }
+  const { data } = await axios.post(`${baseURL}/signup`, userData);
+  setHeadersToken(data.user.token);
+  return data;
 };
 
 // Функция для входа
 export const signInAPI = async userData => {
-  try {
-    const response = await axios.post(`${baseURL}/login`, userData);
-    return response.data;
-  } catch (error) {
-    throw error.response.data;
-  }
+  const { data } = await axios.post(`${baseURL}/login`, userData);
+  setHeadersToken(data.user.token);
+  return data;
 };
 
 // Функция для восстановления пароля
@@ -38,12 +33,8 @@ export const addGoals = async body => {
   return data;
 };
 // Функция для выхода
-export const logoutAPI = async token => {
-  try {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const response = await axios.post(`${baseURL}/logout`);
-    return response.data;
-  } catch (error) {
-    throw error.response.data;
-  }
+export const logoutAPI = async () => {
+  const { data } = await axios.post(`${baseURL}/logout`);
+  unSetHeadersToken();
+  return data;
 };

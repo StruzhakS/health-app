@@ -52,13 +52,14 @@ const RecordMealModal = ({
     evt.preventDefault();
     document.body.style.overflow = 'auto';
 
-    const sendedObj = {
-      meal: selectedMeal,
-      carbonohidrates: carbonohidratesArr,
-      fat: fatArr,
-      protein: proteinArr,
-      dish: productNameArr,
-    };
+    const sendedObj = {};
+    sendedObj[selectedMeal.toLowerCase()] = productNameArr.map((el, i) => ({
+      foodName: el,
+      carbonohidrates: carbonohidratesArr[i],
+      fat: fatArr[i],
+      protein: proteinArr[i],
+    }));
+
     console.log(sendedObj);
 
     onCloseButtonClick();
