@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import Icons from '../../assets/icons/symbol-defs.svg';
 import css from './MainPageStatisticsSection.module.css';
+import a from '../../animations/animations.module.css';
 import MainPageDailyGoal from 'components/MainPageDailyGoal/MainPageDailyGoal';
 import MainPageWater from 'components/MainPageWater/MainPageWater';
 import MainPageFood from 'components/MainPageFood/MainPageFood';
@@ -14,7 +15,9 @@ const MainPageStatisticsSection = () => {
   };
 
   return (
-    <section className={css.mainPageStatisticsSection}>
+    <section
+      className={`${css.mainPageStatisticsSection} ${a.slideLeftToRight}`}
+    >
       <div className={css.mainPageStatisticsSectionHeaderContainer}>
         <h1>Today</h1>
         <button

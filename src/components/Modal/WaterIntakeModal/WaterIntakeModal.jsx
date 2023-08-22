@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import css from './WaterIntakeModal.module.css';
+import a from '../../../animations/animations.module.css';
 import { useDispatch } from 'react-redux';
 import { updateWaterOperations } from 'redux/user/userOperations';
 
@@ -38,7 +39,7 @@ const WaterIntakeModal = ({
 
   return (
     <Modal
-      className={css.waterIntakeModal}
+      className={`${css.waterIntakeModal} ${a.scaleInCenter}`}
       isOpen={waterIntakeModalOpen}
       onRequestClose={onCloseButtonClick}
       style={customStyles}
@@ -58,7 +59,7 @@ const WaterIntakeModal = ({
           />
         </label>
         <button
-          className={css.waterIntakeModalFormButton}
+          className={`${css.waterIntakeModalFormButton} ${a.hoverYellowBtn}`}
           onClick={handleSubmit}
         >
           Confirm
@@ -67,7 +68,7 @@ const WaterIntakeModal = ({
 
       <button
         type="button"
-        className={css.closeWaterIntakeModal}
+        className={`${css.closeWaterIntakeModal} ${a.hoverCloseBtn}`}
         onClick={onCloseButtonClick}
       >
         Cancel

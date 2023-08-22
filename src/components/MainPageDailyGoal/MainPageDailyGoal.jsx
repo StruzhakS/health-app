@@ -1,13 +1,14 @@
 import { useSelector } from 'react-redux';
 import Icons from '../../assets/icons/symbol-defs.svg';
 import css from './MainPageDailyGoal.module.css';
+import a from '../../animations/animations.module.css';
 
 const MainPageDailyGoal = () => {
   const defaultWater = useSelector(state => state.user.defaultWater);
   const defaultCalories = useSelector(state => state.user.defaultCalories);
 
   return (
-    <div>
+    <div className={a.slideLeftToRight}>
       <h2 className={css.dailyGoalTitle}>Daily goal</h2>
       <div className={css.dailyGoalStatisticsContainer}>
         <ul className={css.dailyGoalStatisticsList}>
