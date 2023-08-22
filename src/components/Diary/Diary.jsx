@@ -4,6 +4,7 @@ import Table from 'components/Table/Table';
 import TableMobile from 'components/Table/TableMobile';
 import { useMediaQuery } from 'react-responsive';
 import { BsArrowLeft } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const Diary = () => {
   const isMobile = useMediaQuery({ maxWidth: 833 });
@@ -11,9 +12,9 @@ const Diary = () => {
   return (
     <div className={s.containerDiary}>
       <div className={s.btnNav}>
-        <button className={s.btnDiary}>
+        <Link className={s.btnDiary} to={`/mainpage`}>
           <BsArrowLeft size="1.5rem" />
-        </button>
+        </Link>
         <h2 className={s.textBtn}>Diary</h2>
       </div>
       <div className={s.tableRow}>
