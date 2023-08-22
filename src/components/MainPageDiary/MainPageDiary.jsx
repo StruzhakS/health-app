@@ -94,7 +94,7 @@ const MainPageDiary = () => {
                   : 'Snack'}
               </h3>
             </div>
-            {carbonohidrates && (
+            {!(carbonohidrates === undefined) && (
               <ul className={css.mealAdditionalInfoList}>
                 <li className={css.mealAdditionalInfoListItem}>
                   <p className={css.mealAdditionalInfoDescription}>
@@ -122,7 +122,7 @@ const MainPageDiary = () => {
                 </li>
               </ul>
             )}
-            {!carbonohidrates && (
+            {carbonohidrates === undefined && (
               <button
                 name={
                   i === 0
