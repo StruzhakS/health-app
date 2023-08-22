@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import s from './Settings.module.css';
+import a from '../../animations/animations.module.css';
 import mobileSettingsPicture from '../../assets/img/mobile/Setting.png';
 import tabletSettingsPicture from '../../assets/img/tablet/Setting.png';
 import desktopSettingsPicture from '../../assets/img/desktop/Setting.png';
@@ -75,14 +76,16 @@ const SettingsPage = () => {
   return (
     <div className={s.settingsWrapper}>
       <form className={s.mainSettingsForm} onSubmit={handleSubmit}>
-        <div className={s.settingsBtnTablet}>
+        <div className={`${s.settingsBtnTablet} ${a.slideLeftToRight}`}>
           <h2 className={s.settingsTitle}>Profile setting</h2>
           {isTablet && (
             <div className={s.settingsBtnWrapper}>
-              <button className={s.saveBtn}>Save</button>
+              <button className={`${s.saveBtn} ${a.hoverYellowBtn}`}>
+                Save
+              </button>
               <button
                 type="button"
-                className={s.cancelBtn}
+                className={`${s.cancelBtn} ${a.hoverCloseBtn}`}
                 onClick={() => navigate('/')}
               >
                 Cancel
@@ -91,10 +94,12 @@ const SettingsPage = () => {
           )}
           {isDesktop && (
             <div className={s.settingsBtnWrapper}>
-              <button className={s.saveBtn}>Save</button>
+              <button className={`${s.saveBtn} ${a.hoverYellowBtn}`}>
+                Save
+              </button>
               <button
                 type="button"
-                className={s.cancelBtn}
+                className={`${s.cancelBtn} ${a.hoverCloseBtn}`}
                 onClick={() => navigate('/')}
               >
                 Cancel
@@ -104,14 +109,14 @@ const SettingsPage = () => {
         </div>
         {isMobile && (
           <img
-            className={s.imageSettings}
+            className={`${s.imageSettings} ${a.slideLeftToRight}`}
             src={mobileSettingsPicture}
             alt="Settings"
           />
         )}
         {isTablet && (
           <img
-            className={s.imageSettings}
+            className={`${s.imageSettings} ${a.slideLeftToRight}`}
             src={tabletSettingsPicture}
             alt="Settings"
           />
@@ -119,12 +124,12 @@ const SettingsPage = () => {
         <div className={s.settingsContent}>
           {isDesktop && (
             <img
-              className={s.imageSettings}
+              className={`${s.imageSettings} ${a.slideLeftToRight}`}
               src={desktopSettingsPicture}
               alt="Settings"
             />
           )}
-          <div className={s.settingsForm}>
+          <div className={`${s.settingsForm} ${a.slideRightToLeft}`}>
             <label className={s.labelWrapper}>
               <span className={s.nameTitle}>Your name</span>
               <input
@@ -302,10 +307,12 @@ const SettingsPage = () => {
             </div>
             {isMobile && (
               <div className={s.settingsBtnWrapper}>
-                <button className={s.saveBtn}>Save</button>
+                <button className={`${s.saveBtn} ${a.hoverYellowBtn}`}>
+                  Save
+                </button>
                 <button
                   type="button"
-                  className={s.cancelBtn}
+                  className={`${s.cancelBtn} ${a.hoverCloseBtn}`}
                   onClick={() => navigate('/')}
                 >
                   Cancel

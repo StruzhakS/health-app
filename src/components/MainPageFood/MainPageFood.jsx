@@ -1,4 +1,5 @@
 import css from './MainPageFood.module.css';
+import a from '../../animations/animations.module.css';
 
 const percent = 30;
 const percent1 = 28;
@@ -7,7 +8,7 @@ const percent3 = 35;
 
 const MainPageFood = () => {
   return (
-    <div>
+    <div className={a.slideRightToLeft}>
       <h2 className={css.foodTitle}>Food</h2>
       <div className={css.foodStatisticsContainer}>
         {/* //////////////////////////////// */}

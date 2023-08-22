@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import css from './MainPageDiary.module.css';
-
+import a from '../../animations/animations.module.css';
 import Icons from '../../assets/icons/symbol-defs.svg';
 import Breakfast from '../../assets/img/mobile/Breakfast.png';
 import Lunch from '../../assets/img/mobile/Lunch.png';
@@ -27,7 +27,7 @@ const MainPageDiary = () => {
   };
 
   return (
-    <section className={css.DiarySection}>
+    <section className={`${css.DiarySection} ${a.slideLeftToRight}`}>
       <RecordMealModal
         selectedMeal={selectedMeal}
         recordMealModalOpen={recordMealModalOpen}
