@@ -93,11 +93,10 @@ justify-content: center;
   }
 }
 .modalOverlay {
-  position: fixed;
-  top: -336px;
-  left: -114px;
-  right: 0;
-  bottom: 0;
+  position: absolute;
+  top: 129px;
+  left: 39px;
+  
   background-color: transparent; 
   display: flex;
   justify-content: center;

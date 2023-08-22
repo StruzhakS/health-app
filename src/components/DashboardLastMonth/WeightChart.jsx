@@ -8,12 +8,18 @@ const WeightChart = () => {
     70, 69, 68, 71, 72, 73, 70, 69, 68, 67, 70, 71, 72, 73, 70, 69, 68, 67, 70,
     71, 72, 73, 70, 69, 68, 67, 70, 71, 72.4, 73.1, 70,
   ];
+ const sum = weightSeries.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
+
+const average = Math.round(sum / weightSeries.length);
 
   return (
     <>
       <div className={css.titleContainer}>
         <span className={css.titleWeight}>Weight</span>
-        <span className={css.titleAverage}>Average value: 68 kg</span>
+        <span className={css.titleAverage}>Average value: <span className={css.weightSubtitle} >{average} kg</span> </span>
       </div>
       <div className={css.weighChartContainerScroll}>
         <div className={css.weighChartContainer}>

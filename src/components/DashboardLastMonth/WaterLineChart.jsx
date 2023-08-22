@@ -55,24 +55,28 @@ const WaterLineChart = () => {
   };
 
   const options = {
-     maintainAspectRatio: false,
+    maintainAspectRatio: false,
     scales: {
       x: {
         grid: {
           color: 'rgba(41, 41, 40, 1)',
+          drawTicks: false,
         },
         ticks: {
           color: '#B6B6B6',
+          padding: 6,
         },
       },
       y: {
         grid: {
           color: 'rgba(41, 41, 40, 1)',
+          drawTicks: false,
         },
         ticks: {
           color: '#B6B6B6',
           callback: yAxisFormatter,
           stepSize: 1000,
+          padding: 8,
         },
         suggestedMin: 0,
         suggestedMax: 2000,
@@ -92,7 +96,9 @@ const WaterLineChart = () => {
     <>
       <div className={css.dashboardWaterContainer}>
         <span className={css.waterTitle}>Water</span>
-        <span className={css.averageTitle}>Average value: {average} ml</span>
+        <span className={css.averageTitle}>
+          Average value: <span className={css.waterSubtitle} > {average} ml </span>
+        </span>
       </div>
 
       <div className={css.chartWrapper}>
