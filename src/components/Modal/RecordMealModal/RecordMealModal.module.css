@@ -137,6 +137,12 @@
   }
 }
 
+.recordMealModalConfirmBtn:disabled {
+  opacity: 0.5;
+  background-color: #aaa;
+  pointer-events: none;
+}
+
 .recordMealModalCancelBtn {
   width: 276px;
   cursor: pointer;

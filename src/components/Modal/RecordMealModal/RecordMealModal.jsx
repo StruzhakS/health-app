@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import css from './RecordMealModal.module.css';
 import a from '../../../animations/animations.module.css';
@@ -24,6 +24,7 @@ const RecordMealModal = ({
   setRecordMealModalOpen,
   selectedMeal,
 }) => {
+  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
   const [numberOfItems, setNumberOfItems] = useState([0]);
 
   const [productNameArr, setProductNameArr] = useState(['']);
@@ -32,6 +33,34 @@ const RecordMealModal = ({
   const [fatArr, setFatArr] = useState(['0']);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (
+      !productNameArr.includes('') &&
+      !carbonohidratesArr.includes('') &&
+      !proteinArr.includes('') &&
+      !fatArr.includes('')
+    ) {
+      setSubmitButtonDisabled(false);
+    } else {
+      setSubmitButtonDisabled(true);
+      return;
+    }
+
+    const arrLength = productNameArr.length;
+
+    for (let i = 0; i < arrLength; i++) {
+      const carbonohydratesElemBoolean =
+        carbonohidratesArr[i] === '0' || carbonohidratesArr[i] === '';
+      const fatElemBoolean = fatArr[i] === '0' || fatArr[i] === '';
+      const proteinElemBoolean = proteinArr[i] === '0' || proteinArr[i] === '';
+
+      if (carbonohydratesElemBoolean && fatElemBoolean && proteinElemBoolean) {
+        i = arrLength + 1;
+        setSubmitButtonDisabled(true);
+      } else setSubmitButtonDisabled(false);
+    }
+  }, [carbonohidratesArr, fatArr, productNameArr, proteinArr]);
 
   const onAddMoreButtonClick = () => {
     const newValue = numberOfItems.length;
@@ -47,9 +76,9 @@ const RecordMealModal = ({
     setNumberOfItems([0]);
     setRecordMealModalOpen(false);
     setProductNameArr(['']);
-    setCarbonohidratesArr([0]);
-    setProteinArr([0]);
-    setFatArr([0]);
+    setCarbonohidratesArr(['0']);
+    setProteinArr(['0']);
+    setFatArr(['0']);
   };
 
   const handleSubmit = evt => {
@@ -69,7 +98,7 @@ const RecordMealModal = ({
   };
 
   const onNameChange = (evt, index) => {
-    const string = evt.target.value;
+    const string = evt.target.value.trim();
     setProductNameArr(prev => {
       const resultArr = [];
       for (let i = 0; i < prev.length; i++) {
@@ -200,6 +229,7 @@ const RecordMealModal = ({
             className={`${css.recordMealModalConfirmBtn} ${a.hoverYellowBtn}`}
             onClick={handleSubmit}
             type="submit"
+            disabled={submitButtonDisabled}
           >
             Confirm
           </button>

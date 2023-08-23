@@ -1,6 +1,7 @@
 .mainPageStatisticsSection {
   display: flex;
   flex-direction: column;
+  padding-top: 16px;
   width: 300px;
   color: #fff;
   gap: 20px;
@@ -9,10 +10,12 @@
   margin-left: auto;
   margin-right: auto;
   @media (min-width: 834px) {
+    padding-top: 24px;
     width: 780px;
   }
 
   @media (min-width: 1440px) {
+    padding-top: 20px;
     width: 1372px;
   }
 }
