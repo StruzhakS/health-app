@@ -20,12 +20,8 @@ export const signInAPI = async userData => {
 
 // Функция для восстановления пароля
 export const forgotPasswordAPI = async email => {
-  try {
-    const response = await axios.post(`${baseURL}/forgot-password`, { email });
-    return response.data;
-  } catch (error) {
-    throw error.response.data;
-  }
+  const { data } = await axios.post(`${baseURL}/forgot-password`, { email });
+  return data;
 };
 
 export const addGoals = async body => {
