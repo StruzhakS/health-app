@@ -30,10 +30,10 @@ export const signUp = createAsyncThunk(
   'auth/signUp',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await signUpAPI(userData);
-      return { success: true, ...response };
+      const data = await signUpAPI(userData);
+      return data;
     } catch (error) {
-      return { success: false, ...error };
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -43,10 +43,10 @@ export const signIn = createAsyncThunk(
   'auth/signIn',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await signInAPI(userData);
-      return { success: true, ...response };
+      const data = await signInAPI(userData);
+      return data;
     } catch (error) {
-      return { success: false, ...error };
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -56,10 +56,10 @@ export const forgotPassword = createAsyncThunk(
   'auth/forgotPassword',
   async (email, { rejectWithValue }) => {
     try {
-      const response = await forgotPasswordAPI(email);
-      return { success: true, ...response };
+      const data = await forgotPasswordAPI(email);
+      return data;
     } catch (error) {
-      return { success: false, ...error };
+      return rejectWithValue(error.response.data);
     }
   }
 );

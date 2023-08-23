@@ -30,6 +30,7 @@ font-weight: 400;
 .weightSubtitle{
   font-size: 14px;
   color: #B6B6B6;
+  margin-left: 8px;
 }
 .chartContainer {
   display: flex;
@@ -113,20 +114,21 @@ color: #B6B6B6;
   max-width: 100%; 
   white-space: nowrap; 
    scroll-behavior: smooth; 
+   margin-bottom: 60px;
   
 }
 .weighChartContainerScroll::-webkit-scrollbar {
-  /* width: 8px !important;  */
+ height: 8px;
   background-color: #0F0F0F;
-}
+  border-radius: 12px;
+}  
 
 .weighChartContainerScroll::-webkit-scrollbar-thumb {
   background-color:rgba(255, 255, 255, 0.10);
   border-radius: 12px;
- /* height: 94px !important; */
-    /* width: 8px !important; */
+ 
 }
 
 .weighChartContainerScroll::-webkit-scrollbar-thumb:hover {
-  background-color:rgba(255, 255, 255, 0.10); 
+  background-color:rgba(99, 96, 96, 0.1); 
 }
