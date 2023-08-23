@@ -32,6 +32,7 @@
 .waterSubtitle{
   font-size: 14px;
   color: #B6B6B6;
+  margin-left: 8px;
 }
 .waterLineChartContainer {
   border-radius: 12px;
@@ -76,12 +77,13 @@
 
 .chartContainer::-webkit-scrollbar {
   background-color: #0f0f0f; 
-  width: 8px;
+  height: 8px;
+   border-radius: 12px;
 }
 
 .chartContainer::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  height: 94px;
+  height: 8px;
  
 }

@@ -1,42 +1,64 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import css from './WeightChart.module.css';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { getMonthAllStatistic } from 'redux/user/userOperations';
+
 const WeightChart = () => {
-  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+  const monthStatistic = useSelector(state => state.user.monthStatistic);
+  
 
-  const weightSeries = [
-    70, 69, 68, 71, 72, 73, 70, 69, 68, 67, 70, 71, 72, 73, 70, 69, 68, 67, 70,
-    71, 72, 73, 70, 69, 68, 67, 70, 71, 72.4, 73.1, 70,
-  ];
- const sum = weightSeries.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
-  );
+  const dispatch = useDispatch();
 
-const average = Math.round(sum / weightSeries.length);
+  useEffect(() => {
+    dispatch(getMonthAllStatistic('2023-08'));
+  }, [dispatch]);
+
+  const dataWeightlabel = () => {
+    return monthStatistic.map(({ weight, id }) => weight);
+  };
+  
+
+  const average = () => {
+    const weightArray = dataWeightlabel();
+    const sum = weightArray.reduce((accum, el) => {
+      return (accum += el);
+    }, 0);
+    return sum / weightArray.length;
+  };
+
+  const dataDaylabel = () => {
+    return monthStatistic.map(({ date }) => date.split('-')[2]);
+  };
 
   return (
     <>
       <div className={css.titleContainer}>
         <span className={css.titleWeight}>Weight</span>
-        <span className={css.titleAverage}>Average value: <span className={css.weightSubtitle} >{average} kg</span> </span>
+        <span className={css.titleAverage}>
+          Average value:
+          <span className={css.weightSubtitle}>
+           
+            {average().toFixed(1)} kg
+          </span>
+        </span>
       </div>
       <div className={css.weighChartContainerScroll}>
         <div className={css.weighChartContainer}>
           <div className={css.chartContainer}>
             <div className={css.weightLine}>
-              {weightSeries.map((value, index) => (
-                <div key={index} className={css.weightPoint}>
-                  {value}
+              {dataWeightlabel().map((weight, id) => (
+                <div key={id} className={css.weightPoint}>
+                  {weight}
                 </div>
               ))}
             </div>
           </div>
           <div className={css.chartContainer}>
             <div className={css.dayLine}>
-              {days.map(day => (
-                <div key={day} className={css.dayPoint}>
-                  {day}
+              {dataDaylabel().map((date, id) => (
+                <div key={id} className={css.dayPoint}>
+                  {date}
                 </div>
               ))}
             </div>

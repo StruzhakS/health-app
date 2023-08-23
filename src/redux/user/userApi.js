@@ -54,3 +54,9 @@ export async function setFoodIntake(body) {
   const { data } = await axios.post('/food-intake', body);
   return data;
 }
+export async function getMonthStatistic(body) {
+  const { data } = await axios.get(`/statistics?date=${body}` );
+ 
+  return data;
+  
+}
