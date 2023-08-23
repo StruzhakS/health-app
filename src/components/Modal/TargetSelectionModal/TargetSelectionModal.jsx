@@ -42,7 +42,7 @@ const TargetSelectionModal = ({
   return (
     <>
       <Modal
-        className={`${s.targetModal} ${a.scaleInVerTop}`}
+        className={`${s.targetModal} ${a.scaleInCenter}`}
         isOpen={targetModalOpen}
         onRequestClose={handleCancel}
         style={isMobileScreen ? customMobileStyles : customStyles}

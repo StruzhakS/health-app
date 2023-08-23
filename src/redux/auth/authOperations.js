@@ -30,10 +30,10 @@ export const signUp = createAsyncThunk(
   'auth/signUp',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await signUpAPI(userData);
-      return { success: true, ...response };
+      const data = await signUpAPI(userData);
+      return data;
     } catch (error) {
-      return { success: false, ...error };
+      return rejectWithValue(error.response.data);
     }
   }
 );
