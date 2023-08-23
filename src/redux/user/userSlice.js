@@ -62,7 +62,7 @@ const userSlice = createSlice({
         state.carbo = payload.carbonohidrates;
         state.protein = payload.protein;
 
-        state.calories += payload.calories;
+        state.calories = payload.calories;
 
         state.breakfast = payload.breakfast;
         state.lunch = payload.lunch;

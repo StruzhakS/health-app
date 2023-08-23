@@ -27,9 +27,9 @@ const RecordMealModal = ({
   const [numberOfItems, setNumberOfItems] = useState([0]);
 
   const [productNameArr, setProductNameArr] = useState(['']);
-  const [carbonohidratesArr, setCarbonohidratesArr] = useState([0]);
-  const [proteinArr, setProteinArr] = useState([0]);
-  const [fatArr, setFatArr] = useState([0]);
+  const [carbonohidratesArr, setCarbonohidratesArr] = useState(['0']);
+  const [proteinArr, setProteinArr] = useState(['0']);
+  const [fatArr, setFatArr] = useState(['0']);
 
   const dispatch = useDispatch();
 
@@ -37,9 +37,9 @@ const RecordMealModal = ({
     const newValue = numberOfItems.length;
     setNumberOfItems(prev => [...prev, newValue]);
     setProductNameArr(prev => [...prev, '']);
-    setCarbonohidratesArr(prev => [...prev, 0]);
-    setProteinArr(prev => [...prev, 0]);
-    setFatArr(prev => [...prev, 0]);
+    setCarbonohidratesArr(prev => [...prev, '0']);
+    setProteinArr(prev => [...prev, '0']);
+    setFatArr(prev => [...prev, '0']);
   };
 
   const onCloseButtonClick = () => {
@@ -59,9 +59,9 @@ const RecordMealModal = ({
     const sendedObj = {};
     sendedObj[selectedMeal.toLowerCase()] = productNameArr.map((el, i) => ({
       foodName: el,
-      carbonohidrates: carbonohidratesArr[i],
-      fat: fatArr[i],
-      protein: proteinArr[i],
+      carbonohidrates: `${carbonohidratesArr[i]}`,
+      fat: `${fatArr[i]}`,
+      protein: `${proteinArr[i]}`,
     }));
 
     onCloseButtonClick();
