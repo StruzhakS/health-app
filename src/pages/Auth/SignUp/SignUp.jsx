@@ -46,7 +46,7 @@ const SignUp = () => {
       email: values.email,
       password: passwordValue,
     };
-    console.log('body', body);
+
     dispatch(signUp(body))
       .unwrap()
       .then(() => navigate('/signup/goal'))
@@ -64,10 +64,8 @@ const SignUp = () => {
 
   return (
     <div className={styles.container}>
-
       <ToastContainer />
       <div className={`${styles.containerImg} ${a.slideUpToDown}`}>
-
         <img
           className={`${styles.imgIllustrationDesktop} ${styles.imgIllustration}`}
           src={IllustrationDesktop}
@@ -176,7 +174,7 @@ const SignUp = () => {
                         )}
                       </button>
                     </div>
-                    <div>
+                    <div className={styles.field}>
                       {errors.password && touched.password && (
                         <div className={styles.errorFields}>
                           {errors.password}

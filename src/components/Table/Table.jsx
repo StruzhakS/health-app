@@ -16,7 +16,7 @@ const Table = () => {
   };
   return (
     <>
-    <RecordMealModal
+      <RecordMealModal
         selectedMeal={selectedMeal}
         recordMealModalOpen={recordMealModalOpen}
         setRecordMealModalOpen={setRecordMealModalOpen}

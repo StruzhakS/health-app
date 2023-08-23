@@ -64,9 +64,9 @@ const authSlice = createSlice({
         state.error = null;
         state.avatar = payload.user.avatar;
       })
-      .addCase(signIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+      .addCase(signIn.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.user.token;
         state.error = null;
       })
       .addCase(forgotPassword.fulfilled, (state, action) => {

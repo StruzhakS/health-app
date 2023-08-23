@@ -4,7 +4,8 @@ import styles from './SignIn.module.css';
 import a from '../../../animations/animations.module.css';
 import { signIn } from '../../../redux/auth/authOperations';
 import { Link, useNavigate } from 'react-router-dom';
-import { updateAuthUser } from '../../../redux/auth/authSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
 import IllustrationTablet from '../../../assets/img/tablet/Illustration.png';
@@ -14,32 +15,34 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const error = useSelector(state => state.auth?.error);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleChange = ({ target: { name, value } }) => {
+    setForm(prevForm => {
+      return { ...prevForm, [name]: value };
+    });
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (email && password) {
-      const res = await dispatch(signIn({ email, password }));
-      if (res?.payload?.success) {
-        await dispatch(updateAuthUser(res.payload?.user));
-        localStorage.setItem('user_token', res?.payload?.user?.token);
-        localStorage.setItem('user_data', JSON.stringify(res?.payload.user));
-        navigate('/');
-      } else {
-        alert(res?.payload?.message ?? 'error');
-      }
-    }
+    dispatch(signIn(form))
+      .unwrap()
+      .then(() => navigate('/'))
+      .catch(error => {
+        toast.error(error.message, {
+          theme: 'dark',
+          autoClose: 2000,
+          hideProgressBar: true,
+        });
+      });
   };
-
-  const AuthUser = useSelector(state => state.auth.user);
-
-  if (AuthUser?.id) {
-    navigate('/');
-  }
 
   return (
     <div className={styles.container}>
+      <ToastContainer />
       <div className={`${styles.imgContainer} ${a.slideUpToDown}`}>
         <img
           className={`${styles.imgIllustrationDesktop} ${styles.imgIllustration}`}
@@ -65,18 +68,20 @@ const SignIn = () => {
         {error && <p className={styles.error}>{error}</p>}
         <form className={styles.inputContainer} onSubmit={handleSubmit}>
           <input
+            name="email"
             className={styles.input}
             type="email"
             placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            value={form.email}
+            onChange={handleChange}
           />
           <input
+            name="password"
             className={styles.input}
             type="password"
             placeholder="Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            value={form.password}
+            onChange={handleChange}
           />
           <button className={styles.button} type="submit">
             Sign In

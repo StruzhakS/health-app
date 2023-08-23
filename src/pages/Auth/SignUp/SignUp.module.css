@@ -159,6 +159,9 @@
   color: white;
   font-size: 10px;
 } */
+.field {
+  min-height: 16px;
+}
 
 .errorFields {
   display: block;
