@@ -2,10 +2,25 @@ import React from 'react';
 import s from './Table.module.css';
 import { PiPencilLineLight } from 'react-icons/pi';
 import { BsPlus } from 'react-icons/bs';
+import { useState } from 'react';
+import RecordMealModal from 'components/Modal/RecordMealModal/RecordMealModal';
 
 const Table = () => {
+  const [recordMealModalOpen, setRecordMealModalOpen] = useState(false);
+  const [selectedMeal, setSelectedMeal] = useState('');
+
+  const onRecordMealButtonClick = evt => {
+    setSelectedMeal(evt.target.name);
+    setRecordMealModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
   return (
     <>
+    <RecordMealModal
+        selectedMeal={selectedMeal}
+        recordMealModalOpen={recordMealModalOpen}
+        setRecordMealModalOpen={setRecordMealModalOpen}
+      />
       <table className={s.table}>
         <tbody>
           <tr>
@@ -24,7 +39,7 @@ const Table = () => {
           <tr>
             <th className={s.firstTd}>2</th>
             <td className={s.secondTd}>
-              <button className={s.btnAdd}>
+              <button className={s.btnAdd} onClick={onRecordMealButtonClick}>
                 <BsPlus size="1rem" />
                 Record your meal
               </button>

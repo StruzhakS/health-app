@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import styles from './MainAuth.module.css';
 import { Link, Navigate } from 'react-router-dom';
-
+import a from '../../../animations/animations.module.css';
 import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
 import IllustrationTablet from '../../../assets/img/tablet/Illustration.png';
 import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
@@ -19,7 +19,7 @@ const MainAuth = () => {
 
   return (
     <div className={styles['auth-container']}>
-      <div className={styles['auth-img']}>
+      <div className={`${styles['auth-img']} ${a.slideUpToDown}`}>
         <img
           className={`${styles.imgIllustrationDesktop} ${styles.imgIllustration}`}
           src={IllustrationDesktop}
@@ -37,19 +37,25 @@ const MainAuth = () => {
         />
       </div>
 
-      <div className={styles['auth-content']}>
+      <div className={`${styles['auth-content']} ${a.slideDownToUp}`}>
         <h1 className={styles['auth-header']}>Set goals and achieve them</h1>
         <h2 className={styles['main-auth-title']}>
           The service will help you set goals and follow them.
         </h2>
         <div className={styles['main-auth-button']}>
           <div>
-            <Link to="/signin" className={styles['auth-button']}>
+            <Link
+              to="/signin"
+              className={`${styles['auth-button']} ${a.mainBtnHover}`}
+            >
               sign in
             </Link>
           </div>
           <div>
-            <Link to="/signup" className={styles['auth-button']}>
+            <Link
+              to="/signup"
+              className={`${styles['auth-button']} ${a.mainBtnHover}`}
+            >
               sign up
             </Link>
           </div>

@@ -44,7 +44,7 @@ const СurrentWeightModal = ({
   return (
     <>
       <Modal
-        className={`${s.weightModal} ${a.scaleInVerTop}`}
+        className={`${s.weightModal} ${a.scaleInCenter}`}
         isOpen={weightModalOpen}
         onRequestClose={handleCancel}
         style={isMobileScreen ? customMobileStyles : customStyles}

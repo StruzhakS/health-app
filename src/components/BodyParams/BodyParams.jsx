@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import s from '../Goals/Goals.module.css';
+import a from '../../animations/animations.module.css';
 import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
@@ -41,11 +42,32 @@ const BodyParams = () => {
 
   return (
     <div className={s.goals}>
-      {isMobile && <img src={mob.body_parametersMob} alt="body" />}
-      {isTablet && <img src={tab.body_parametersTab} alt="body" />}
-      {isDesktop && <img src={desk.body_parametersDesk} alt="body" />}
+      {isMobile && (
+        <img
+          className={a.slideUpToDown}
+          src={mob.body_parametersMob}
+          alt="body"
+        />
+      )}
+      {isTablet && (
+        <img
+          className={a.slideUpToDown}
+          src={tab.body_parametersTab}
+          alt="body"
+        />
+      )}
+      {isDesktop && (
+        <img
+          className={a.slideUpToDown}
+          src={desk.body_parametersDesk}
+          alt="body"
+        />
+      )}
 
-      <form onSubmit={handleSubmit} className={s.formGoals}>
+      <form
+        onSubmit={handleSubmit}
+        className={`${s.formGoals} ${a.slideDownToUp}`}
+      >
         <h1 className={s.goalsTitle}>Body parameters</h1>
         <h2 className={s.goalsSubtitle}>
           Enter your parameters for correct performance tracking
@@ -73,9 +95,9 @@ const BodyParams = () => {
           onChange={handleChange}
           autoComplete="off"
         />
-        <button className={s.btnNext}>Next</button>
+        <button className={`${s.btnNext} ${a.hoverYellowBtn}`}>Next</button>
         <button
-          className={s.btnBack}
+          className={`${s.btnBack} ${a.hoverCloseBtn}`}
           type="button"
           onClick={() => navigate(-1)}
         >

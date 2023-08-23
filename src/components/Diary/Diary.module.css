@@ -1,17 +1,19 @@
 .containerDiary {
-  padding: 16px 10px 40px;
+  padding-top: 16px;
+  padding-bottom: 40px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
 }
 @media screen and (min-width: 834px) {
   .containerDiary {
-    padding: 24px 27px 40px;
+    padding-top: 24px;
   }
 }
 @media screen and (min-width: 1440px) {
   .containerDiary {
-    padding: 20px 34px 52px;
+    padding-top: 20px ;
+    padding-bottom: 52px;
   }
 }
 .foodIMG {
