@@ -44,3 +44,37 @@
 }
 
 /* 1440, 834, 320 */
+
+.recommendedFoodSectionButton {
+  display: flex;
+  align-items: center;
+
+  color: #b6b6b6;
+  font-size: 14px;
+
+  font-weight: 500;
+  line-height: 1.42em;
+
+  @media (min-width: 834px) {
+    font-size: 16px;
+
+    line-height: 1.37em;
+  }
+}
+
+.mainPageStatisticsSectionTitle {
+  font-size: 24px;
+
+  font-weight: 500;
+  line-height: 1.25em;
+
+  @media (min-width: 834px) {
+    font-size: 30px;
+    line-height: 1.2em;
+  }
+}
+
+.recommendedFoodSectionButtonSvg {
+  transform: rotate(180deg);
+  margin-left: 6px;
+}

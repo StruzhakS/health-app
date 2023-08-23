@@ -6,10 +6,10 @@
     width: 780px;
     margin-bottom: 20px;
   }
-   @media (min-width: 1440px) {
-     width: 518px;
-       margin-bottom: 0px;
-   }
+  @media (min-width: 1440px) {
+    width: 518px;
+    margin-bottom: 0px;
+  }
 }
 
 .DiaryTitle {
@@ -32,6 +32,7 @@
 
 .DiaryTitleContainer {
   display: flex;
+  align-items: center;
   gap: 16px;
   margin-bottom: 16px;
   @media (min-width: 834px) {
@@ -78,6 +79,7 @@
 
   @media (min-width: 834px) {
     flex-direction: row;
+    align-items: center;
   }
 }
 
