@@ -19,14 +19,18 @@ const MainPageStatisticsSection = () => {
       className={`${css.mainPageStatisticsSection} ${a.slideLeftToRight}`}
     >
       <div className={css.mainPageStatisticsSectionHeaderContainer}>
-        <h1>Today</h1>
+        <h1 className={css.mainPageStatisticsSectionTitle}>Today</h1>
         <button
           onClick={evt => onButtonClick(evt)}
           className={css.recommendedFoodSectionButton}
         >
           On the way to the goal
-          <svg width="16px" height="16px" stroke="white">
-            <use xlinkHref={`${Icons}#arrow-right`} />
+          <svg
+            className={css.recommendedFoodSectionButtonSvg}
+            width="16px"
+            height="16px"
+          >
+            <use xlinkHref={`${Icons}#icon-arrow-right`} />
           </svg>
         </button>
       </div>

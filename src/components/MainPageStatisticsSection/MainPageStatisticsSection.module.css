@@ -1,6 +1,7 @@
 .mainPageStatisticsSection {
   display: flex;
   flex-direction: column;
+  padding-top: 16px;
   width: 300px;
   color: #fff;
   gap: 20px;
@@ -9,10 +10,12 @@
   margin-left: auto;
   margin-right: auto;
   @media (min-width: 834px) {
+    padding-top: 24px;
     width: 780px;
   }
 
   @media (min-width: 1440px) {
+    padding-top: 20px;
     width: 1372px;
   }
 }
@@ -44,3 +47,37 @@
 }
 
 /* 1440, 834, 320 */
+
+.recommendedFoodSectionButton {
+  display: flex;
+  align-items: center;
+
+  color: #b6b6b6;
+  font-size: 14px;
+
+  font-weight: 500;
+  line-height: 1.42em;
+
+  @media (min-width: 834px) {
+    font-size: 16px;
+
+    line-height: 1.37em;
+  }
+}
+
+.mainPageStatisticsSectionTitle {
+  font-size: 24px;
+
+  font-weight: 500;
+  line-height: 1.25em;
+
+  @media (min-width: 834px) {
+    font-size: 30px;
+    line-height: 1.2em;
+  }
+}
+
+.recommendedFoodSectionButtonSvg {
+  transform: rotate(180deg);
+  margin-left: 6px;
+}
