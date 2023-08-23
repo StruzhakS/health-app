@@ -124,7 +124,7 @@
 }
 
 .passwordMessage {
-  font-size: 14px;
+  font-size: 8px;
   margin-top: 5px;
   max-width: 300px;
 }
@@ -159,6 +159,9 @@
   color: white;
   font-size: 10px;
 } */
+.field {
+  min-height: 16px;
+}
 
 .errorFields {
   display: block;
@@ -270,7 +273,7 @@
   }
 
   .passwordMessage {
-    font-size: 14px;
+    font-size: 8px;
     margin-top: 5px;
     max-width: 380px;
   }
@@ -379,7 +382,7 @@
   }
 
   .passwordMessage {
-    font-size: 10px;
+    font-size: 8px;
     margin-top: 5px;
     max-width: 192px;
   }

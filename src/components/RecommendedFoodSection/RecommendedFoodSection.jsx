@@ -57,8 +57,13 @@ const RecommendedFoodSection = () => {
         className={css.recommendedFoodSectionButton}
       >
         See more
-        <svg width="16px" height="16px" stroke="white">
-          <use xlinkHref={`${Icons}#arrow-right`} />
+        <svg
+          className={css.recommendedFoodSectionButtonSvg}
+          width="16px"
+          height="16px"
+          stroke="white"
+        >
+          <use xlinkHref={`${Icons}#icon-arrow-right`} />
         </svg>
       </button>
     </section>

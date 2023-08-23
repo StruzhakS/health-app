@@ -30,8 +30,7 @@ const AuthHeader = () => {
     dispatch(logoutUserThunk());
     // dispatch(logout());
     setSetingsModalIsOpen(false);
-    localStorage.removeItem('user_data');
-    localStorage.removeItem('user_token');
+
     navigate('/');
   }, [dispatch, navigate]);
 

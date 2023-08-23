@@ -4,7 +4,8 @@ import { forgotPassword } from '../../../redux/auth/authOperations';
 import styles from './ForgotPass.module.css';
 import a from '../../../animations/animations.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
 import IllustrationTablet from '../../../assets/img/tablet/Illustration.png';
 import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
@@ -12,23 +13,26 @@ import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
 const ForgotPass = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector(state => state.auth.error);
   const [email, setEmail] = useState('');
+  const error = useSelector(state => state.auth.error);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (email) {
-      const res = await dispatch(forgotPassword(email));
-      if (res?.payload?.success) {
-        navigate('/signIn');
-      } else {
-        alert(res?.payload?.message ?? 'error');
-      }
-    }
+    dispatch(forgotPassword(email))
+      .unwrap()
+      .then(() => navigate('/'))
+      .catch(error => {
+        toast.error(error.message, {
+          theme: 'dark',
+          autoClose: 2000,
+          hideProgressBar: true,
+        });
+      });
   };
 
   return (
     <div className={styles.container}>
+      <ToastContainer />
       <div className={`${styles.imgContainer} ${a.slideUpToDown}`}>
         <img
           className={`${styles.imgIllustrationDesktop} ${styles.imgIllustration}`}
