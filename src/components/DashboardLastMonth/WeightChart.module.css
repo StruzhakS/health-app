@@ -30,6 +30,7 @@ font-weight: 400;
 .weightSubtitle{
   font-size: 14px;
   color: #B6B6B6;
+  margin-left: 8px;
 }
 .chartContainer {
   display: flex;

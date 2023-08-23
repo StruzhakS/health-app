@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getFoodIntake,
+  getMonthStatistic,
   setFoodIntake,
   setHeadersToken,
   setWaterIntake,
@@ -81,6 +82,19 @@ export const updateFoodOperations = createAsyncThunk(
     try {
       setHeadersToken(getState().auth.token);
       const data = await setFoodIntake(body);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getMonthAllStatistic = createAsyncThunk(
+  'user/statistic',
+  async (body, { rejectWithValue, getState }) => {
+    try {
+      setHeadersToken(getState().auth.token);
+      const data = await getMonthStatistic(body);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

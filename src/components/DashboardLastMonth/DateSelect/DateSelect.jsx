@@ -7,7 +7,8 @@ import a from '../../../animations/animations.module.css';
 const DateSelector = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonText, setButtonText] = useState('Last Month');
-
+  const [lastYearButtonText, setLastYearButtonText] = useState('Last Year');
+  
   const handleModalOpen = () => {
     setIsModalOpen(true);
   };
@@ -17,9 +18,11 @@ const DateSelector = () => {
   };
 
   const handleButtonClick = () => {
-    if (buttonText === 'Last Month') {
+    if (buttonText === 'Last Month' && lastYearButtonText === 'Last Year') {
+      setLastYearButtonText('Last Month')
       setButtonText('Last Year');
     } else {
+      setLastYearButtonText('Last Year');
       setButtonText('Last Month');
     }
     handleModalClose();
@@ -42,7 +45,7 @@ const DateSelector = () => {
         className={`${s.dashboardSelect} ${a.scaleInCenter}`}
         overlayClassName={s.modalOverlay}
       >
-        <p onClick={handleButtonClick} >{ buttonText}</p>
+        <span onClick={handleButtonClick} >{ lastYearButtonText}</span>
       </Modal>
     </div>
   );
