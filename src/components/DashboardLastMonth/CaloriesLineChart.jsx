@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +11,10 @@ import {
   Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import recommendedFood from '../../recomended-food';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getMonthAllStatistic } from 'redux/user/userOperations';
+
 import css from './CaloriesLineChart.module.css';
 
 ChartJS.register(
@@ -26,15 +29,29 @@ ChartJS.register(
 );
 
 const CaloriesLineChart = () => {
-  const values = recommendedFood.map(item => item.calories * 10);
+  const monthStatistic = useSelector(state => state.user.monthStatistic);
 
-  const sum = values.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
-  );
+  const dispatch = useDispatch();
 
-  const average = Math.round(sum / values.length);
+  const dataYlabel = () => {
+    return monthStatistic.map(({ calories}) => calories)};
 
+  useEffect(() => {
+    dispatch(getMonthAllStatistic('2023-08'));
+  }, [dispatch]);
+
+  const average = () => {
+    const caloriesArray = dataYlabel();
+    const sum = caloriesArray.reduce((accum, el) => {
+      return (accum += el);
+    }, 0);
+    return sum / caloriesArray.length;
+  };
+
+  const dataXlabel = () => {
+    return monthStatistic.map(({ date }) => date.split('-')[2]);
+  };
+  
   const yAxisFormatter = value => {
     if (value >= 1000) {
       return `${value / 1000}K`;
@@ -43,11 +60,11 @@ const CaloriesLineChart = () => {
   };
 
   const data = {
-    labels: Array.from({ length: 31 }, (_, index) => (index + 1).toString()),
+    labels: dataXlabel(),
     datasets: [
       {
         label: 'calories',
-        data: values,
+        data: dataYlabel(),
         borderColor: 'rgba(227, 255, 168, 1)',
         backgroundColor: 'rgba(227, 255, 168, 0.2)',
         cubicInterpolationMode: 'monotone',
@@ -88,7 +105,7 @@ const CaloriesLineChart = () => {
         display: false,
       },
       tooltip: {
-        titleMarginBottom: 20,
+        titleMarginBottom: 5,
         titleAlign: 'center',
         position: 'nearest',
         enabled: true,
@@ -99,18 +116,20 @@ const CaloriesLineChart = () => {
         backgroundColor: '#0F0F0F',
         borderColor: 'rgba(227, 255, 168, 0.20)',
         borderWidth: 1,
-
-        bodySpacing: 6,
+        bodySpacing: 8,
         displayColors: false,
         padding: 10,
         caretPadding: 5,
         caretSize: 0,
         cornerRadius: 8,
         boxHeight: 98,
+       
         callbacks: {
+          titleFont: "Poppins",
+          Titlefont: { size: 40 },
           title: context => {
             const dataIndex = context[0].dataIndex;
-            const value = values[dataIndex];
+            const value = monthStatistic[dataIndex];
             return value.toString();
           },
           label: () => '',
@@ -126,7 +145,7 @@ const CaloriesLineChart = () => {
         <span className={css.caloriesTitle}>Calories</span>
         <span className={css.averageCalTitle}>
           Average value:
-          <span className={css.caloriesSubtitle}> {average} cal</span>
+          <span className={css.caloriesSubtitle}> {average().toFixed(1)} cal</span>
         </span>
       </div>
       <div className={css.caloriesChartWrapper}>

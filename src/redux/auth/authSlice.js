@@ -27,10 +27,9 @@ const handleAddGoals = (state, { payload }) => {
 const handlePending = state => {
   state.isLoading = true;
 };
-const handleRejected = (state, { error }) => {
-  // state.error = error.message;
-  console.log(error);
+const handleRejected = (state, { payload }) => {
   state.isLoading = false;
+  state.error = payload.message;
 };
 const handleLogout = state => {
   state.user = null;
@@ -59,15 +58,15 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(signUp.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+      .addCase(signUp.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.user.token;
         state.error = null;
-        state.avatar = action.payload.avatar;
+        state.avatar = payload.user.avatar;
       })
-      .addCase(signIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+      .addCase(signIn.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.user.token;
         state.error = null;
       })
       .addCase(forgotPassword.fulfilled, (state, action) => {
@@ -88,21 +87,13 @@ const authSlice = createSlice({
         state.user.activity = payload.activity;
         state.user.avatarURL = payload.avatarURL;
       })
-      .addCase(updateSettingsOperations.rejected, handleRejected)
       .addCase(addGoalsThunk.fulfilled, handleAddGoals)
-      .addCase(addGoalsThunk.rejected, handleRejected)
       .addCase(addGoalsThunk.pending, handlePending)
       .addCase(logoutUserThunk.fulfilled, handleLogout)
       .addCase(logoutUserThunk.rejected, handlePending)
       .addCase(logoutUserThunk.pending, handlePending)
-
-      .addMatcher(
-        action => action.type.endsWith('/rejected'),
-        (state, { error }) => {
-          console.log(error.message);
-          state.error = error.message;
-        }
-      );
+      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 
