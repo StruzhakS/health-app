@@ -1,18 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import css from './WeightChart.module.css';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { getMonthAllStatistic } from 'redux/user/userOperations';
+import { useSelector } from 'react-redux';
+
 
 const WeightChart = () => {
   const monthStatistic = useSelector(state => state.user.monthStatistic);
   
 
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getMonthAllStatistic('2023-08'));
-  }, [dispatch]);
 
   const dataWeightlabel = () => {
     return monthStatistic.map(({ weight, id }) => weight);
