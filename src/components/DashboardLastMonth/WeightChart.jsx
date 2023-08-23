@@ -6,7 +6,7 @@ import { getMonthAllStatistic } from 'redux/user/userOperations';
 
 const WeightChart = () => {
   const monthStatistic = useSelector(state => state.user.monthStatistic);
-  console.log(monthStatistic);
+  
 
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const WeightChart = () => {
   const dataWeightlabel = () => {
     return monthStatistic.map(({ weight, id }) => weight);
   };
-  console.log(dataWeightlabel());
+  
 
   const average = () => {
     const weightArray = dataWeightlabel();
