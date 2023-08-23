@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/health-app/static/css/main.9b9833a8.css",
-    "main.js": "/health-app/static/js/main.19879279.js",
+    "main.css": "/health-app/static/css/main.695185e8.css",
+    "main.js": "/health-app/static/js/main.19a69d4f.js",
     "static/media/Setting.png": "/health-app/static/media/Setting.986a0cfc792fb4757136.png",
     "static/media/Food.png": "/health-app/static/media/Food.5cc9426ff336590ddb44.png",
     "static/media/Goals.png": "/health-app/static/media/Goals.91eafec6d607c40ddeeb.png",
@@ -13,11 +13,11 @@
     "index.html": "/health-app/index.html",
     "static/media/eye-off.svg": "/health-app/static/media/eye-off.1af1aea00908e644f0dfa9d94f5d0f55.svg",
     "static/media/eye.svg": "/health-app/static/media/eye.7c6cdc5beb99f3e2a9ef43f719411585.svg",
-    "main.9b9833a8.css.map": "/health-app/static/css/main.9b9833a8.css.map",
-    "main.19879279.js.map": "/health-app/static/js/main.19879279.js.map"
+    "main.695185e8.css.map": "/health-app/static/css/main.695185e8.css.map",
+    "main.19a69d4f.js.map": "/health-app/static/js/main.19a69d4f.js.map"
   },
   "entrypoints": [
-    "static/css/main.9b9833a8.css",
-    "static/js/main.19879279.js"
+    "static/css/main.695185e8.css",
+    "static/js/main.19a69d4f.js"
   ]
 }
