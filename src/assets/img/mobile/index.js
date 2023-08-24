@@ -4,3 +4,7 @@ export { default as foodMob } from './Food.png';
 export { default as gender_and_ageMob } from './Gender_and_age.png';
 export { default as goalsMob } from './Goals.png';
 export { default as illustrationMob } from './Illustration.png';
+export { default as Breakfast } from './Breakfast.png';
+export { default as Dinner } from './Dinner.png';
+export { default as Lunch } from './Lunch.png';
+export { default as Snack } from './Snack.png';
