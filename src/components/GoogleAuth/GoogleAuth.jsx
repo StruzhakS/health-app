@@ -29,7 +29,11 @@ const GoogleAuth = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <></>;
+  return (
+    <>
+      <div>qwqe</div>
+    </>
+  );
 };
 
 export default GoogleAuth;
