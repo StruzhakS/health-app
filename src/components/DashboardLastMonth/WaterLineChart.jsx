@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,11 +11,8 @@ import {
   Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import css from './WaterLineChart.module.css';
-import {
-  getMonthAllStatistic,
-} from 'redux/user/userOperations';
 
 ChartJS.register(
   CategoryScale,
@@ -31,15 +28,13 @@ ChartJS.register(
 const WaterLineChart = () => {
   const monthStatistic = useSelector(state => state.user.monthStatistic);
 
-  const dispatch = useDispatch();
+ 
 
   const dataYlabel = () => {
     return monthStatistic.map(({ water }) => water);
   };
 
-  useEffect(() => {
-    dispatch(getMonthAllStatistic('2023-08'));
-  }, [dispatch]);
+
 
   const average = () => {
     const waterArray = dataYlabel();
@@ -64,11 +59,12 @@ const WaterLineChart = () => {
     labels: dataXlabel(),
     datasets: [
       {
-        label: 'milliliters',
+        
         data: dataYlabel(),
         borderColor: 'rgba(227, 255, 168, 1)',
-        backgroundColor: 'rgba(227, 255, 168, 0.2)',
+        backgroundColor: '#E3FFA8',
         cubicInterpolationMode: 'monotone',
+       
       },
     ],
   };
@@ -106,30 +102,30 @@ const WaterLineChart = () => {
         display: false,
       },
       tooltip: {
-         TitleFont: {weight: 'bold' },
-         titleMarginBottom: 5,
-        titleAlign: 'center',
-        titleSize: 30,
+       titleMarginBottom: 8,
+        bodyAlign: 'center',
         position: 'nearest',
         enabled: true,
-        bodyFontFamily: 'Poppins',
-        bodyFontSize: 32,
-        bodyFontColor: '#FFF',
-        bodyAlign: 'center',
         backgroundColor: '#0F0F0F',
         borderColor: 'rgba(227, 255, 168, 0.20)',
         borderWidth: 1,
-        bodySpacing: 6,
+        bodySpacing: 8,
         displayColors: false,
-        padding: 10,
+        padding: 15,
         caretPadding: 5,
         caretSize: 0,
         cornerRadius: 8,
-        boxHeight: 98,
+        boxHeight: 108,
+         footerColor: "#B6B6B6",
+        titleFont: {
+          family: 'Poppins',
+          size: 32,
+          weight: '300',
+        },
         callbacks: {
           title: context => {
             const dataIndex = context[0].dataIndex;
-            const value = monthStatistic[dataIndex];
+            const value = monthStatistic[dataIndex].water;
             return value.toString();
           },
           label: () => '',
