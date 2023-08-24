@@ -39,14 +39,18 @@ const SettingsPage = () => {
     });
   };
   const formData = new FormData();
+  const [tmpPath, setTmpPath] = useState('');
 
   const handleFileChange = e => {
     const selectedFile = e.target.files[0];
+    const tmppath = URL.createObjectURL(selectedFile);
+    setTmpPath(tmppath);
     setFile(selectedFile);
   };
   const isMobile = useMediaQuery({ maxWidth: 833 });
   const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1439 });
   const isDesktop = useMediaQuery({ minWidth: 1440 });
+
   const handleSubmit = async e => {
     e.preventDefault();
 
@@ -72,6 +76,8 @@ const SettingsPage = () => {
       )
       .then(() => navigate('/'));
   };
+
+  console.log(tmpPath);
 
   return (
     <div className={s.settingsWrapper}>
@@ -144,7 +150,7 @@ const SettingsPage = () => {
               <p className={s.nameTitle}>Your photo</p>
               <div className={s.photoLabelBox}>
                 <img
-                  src={user.avatarURL}
+                  src={file ? tmpPath : user.avatarURL}
                   alt="user avatar"
                   className={s.settingsAvatar}
                 />

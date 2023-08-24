@@ -52,7 +52,6 @@ const authSlice = createSlice({
       state.step = { ...state.step, ...payload };
     },
     updateAuthUser: (state, action) => {
-      console.log(action.payload);
       state.token = action.payload.token;
       state.user = action.payload;
     },
