@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './Diary.module.css';
-import Table from 'components/Table/Table';
-import TableMobile from 'components/Table/TableMobile';
-import { useMediaQuery } from 'react-responsive';
+// import Table from 'components/Table/Table';
+// import TableMobile from 'components/Table/TableMobile';
+// import { useMediaQuery } from 'react-responsive';
 import { BsArrowLeft } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { useMemo } from 'react';
+// import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import Icons from '../../assets/icons/symbol-defs.svg';
 import Breakfast from '../../assets/img/mobile/Breakfast.png';
@@ -14,42 +14,42 @@ import Dinner from '../../assets/img/mobile/Dinner.png';
 import Snack from '../../assets/img/mobile/Snack.png';
 import { useState } from 'react';
 import RecordMealModal from 'components/Modal/RecordMealModal/RecordMealModal';
-const tableDefaultArray = Array(4).fill(null);
+// const tableDefaultArray = Array(4).fill(null);
 const Diary = () => {
   const [recordMealModalOpen, setRecordMealModalOpen] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState('');
-  const isMobile = useMediaQuery({ maxWidth: 833 });
+  // const isMobile = useMediaQuery({ maxWidth: 833 });
   const breakfast = useSelector(state => state.user.breakfast);
   const lunch = useSelector(state => state.user.lunch);
   const dinner = useSelector(state => state.user.dinner);
   const snack = useSelector(state => state.user.snack);
-  const calculetedArr = [breakfast, lunch, dinner, snack];
+  // const calculetedArr = [breakfast, lunch, dinner, snack];
 
-  console.log(breakfast);
+  // console.log(breakfast);
 
-  const calculetedData = () => {
-    const sendedArr = [];
-    calculetedArr.map((el, i) => {
-      if (!el.length) {
-        sendedArr[i] = {};
-      } else {
-        el.map(
-          ({ carbonohidrates, fat, protein }) =>
-            (sendedArr[i] = {
-              carbonohidrates: sendedArr[i]?.carbonohidrates
-                ? +sendedArr[i].carbonohidrates + +carbonohidrates
-                : +carbonohidrates,
-              fat: sendedArr[i]?.fat ? +sendedArr[i].fat + +fat : +fat,
-              protein: sendedArr[i]?.protein
-                ? +sendedArr[i].protein + +protein
-                : +protein,
-            })
-        );
-      }
-      return null;
-    });
-    return sendedArr;
-  };
+  // const calculetedData = () => {
+  //   const sendedArr = [];
+  //   calculetedArr.map((el, i) => {
+  //     if (!el.length) {
+  //       sendedArr[i] = {};
+  //     } else {
+  //       el.map(
+  //         ({ carbonohidrates, fat, protein }) =>
+  //           (sendedArr[i] = {
+  //             carbonohidrates: sendedArr[i]?.carbonohidrates
+  //               ? +sendedArr[i].carbonohidrates + +carbonohidrates
+  //               : +carbonohidrates,
+  //             fat: sendedArr[i]?.fat ? +sendedArr[i].fat + +fat : +fat,
+  //             protein: sendedArr[i]?.protein
+  //               ? +sendedArr[i].protein + +protein
+  //               : +protein,
+  //           })
+  //       );
+  //     }
+  //     return null;
+  //   });
+  //   return sendedArr;
+  // };
 
   function calculateSum(meal) {
     let carbonohidratesSum = 0;
@@ -65,7 +65,7 @@ const Diary = () => {
     return { carbonohidratesSum, proteinSum, fatSum };
   }
 
-  let meals = [...breakfast, ...lunch, ...dinner, ...snack];
+  // let meals = [...breakfast, ...lunch, ...dinner, ...snack];
 
   let sumB = calculateSum(breakfast);
   let sumL = calculateSum(lunch);
@@ -80,19 +80,19 @@ const Diary = () => {
     setRecordMealModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
-  const newArr = calculetedArr.map(el => {
-    return el.length > tableDefaultArray.length
-      ? el
-      : [
-          ...el,
-          ...Array(tableDefaultArray.length - el.length).fill({
-            foodName: '',
-            carbonohidrates: '',
-            fat: '',
-            protein: '',
-          }),
-        ];
-  });
+  // const newArr = calculetedArr.map(el => {
+  //   return el.length > tableDefaultArray.length
+  //     ? el
+  //     : [
+  //         ...el,
+  //         ...Array(tableDefaultArray.length - el.length).fill({
+  //           foodName: '',
+  //           carbonohidrates: '',
+  //           fat: '',
+  //           protein: '',
+  //         }),
+  //       ];
+  // });
 
   function makeNewMealsArray(mealsArray) {
     const newArray =
