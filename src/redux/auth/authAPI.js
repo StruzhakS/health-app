@@ -30,7 +30,7 @@ export const addGoals = async body => {
 };
 // Функция для выхода
 export const logoutAPI = async () => {
-  const { data } = await axios.post(`${baseURL}/logout`);
+  const { data } = await axios.delete(`${baseURL}/logout`);
   unSetHeadersToken();
   return data;
 };
