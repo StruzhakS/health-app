@@ -33,6 +33,7 @@ const DateSelector = ({setIsMonth}) => {
     <div className={`${s.dateSelectorContainer} ${a.slideLeftToRight}`}>
       <button onClick={handleModalOpen} className={s.lastMonthBtn}>
         {buttonText}
+        
         <svg className={s.dashboardArrowDownSvg}>
           <use
             className={s.dashboardArrowDownSvgLink}
