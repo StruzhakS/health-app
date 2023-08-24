@@ -17,6 +17,7 @@ import PrivateRoute from 'containers/PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateAuthUser } from '../../redux/auth/authSlice';
 import SettingsPage from 'pages/Settings/SettingsPage';
+import GoogleAuth from 'components/GoogleAuth/GoogleAuth';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -44,6 +45,11 @@ export const App = () => {
             path="/signup"
             element={<PublicRoute component={<SignUp />} />}
           />
+          <Route
+            path="/googleauth/:params"
+            element={<PublicRoute component={<GoogleAuth />} />}
+          />
+
           <Route path="/signup/:params" element={<SignupForm />} />
           <Route path="/forgot-password" element={<ForgotPass />} />
 

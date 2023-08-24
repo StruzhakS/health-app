@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { useMediaQuery } from 'react-responsive';
 import { customMobileStyles } from '../TargetSelectionModal/TargetSelectionModal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateWeightOperation } from 'redux/user/userOperations';
 
 const СurrentWeightModal = ({
@@ -14,6 +14,8 @@ const СurrentWeightModal = ({
   setWeightModalOpen,
   selectedWeight,
 }) => {
+  const changeWeight = useSelector(state => state.user.changeWeight);
+  console.log(changeWeight);
   const D = new Date();
 
   const [weight, setWeight] = useState(selectedWeight);
@@ -72,7 +74,10 @@ const СurrentWeightModal = ({
             onChange={e => setWeight(e.target.value)}
             value={weight}
           />
-          <button className={`${s.confirmWeight} ${a.hoverYellowBtn}`}>
+          <button
+            className={`${s.confirmWeight} ${a.hoverYellowBtn}`}
+            disabled={changeWeight}
+          >
             Confirm
           </button>
           {isMobileScreen && (

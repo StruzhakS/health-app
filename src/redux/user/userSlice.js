@@ -4,6 +4,7 @@ import {
   getMonthAllStatistic,
   updateFoodOperations,
   updateWaterOperations,
+  updateWeightOperation,
 } from './userOperations';
 
 const initialState = {
@@ -23,6 +24,7 @@ const initialState = {
 
   error: null,
   isLoading: false,
+  changeWeight: false,
 
   breakfast: [],
   lunch: [],
@@ -51,6 +53,7 @@ const userSlice = createSlice({
         state.fat = payload.fat;
         state.carbo = payload.carbonohidrates;
         state.protein = payload.protein;
+        state.changeWeight = payload.changeWeight;
 
         state.breakfast = payload.breakfast;
         state.lunch = payload.lunch;
@@ -71,6 +74,23 @@ const userSlice = createSlice({
         state.lunch = payload.lunch;
         state.dinner = payload.dinner;
         state.snack = payload.snack;
+        state.changeWeight = payload.changeWeight;
+      })
+      .addCase(updateWeightOperation.fulfilled, (state, { payload }) => {
+        state.defaultWater = payload.defaultWater;
+        state.defaultCalories = payload.defaultCalories;
+
+        state.water = payload.water;
+        state.calories = payload.calories;
+
+        state.goalFat = payload.goalFat;
+        state.goalCarbo = payload.goalCarbo;
+        state.goalProtein = payload.goalProtein;
+
+        state.fat = payload.fat;
+        state.carbo = payload.carbonohidrates;
+        state.protein = payload.protein;
+        state.changeWeight = payload.changeWeight;
       })
       .addCase(getMonthAllStatistic.fulfilled, (state, { payload }) => {
         state.monthStatistic = payload;
