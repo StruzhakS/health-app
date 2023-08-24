@@ -77,8 +77,6 @@ const SettingsPage = () => {
       .then(() => navigate('/'));
   };
 
-  console.log(tmpPath);
-
   return (
     <div className={s.settingsWrapper}>
       <form className={s.mainSettingsForm} onSubmit={handleSubmit}>
