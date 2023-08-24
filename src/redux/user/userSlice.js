@@ -28,9 +28,8 @@ const initialState = {
   lunch: [],
   dinner: [],
   snack: [],
-  
 
-  monthStatistic:[],
+  monthStatistic: [],
 };
 
 const userSlice = createSlice({
