@@ -15,7 +15,6 @@ import { logoutUserThunk } from 'redux/auth/authOperations';
 const AuthHeader = () => {
   const avatar = useSelector(state => state?.auth?.user?.avatarURL);
   const userName = useSelector(state => state?.auth?.user?.name);
-  // const token = useSelector(state => state?.auth?.token);
 
   const isTabletScreen = useMediaQuery({ minWidth: 834 });
   const isMobileScreen = useMediaQuery({ maxWidth: 834 });

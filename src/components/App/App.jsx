@@ -5,7 +5,7 @@ import MainAuth from 'pages/Auth/MainAuth/MainAuth';
 // import HomePage from '../../pages/';
 // import MainPage from 'pages/MainPage';
 import DashboardLastMonth from '../DashboardLastMonth/DashboardLastMonth';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import SignupForm from 'components/SignupForm/SignupForm';
 import MainPage from 'pages/MainPage/MainPage';
@@ -36,7 +36,7 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={isAuth ? <MainPage /> : <SignupForm />} />
+          <Route index element={isAuth ? <MainPage /> : <MainAuth />} />
           <Route
             path="/signin"
             element={<PublicRoute component={<SignIn />} />}

@@ -4,8 +4,8 @@ import styles from './SignUp.module.css';
 
 import a from '../../../animations/animations.module.css';
 import { signUp } from '../../../redux/auth/authOperations';
-
-import { Link, useNavigate } from 'react-router-dom';
+import iconsSrc from '../../../assets/icons/symbol-defs.svg';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -190,6 +190,16 @@ const SignUp = () => {
                     </div>
                   </label>
                 </div>
+                <NavLink
+                  to={'https://health-app-1rfu.onrender.com/api/auth/google'}
+                  className={styles.googleAuth}
+                >
+                  <svg width="16" height="16">
+                    <use href={`${iconsSrc}#google-auth`} />
+                  </svg>{' '}
+                  Continue with Google
+                </NavLink>
+
                 <button type="submit" className={styles.button}>
                   Sign Up
                 </button>
