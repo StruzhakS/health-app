@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   getDefaultWaterAndCalories,
   getMonthAllStatistic,
+  getYearAllStatistic,
   updateFoodOperations,
   updateWaterOperations,
   updateWeightOperation,
@@ -30,8 +31,10 @@ const initialState = {
   lunch: [],
   dinner: [],
   snack: [],
+  
 
   monthStatistic: [],
+  yearStatistic: [],
 };
 
 const userSlice = createSlice({
@@ -94,6 +97,9 @@ const userSlice = createSlice({
       })
       .addCase(getMonthAllStatistic.fulfilled, (state, { payload }) => {
         state.monthStatistic = payload;
+      })
+      .addCase(getYearAllStatistic.fulfilled, (state, { payload }) => {
+        state.yearStatistic = payload;
       })
       .addMatcher(
         action => action.type.endsWith('/rejected'),

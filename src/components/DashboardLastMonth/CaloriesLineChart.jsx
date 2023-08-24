@@ -27,12 +27,25 @@ ChartJS.register(
   Filler
 );
 
-const CaloriesLineChart = () => {
-  const monthStatistic = useSelector(state => state.user.monthStatistic);
+const CaloriesLineChart = ({ isMonth }) => {
 
+  const yearStatistic = useSelector(state => state.user.yearStatistic);
+  const dataYearYlabel = () => {
+    return yearStatistic.map(({ calories }) => calories);
+  };
+  const dataYearXlabel = () => {
+    return yearStatistic.map(({ date }) => new Date(date).toLocaleString('default', {month: 'long'}) );
+  };
+
+ 
+  const monthStatistic = useSelector(state => state.user.monthStatistic);
   const dataYlabel = () => {
     return monthStatistic.map(({ calories }) => calories);
   };
+  const dataXlabel = () => {
+    return monthStatistic.map(({ date }) => date.split('-')[2]);
+  };
+
 
   const average = () => {
     const caloriesArray = dataYlabel();
@@ -42,9 +55,6 @@ const CaloriesLineChart = () => {
     return sum / caloriesArray.length;
   };
 
-  const dataXlabel = () => {
-    return monthStatistic.map(({ date }) => date.split('-')[2]);
-  };
 
   const yAxisFormatter = value => {
     if (value >= 1000) {
@@ -54,10 +64,10 @@ const CaloriesLineChart = () => {
   };
 
   const data = {
-    labels: dataXlabel(),
+    labels: isMonth ? dataXlabel() : dataYearXlabel(),
     datasets: [
       {
-        data: dataYlabel(),
+        data: isMonth ? dataYlabel() : dataYearYlabel(),
         borderColor: 'rgba(227, 255, 168, 1)',
         backgroundColor: '#E3FFA8',
         cubicInterpolationMode: 'monotone',
@@ -112,11 +122,11 @@ const CaloriesLineChart = () => {
         caretSize: 0,
         cornerRadius: 8,
         boxHeight: 108,
-         footerColor: "#B6B6B6",
+        footerColor: '#B6B6B6',
         titleFont: {
           family: 'Poppins',
           size: 32,
-          weight: '300', 
+          weight: '300',
         },
         callbacks: {
           title: context => {
@@ -138,7 +148,6 @@ const CaloriesLineChart = () => {
         <span className={css.averageCalTitle}>
           Average value:
           <span className={css.caloriesSubtitle}>
-            {' '}
             {average().toFixed(1)} cal
           </span>
         </span>

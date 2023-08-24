@@ -25,13 +25,24 @@ ChartJS.register(
   Filler
 );
 
-const WaterLineChart = () => {
+const WaterLineChart = ({isMonth}) => {
+
+  const yearStatistic = useSelector(state => state.user.yearStatistic);
+  const dataYearYlabel = () => {
+    return yearStatistic.map(({ water }) => water);
+  };
+  const dataYearXlabel = () => {
+    return yearStatistic.map(({ date }) => new Date(date).toLocaleString('default', {month: 'long'}) );
+  };
+
+
+
   const monthStatistic = useSelector(state => state.user.monthStatistic);
-
- 
-
   const dataYlabel = () => {
     return monthStatistic.map(({ water }) => water);
+  };
+  const dataXlabel = () => {
+    return monthStatistic.map(({ date }) => date.split('-')[2]);
   };
 
 
@@ -44,10 +55,6 @@ const WaterLineChart = () => {
     return sum / waterArray.length;
   };
 
-  const dataXlabel = () => {
-    return monthStatistic.map(({ date }) => date.split('-')[2]);
-  };
-
   const yAxisFormatter = value => {
     if (value >= 1000) {
       return `${value / 1000}L`;
@@ -56,11 +63,8 @@ const WaterLineChart = () => {
   };
 
   const data = {
-    labels: dataXlabel(),
-    datasets: [
-      {
-        
-        data: dataYlabel(),
+    labels: isMonth ? dataXlabel() : dataYearXlabel(),
+    datasets: [ {data: isMonth ? dataYlabel() : dataYearYlabel(),
         borderColor: 'rgba(227, 255, 168, 1)',
         backgroundColor: '#E3FFA8',
         cubicInterpolationMode: 'monotone',
