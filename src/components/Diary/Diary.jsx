@@ -86,7 +86,7 @@ const Diary = () => {
 
   const onUpdateMealButtonClick = meal => {
     setSelectedMeal(meal);
-    setRecordMealModalOpen(true);
+    setUpdateMealModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
 
