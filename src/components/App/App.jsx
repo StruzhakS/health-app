@@ -36,10 +36,7 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={isAuth ? <MainPage /> : <Navigate to="/signup/goal" />}
-          />
+          <Route index element={isAuth ? <MainPage /> : <SignupForm />} />
           <Route
             path="/signin"
             element={<PublicRoute component={<SignIn />} />}
