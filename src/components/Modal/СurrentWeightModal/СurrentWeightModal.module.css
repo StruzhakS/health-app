@@ -101,6 +101,10 @@
   line-height: 1.42;
 }
 
+.confirmWeight:disabled {
+  background-color: #a4ad8f;
+}
+
 @media screen and (max-width: 834px) {
   .confirmWeight {
     display: flex;
