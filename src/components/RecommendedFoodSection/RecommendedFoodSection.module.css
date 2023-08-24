@@ -1,9 +1,16 @@
 .recommendedFoodSection {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  color: #fff;
-  width: 780px;
+  /* ///////////////////////////// */
+  display: none;
+
+  /* ///////////////////////////// */
+  @media (min-width: 834px) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #fff;
+    width: 780px;
+  }
+
   @media (min-width: 1440px) {
     width: 678px;
   }
