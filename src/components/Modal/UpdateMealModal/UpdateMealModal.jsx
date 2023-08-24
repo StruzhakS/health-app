@@ -5,7 +5,7 @@ import Breakfast from '../../../assets/img/mobile/Breakfast.png';
 import Lunch from '../../../assets/img/mobile/Lunch.png';
 import Dinner from '../../../assets/img/mobile/Dinner.png';
 import Snack from '../../../assets/img/mobile/Snack.png';
-import Icons from '../../../assets/icons/symbol-defs.svg';
+// import Icons from '../../../assets/icons/symbol-defs.svg';
 import a from '../../../animations/animations.module.css';
 
 export const customStyles = {
