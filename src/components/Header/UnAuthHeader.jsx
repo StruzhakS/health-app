@@ -8,31 +8,33 @@ import clsx from 'clsx';
 const UnAuthHeader = () => {
   return (
     <div className={s.header}>
-      <NavLink to={'/'} className={`${s.logoLink} ${a.logoHover}`}>
-        HealthyHub
-      </NavLink>
-      <nav className={s.navlink}>
-        <NavLink
-          to={'/signin'}
-          className={({ isActive }) =>
-            isActive ? clsx(s.authLinkUp, s.active) : s.authLinkUp
-          }
-        >
-          Sign in
+      <div className={s.headerContainer}>
+        <NavLink to={'/'} className={`${s.logoLink} ${a.logoHover}`}>
+          HealthyHub
         </NavLink>
-        <span>/</span>
-        <NavLink
-          to={'/signup'}
-          className={({ isActive }) =>
-            isActive ? clsx(s.authLinkIn, s.active) : s.authLinkUp
-          }
-        >
-          Sign up
-        </NavLink>
-        <svg style={{ fill: 'white' }} width="24" height="24">
-          <use href={`${iconsSrc}#profile-circle`} />
-        </svg>
-      </nav>
+        <nav className={s.navlink}>
+          <NavLink
+            to={'/signin'}
+            className={({ isActive }) =>
+              isActive ? clsx(s.authLinkUp, s.active) : s.authLinkUp
+            }
+          >
+            Sign in
+          </NavLink>
+          <span>/</span>
+          <NavLink
+            to={'/signup'}
+            className={({ isActive }) =>
+              isActive ? clsx(s.authLinkIn, s.active) : s.authLinkUp
+            }
+          >
+            Sign up
+          </NavLink>
+          <svg style={{ fill: 'white' }} width="24" height="24">
+            <use href={`${iconsSrc}#profile-circle`} />
+          </svg>
+        </nav>
+      </div>
     </div>
   );
 };
