@@ -1,30 +1,27 @@
 import React from 'react';
 import css from './WeightChart.module.css';
-
 import { useSelector } from 'react-redux';
 
-
-const WeightChart = () => {
+const WeightChart = ({ isMonth }) => {
+  const yearStatistic = useSelector(state => state.user.yearStatistic);
   const monthStatistic = useSelector(state => state.user.monthStatistic);
-  
 
+  const dataWeightlabel = isMonth
+    ? monthStatistic.map(({ weight }) => weight)
+    : yearStatistic.map(({ weight }) => weight);
 
-
-  const dataWeightlabel = () => {
-    return monthStatistic.map(({ weight, id }) => weight);
-  };
-  
+  const dataLabel = isMonth
+    ? monthStatistic.map(({ date }) => date.split('-')[2])
+    : yearStatistic.map(({ date }) =>
+        new Date(date).toLocaleString('default', { month: 'long' })
+      );
 
   const average = () => {
-    const weightArray = dataWeightlabel();
+    const weightArray = dataWeightlabel;
     const sum = weightArray.reduce((accum, el) => {
       return (accum += el);
     }, 0);
     return sum / weightArray.length;
-  };
-
-  const dataDaylabel = () => {
-    return monthStatistic.map(({ date }) => date.split('-')[2]);
   };
 
   return (
@@ -34,7 +31,6 @@ const WeightChart = () => {
         <span className={css.titleAverage}>
           Average value:
           <span className={css.weightSubtitle}>
-           
             {average().toFixed(1)} kg
           </span>
         </span>
@@ -43,7 +39,7 @@ const WeightChart = () => {
         <div className={css.weighChartContainer}>
           <div className={css.chartContainer}>
             <div className={css.weightLine}>
-              {dataWeightlabel().map((weight, id) => (
+              {dataWeightlabel.map((weight, id) => (
                 <div key={id} className={css.weightPoint}>
                   {weight}
                 </div>
@@ -52,9 +48,9 @@ const WeightChart = () => {
           </div>
           <div className={css.chartContainer}>
             <div className={css.dayLine}>
-              {dataDaylabel().map((date, id) => (
+              {dataLabel.map((label, id) => (
                 <div key={id} className={css.dayPoint}>
-                  {date}
+                  {label}
                 </div>
               ))}
             </div>

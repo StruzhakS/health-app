@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import css from './DashboardLastMonth.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ import sprite from '../../assets/icons/symbol-defs.svg';
 import DateSelector from './DateSelect/DateSelect';
 import { useDispatch } from 'react-redux';
 import { getMonthAllStatistic, getYearAllStatistic } from 'redux/user/userOperations';
-// import { useState } from 'react';
+
 
 const DashboardLastMonth = () => {
   const months = [
@@ -33,13 +33,17 @@ const DashboardLastMonth = () => {
 
   const currentMonth = months[currentMonthIndex];
 
+  const [isMonth, setIsMonth] = useState(true);
+
 const dispatch = useDispatch();
 
 useEffect(() => {
      dispatch(getMonthAllStatistic('2023-08'));
    }, [dispatch]);
 
-
+useEffect(() => {
+    dispatch(getYearAllStatistic("2022"))
+  }, [dispatch])
   
   const navigate = useNavigate();
   const onButtonClick = evt => {
@@ -59,19 +63,19 @@ useEffect(() => {
           </svg>
         </button>
         <div>
-          <DateSelector />
+          <DateSelector setIsMonth={setIsMonth} />
         </div>
         <div className={css.monthSlect}>{currentMonth}</div>
       </div>
       <div className={css.dashboardDesctopGraph}>
         <div className={css.gridItem1}>
-          <CaloriesLineChart />
+          <CaloriesLineChart isMonth={isMonth} />
         </div>
         <div className={css.gridItem2}>
-          <WaterLineChart />
+          <WaterLineChart  isMonth={isMonth} />
         </div>
         <div className={css.gridItem3}>
-          <WeightChart />
+          <WeightChart isMonth={isMonth} />
         </div>
       </div>
     </section>

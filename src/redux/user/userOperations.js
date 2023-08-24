@@ -85,7 +85,7 @@ export const updateFoodOperations = createAsyncThunk(
 );
 
 export const getMonthAllStatistic = createAsyncThunk(
-  'user/statistic',
+  'user/statistics',
   async (body, { rejectWithValue, getState }) => {
     try {
       setHeadersToken(getState().auth.token);

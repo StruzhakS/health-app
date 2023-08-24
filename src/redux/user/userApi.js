@@ -55,13 +55,13 @@ export async function setFoodIntake(body) {
   return data;
 }
 export async function getMonthStatistic(body) {
-  const { data } = await axios.get(`/statistics?date=${body}` );
+  const { data } = await axios.get(`/statistics?date=${body}`);
  
   return data;
   
 }
 export async function getYearStatistic(body) {
-  const { data } = await axios.get(`/statistics?date=${body}`);
+  const { data } = await axios.get(`/statistics-year?date=${body}`);
 
   return data;
 }

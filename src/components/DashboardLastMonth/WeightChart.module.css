@@ -117,6 +117,12 @@ color: #B6B6B6;
    margin-bottom: 60px;
   
 }
+@media only screen and (min-width: 834px) {
+ .weighChartContainerScroll {
+   overflow: hidden; 
+  margin-bottom: 0px;
+  }
+}
 .weighChartContainerScroll::-webkit-scrollbar {
  height: 8px;
   background-color: #0F0F0F;
