@@ -24,6 +24,9 @@ const Diary = () => {
   const dinner = useSelector(state => state.user.dinner);
   const snack = useSelector(state => state.user.snack);
   const calculetedArr = [breakfast, lunch, dinner, snack];
+
+  console.log(breakfast);
+
   const calculetedData = () => {
     const sendedArr = [];
     calculetedArr.map((el, i) => {
@@ -48,65 +51,29 @@ const Diary = () => {
     return sendedArr;
   };
 
-  let carbonohidatesSumB = 0;
-  for (let i = 0; i < breakfast.length; i++) {
-    carbonohidatesSumB += Number(breakfast[i].carbonohidrates);
+  function calculateSum(meal) {
+    let carbonohidratesSum = 0;
+    let proteinSum = 0;
+    let fatSum = 0;
+
+    for (let i = 0; i < meal.length; i++) {
+      carbonohidratesSum += Number(meal[i].carbonohidrates);
+      proteinSum += Number(meal[i].protein);
+      fatSum += Number(meal[i].fat);
+    }
+
+    return { carbonohidratesSum, proteinSum, fatSum };
   }
 
-  let proteinSumB = 0;
-  for (let i = 0; i < breakfast.length; i++) {
-    proteinSumB += Number(breakfast[i].protein);
-  }
+  let meals = [...breakfast, ...lunch, ...dinner, ...snack];
 
-  let fatSumB = 0;
-  for (let i = 0; i < breakfast.length; i++) {
-    fatSumB += Number(breakfast[i].fat);
-  }
+  let sumB = calculateSum(breakfast);
+  let sumL = calculateSum(lunch);
+  let sumD = calculateSum(dinner);
+  let sumS = calculateSum(snack);
 
-  let carbonohidatesSumD = 0;
-  for (let i = 0; i < dinner.length; i++) {
-    carbonohidatesSumD += Number(dinner[i].carbonohidrates);
-  }
-
-  let proteinSumD = 0;
-  for (let i = 0; i < dinner.length; i++) {
-    proteinSumD += Number(dinner[i].protein);
-  }
-
-  let fatSumD = 0;
-  for (let i = 0; i < dinner.length; i++) {
-    fatSumD += Number(dinner[i].fat);
-  }
-
-  let carbonohidatesSumL = 0;
-  for (let i = 0; i < lunch.length; i++) {
-    carbonohidatesSumL += Number(lunch[i].carbonohidrates);
-  }
-
-  let proteinSumL = 0;
-  for (let i = 0; i < lunch.length; i++) {
-    proteinSumL += Number(lunch[i].protein);
-  }
-
-  let fatSumL = 0;
-  for (let i = 0; i < lunch.length; i++) {
-    fatSumL += Number(lunch[i].fat);
-  }
-
-  let carbonohidatesSumS = 0;
-  for (let i = 0; i < snack.length; i++) {
-    carbonohidatesSumS += Number(snack[i].carbonohidrates);
-  }
-
-  let proteinSumS = 0;
-  for (let i = 0; i < snack.length; i++) {
-    proteinSumS += Number(snack[i].protein);
-  }
-
-  let fatSumS = 0;
-  for (let i = 0; i < snack.length; i++) {
-    fatSumS += Number(snack[i].fat);
-  }
+  // let sumTotal = calculateSum(meals);
+  // console.log(sumTotal);
 
   const onRecordMealButtonClick = evt => {
     setSelectedMeal(evt.target.name);
@@ -126,6 +93,24 @@ const Diary = () => {
           }),
         ];
   });
+
+  function makeNewMealsArray(mealsArray) {
+    const newArray =
+      mealsArray.length <= 4
+        ? [
+            ...mealsArray,
+            ...Array(4 - mealsArray.length).fill({
+              foodName: '',
+              carbonohidrates: '',
+              fat: '',
+              protein: '',
+            }),
+          ]
+        : mealsArray;
+    return newArray;
+  }
+
+  console.log(makeNewMealsArray(breakfast));
 
   return (
     <div className={s.containerDiary}>
@@ -155,7 +140,7 @@ const Diary = () => {
                   <p className={s.mealAdditionalInfoDescription}>
                     Carbonohidrates:
                     <span className={s.mealAdditionalInfoValue}>
-                      {carbonohidatesSumB}
+                      {sumB.carbonohidratesSum}
                     </span>
                   </p>
                 </td>
@@ -163,14 +148,16 @@ const Diary = () => {
                   <p className={s.mealAdditionalInfoDescription}>
                     Protein:
                     <span className={s.mealAdditionalInfoValue}>
-                      {proteinSumB}
+                      {sumB.proteinSum}
                     </span>
                   </p>
                 </td>
                 <td>
                   <p className={s.mealAdditionalInfoDescription}>
                     Fat:
-                    <span className={s.mealAdditionalInfoValue}>{fatSumB}</span>
+                    <span className={s.mealAdditionalInfoValue}>
+                      {sumB.fatSum}
+                    </span>
                   </p>
                 </td>
               </tr>
@@ -178,27 +165,29 @@ const Diary = () => {
           </table>
           <table>
             <tbody>
-              {breakfast.map((el, i) => (
+              {makeNewMealsArray(breakfast).map((el, i) => (
                 <tr>
                   <td>{i + 1}</td>
                   <td>{el.foodName}</td>
-                  <td>{+el.carbonohidrates}</td>
-                  <td>{+el.fat}</td>
-                  <td>{+el.protein}</td>
+                  <td>{el.carbonohidrates}</td>
+                  <td>{el.fat}</td>
+                  <td>{el.protein}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <button
-            name={'Breakfast'}
-            onClick={onRecordMealButtonClick}
-            className={s.recordMealButton}
-          >
-            <svg width="16px" height="16px" className={s.recordMealIcon}>
-              <use xlinkHref={`${Icons}#add`} />
-            </svg>
-            Record your meal
-          </button>
+          {breakfast.length < 4 && (
+            <button
+              name={'Breakfast'}
+              onClick={onRecordMealButtonClick}
+              className={s.recordMealButton}
+            >
+              <svg width="16px" height="16px" className={s.recordMealIcon}>
+                <use xlinkHref={`${Icons}#add`} />
+              </svg>
+              Record your meal
+            </button>
+          )}
         </div>
         <div className={s.targetMeal}>
           <table>
@@ -214,7 +203,7 @@ const Diary = () => {
                   <p className={s.mealAdditionalInfoDescription}>
                     Carbonohidrates:
                     <span className={s.mealAdditionalInfoValue}>
-                      {carbonohidatesSumD}
+                      {sumD.carbonohidratesSum}
                     </span>
                   </p>
                 </td>
@@ -222,14 +211,16 @@ const Diary = () => {
                   <p className={s.mealAdditionalInfoDescription}>
                     Protein:
                     <span className={s.mealAdditionalInfoValue}>
-                      {proteinSumD}
+                      {sumD.proteinSum}
                     </span>
                   </p>
                 </td>
                 <td>
                   <p className={s.mealAdditionalInfoDescription}>
                     Fat:
-                    <span className={s.mealAdditionalInfoValue}>{fatSumD}</span>
+                    <span className={s.mealAdditionalInfoValue}>
+                      {sumD.fatSum}
+                    </span>
                   </p>
                 </td>
               </tr>
@@ -237,27 +228,29 @@ const Diary = () => {
           </table>
           <table>
             <tbody>
-              {dinner.map((el, i) => (
+              {makeNewMealsArray(dinner).map((el, i) => (
                 <tr>
                   <td>{i + 1}</td>
                   <td>{el.foodName}</td>
-                  <td>{+el.carbonohidrates}</td>
-                  <td>{+el.fat}</td>
-                  <td>{+el.protein}</td>
+                  <td>{el.carbonohidrates}</td>
+                  <td>{el.fat}</td>
+                  <td>{el.protein}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <button
-            name={'Dinner'}
-            onClick={onRecordMealButtonClick}
-            className={s.recordMealButton}
-          >
-            <svg width="16px" height="16px" className={s.recordMealIcon}>
-              <use xlinkHref={`${Icons}#add`} />
-            </svg>
-            Record your meal
-          </button>
+          {dinner.length < 4 && (
+            <button
+              name={'Dinner'}
+              onClick={onRecordMealButtonClick}
+              className={s.recordMealButton}
+            >
+              <svg width="16px" height="16px" className={s.recordMealIcon}>
+                <use xlinkHref={`${Icons}#add`} />
+              </svg>
+              Record your meal
+            </button>
+          )}
         </div>
         <div className={s.targetMeal}>
           <table>
@@ -273,7 +266,7 @@ const Diary = () => {
                   <p className={s.mealAdditionalInfoDescription}>
                     Carbonohidrates:
                     <span className={s.mealAdditionalInfoValue}>
-                      {carbonohidatesSumL}
+                      {sumL.carbonohidratesSum}
                     </span>
                   </p>
                 </td>
@@ -281,14 +274,16 @@ const Diary = () => {
                   <p className={s.mealAdditionalInfoDescription}>
                     Protein:
                     <span className={s.mealAdditionalInfoValue}>
-                      {proteinSumL}
+                      {sumL.proteinSum}
                     </span>
                   </p>
                 </td>
                 <td>
                   <p className={s.mealAdditionalInfoDescription}>
                     Fat:
-                    <span className={s.mealAdditionalInfoValue}>{fatSumL}</span>
+                    <span className={s.mealAdditionalInfoValue}>
+                      {sumL.fatSum}
+                    </span>
                   </p>
                 </td>
               </tr>
@@ -296,27 +291,29 @@ const Diary = () => {
           </table>
           <table>
             <tbody>
-              {lunch.map((el, i) => (
+              {makeNewMealsArray(lunch).map((el, i) => (
                 <tr>
                   <td>{i + 1}</td>
                   <td>{el.foodName}</td>
-                  <td>{+el.carbonohidrates}</td>
-                  <td>{+el.fat}</td>
-                  <td>{+el.protein}</td>
+                  <td>{el.carbonohidrates}</td>
+                  <td>{el.protein}</td>
+                  <td>{el.fat}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <button
-            name={'Lunch'}
-            onClick={onRecordMealButtonClick}
-            className={s.recordMealButton}
-          >
-            <svg width="16px" height="16px" className={s.recordMealIcon}>
-              <use xlinkHref={`${Icons}#add`} />
-            </svg>
-            Record your meal
-          </button>
+          {lunch.length < 4 && (
+            <button
+              name={'Lunch'}
+              onClick={onRecordMealButtonClick}
+              className={s.recordMealButton}
+            >
+              <svg width="16px" height="16px" className={s.recordMealIcon}>
+                <use xlinkHref={`${Icons}#add`} />
+              </svg>
+              Record your meal
+            </button>
+          )}
         </div>
         <div className={s.targetMeal}>
           <table>
@@ -332,7 +329,7 @@ const Diary = () => {
                   <p className={s.mealAdditionalInfoDescription}>
                     Carbonohidrates:
                     <span className={s.mealAdditionalInfoValue}>
-                      {carbonohidatesSumS}
+                      {sumS.carbonohidratesSum}
                     </span>
                   </p>
                 </td>
@@ -340,14 +337,16 @@ const Diary = () => {
                   <p className={s.mealAdditionalInfoDescription}>
                     Protein:
                     <span className={s.mealAdditionalInfoValue}>
-                      {proteinSumS}
+                      {sumS.proteinSum}
                     </span>
                   </p>
                 </td>
                 <td>
                   <p className={s.mealAdditionalInfoDescription}>
                     Fat:
-                    <span className={s.mealAdditionalInfoValue}>{fatSumS}</span>
+                    <span className={s.mealAdditionalInfoValue}>
+                      {sumS.fatSum}
+                    </span>
                   </p>
                 </td>
               </tr>
@@ -355,27 +354,34 @@ const Diary = () => {
           </table>
           <table>
             <tbody>
-              {snack.map((el, i) => (
+              {makeNewMealsArray(snack).map((el, i) => (
                 <tr>
                   <td>{i + 1}</td>
                   <td>{el.foodName}</td>
-                  <td>{+el.carbonohidrates}</td>
-                  <td>{+el.fat}</td>
-                  <td>{+el.protein}</td>
+                  <td>{el.carbonohidrates}</td>
+                  <td>{el.fat}</td>
+                  <td>{el.protein}</td>
+                  {el.foodName && (
+                    <td>
+                      <button>Edit</button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
           </table>
-          <button
-            name={'Snack'}
-            onClick={onRecordMealButtonClick}
-            className={s.recordMealButton}
-          >
-            <svg width="16px" height="16px" className={s.recordMealIcon}>
-              <use xlinkHref={`${Icons}#add`} />
-            </svg>
-            Record your meal
-          </button>
+          {snack.length < 4 && (
+            <button
+              name={'Snack'}
+              onClick={onRecordMealButtonClick}
+              className={s.recordMealButton}
+            >
+              <svg width="16px" height="16px" className={s.recordMealIcon}>
+                <use xlinkHref={`${Icons}#add`} />
+              </svg>
+              Record your meal
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -76,8 +76,8 @@
   transition: all 150ms;
 }
 
-.hoverYellowBtn:hover,
-.hoverYellowBtn:focus {
+button:not(.disabled).hoverYellowBtn:hover,
+button:not(.disabled).hoverYellowBtn:focus {
   background: #e3ffa8;
   box-shadow: inset 20px 20px 60px #c1d98f, inset -20px -20px 60px #ffffc1;
 }

@@ -76,7 +76,7 @@ const СurrentWeightModal = ({
           />
           <button
             className={`${s.confirmWeight} ${a.hoverYellowBtn}`}
-            disabled={!changeWeight}
+            disabled={changeWeight}
           >
             Confirm
           </button>

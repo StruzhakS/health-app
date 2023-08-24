@@ -24,7 +24,7 @@ const initialState = {
 
   error: null,
   isLoading: false,
-  changeWeight: true,
+  changeWeight: false,
 
   breakfast: [],
   lunch: [],
@@ -53,6 +53,7 @@ const userSlice = createSlice({
         state.fat = payload.fat;
         state.carbo = payload.carbonohidrates;
         state.protein = payload.protein;
+        state.changeWeight = payload.changeWeight;
 
         state.breakfast = payload.breakfast;
         state.lunch = payload.lunch;
@@ -73,6 +74,7 @@ const userSlice = createSlice({
         state.lunch = payload.lunch;
         state.dinner = payload.dinner;
         state.snack = payload.snack;
+        state.changeWeight = payload.changeWeight;
       })
       .addCase(updateWeightOperation.fulfilled, (state, { payload }) => {
         state.defaultWater = payload.defaultWater;

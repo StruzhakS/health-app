@@ -102,7 +102,9 @@
 }
 
 .confirmWeight:disabled {
-  background-color: #a4ad8f;
+  opacity: 0.5;
+  background-color: #aaa;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 834px) {
