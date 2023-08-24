@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './SignIn.module.css';
 import a from '../../../animations/animations.module.css';
 import { signIn } from '../../../redux/auth/authOperations';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import iconsSrc from '../../../assets/icons/symbol-defs.svg';
 import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
 import IllustrationTablet from '../../../assets/img/tablet/Illustration.png';
 import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
@@ -83,9 +83,15 @@ const SignIn = () => {
             value={form.password}
             onChange={handleChange}
           />
-          <a href="https://health-app-1rfu.onrender.com/api/auth/google">
-            Google log in
-          </a>
+          <NavLink
+            to={'https://health-app-1rfu.onrender.com/api/auth/google'}
+            className={styles.googleAuth}
+          >
+            <svg width="16" height="16">
+              <use href={`${iconsSrc}#google-auth`} />
+            </svg>{' '}
+            Continue with Google
+          </NavLink>
           <button className={styles.button} type="submit">
             Sign In
           </button>
