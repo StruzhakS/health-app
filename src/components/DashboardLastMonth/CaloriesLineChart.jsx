@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,9 +12,10 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import css from './CaloriesLineChart.module.css';
+import { getYearAllStatistic } from 'redux/user/userOperations';
 
 ChartJS.register(
   CategoryScale,
@@ -28,6 +29,15 @@ ChartJS.register(
 );
 
 const CaloriesLineChart = () => {
+
+  const yearStatistic = useSelector(state => state.user.yearStatistic)
+  console.log(yearStatistic);
+  const dispatch = useDispatch();
+
+useEffect(() => {
+    dispatch(getYearAllStatistic("2022"))
+  }, [dispatch])
+
   const monthStatistic = useSelector(state => state.user.monthStatistic);
 
   const dataYlabel = () => {
@@ -53,6 +63,8 @@ const CaloriesLineChart = () => {
     return value;
   };
 
+
+
   const data = {
     labels: dataXlabel(),
     datasets: [
@@ -64,6 +76,7 @@ const CaloriesLineChart = () => {
       },
     ],
   };
+
 
   const options = {
     maintainAspectRatio: false,
@@ -129,6 +142,7 @@ const CaloriesLineChart = () => {
         },
       },
     },
+   
   };
 
   return (
@@ -138,7 +152,7 @@ const CaloriesLineChart = () => {
         <span className={css.averageCalTitle}>
           Average value:
           <span className={css.caloriesSubtitle}>
-            {' '}
+           
             {average().toFixed(1)} cal
           </span>
         </span>

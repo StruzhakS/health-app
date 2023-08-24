@@ -10,7 +10,7 @@ import sprite from '../../assets/icons/symbol-defs.svg';
 
 import DateSelector from './DateSelect/DateSelect';
 import { useDispatch } from 'react-redux';
-import { getMonthAllStatistic } from 'redux/user/userOperations';
+import { getMonthAllStatistic, getYearAllStatistic } from 'redux/user/userOperations';
 // import { useState } from 'react';
 
 const DashboardLastMonth = () => {
@@ -39,6 +39,8 @@ useEffect(() => {
      dispatch(getMonthAllStatistic('2023-08'));
    }, [dispatch]);
 
+
+  
   const navigate = useNavigate();
   const onButtonClick = evt => {
     evt.preventDefault();

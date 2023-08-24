@@ -60,3 +60,8 @@ export async function getMonthStatistic(body) {
   return data;
   
 }
+export async function getYearStatistic(body) {
+  const { data } = await axios.get(`/statistics?date=${body}`);
+
+  return data;
+}
