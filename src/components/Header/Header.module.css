@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   font-size: 16px;
   height: 100px;
@@ -19,6 +19,20 @@
 @media screen and (min-width: 1440px) {
   .header {
     padding: 0 34px;
+  }
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+
+  @media screen and (min-width: 834px) {
+    width: 834px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
   }
 }
 

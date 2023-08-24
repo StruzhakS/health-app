@@ -71,6 +71,12 @@
   }
 }
 
+.recordMealModalInput::-webkit-inner-spin-button,
+.recordMealModalInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .recordMealModalInput::placeholder {
   color: #b6b6b6;
 
