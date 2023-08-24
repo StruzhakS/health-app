@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Diary.module.css';
-// import Table from 'components/Table/Table';
+import Table from 'components/Table/Table';
 // import TableMobile from 'components/Table/TableMobile';
 // import { useMediaQuery } from 'react-responsive';
 import { BsArrowLeft } from 'react-icons/bs';
@@ -14,9 +14,12 @@ import Dinner from '../../assets/img/mobile/Dinner.png';
 import Snack from '../../assets/img/mobile/Snack.png';
 import { useState } from 'react';
 import RecordMealModal from 'components/Modal/RecordMealModal/RecordMealModal';
+import UpdateMealModal from 'components/Modal/UpdateMealModal/UpdateMealModal';
 // const tableDefaultArray = Array(4).fill(null);
 const Diary = () => {
   const [recordMealModalOpen, setRecordMealModalOpen] = useState(false);
+  const [updateMealModalOpen, setUpdateMealModalOpen] = useState(false);
+
   const [selectedMeal, setSelectedMeal] = useState('');
   // const isMobile = useMediaQuery({ maxWidth: 833 });
   const breakfast = useSelector(state => state.user.breakfast);
@@ -80,6 +83,13 @@ const Diary = () => {
     setRecordMealModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
+
+  const onUpdateMealButtonClick = meal => {
+    setSelectedMeal(meal);
+    setRecordMealModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
   // const newArr = calculetedArr.map(el => {
   //   return el.length > tableDefaultArray.length
   //     ? el
@@ -110,8 +120,6 @@ const Diary = () => {
     return newArray;
   }
 
-  console.log(makeNewMealsArray(breakfast));
-
   return (
     <div className={s.containerDiary}>
       <RecordMealModal
@@ -119,6 +127,12 @@ const Diary = () => {
         recordMealModalOpen={recordMealModalOpen}
         setRecordMealModalOpen={setRecordMealModalOpen}
       />
+      <UpdateMealModal
+        selectedMeal={selectedMeal}
+        updateMealModalOpen={updateMealModalOpen}
+        setUpdateMealModalOpen={setUpdateMealModalOpen}
+      />
+
       <div className={s.btnNav}>
         <Link className={s.btnDiary} to={'/mainpage'}>
           <BsArrowLeft size="1.5rem" />
@@ -172,6 +186,15 @@ const Diary = () => {
                   <td>{el.carbonohidrates}</td>
                   <td>{el.fat}</td>
                   <td>{el.protein}</td>
+                  {el.foodName && (
+                    <td>
+                      <button
+                        onClick={() => onUpdateMealButtonClick('Breakfast')}
+                      >
+                        Edit
+                      </button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
@@ -235,6 +258,13 @@ const Diary = () => {
                   <td>{el.carbonohidrates}</td>
                   <td>{el.fat}</td>
                   <td>{el.protein}</td>
+                  {el.foodName && (
+                    <td>
+                      <button onClick={() => onUpdateMealButtonClick('Dinner')}>
+                        Edit
+                      </button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
@@ -298,6 +328,13 @@ const Diary = () => {
                   <td>{el.carbonohidrates}</td>
                   <td>{el.protein}</td>
                   <td>{el.fat}</td>
+                  {el.foodName && (
+                    <td>
+                      <button onClick={() => onUpdateMealButtonClick('Lunch')}>
+                        Edit
+                      </button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
@@ -363,7 +400,9 @@ const Diary = () => {
                   <td>{el.protein}</td>
                   {el.foodName && (
                     <td>
-                      <button>Edit</button>
+                      <button onClick={() => onUpdateMealButtonClick('Snack')}>
+                        Edit
+                      </button>
                     </td>
                   )}
                 </tr>
