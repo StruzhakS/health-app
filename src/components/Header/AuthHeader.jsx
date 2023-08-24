@@ -36,73 +36,75 @@ const AuthHeader = () => {
 
   return (
     <div className={s.header}>
-      <div className={s.logoWrapper}>
-        <NavLink to={'/'} className={`${s.logoLink} ${a.logoHover}`}>
-          Your Health
-        </NavLink>
+      <div className={s.headerContainer}>
+        <div className={s.logoWrapper}>
+          <NavLink to={'/'} className={`${s.logoLink} ${a.logoHover}`}>
+            Your Health
+          </NavLink>
 
-        {isMobileScreen && (
-          <button onClick={() => setMobileMenuOper(true)}>
-            <svg width="16" height="16">
-              <use href={`${iconsSrc}#menu`} />
+          {isMobileScreen && (
+            <button onClick={() => setMobileMenuOper(true)}>
+              <svg width="16" height="16">
+                <use href={`${iconsSrc}#menu`} />
+              </svg>
+            </button>
+          )}
+        </div>
+        <div className={s.controlWrapper}>
+          {isTabletScreen && <ControlPanel />}
+          <button
+            type="button"
+            className={s.userBtn}
+            onClick={() => setSetingsModalIsOpen(true)}
+          >
+            {userName} <img src={avatar} alt="" className={s.avatarImg} />
+            <svg
+              style={
+                !setingsModalIsOpen
+                  ? { fill: 'white' }
+                  : {
+                      fill: 'white',
+                      rotate: '180deg',
+                    }
+              }
+              width="14"
+              height="14"
+            >
+              <use href={`${iconsSrc}#arrow-down`} />
             </svg>
           </button>
-        )}
-      </div>
-      <div className={s.controlWrapper}>
-        {isTabletScreen && <ControlPanel />}
-        <button
-          type="button"
-          className={s.userBtn}
-          onClick={() => setSetingsModalIsOpen(true)}
+        </div>
+        <Modal
+          className={`${s.userSettingsModal} ${a.scaleInCenter}`}
+          isOpen={setingsModalIsOpen}
+          onRequestClose={() => setSetingsModalIsOpen(false)}
+          style={customStyles}
+          contentLabel="Example Modal"
         >
-          {userName} <img src={avatar} alt="" className={s.avatarImg} />
-          <svg
-            style={
-              !setingsModalIsOpen
-                ? { fill: 'white' }
-                : {
-                    fill: 'white',
-                    rotate: '180deg',
-                  }
-            }
-            width="14"
-            height="14"
+          <button
+            className={s.userBtn}
+            onClick={() => {
+              navigate('settings');
+              setSetingsModalIsOpen(false);
+            }}
           >
-            <use href={`${iconsSrc}#arrow-down`} />
-          </svg>
-        </button>
+            <svg style={{ fill: 'white' }} width="16" height="16">
+              <use href={`${iconsSrc}#icon-setting`} />
+            </svg>
+            Settings
+          </button>
+          <button onClick={logOut} className={s.userBtn}>
+            <svg style={{ fill: 'white' }} width="16" height="16">
+              <use href={`${iconsSrc}#icon-logout`} />
+            </svg>
+            Log out
+          </button>
+        </Modal>
+        <MobileMenuModal
+          mobileMenuOpen={mobileMenuOpen}
+          setMobileMenuOper={setMobileMenuOper}
+        />
       </div>
-      <Modal
-        className={`${s.userSettingsModal} ${a.scaleInCenter}`}
-        isOpen={setingsModalIsOpen}
-        onRequestClose={() => setSetingsModalIsOpen(false)}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <button
-          className={s.userBtn}
-          onClick={() => {
-            navigate('settings');
-            setSetingsModalIsOpen(false);
-          }}
-        >
-          <svg style={{ fill: 'white' }} width="16" height="16">
-            <use href={`${iconsSrc}#icon-setting`} />
-          </svg>
-          Settings
-        </button>
-        <button onClick={logOut} className={s.userBtn}>
-          <svg style={{ fill: 'white' }} width="16" height="16">
-            <use href={`${iconsSrc}#icon-logout`} />
-          </svg>
-          Log out
-        </button>
-      </Modal>
-      <MobileMenuModal
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOper={setMobileMenuOper}
-      />
     </div>
   );
 };
