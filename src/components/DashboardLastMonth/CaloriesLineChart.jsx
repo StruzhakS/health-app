@@ -54,7 +54,14 @@ const CaloriesLineChart = ({ isMonth }) => {
     }, 0);
     return sum / caloriesArray.length;
   };
-
+  const averageYear = () => {
+    const arr = dataYearYlabel();
+    const sum = arr.reduce((accum, el) => {
+      return (accum += el);
+    }, 0)
+    return sum / arr.length;
+  };
+  console.log(averageYear());
 
   const yAxisFormatter = value => {
     if (value >= 1000) {
@@ -148,7 +155,7 @@ const CaloriesLineChart = ({ isMonth }) => {
         <span className={css.averageCalTitle}>
           Average value:
           <span className={css.caloriesSubtitle}>
-            {average().toFixed(1)} cal
+            {isMonth? average().toFixed(1): averageYear()} cal
           </span>
         </span>
       </div>
