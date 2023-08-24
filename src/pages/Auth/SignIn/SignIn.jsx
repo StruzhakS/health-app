@@ -83,6 +83,9 @@ const SignIn = () => {
             value={form.password}
             onChange={handleChange}
           />
+          <a href="https://health-app-1rfu.onrender.com/api/auth/google">
+            Google log in
+          </a>
           <button className={styles.button} type="submit">
             Sign In
           </button>
