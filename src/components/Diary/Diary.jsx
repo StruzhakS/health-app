@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Diary.module.css';
-import Table from 'components/Table/Table';
+// import Table from 'components/Table/Table';
 // import TableMobile from 'components/Table/TableMobile';
 // import { useMediaQuery } from 'react-responsive';
 import { BsArrowLeft } from 'react-icons/bs';
@@ -180,7 +180,7 @@ const Diary = () => {
           <table>
             <tbody>
               {makeNewMealsArray(breakfast).map((el, i) => (
-                <tr>
+                <tr key={i}>
                   <td>{i + 1}</td>
                   <td>{el.foodName}</td>
                   <td>{el.carbonohidrates}</td>
@@ -191,6 +191,14 @@ const Diary = () => {
                       <button
                         onClick={() => onUpdateMealButtonClick('Breakfast')}
                       >
+                        <svg
+                          width="16px"
+                          height="16px"
+                          className={s.recordMealIcon}
+                          style={{ fill: '#b6b6b6' }}
+                        >
+                          <use xlinkHref={`${Icons}#edit-2`} />
+                        </svg>
                         Edit
                       </button>
                     </td>
@@ -252,7 +260,7 @@ const Diary = () => {
           <table>
             <tbody>
               {makeNewMealsArray(dinner).map((el, i) => (
-                <tr>
+                <tr key={i}>
                   <td>{i + 1}</td>
                   <td>{el.foodName}</td>
                   <td>{el.carbonohidrates}</td>
@@ -261,7 +269,15 @@ const Diary = () => {
                   {el.foodName && (
                     <td>
                       <button onClick={() => onUpdateMealButtonClick('Dinner')}>
-                        Edit
+                        <svg
+                          width="16px"
+                          height="16px"
+                          className={s.recordMealIcon}
+                          style={{ fill: '#b6b6b6' }}
+                        >
+                          <use xlinkHref={`${Icons}#edit-2`} />
+                        </svg>
+                        Edit{' '}
                       </button>
                     </td>
                   )}
@@ -322,7 +338,7 @@ const Diary = () => {
           <table>
             <tbody>
               {makeNewMealsArray(lunch).map((el, i) => (
-                <tr>
+                <tr key={i}>
                   <td>{i + 1}</td>
                   <td>{el.foodName}</td>
                   <td>{el.carbonohidrates}</td>
@@ -331,7 +347,15 @@ const Diary = () => {
                   {el.foodName && (
                     <td>
                       <button onClick={() => onUpdateMealButtonClick('Lunch')}>
-                        Edit
+                        <svg
+                          width="16px"
+                          height="16px"
+                          className={s.recordMealIcon}
+                          style={{ fill: '#b6b6b6' }}
+                        >
+                          <use xlinkHref={`${Icons}#edit-2`} />
+                        </svg>
+                        Edit{' '}
                       </button>
                     </td>
                   )}
@@ -392,7 +416,7 @@ const Diary = () => {
           <table>
             <tbody>
               {makeNewMealsArray(snack).map((el, i) => (
-                <tr>
+                <tr key={i}>
                   <td>{i + 1}</td>
                   <td>{el.foodName}</td>
                   <td>{el.carbonohidrates}</td>
@@ -401,6 +425,14 @@ const Diary = () => {
                   {el.foodName && (
                     <td>
                       <button onClick={() => onUpdateMealButtonClick('Snack')}>
+                        <svg
+                          width="16px"
+                          height="16px"
+                          className={s.recordMealIcon}
+                          style={{ fill: '#b6b6b6' }}
+                        >
+                          <use xlinkHref={`${Icons}#edit-2`} />
+                        </svg>{' '}
                         Edit
                       </button>
                     </td>
