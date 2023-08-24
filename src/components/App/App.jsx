@@ -5,7 +5,7 @@ import MainAuth from 'pages/Auth/MainAuth/MainAuth';
 // import HomePage from '../../pages/';
 // import MainPage from 'pages/MainPage';
 import DashboardLastMonth from '../DashboardLastMonth/DashboardLastMonth';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import SignupForm from 'components/SignupForm/SignupForm';
 import MainPage from 'pages/MainPage/MainPage';
@@ -36,7 +36,7 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={isAuth ? <MainPage /> : <MainAuth />} />
+          <Route index element={isAuth ? <MainPage /> : <SignupForm />} />
           <Route
             path="/signin"
             element={<PublicRoute component={<SignIn />} />}
@@ -45,19 +45,17 @@ export const App = () => {
             path="/signup"
             element={<PublicRoute component={<SignUp />} />}
           />
-          <Route
+          <Route path="/googleAuth" element={<GoogleAuth />} />
+          {/* <Route
             path="/googleauth/:params"
             element={<PublicRoute component={<GoogleAuth />} />}
-          />
-
+          /> */}
           <Route path="/signup/:params" element={<SignupForm />} />
           <Route path="/forgot-password" element={<ForgotPass />} />
-
           <Route
             path="recommended-food"
             element={<PrivateRoute component={<RecomendedFood />} />}
           />
-
           <Route
             path="/diary"
             element={<PrivateRoute component={<Diary />} />}
