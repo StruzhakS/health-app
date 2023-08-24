@@ -51,9 +51,10 @@ const RecordMealModal = ({
 
     for (let i = 0; i < arrLength; i++) {
       const carbonohydratesElemBoolean =
-        carbonohidratesArr[i] === '0' || carbonohidratesArr[i] === '';
-      const fatElemBoolean = fatArr[i] === '0' || fatArr[i] === '';
-      const proteinElemBoolean = proteinArr[i] === '0' || proteinArr[i] === '';
+        parseFloat(carbonohidratesArr[i]) === 0 || carbonohidratesArr[i] === '';
+      const fatElemBoolean = parseFloat(fatArr[i]) === 0 || fatArr[i] === '';
+      const proteinElemBoolean =
+        parseFloat(proteinArr[i]) === 0 || proteinArr[i] === '';
 
       if (carbonohydratesElemBoolean && fatElemBoolean && proteinElemBoolean) {
         i = arrLength + 1;
@@ -114,7 +115,10 @@ const RecordMealModal = ({
   };
 
   const onCarbonohidratesChange = (evt, index) => {
-    const string = evt.target.value;
+    let string = evt.target.value;
+    if (parseFloat(string) < 0) {
+      string = '0';
+    }
     setCarbonohidratesArr(prev => {
       const resultArr = [];
       for (let i = 0; i < prev.length; i++) {
@@ -130,7 +134,11 @@ const RecordMealModal = ({
   };
 
   const onProteinChange = (evt, index) => {
-    const string = evt.target.value;
+    let string = evt.target.value;
+    if (parseFloat(string) < 0) {
+      string = '0';
+    }
+
     setProteinArr(prev => {
       const resultArr = [];
       for (let i = 0; i < prev.length; i++) {
@@ -146,7 +154,11 @@ const RecordMealModal = ({
   };
 
   const onFatChange = (evt, index) => {
-    const string = evt.target.value;
+    let string = evt.target.value;
+    if (parseFloat(string) < 0) {
+      string = '0';
+    }
+
     setFatArr(prev => {
       const resultArr = [];
       for (let i = 0; i < prev.length; i++) {

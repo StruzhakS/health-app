@@ -12,7 +12,7 @@
 }
 @media screen and (min-width: 1440px) {
   .containerDiary {
-    padding-top: 20px ;
+    padding-top: 20px;
     padding-bottom: 52px;
   }
 }
@@ -108,4 +108,17 @@
   .tableRow {
     flex-wrap: nowrap;
   }
+}
+
+.diary {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.targetMeal {
+  width: 500px;
+}
+
+.recordMealIcon {
+  stroke: #e3ffa8;
 }
