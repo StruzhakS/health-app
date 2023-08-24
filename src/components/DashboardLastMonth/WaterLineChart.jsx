@@ -54,6 +54,14 @@ const WaterLineChart = ({isMonth}) => {
     }, 0);
     return sum / waterArray.length;
   };
+  
+const averageYear = () => {
+    const arr = dataYearYlabel();
+    const sum = arr.reduce((accum, el) => {
+      return (accum += el);
+    }, 0)
+    return sum / arr.length;
+  };
 
   const yAxisFormatter = value => {
     if (value >= 1000) {
@@ -145,7 +153,7 @@ const WaterLineChart = ({isMonth}) => {
         <span className={css.waterTitle}>Water</span>
         <span className={css.averageTitle}>
           Average value:
-          <span className={css.waterSubtitle}> {average().toFixed(1)} ml </span>
+          <span className={css.waterSubtitle}>  {isMonth? average().toFixed(1): averageYear()} ml </span>
         </span>
       </div>
 

@@ -61,7 +61,7 @@ const CaloriesLineChart = ({ isMonth }) => {
     }, 0)
     return sum / arr.length;
   };
-  console.log(averageYear());
+  
 
   const yAxisFormatter = value => {
     if (value >= 1000) {
