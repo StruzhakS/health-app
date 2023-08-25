@@ -198,6 +198,7 @@ const RecordMealModal = ({
               <input
                 placeholder="The name of the product or dish"
                 type="text"
+                maxlength="30"
                 className={css.recordMealModalInput}
                 value={productNameArr[i]}
                 onChange={evt => onNameChange(evt, i)}
