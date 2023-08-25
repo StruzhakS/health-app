@@ -1,5 +1,0 @@
-const avgValue = average();
-const avgYearValue = averageYear();
-
-const displayAvgValue = isNaN(avgValue) ? '0' : avgValue;
-const displayAvgYearValue = isNaN(avgYearValue) ? '0' : avgYearValue;

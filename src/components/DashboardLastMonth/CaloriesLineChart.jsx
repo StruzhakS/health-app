@@ -45,23 +45,23 @@ const CaloriesLineChart = ({ isMonth }) => {
   const dataXlabel = () => {
     return monthStatistic.map(({ date }) => date.split('-')[2]);
   };
-
-
-  const average = () => {
-    const caloriesArray = dataYlabel();
-    const sum = caloriesArray.reduce((accum, el) => {
+const average = () => {
+    const waterArray = dataYlabel();
+    const sum = waterArray.reduce((accum, el) => {
       return (accum += el);
     }, 0);
-    return sum / caloriesArray.length;
+    return sum / waterArray.length;
   };
-  const averageYear = () => {
+  
+const averageYear = () => {
     const arr = dataYearYlabel();
     const sum = arr.reduce((accum, el) => {
       return (accum += el);
     }, 0)
     return sum / arr.length;
   };
-  
+
+
 
   const yAxisFormatter = value => {
     if (value >= 1000) {
