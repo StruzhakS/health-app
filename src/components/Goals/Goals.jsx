@@ -6,13 +6,15 @@ import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
 import { useMediaQuery } from 'react-responsive';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateAuthStep } from 'redux/auth/authSlice';
 
 const Goal = () => {
-  const [goal, setGoal] = useState('lose fat');
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userData = useSelector(state => state.auth.step);
+  const [goal, setGoal] = useState(userData?.goal || 'lose fat');
+
   const onOptionChange = e => {
     setGoal(e.target.value);
   };
@@ -79,7 +81,9 @@ const Goal = () => {
           />
           <span className={s.goalList}>Gain Muscle</span>
         </label>
-        <button className={`${s.btnNext} ${a.hoverYellowBtn}`}>Next</button>
+        <button type="submit" className={`${s.btnNext} ${a.hoverYellowBtn}`}>
+          Next
+        </button>
       </form>
     </div>
   );
