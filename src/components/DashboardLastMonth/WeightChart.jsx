@@ -10,12 +10,9 @@ const WeightChart = ({ isMonth }) => {
     ? monthStatistic.map(({ weight }) => weight)
     : yearStatistic.map(({ weight }) => weight);
 
-  const dataLabel = isMonth
-    ? monthStatistic.map(({ date }) => date.split('-')[2])
-    : yearStatistic.map(({ date }) =>
-        new Date(date).toLocaleString('default', { month: 'long' })
-      );
-
+  const dataLabel =  monthStatistic.map(({ date }) => date.split('-')[2])
+    
+      
   const average = () => {
     const weightArray = dataWeightlabel;
     const sum = weightArray.reduce((accum, el) => {
