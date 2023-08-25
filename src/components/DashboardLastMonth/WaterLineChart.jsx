@@ -106,7 +106,7 @@ const averageYear = () => {
           padding: 8,
         },
         suggestedMin: 0,
-        suggestedMax: 2000,
+        suggestedMax: 3000,
       },
     },
     plugins: {
