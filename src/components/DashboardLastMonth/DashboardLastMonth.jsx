@@ -42,7 +42,7 @@ useEffect(() => {
    }, [dispatch]);
 
 useEffect(() => {
-    dispatch(getYearAllStatistic("2022"))
+    dispatch(getYearAllStatistic("2023"))
   }, [dispatch])
   
   const navigate = useNavigate();

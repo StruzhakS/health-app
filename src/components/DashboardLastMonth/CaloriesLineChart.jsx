@@ -28,16 +28,21 @@ ChartJS.register(
 );
 
 const CaloriesLineChart = ({ isMonth }) => {
+  const monthsForYear = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
-  const yearStatistic = useSelector(state => state.user.yearStatistic);
-  const dataYearYlabel = () => {
-    return yearStatistic.map(({ calories }) => calories);
-  };
-  const dataYearXlabel = () => {
-    return yearStatistic.map(({ date }) => new Date(date).toLocaleString('default', {month: 'long'}) );
-  };
-
- 
   const monthStatistic = useSelector(state => state.user.monthStatistic);
   const dataYlabel = () => {
     return monthStatistic.map(({ calories }) => calories);
@@ -45,24 +50,57 @@ const CaloriesLineChart = ({ isMonth }) => {
   const dataXlabel = () => {
     return monthStatistic.map(({ date }) => date.split('-')[2]);
   };
-const average = () => {
+  const average = () => {
     const waterArray = dataYlabel();
     const sum = waterArray.reduce((accum, el) => {
       return (accum += el);
     }, 0);
     return sum / waterArray.length;
   };
-  
-const averageYear = () => {
-    const arr = dataYearYlabel();
-    const sum = arr.reduce((accum, el) => {
-      return (accum += el);
-    }, 0)
-    return sum / arr.length;
+
+  const yearStatistic = useSelector(state => state.user.yearStatistic);
+  const dataYearXlabel = () => {
+    return monthsForYear.map(month => month.slice(0, 3));
   };
 
+  const dataYearYlabel = () => {
+    return yearStatistic.map(({ calories }) => calories);
+  };
 
+  const dataYearCalories = dataYearYlabel();
+  const dataByMonth = {};
 
+  for (let i = 0; i < dataYearCalories.length; i++) {
+    const monthIndex = i % 12;
+
+    if (!dataByMonth[monthIndex]) {
+      dataByMonth[monthIndex] = [];
+    }
+
+    dataByMonth[monthIndex].push(dataYearCalories[i]);
+  }
+  const monthlyAverages = [];
+
+  for (const monthIndex in dataByMonth) {
+    if (dataByMonth.hasOwnProperty(monthIndex)) {
+      const monthData = dataByMonth[monthIndex];
+      const sum = monthData.reduce((total, value) => total + value, 0);
+      const average = sum / monthData.length;
+      monthlyAverages.push(average.toFixed(0));
+    }
+  }
+ 
+
+ const averageYear = () => {
+    const arr = monthlyAverages;
+    const sum = arr.reduce((total, num) => total + num, 0);
+    const averageYearAll = sum / arr.length;
+    const roundedNumber = Math.round(averageYearAll);
+    const numberString = roundedNumber.toString();
+    const firstFourDigits = numberString.slice(0, 5);
+    const digitsOnly = firstFourDigits.replace('.', '');
+    return digitsOnly;
+  };
   const yAxisFormatter = value => {
     if (value >= 1000) {
       return `${value / 1000}K`;
@@ -74,7 +112,7 @@ const averageYear = () => {
     labels: isMonth ? dataXlabel() : dataYearXlabel(),
     datasets: [
       {
-        data: isMonth ? dataYlabel() : dataYearYlabel(),
+        data: isMonth ? dataYlabel() : monthlyAverages,
         borderColor: 'rgba(227, 255, 168, 1)',
         backgroundColor: '#E3FFA8',
         cubicInterpolationMode: 'monotone',
@@ -121,7 +159,7 @@ const averageYear = () => {
         enabled: true,
         backgroundColor: '#0F0F0F',
         borderColor: 'rgba(227, 255, 168, 0.419)',
-        borderWidth: 1.8,
+        borderWidth: 1.9,
         bodySpacing: 8,
         displayColors: false,
         padding: 15,
@@ -130,7 +168,7 @@ const averageYear = () => {
         cornerRadius: 8,
         boxHeight: 108,
         footerColor: '#B6B6B6',
-         footerAlign: "center",
+        footerAlign: 'center',
         titleFont: {
           family: 'Poppins',
           size: 32,
@@ -156,7 +194,7 @@ const averageYear = () => {
         <span className={css.averageCalTitle}>
           Average value:
           <span className={css.caloriesSubtitle}>
-            {isMonth? average().toFixed(1): averageYear()} cal
+            {isMonth ? average().toFixed(0) : averageYear()} cal
           </span>
         </span>
       </div>
