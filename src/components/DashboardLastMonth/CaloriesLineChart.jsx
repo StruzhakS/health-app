@@ -120,8 +120,8 @@ const CaloriesLineChart = ({ isMonth }) => {
         position: 'nearest',
         enabled: true,
         backgroundColor: '#0F0F0F',
-        borderColor: 'rgba(227, 255, 168, 0.20)',
-        borderWidth: 1,
+        borderColor: 'rgba(227, 255, 168, 0.419)',
+        borderWidth: 1.8,
         bodySpacing: 8,
         displayColors: false,
         padding: 15,
@@ -130,6 +130,7 @@ const CaloriesLineChart = ({ isMonth }) => {
         cornerRadius: 8,
         boxHeight: 108,
         footerColor: '#B6B6B6',
+         footerAlign: "center",
         titleFont: {
           family: 'Poppins',
           size: 32,

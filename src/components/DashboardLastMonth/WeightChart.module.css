@@ -39,9 +39,8 @@ font-weight: 400;
 .weightLine {
   display: flex;
   flex-direction: row;
-  margin: 0 auto; 
   gap: 23px;
-  margin-left: 21px;
+  margin-left: 25px;
 }
 @media screen and (min-width: 834px) {
   .weightLine {
@@ -50,8 +49,9 @@ font-weight: 400;
 }
 @media only screen and (min-width: 1440px) {
  .weightLine {
-     gap: 25px;
+     gap: 22px;
      align-items: center;
+     margin-left: 30px;
   }
 }
 .weightPoint {
@@ -75,12 +75,12 @@ line-height: 20px;
 }
 @media screen and (min-width: 834px) {
   .dayLine {
-  gap: 15px;
+  gap: 10px;
   }
 }
 @media only screen and (min-width: 1440px) {
  .dayLine {
-     gap: 34px;
+     gap: 29px;
        padding-bottom: 16px;
   }
 }

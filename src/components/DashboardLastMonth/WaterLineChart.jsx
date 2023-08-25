@@ -121,6 +121,7 @@ const averageYear = () => {
         backgroundColor: '#0F0F0F',
         borderColor: 'rgba(227, 255, 168, 0.20)',
         borderWidth: 1,
+        boxShadow:"rgba(227, 255, 168, 0.562)",
         bodySpacing: 8,
         displayColors: false,
         padding: 15,
@@ -128,7 +129,8 @@ const averageYear = () => {
         caretSize: 0,
         cornerRadius: 8,
         boxHeight: 108,
-         footerColor: "#B6B6B6",
+        footerColor: "#B6B6B6",
+         footerAlign: "center",
         titleFont: {
           family: 'Poppins',
           size: 32,
