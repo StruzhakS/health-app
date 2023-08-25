@@ -19,10 +19,27 @@ const initialState = {
   error: null,
   isLoading: false,
 };
-
-const handleAddGoals = (state, { payload }) => {
+const handleSignUpFulfilled = (state, { payload }) => {
+  state.user = payload.user;
+  state.token = payload.user.token;
+  state.error = null;
+  state.avatar = payload.user.avatar;
+  state.isLoading = false;
+};
+const handleSignInFulfilled = (state, { payload }) => {
+  state.user = payload.user;
+  state.token = payload.user.token;
+  state.error = null;
+  state.isLoading = false;
+};
+const handleAddGoalsFulfilled = (state, { payload }) => {
   state.user = payload;
   state.token = payload.token;
+  state.isLoading = false;
+};
+const handleForgotPasswordFulfilled = state => {
+  state.error = null;
+  state.isLoading = false;
 };
 const handlePending = state => {
   state.isLoading = true;
@@ -31,23 +48,26 @@ const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload.message;
 };
-const handleLogout = state => {
+const handleLogoutFulfilled = state => {
   state.user = null;
   state.step = null;
   state.token = null;
   state.error = '';
   state.isLoading = false;
 };
+const handleUpdateSettingsOperations = (state, { payload }) => {
+  state.user.name = payload.name;
+  state.user.gender = payload.gender;
+  state.user.age = payload.age;
+  state.user.height = payload.height;
+  state.user.weight = payload.weight;
+  state.user.activity = payload.activity;
+  state.user.avatarURL = payload.avatarURL;
+};
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logout: state => {
-      state.user = null;
-      state.token = null;
-      state.step = null;
-      state.error = null;
-    },
     updateAuthStep: (state, { payload }) => {
       state.step = { ...state.step, ...payload };
     },
@@ -58,44 +78,25 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(signUp.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.user.token;
-        state.error = null;
-        state.avatar = payload.user.avatar;
-      })
-      .addCase(signIn.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.user.token;
-        state.error = null;
-      })
-      .addCase(forgotPassword.fulfilled, (state, action) => {
-        state.error = null;
-      })
+      .addCase(signUp.fulfilled, handleSignUpFulfilled)
+      .addCase(signIn.fulfilled, handleSignInFulfilled)
+      .addCase(forgotPassword.fulfilled, handleForgotPasswordFulfilled)
       .addCase(updateGoalOperation.fulfilled, (state, { payload }) => {
         state.user.goal = payload.goal;
       })
       .addCase(updateWeightOperation.fulfilled, (state, { payload }) => {
         state.user.weight = payload.weight;
       })
-      .addCase(updateSettingsOperations.fulfilled, (state, { payload }) => {
-        state.user.name = payload.name;
-        state.user.gender = payload.gender;
-        state.user.age = payload.age;
-        state.user.height = payload.height;
-        state.user.weight = payload.weight;
-        state.user.activity = payload.activity;
-        state.user.avatarURL = payload.avatarURL;
-      })
-      .addCase(addGoalsThunk.fulfilled, handleAddGoals)
-      .addCase(addGoalsThunk.pending, handlePending)
-      .addCase(logoutUserThunk.fulfilled, handleLogout)
-      .addCase(logoutUserThunk.rejected, handlePending)
-      .addCase(logoutUserThunk.pending, handlePending)
+      .addCase(
+        updateSettingsOperations.fulfilled,
+        handleUpdateSettingsOperations
+      )
+      .addCase(addGoalsThunk.fulfilled, handleAddGoalsFulfilled)
+      .addCase(logoutUserThunk.fulfilled, handleLogoutFulfilled)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 
-export const { logout, updateAuthStep, updateAuthUser } = authSlice.actions;
+export const { updateAuthStep, updateAuthUser } = authSlice.actions;
 export default authSlice.reducer;
