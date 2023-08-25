@@ -1,74 +1,132 @@
 import React from 'react';
 import s from './Table.module.css';
-import { PiPencilLineLight } from 'react-icons/pi';
-import { BsPlus } from 'react-icons/bs';
-import { useState } from 'react';
-import RecordMealModal from 'components/Modal/RecordMealModal/RecordMealModal';
+import Icons from '../../assets/icons/symbol-defs.svg';
+// import { PiPencilLineLight } from 'react-icons/pi';
+// import { BsPlus } from 'react-icons/bs';
 
-const Table = () => {
-  const [recordMealModalOpen, setRecordMealModalOpen] = useState(false);
-  const [selectedMeal, setSelectedMeal] = useState('');
+import * as mob from 'assets/img/mobile';
+const DiaryTable = ({
+  mealType,
+  mealData,
+  onRecordMealButtonClick,
+  onUpdateMealButtonClick,
+}) => {
+  function calculateSum(meal) {
+    return meal.reduce(
+      (acc, mealItem) => {
+        acc.carbonohidratesSum += Number(mealItem.carbonohidrates);
+        acc.proteinSum += Number(mealItem.protein);
+        acc.fatSum += Number(mealItem.fat);
+        return acc;
+      },
+      { carbonohidratesSum: 0, proteinSum: 0, fatSum: 0 }
+    );
+  }
 
-  const onRecordMealButtonClick = evt => {
-    setSelectedMeal(evt.target.name);
-    setRecordMealModalOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
+  const sum = calculateSum(mealData);
+
+  function makeNewMealsArray(mealsArray) {
+    const newArray =
+      mealsArray.length <= 4
+        ? [
+            ...mealsArray,
+            ...Array(4 - mealsArray.length).fill({
+              foodName: '',
+              carbonohidrates: '',
+              fat: '',
+              protein: '',
+            }),
+          ]
+        : mealsArray;
+    return newArray;
+  }
   return (
     <>
-      <RecordMealModal
-        selectedMeal={selectedMeal}
-        recordMealModalOpen={recordMealModalOpen}
-        setRecordMealModalOpen={setRecordMealModalOpen}
-      />
-      <table className={s.table}>
-        <tbody>
-          <tr>
-            <th className={s.firstTd}>1</th>
-            <td className={s.secondTd}>English breakfast</td>
-            <td className={s.allTd}>11.2</td>
-            <td className={s.allTd}>3.6</td>
-            <td className={s.allTd}>12</td>
-            <td className={s.btn}>
-              <button className={s.btnEdit}>
-                <PiPencilLineLight size="1rem" />
-                Edit
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th className={s.firstTd}>2</th>
-            <td className={s.secondTd}>
-              <button className={s.btnAdd} onClick={onRecordMealButtonClick}>
-                <BsPlus size="1rem" />
-                Record your meal
-              </button>
-            </td>
-            <td className={s.allTd}></td>
-            <td className={s.allTd}></td>
-            <td className={s.allTd}></td>
-            <td className={s.btn}></td>
-          </tr>
-          <tr>
-            <th className={s.firstTd}>3</th>
-            <td className={s.secondTd}></td>
-            <td className={s.allTd}></td>
-            <td className={s.allTd}></td>
-            <td className={s.allTd}></td>
-            <td className={s.btn}></td>
-          </tr>
-          <tr>
-            <th className={s.firstTd}>4</th>
-            <td className={s.secondTd}></td>
-            <td className={s.allTd}></td>
-            <td className={s.allTd}></td>
-            <td className={s.allTd}></td>
-            <td className={s.btn}></td>
-          </tr>
-        </tbody>
-      </table>
+      <div className={s.targetMeal}>
+        <table>
+          <thead>
+            <tr>
+              <td>
+                <img
+                  width="36px"
+                  height="36px"
+                  src={mob[mealType]}
+                  alt="meal"
+                />
+              </td>
+              <td>
+                <h3 className={s.mealListItemTitle}>{mealType}</h3>
+              </td>
+              <td>
+                <p className={s.mealAdditionalInfoDescription}>
+                  Carbonohidrates:
+                  <span className={s.mealAdditionalInfoValue}>
+                    {sum.carbonohidratesSum}
+                  </span>
+                </p>
+              </td>
+              <td>
+                <p className={s.mealAdditionalInfoDescription}>
+                  Protein:
+                  <span className={s.mealAdditionalInfoValue}>
+                    {sum.proteinSum}
+                  </span>
+                </p>
+              </td>
+              <td>
+                <p className={s.mealAdditionalInfoDescription}>
+                  Fat:
+                  <span className={s.mealAdditionalInfoValue}>
+                    {sum.fatSum}
+                  </span>
+                </p>
+              </td>
+            </tr>
+          </thead>
+        </table>
+        <table>
+          <tbody>
+            {makeNewMealsArray(mealData).map((el, i) => (
+              <tr key={i}>
+                <td>{i + 1}</td>
+                <td>{el.foodName}</td>
+                <td>{el.carbonohidrates}</td>
+                <td>{el.fat}</td>
+                <td>{el.protein}</td>
+                {el.foodName && (
+                  <td>
+                    <button onClick={() => onUpdateMealButtonClick(mealType)}>
+                      <svg
+                        width="16px"
+                        height="16px"
+                        className={s.recordMealIcon}
+                        style={{ fill: '#b6b6b6' }}
+                      >
+                        <use xlinkHref={`${Icons}#edit-2`} />
+                      </svg>
+                      Edit
+                    </button>
+                  </td>
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {mealData.length < 4 && (
+          <button
+            name={mealType}
+            onClick={onRecordMealButtonClick}
+            className={s.recordMealButton}
+          >
+            <svg width="16px" height="16px" className={s.recordMealIcon}>
+              <use xlinkHref={`${Icons}#add`} />
+            </svg>
+            Record your meal
+          </button>
+        )}
+      </div>
     </>
   );
 };
 
-export default Table;
+export default DiaryTable;

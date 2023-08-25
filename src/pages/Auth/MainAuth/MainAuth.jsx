@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import styles from './MainAuth.module.css';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import a from '../../../animations/animations.module.css';
 import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
 import IllustrationTablet from '../../../assets/img/tablet/Illustration.png';
@@ -10,12 +10,12 @@ import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
 const MainAuth = () => {
   const AuthUser = useAuth();
 
+  const navigate = useNavigate();
   useEffect(() => {
-    if (AuthUser?.user?.id) {
-      // Пример редиректа, если пользователь авторизован
-      return <Navigate to="/mainpage" />;
+    if (AuthUser?.user?.token && !AuthUser?.user?.requirements) {
+      return navigate('signup/goal');
     }
-  }, [AuthUser]);
+  }, [AuthUser, navigate]);
 
   return (
     <div className={styles['auth-container']}>
