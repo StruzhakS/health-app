@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import css from './WaterIntakeModal.module.css';
 import a from '../../../animations/animations.module.css';
@@ -16,19 +16,31 @@ const WaterIntakeModal = ({
   waterIntakeModalOpen,
   setWaterIntakeModalOpen,
 }) => {
-  const [milliliters, setMilliliters] = useState(0);
+  const [milliliters, setMilliliters] = useState('');
+  const [disableConfirm, setDisableConfirm] = useState(true);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (milliliters <= 0) {
+      setDisableConfirm(true);
+      return;
+    }
+    setDisableConfirm(false);
+  }, [milliliters]);
+
+  const onInputChange = evt => {
+    const number = evt.target.value.replace(/[^\d]/g, '');
+
+    setMilliliters(number);
+  };
 
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    if (milliliters <= 0) {
-      return;
-    }
     document.body.style.overflow = 'auto';
     setWaterIntakeModalOpen(false);
-    setMilliliters(0);
+    setMilliliters('');
     dispatch(updateWaterOperations({ water: milliliters }));
   };
 
@@ -53,14 +65,16 @@ const WaterIntakeModal = ({
           <input
             placeholder="Enter milliliters"
             className={css.waterIntakeModalFormInput}
-            type="number"
+            type="text"
+            maxlength="3"
             value={milliliters}
-            onChange={evt => setMilliliters(evt.target.value)}
+            onChange={onInputChange}
           />
         </label>
         <button
           className={`${css.waterIntakeModalFormButton} ${a.hoverYellowBtn}`}
           onClick={handleSubmit}
+          disabled={disableConfirm}
         >
           Confirm
         </button>
