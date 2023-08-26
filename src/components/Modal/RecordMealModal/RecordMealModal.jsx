@@ -198,7 +198,7 @@ const RecordMealModal = ({
               <input
                 placeholder="The name of the product or dish"
                 type="text"
-                maxlength="30"
+                maxLength="30"
                 className={css.recordMealModalInput}
                 value={productNameArr[i]}
                 onChange={evt => onNameChange(evt, i)}
@@ -206,7 +206,7 @@ const RecordMealModal = ({
               <input
                 placeholder="Carbonoh."
                 type="text"
-                maxlength="3"
+                maxLength="3"
                 className={css.recordMealModalInput}
                 value={carbonohidratesArr[i]}
                 onChange={evt => onCarbonohidratesChange(evt, i)}
@@ -214,7 +214,7 @@ const RecordMealModal = ({
               <input
                 placeholder="Protein"
                 type="text"
-                maxlength="3"
+                maxLength="3"
                 className={css.recordMealModalInput}
                 value={proteinArr[i]}
                 onChange={evt => onProteinChange(evt, i)}
@@ -222,7 +222,7 @@ const RecordMealModal = ({
               <input
                 placeholder="Fat"
                 type="text"
-                maxlength="3"
+                maxLength="3"
                 className={css.recordMealModalInput}
                 value={fatArr[i]}
                 onChange={evt => onFatChange(evt, i)}

@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 // import { BsPlus } from 'react-icons/bs';
 
 import * as mob from 'assets/img/mobile';
+import { nanoid } from 'nanoid';
 const DiaryTable = ({
   mealType,
   mealData,
@@ -31,79 +32,78 @@ const DiaryTable = ({
 
   function makeNewMealsArray(mealsArray) {
     const newArray =
-      mealsArray.length <= 4
+      mealsArray.length <= 3
         ? [
             ...mealsArray,
-            ...Array(4 - mealsArray.length).fill({
+            ...Array(1).fill({
+              showButton: true,
+            }),
+            ...Array(3 - mealsArray.length).fill({
               foodName: '',
               carbonohidrates: '',
               fat: '',
               protein: '',
             }),
           ]
-        : mealsArray;
+        : [
+            ...mealsArray,
+            ...Array(1).fill({
+              showButton: true,
+            }),
+          ];
     return newArray;
   }
+
   return (
     <>
       <div className={s.targetMeal}>
-        <table>
-          <thead>
-            <tr>
-              <td>
-                <div className={s.mealTypeWrapper}>
-                  <img
-                    width="36px"
-                    height="36px"
-                    src={mob[mealType]}
-                    alt="meal"
-                  />
+        <div className={s.mealTypeWrapper}>
+          <div className={s.mealTitleWrapper}>
+            <img width="36px" height="36px" src={mob[mealType]} alt="meal" />
 
-                  <h3 className={s.mealListItemTitle}>{mealType}</h3>
-                  <div className={s.descriptionWrap}>
-                    <p className={s.mealAdditionalInfoDescription}>
-                      Carbonohidrates:
-                      <span className={s.mealAdditionalInfoValue}>
-                        {sum.carbonohidratesSum}
-                      </span>
-                    </p>
+            <h3 className={s.mealListItemTitle}>{mealType}</h3>
+          </div>
 
-                    <p className={s.mealAdditionalInfoDescription}>
-                      Protein:
-                      <span className={s.mealAdditionalInfoValue}>
-                        {sum.proteinSum}
-                      </span>
-                    </p>
+          <div className={s.descriptionWrap}>
+            <p className={s.mealAdditionalInfoDescription}>
+              Carbonohidrates:
+              <span className={s.mealAdditionalInfoValue}>
+                {sum.carbonohidratesSum}
+              </span>
+            </p>
 
-                    <p className={s.mealAdditionalInfoDescription}>
-                      Fat:
-                      <span className={s.mealAdditionalInfoValue}>
-                        {sum.fatSum}
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </thead>
-        </table>
-        <table className={s.table}>
-          <tbody>
-            {makeNewMealsArray(mealData).map((el, i) => (
-              <tr key={i}>
-                <td className={s.mealWrap}>
+            <p className={s.mealAdditionalInfoDescription}>
+              Protein:
+              <span className={s.mealAdditionalInfoValue}>
+                {sum.proteinSum}
+              </span>
+            </p>
+
+            <p className={s.mealAdditionalInfoDescription}>
+              Fat:
+              <span className={s.mealAdditionalInfoValue}>{sum.fatSum}</span>
+            </p>
+          </div>
+        </div>
+
+        <ol className={s.table}>
+          {makeNewMealsArray(mealData).map(el => {
+            return !el.showButton ? (
+              <li key={nanoid()} className={s.mealItem}>
+                <div className={s.mealWrap}>
                   <div className={s.mealNameWrap}>
-                    <p>{i + 1}</p>
                     <p className={s.foodName}>{el.foodName}</p>
                     {el.foodName && isMobile && (
-                      <button onClick={() => onUpdateMealButtonClick(mealType)}>
+                      <button
+                        className={s.btnEdit}
+                        onClick={() => onUpdateMealButtonClick(mealType)}
+                      >
                         <svg
                           width="16px"
                           height="16px"
                           className={s.recordMealIcon}
-                          style={{ fill: '#b6b6b6' }}
                         >
-                          <use xlinkHref={`${Icons}#edit-2`} />
+                          <use xlinkHref={`${Icons}#pencil`} />
                         </svg>
                         Edit
                       </button>
@@ -115,48 +115,56 @@ const DiaryTable = ({
                       .map(
                         key =>
                           el.foodName && (
-                            <p key={key}>
-                              {isMobile
-                                ? `${key.slice(0, 1).toUpperCase()}${key.slice(
-                                    1,
-                                    4
-                                  )}.: ${el[key]}`
-                                : el[key]}
+                            <p key={key} className={s.numWrap}>
+                              {isMobile ? (
+                                <span>
+                                  <span className={s.colorNut}>
+                                    {key.slice(0, 1).toUpperCase()}
+                                    {key.slice(1, 4)}.:
+                                  </span>
+                                  &nbsp;{el[key]}
+                                </span>
+                              ) : (
+                                el[key]
+                              )}
                             </p>
                           )
                       )}
 
                     {el.foodName && !isMobile && (
-                      <button onClick={() => onUpdateMealButtonClick(mealType)}>
+                      <button
+                        onClick={() => onUpdateMealButtonClick(mealType)}
+                        className={s.btnEdit}
+                      >
                         <svg
                           width="16px"
                           height="16px"
                           className={s.recordMealIcon}
-                          style={{ fill: '#b6b6b6' }}
                         >
-                          <use xlinkHref={`${Icons}#edit-2`} />
+                          <use xlinkHref={`${Icons}#pencil`} />
                         </svg>
                         Edit
                       </button>
                     )}
                   </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {mealData.length < 4 && (
-          <button
-            name={mealType}
-            onClick={onRecordMealButtonClick}
-            className={s.recordMealButton}
-          >
-            <svg width="16px" height="16px" className={s.recordMealIcon}>
-              <use xlinkHref={`${Icons}#add`} />
-            </svg>
-            Record your meal
-          </button>
-        )}
+                </div>
+              </li>
+            ) : (
+              <li key={nanoid()} className={s.mealItem}>
+                <button
+                  name={mealType}
+                  onClick={onRecordMealButtonClick}
+                  className={s.recordMealButton}
+                >
+                  <svg width="16px" height="16px" className={s.recordMealIcon}>
+                    <use xlinkHref={`${Icons}#add`} />
+                  </svg>
+                  Record your meal
+                </button>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </>
   );
