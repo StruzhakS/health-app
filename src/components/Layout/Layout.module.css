@@ -1,15 +1,18 @@
 .container {
+  min-width: 320px;
   padding: 0 10px;
   margin: 0 auto;
 }
 @media only screen and (min-width: 834px) {
   .container {
+    width: 834px;
     padding: 0 27px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .container {
+    width: 1440px;
     padding: 0 34px;
   }
 }
