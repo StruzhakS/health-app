@@ -34,14 +34,14 @@ font-weight: 400;
 }
 .chartContainer {
   display: flex;
+  justify-content: flex-start;
 }
 
 .weightLine {
   display: flex;
   flex-direction: row;
-  margin: 0 auto; 
   gap: 23px;
-  margin-left: 21px;
+  margin-left: 25px;
 }
 @media screen and (min-width: 834px) {
   .weightLine {
@@ -50,11 +50,27 @@ font-weight: 400;
 }
 @media only screen and (min-width: 1440px) {
  .weightLine {
-     gap: 25px;
+     gap: 22px;
      align-items: center;
+     margin-left: 30px;
+  }
+}
+.yearWeightLine{
+    display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin-left: 24px;
+}
+
+@media only screen and (min-width: 1440px) {
+ .yearWeightLine {
+     gap: 56px;
+     align-items: center;
+     margin-left: 20px;
   }
 }
 .weightPoint {
+  display: flex;
 font-size: 14px;
 font-style: normal;
 font-weight: 400;
@@ -63,7 +79,16 @@ line-height: 20px;
   align-items: center;
   justify-content: center;
 }
-
+.yearWeightPoint{
+  display: flex;
+  font-size: 14px;
+ width: 58px;
+font-weight: 400;
+line-height: 20px;
+  padding-top: 24px;
+  align-items: center;
+  justify-content: center;
+}
 .dayLine{
   display: flex;
   flex-direction: row;
@@ -73,19 +98,50 @@ line-height: 20px;
   padding-left: 24px;
   padding-bottom: 36px;
 }
+
 @media screen and (min-width: 834px) {
   .dayLine {
-  gap: 15px;
+  gap: 13px;
+    margin-left: 13px;
   }
 }
 @media only screen and (min-width: 1440px) {
  .dayLine {
-     gap: 34px;
+     gap: 29px;
+       padding-bottom: 16px;
+  }
+}
+.yearDayLine{
+  display: flex;
+  flex-direction: row;
+ 
+  gap: 56px;
+  padding-top: 16px;
+  padding-left: 24px;
+  padding-bottom: 36px;
+}
+@media screen and (min-width: 834px) {
+  .yearDayLine {
+  gap: 4px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 1440px) {
+ .yearDayLine {
+     gap: 56px;
+       padding-bottom: 16px;
   }
 }
 .dayPoint{
   font-size: 10px;
-font-style: normal;
+font-weight: 400;
+line-height: 14px;
+color: #B6B6B6;
+}
+.yearDayPoint{
+   width: 58px;
+    font-size: 10px;
 font-weight: 400;
 line-height: 14px;
 color: #B6B6B6;
@@ -104,7 +160,7 @@ color: #B6B6B6;
 }
 @media only screen and (min-width: 1440px) {
  .weighChartContainer {
-     width: 1372px;
+     width: 1440px;
   margin-bottom: 0px;
   }
 }

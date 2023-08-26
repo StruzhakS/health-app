@@ -28,16 +28,21 @@ ChartJS.register(
 );
 
 const CaloriesLineChart = ({ isMonth }) => {
+  const monthsForYear = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
-  const yearStatistic = useSelector(state => state.user.yearStatistic);
-  const dataYearYlabel = () => {
-    return yearStatistic.map(({ calories }) => calories);
-  };
-  const dataYearXlabel = () => {
-    return yearStatistic.map(({ date }) => new Date(date).toLocaleString('default', {month: 'long'}) );
-  };
-
- 
   const monthStatistic = useSelector(state => state.user.monthStatistic);
   const dataYlabel = () => {
     return monthStatistic.map(({ calories }) => calories);
@@ -45,8 +50,6 @@ const CaloriesLineChart = ({ isMonth }) => {
   const dataXlabel = () => {
     return monthStatistic.map(({ date }) => date.split('-')[2]);
   };
-
-
   const average = () => {
     const caloriesArray = dataYlabel();
     const sum = caloriesArray.reduce((accum, el) => {
@@ -55,6 +58,65 @@ const CaloriesLineChart = ({ isMonth }) => {
     return sum / caloriesArray.length;
   };
 
+    //////Year///
+  
+  const yearStatistic = useSelector(state => state.user.yearStatistic);
+  const dataYearXlabel = () => {
+    return monthsForYear.map(month => month.slice(0, 3));
+  };
+
+  const monthlyCalories = {};
+  const monthlyDays = {};
+  const dataYear = yearStatistic;
+
+  dataYear.forEach(entry => {
+    const date = new Date(entry.date);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+
+    if (!monthlyCalories[year]) {
+      monthlyCalories[year] = {};
+      monthlyDays[year] = {};
+    }
+    if (!monthlyCalories[year][month]) {
+      monthlyCalories[year][month] = 0;
+      monthlyDays[year][month] = 0;
+    }
+    monthlyCalories[year][month] += entry.calories;
+    monthlyDays[year][month]++;
+  });
+
+  const resultCaloriesData = [];
+  const resultYear = [];
+  const resultMonth = [];
+  for (const year in monthlyCalories) {
+    for (const month in monthlyCalories[year]) {
+      const averageCalories =
+        monthlyCalories[year][month] / monthlyDays[year][month];
+
+      resultCaloriesData.push({
+        averageCalories: averageCalories,
+      });
+      resultYear.push({
+        year: year,
+      });
+      resultMonth.push({
+        month: month,
+      });
+    }
+  }
+
+  const dataYearYlabel = resultCaloriesData.map(
+    ({ averageCalories }) => averageCalories
+  );
+
+  const averageYear = () => {
+    const caloriesArray = dataYearYlabel;
+    const sum = caloriesArray.reduce((accum, el) => {
+      return accum + el;
+    }, 0);
+    return sum / caloriesArray.length;
+  };
 
   const yAxisFormatter = value => {
     if (value >= 1000) {
@@ -67,7 +129,7 @@ const CaloriesLineChart = ({ isMonth }) => {
     labels: isMonth ? dataXlabel() : dataYearXlabel(),
     datasets: [
       {
-        data: isMonth ? dataYlabel() : dataYearYlabel(),
+        data: isMonth ? dataYlabel() : dataYearYlabel,
         borderColor: 'rgba(227, 255, 168, 1)',
         backgroundColor: '#E3FFA8',
         cubicInterpolationMode: 'monotone',
@@ -100,7 +162,7 @@ const CaloriesLineChart = ({ isMonth }) => {
           padding: 8,
         },
         suggestedMin: 0,
-        suggestedMax: 2000,
+        suggestedMax: 3000,
       },
     },
     plugins: {
@@ -113,8 +175,8 @@ const CaloriesLineChart = ({ isMonth }) => {
         position: 'nearest',
         enabled: true,
         backgroundColor: '#0F0F0F',
-        borderColor: 'rgba(227, 255, 168, 0.20)',
-        borderWidth: 1,
+        borderColor: 'rgba(227, 255, 168, 0.419)',
+        borderWidth: 1.9,
         bodySpacing: 8,
         displayColors: false,
         padding: 15,
@@ -123,6 +185,7 @@ const CaloriesLineChart = ({ isMonth }) => {
         cornerRadius: 8,
         boxHeight: 108,
         footerColor: '#B6B6B6',
+        footerAlign: 'center',
         titleFont: {
           family: 'Poppins',
           size: 32,
@@ -148,7 +211,7 @@ const CaloriesLineChart = ({ isMonth }) => {
         <span className={css.averageCalTitle}>
           Average value:
           <span className={css.caloriesSubtitle}>
-            {average().toFixed(1)} cal
+            {isMonth ? average().toFixed(0) : averageYear().toFixed(0)} cal
           </span>
         </span>
       </div>

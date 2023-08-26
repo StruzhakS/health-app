@@ -52,6 +52,12 @@
   width: 100%;
    margin-bottom: 17px;
 }
+@media screen and (min-width: 1440px) {
+  .chartWrapper {
+  overflow: hidden;
+       margin-bottom: 0px;
+  }
+}
 
 .chartContainer {
   width: 740px;
@@ -69,8 +75,8 @@
 }
 @media screen and (min-width: 1440px) {
   .chartContainer {
-   width: 671px; 
-     height: 382px;
+   width: 679px; 
+     height: 380px;
        margin-bottom: 0px;
   }
 }
