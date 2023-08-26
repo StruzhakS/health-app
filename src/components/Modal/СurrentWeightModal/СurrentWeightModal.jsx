@@ -15,7 +15,7 @@ const СurrentWeightModal = ({
   selectedWeight,
 }) => {
   const changeWeight = useSelector(state => state.user.changeWeight);
-  console.log(changeWeight);
+
   const D = new Date();
 
   const [weight, setWeight] = useState(selectedWeight);

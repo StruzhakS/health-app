@@ -16,7 +16,7 @@ const TableMobile = () => {
   };
   return (
     <>
-     <RecordMealModal
+      <RecordMealModal
         selectedMeal={selectedMeal}
         recordMealModalOpen={recordMealModalOpen}
         setRecordMealModalOpen={setRecordMealModalOpen}
@@ -27,7 +27,7 @@ const TableMobile = () => {
             <th>1</th>
             <td className={s.secondTd}>English breakfast</td>
             <td className={s.btn}>
-              <button className={s.btnEdit} >
+              <button className={s.btnEdit}>
                 <PiPencilLineLight size="1rem" />
                 Edit
               </button>

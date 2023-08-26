@@ -56,12 +56,15 @@ export async function setFoodIntake(body) {
 }
 export async function getMonthStatistic(body) {
   const { data } = await axios.get(`/statistics?date=${body}`);
- 
+
   return data;
-  
 }
 export async function getYearStatistic(body) {
   const { data } = await axios.get(`/statistics-year?date=${body}`);
 
+  return data;
+}
+export async function updateFoodApi(id, body) {
+  const { data } = await axios.put(`/food-intake/${id}`, body);
   return data;
 }

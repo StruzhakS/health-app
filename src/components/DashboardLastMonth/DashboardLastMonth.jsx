@@ -5,13 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import CaloriesLineChart from './CaloriesLineChart';
 import WeightChart from './WeightChart';
 import WaterLineChart from './WaterLineChart';
+import { format } from 'date-fns';
 
 import sprite from '../../assets/icons/symbol-defs.svg';
 
 import DateSelector from './DateSelect/DateSelect';
 import { useDispatch } from 'react-redux';
-import { getMonthAllStatistic, getYearAllStatistic } from 'redux/user/userOperations';
-
+import {
+  getMonthAllStatistic,
+  getYearAllStatistic,
+} from 'redux/user/userOperations';
 
 const DashboardLastMonth = () => {
   const months = [
@@ -28,23 +31,27 @@ const DashboardLastMonth = () => {
     'November',
     'December',
   ];
+
   const currentDate = new Date();
   const currentMonthIndex = currentDate.getMonth();
+
+  const currentDateFormfat = format(new Date(), 'yyyy-MM');
+  const currentYearFormat = format(new Date(), 'yyyy');
 
   const currentMonth = months[currentMonthIndex];
 
   const [isMonth, setIsMonth] = useState(true);
 
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-useEffect(() => {
-     dispatch(getMonthAllStatistic('2023-08'));
-   }, [dispatch]);
+  useEffect(() => {
+    dispatch(getMonthAllStatistic(currentDateFormfat));
+  }, [currentDateFormfat, dispatch]);
 
-useEffect(() => {
-    dispatch(getYearAllStatistic("2023"))
-  }, [dispatch])
-  
+  useEffect(() => {
+    dispatch(getYearAllStatistic(currentYearFormat));
+  }, [currentYearFormat, dispatch]);
+
   const navigate = useNavigate();
   const onButtonClick = evt => {
     evt.preventDefault();
@@ -72,7 +79,7 @@ useEffect(() => {
           <CaloriesLineChart isMonth={isMonth} />
         </div>
         <div className={css.gridItem2}>
-          <WaterLineChart  isMonth={isMonth} />
+          <WaterLineChart isMonth={isMonth} />
         </div>
         <div className={css.gridItem3}>
           <WeightChart isMonth={isMonth} />
