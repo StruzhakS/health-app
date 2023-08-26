@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './Table.module.css';
 import Icons from '../../assets/icons/symbol-defs.svg';
+import { useMediaQuery } from 'react-responsive';
+
 // import { PiPencilLineLight } from 'react-icons/pi';
 // import { BsPlus } from 'react-icons/bs';
 
@@ -11,6 +13,8 @@ const DiaryTable = ({
   onRecordMealButtonClick,
   onUpdateMealButtonClick,
 }) => {
+  const isMobile = useMediaQuery({ maxWidth: 833 });
+
   function calculateSum(meal) {
     return meal.reduce(
       (acc, mealItem) => {
@@ -47,67 +51,96 @@ const DiaryTable = ({
           <thead>
             <tr>
               <td>
-                <img
-                  width="36px"
-                  height="36px"
-                  src={mob[mealType]}
-                  alt="meal"
-                />
-              </td>
-              <td>
-                <h3 className={s.mealListItemTitle}>{mealType}</h3>
-              </td>
-              <td>
-                <p className={s.mealAdditionalInfoDescription}>
-                  Carbonohidrates:
-                  <span className={s.mealAdditionalInfoValue}>
-                    {sum.carbonohidratesSum}
-                  </span>
-                </p>
-              </td>
-              <td>
-                <p className={s.mealAdditionalInfoDescription}>
-                  Protein:
-                  <span className={s.mealAdditionalInfoValue}>
-                    {sum.proteinSum}
-                  </span>
-                </p>
-              </td>
-              <td>
-                <p className={s.mealAdditionalInfoDescription}>
-                  Fat:
-                  <span className={s.mealAdditionalInfoValue}>
-                    {sum.fatSum}
-                  </span>
-                </p>
+                <div className={s.mealTypeWrapper}>
+                  <img
+                    width="36px"
+                    height="36px"
+                    src={mob[mealType]}
+                    alt="meal"
+                  />
+
+                  <h3 className={s.mealListItemTitle}>{mealType}</h3>
+                  <div className={s.descriptionWrap}>
+                    <p className={s.mealAdditionalInfoDescription}>
+                      Carbonohidrates:
+                      <span className={s.mealAdditionalInfoValue}>
+                        {sum.carbonohidratesSum}
+                      </span>
+                    </p>
+
+                    <p className={s.mealAdditionalInfoDescription}>
+                      Protein:
+                      <span className={s.mealAdditionalInfoValue}>
+                        {sum.proteinSum}
+                      </span>
+                    </p>
+
+                    <p className={s.mealAdditionalInfoDescription}>
+                      Fat:
+                      <span className={s.mealAdditionalInfoValue}>
+                        {sum.fatSum}
+                      </span>
+                    </p>
+                  </div>
+                </div>
               </td>
             </tr>
           </thead>
         </table>
-        <table>
+        <table className={s.table}>
           <tbody>
             {makeNewMealsArray(mealData).map((el, i) => (
               <tr key={i}>
-                <td>{i + 1}</td>
-                <td>{el.foodName}</td>
-                <td>{el.carbonohidrates}</td>
-                <td>{el.fat}</td>
-                <td>{el.protein}</td>
-                {el.foodName && (
-                  <td>
-                    <button onClick={() => onUpdateMealButtonClick(mealType)}>
-                      <svg
-                        width="16px"
-                        height="16px"
-                        className={s.recordMealIcon}
-                        style={{ fill: '#b6b6b6' }}
-                      >
-                        <use xlinkHref={`${Icons}#edit-2`} />
-                      </svg>
-                      Edit
-                    </button>
-                  </td>
-                )}
+                <td className={s.mealWrap}>
+                  <div className={s.mealNameWrap}>
+                    <p>{i + 1}</p>
+                    <p className={s.foodName}>{el.foodName}</p>
+                    {el.foodName && isMobile && (
+                      <button onClick={() => onUpdateMealButtonClick(mealType)}>
+                        <svg
+                          width="16px"
+                          height="16px"
+                          className={s.recordMealIcon}
+                          style={{ fill: '#b6b6b6' }}
+                        >
+                          <use xlinkHref={`${Icons}#edit-2`} />
+                        </svg>
+                        Edit
+                      </button>
+                    )}
+                  </div>
+                  <div className={s.mealNutritionalWrap}>
+                    {Object.keys(el)
+                      .slice(1)
+                      .map(
+                        key =>
+                          el.foodName && (
+                            <p key={key}>
+                              {isMobile
+                                ? `${key.slice(0, 1).toUpperCase()}${key.slice(
+                                    1,
+                                    4
+                                  )}.: ${el[key]}`
+                                : el[key]}
+                            </p>
+                          )
+                      )}
+
+                    {el.foodName && !isMobile && (
+                      <button onClick={() => onUpdateMealButtonClick(mealType)}>
+                        <svg
+                          width="16px"
+                          height="16px"
+                          className={s.recordMealIcon}
+                          style={{ fill: '#b6b6b6' }}
+                        >
+                          <use xlinkHref={`${Icons}#edit-2`} />
+                        </svg>
+                        Edit
+                      </button>
+                    )}
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

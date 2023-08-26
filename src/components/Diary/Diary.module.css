@@ -5,32 +5,38 @@
   flex-wrap: wrap;
   flex-direction: column;
 }
+
 @media screen and (min-width: 834px) {
   .containerDiary {
     padding-top: 24px;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .containerDiary {
     padding-top: 20px;
     padding-bottom: 52px;
   }
 }
+
 .foodIMG {
   display: flex;
   gap: 12px;
   margin-bottom: 12px;
 }
+
 @media screen and (min-width: 834px) {
   .foodIMG {
     margin-bottom: 0;
   }
 }
+
 .btnNav {
   display: flex;
   margin-bottom: 16px;
   align-items: center;
 }
+
 .btnDiary {
   display: flex;
 }
@@ -47,14 +53,17 @@
   font-weight: 500;
   align-items: center;
 }
+
 .container {
   align-items: center;
 }
+
 .containerLis {
   display: flex;
   flex-direction: column;
   margin-bottom: 12px;
 }
+
 @media screen and (min-width: 834px) {
   .containerLis {
     flex-direction: row;
@@ -63,6 +72,7 @@
     justify-content: space-between;
   }
 }
+
 .titleTab {
   width: 148px;
   height: 32px;
@@ -73,12 +83,14 @@
   display: flex;
   align-items: center;
 }
+
 @media screen and (min-width: 834px) {
   .titleTab {
     font-size: 22px;
     line-height: 32px;
   }
 }
+
 .listTab {
   display: flex;
   width: 178px;
@@ -86,17 +98,20 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
 @media screen and (min-width: 834px) {
   .listTab {
     width: 362px;
   }
 }
+
 .itemTab {
   display: inline-block;
   line-height: 20px;
   font-size: 14px;
   margin-right: 20px;
 }
+
 .tableRow {
   display: flex;
   justify-content: center;
@@ -104,6 +119,7 @@
   flex-wrap: wrap;
   margin-bottom: 24px;
 }
+
 @media screen and (min-width: 1440px) {
   .tableRow {
     flex-wrap: nowrap;
@@ -113,6 +129,7 @@
 .diary {
   display: flex;
   flex-wrap: wrap;
+
 }
 
 .targetMeal {

@@ -1,42 +1,35 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+import { updateAuthStep } from 'redux/auth/authSlice';
+import { Formik } from 'formik';
+import * as yup from 'yup';
+
 import s from '../Goals/Goals.module.css';
 import a from '../../animations/animations.module.css';
 import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
-import { useMediaQuery } from 'react-responsive';
-import { updateAuthStep } from 'redux/auth/authSlice';
+
+const validationSchema = yup.object().shape({
+  age: yup
+    .number()
+    .typeError('Age must be a number')
+    .integer('Age must be an integer')
+    .min(12, 'Age must be at least 12')
+    .max(150, 'Age cannot be more than 150')
+    .required('Age is a required field'),
+});
 
 const Gender = () => {
-  const [form, setForm] = useState({
-    gender: '',
-    age: '',
-  });
-  const [gender, setGender] = useState('male');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userData = useSelector(state => state.auth.step);
 
-  const onOptionChange = e => {
-    setGender(e.target.value);
-  };
-
-  const handleChange = ({ target: { name, value } }) => {
-    const regex = /^\d{0,3}$/;
-    if (regex.test(value)) {
-      setForm(prevForm => {
-        return { ...prevForm, [name]: value };
-      });
-    }
-  };
-  const handleSubmit = e => {
-    e.preventDefault();
-    const gender = e.target.elements.gender.value;
-    const age = e.target.elements.age.value;
+  const handleSubmit = values => {
     const body = {
-      gender,
-      age: Number(age),
+      gender: values.gender,
+      age: Number(values.age),
     };
     dispatch(updateAuthStep(body));
     navigate('/signup/bodyparams');
@@ -69,57 +62,79 @@ const Gender = () => {
         />
       )}
 
-      <form
+      <Formik
+        initialValues={{
+          gender: userData?.gender || 'male',
+          age: userData?.age || '',
+        }}
+        validationSchema={validationSchema}
         onSubmit={handleSubmit}
-        className={`${s.formGoals} ${a.slideDownToUp}`}
       >
-        <h1 className={s.goalsTitle}>Select gender, Age</h1>
-        <h2 className={s.goalsSubtitle}>
-          Choose a goal so that we can <br /> help you effectively
-        </h2>
-        <p className={s.subtitle}>Gender</p>
-        <label className={s.customRadio}>
-          <input
-            type="radio"
-            name="gender"
-            value="male"
-            checked={gender === 'male'}
-            onChange={onOptionChange}
-          />
-          <span className={s.goalList}>Male</span>
-        </label>
-        <label className={s.customRadio}>
-          <input
-            type="radio"
-            name="gender"
-            value="female"
-            checked={gender === 'female'}
-            onChange={onOptionChange}
-          />
-          <span className={s.goalList}>Female</span>
-        </label>
+        {({ values, errors, touched, handleChange, handleSubmit }) => (
+          <form
+            noValidate
+            onSubmit={handleSubmit}
+            className={`${s.formGoals} ${a.slideDownToUp}`}
+          >
+            <h1 className={s.goalsTitle}>Select gender, Age</h1>
+            <h2 className={s.goalsSubtitle}>
+              Choose a goal so that we can <br /> help you effectively
+            </h2>
+            <p className={s.subtitle}>Gender</p>
+            <label className={s.customRadio}>
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                checked={values.gender === 'male'}
+                onChange={handleChange}
+              />
+              <span className={s.goalList}>Male</span>
+            </label>
+            <label className={s.customRadio}>
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                checked={values.gender === 'female'}
+                onChange={handleChange}
+              />
+              <span className={s.goalList}>Female</span>
+            </label>
 
-        <p className={s.subtitle}>Your age</p>
-        <input
-          className={s.inputData}
-          type="text"
-          name="age"
-          placeholder="Enter your age"
-          required
-          value={form.age}
-          onChange={handleChange}
-          maxLength={3}
-          autoComplete="off"
-        />
-        <button className={`${s.btnNext} ${a.hoverYellowBtn}`}>Next</button>
-        <button
-          className={`${s.btnBack} ${a.hoverCloseBtn}`}
-          type="button"
-          onClick={() => navigate(-1)}
-        >
-          Back
-        </button>
-      </form>
+            <p className={s.subtitle}>Your age</p>
+            <input
+              className={s.inputData}
+              type="text"
+              name="age"
+              placeholder="Enter your age"
+              required
+              value={values.age}
+              onChange={handleChange}
+              maxLength={3}
+              autoComplete="off"
+            />
+            <div className={s.errorFields}>
+              {touched.age && errors.age && (
+                <div className={s.error}>{errors.age}</div>
+              )}
+            </div>
+            <button
+              type="submit"
+              className={`${s.btnNext} ${a.hoverYellowBtn}`}
+            >
+              Next
+            </button>
+            <button
+              className={`${s.btnBack} ${a.hoverCloseBtn}`}
+              type="button"
+              onClick={() => navigate(-1)}
+            >
+              Back
+            </button>
+          </form>
+        )}
+      </Formik>
     </div>
   );
 };

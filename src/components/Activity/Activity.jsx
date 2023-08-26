@@ -119,7 +119,9 @@ const Activity = () => {
             day and include strength exercises in your training program
           </span>
         </label>
-        <button className={`${s.btnNext} ${a.hoverYellowBtn}`}>Next</button>
+        <button type="submit" className={`${s.btnNext} ${a.hoverYellowBtn}`}>
+          Next
+        </button>
         <button
           className={`${s.btnBack} ${a.hoverCloseBtn}`}
           type="button"

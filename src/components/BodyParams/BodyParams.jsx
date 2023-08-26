@@ -1,37 +1,42 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+import { updateAuthStep } from 'redux/auth/authSlice';
+
+import { Formik } from 'formik';
+import * as yup from 'yup';
+
 import s from '../Goals/Goals.module.css';
 import a from '../../animations/animations.module.css';
 import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
-import { useMediaQuery } from 'react-responsive';
-import { updateAuthStep } from 'redux/auth/authSlice';
+
+const validationSchema = yup.object().shape({
+  height: yup
+    .number()
+    .typeError('Height must be a number')
+    .min(1, 'Height must be at least 1')
+    .max(300, 'Height cannot be more than 300')
+    .required('Height is a required field'),
+  weight: yup
+    .number()
+    .typeError('Weight must be a number')
+    .min(1, 'Weight must be at least 1')
+    .max(500, 'Weight cannot be more than 500')
+    .required('Weight is a required field'),
+});
 
 const BodyParams = () => {
-  const [form, setForm] = useState({
-    height: '',
-    weight: '',
-  });
+  const userData = useSelector(state => state.auth.step);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleChange = ({ target: { name, value } }) => {
-    const regex = /^\d{1,3}([.]\d{0,2})?$/;
-    if (regex.test(value)) {
-      setForm(prevForm => {
-        return { ...prevForm, [name]: value };
-      });
-    }
-  };
-  const handleSubmit = e => {
-    e.preventDefault();
-    const height = e.target.elements.height.value;
-    const weight = e.target.elements.weight.value;
+  const handleSubmit = values => {
     const body = {
-      height: Number(height),
-      weight: Number(weight),
+      height: Number(values.height),
+      weight: Number(values.weight),
     };
     dispatch(updateAuthStep(body));
     navigate('/signup/activity');
@@ -64,46 +69,74 @@ const BodyParams = () => {
         />
       )}
 
-      <form
+      <Formik
+        initialValues={{
+          height: userData?.height || '',
+          weight: userData?.weight || '',
+        }}
+        validationSchema={validationSchema}
         onSubmit={handleSubmit}
-        className={`${s.formGoals} ${a.slideDownToUp}`}
       >
-        <h1 className={s.goalsTitle}>Body parameters</h1>
-        <h2 className={s.goalsSubtitle}>
-          Enter your parameters for correct performance tracking
-        </h2>
-        <p className={s.subtitle}>Height</p>
-        <input
-          className={s.inputData}
-          type="text"
-          placeholder="Enter your height"
-          required
-          name="height"
-          value={form.height}
-          onChange={handleChange}
-          autoComplete="off"
-        />
-
-        <p className={s.subtitle}>Weight</p>
-        <input
-          className={s.inputData}
-          type="text"
-          placeholder="Enter your weight"
-          required
-          name="weight"
-          value={form.weight}
-          onChange={handleChange}
-          autoComplete="off"
-        />
-        <button className={`${s.btnNext} ${a.hoverYellowBtn}`}>Next</button>
-        <button
-          className={`${s.btnBack} ${a.hoverCloseBtn}`}
-          type="button"
-          onClick={() => navigate(-1)}
-        >
-          Back
-        </button>
-      </form>
+        {({ values, errors, touched, handleChange, handleSubmit }) => (
+          <form
+            noValidate
+            onSubmit={handleSubmit}
+            className={`${s.formGoals} ${a.slideDownToUp}`}
+          >
+            <h1 className={s.goalsTitle}>Body parameters</h1>
+            <h2 className={s.goalsSubtitle}>
+              Enter your parameters for correct performance tracking
+            </h2>
+            <p className={s.subtitle}>Height</p>
+            <input
+              className={s.inputData}
+              type="text"
+              placeholder="Enter your height"
+              required
+              name="height"
+              value={values.height}
+              onChange={handleChange}
+              maxLength={3}
+              autoComplete="off"
+            />
+            <div className={s.errorFields}>
+              {touched.height && errors.height && (
+                <div className={s.error}>{errors.height}</div>
+              )}
+            </div>
+            <p className={s.subtitle}>Weight</p>
+            <input
+              className={s.inputData}
+              type="text"
+              placeholder="Enter your weight"
+              required
+              name="weight"
+              value={values.weight}
+              onChange={handleChange}
+              maxLength={3}
+              autoComplete="off"
+            />
+            <div className={s.errorFields}>
+              {touched.weight && errors.weight && (
+                <div className={s.error}>{errors.weight}</div>
+              )}
+            </div>
+            <button
+              type="submit"
+              className={`${s.btnNext} ${a.hoverYellowBtn}`}
+            >
+              Next
+            </button>
+            <button
+              className={`${s.btnBack} ${a.hoverCloseBtn}`}
+              type="button"
+              onClick={() => navigate(-1)}
+            >
+              Back
+            </button>
+          </form>
+        )}
+      </Formik>
     </div>
   );
 };
