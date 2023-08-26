@@ -5,6 +5,7 @@ import {
   setFoodIntake,
   setHeadersToken,
   setWaterIntake,
+  updateFoodApi,
   updateGoalApi,
   updateSettingsApi,
   updateWeightApi,
@@ -103,6 +104,22 @@ export const getYearAllStatistic = createAsyncThunk(
     try {
       setHeadersToken(getState().auth.token);
       const data = await getMonthStatistic(body);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserFoodOperation = createAsyncThunk(
+  'user/update-food',
+  async (body, { rejectWithValue, getState }) => {
+    try {
+      setHeadersToken(getState().auth.token);
+
+      const id = getState().user.id;
+      const data = await updateFoodApi(id, body);
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './UpdateMealModal.module.css';
 import Modal from 'react-modal';
 import Breakfast from '../../../assets/img/mobile/Breakfast.png';
 import Lunch from '../../../assets/img/mobile/Lunch.png';
 import Dinner from '../../../assets/img/mobile/Dinner.png';
 import Snack from '../../../assets/img/mobile/Snack.png';
-// import Icons from '../../../assets/icons/symbol-defs.svg';
 import a from '../../../animations/animations.module.css';
+import { useDispatch } from 'react-redux';
+import { updateUserFoodOperation } from 'redux/user/userOperations';
 
 export const customStyles = {
   overlay: {
@@ -20,7 +21,66 @@ const UpdateMealModal = ({
   updateMealModalOpen,
   setUpdateMealModalOpen,
   selectedMeal,
+  foodName,
 }) => {
+  const [form, setForm] = useState({
+    foodName,
+    carbonohidrates: '',
+    protein: '',
+    fat: '',
+  });
+
+  const [validationText, setValidationText] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const foodSection = selectedMeal.toLowerCase();
+
+  const updateFood = {
+    [foodSection]: {
+      foodName,
+      carbonohidrates: form.carbonohidrates,
+      protein: form.protein,
+      fat: form.fat,
+    },
+  };
+
+  const handleClick = () => {
+    if (form.carbonohidrates === '' || form.protein === '' || form.fat === '') {
+      setValidationText(true);
+      return;
+    }
+
+    dispatch(updateUserFoodOperation(updateFood));
+    setUpdateMealModalOpen(false);
+    setValidationText(false);
+    setForm({
+      foodName,
+      carbonohidrates: '',
+      protein: '',
+      fat: '',
+    });
+  };
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+
+    if (name === 'carbonohidrates' || 'fat' || 'protein') {
+      if (/^\d{0,3}$/.test(value) && Number(value) <= 999) {
+        setForm(prevForm => {
+          return { ...prevForm, [name]: value };
+        });
+      }
+      return;
+    }
+  };
+
+  const handleDefault = e => {
+    if (e.key === '-' || e.key === '+') {
+      e.preventDefault();
+    }
+  };
+
   return (
     <Modal
       className={`${css.recordMealModal} ${a.scaleInCenter}`}
@@ -40,48 +100,59 @@ const UpdateMealModal = ({
         <p className={css.recordMealModalMeal}>{selectedMeal}</p>
       </div>
       <form>
-        <input
-          placeholder="The name of the product or dish"
-          type="text"
-          className={css.recordMealModalInput}
-          //   value={productNameArr[i]}
-          //   onChange={evt => onNameChange(evt, i)}
-        />
-        <input
-          placeholder="Carbonoh."
-          type="number"
-          className={css.recordMealModalInput}
-          //   value={carbonohidratesArr[i]}
-          //   onChange={evt => onCarbonohidratesChange(evt, i)}
-        />
-        <input
-          placeholder="Protein"
-          type="number"
-          className={css.recordMealModalInput}
-          //   value={proteinArr[i]}
-          //   onChange={evt => onProteinChange(evt, i)}
-        />
-        <input
-          placeholder="Fat"
-          type="number"
-          className={css.recordMealModalInput}
-          //   value={fatArr[i]}
-          //   onChange={evt => onFatChange(evt, i)}
-        />
-
+        <div className={css.updateFoodForm}>
+          <h4 className={css.textBtn}>{foodName}</h4>
+          <div className={css.inputWrapper}>
+            <input
+              placeholder="Carbonoh."
+              type="number"
+              name="carbonohidrates"
+              className={css.recordMealModalInput}
+              value={form.carbonohidrates}
+              onChange={handleChange}
+              onKeyDown={handleDefault}
+              required={true}
+            />
+            <input
+              placeholder="Protein"
+              type="number"
+              name="protein"
+              className={css.recordMealModalInput}
+              value={form.protein}
+              onChange={handleChange}
+              onKeyDown={handleDefault}
+              required={true}
+            />
+            <input
+              placeholder="Fat"
+              name="fat"
+              type="number"
+              className={css.recordMealModalInput}
+              value={form.fat}
+              onChange={handleChange}
+              onKeyDown={handleDefault}
+              required={true}
+            />
+          </div>
+        </div>
+        {validationText && (
+          <p className={css.validationText}>Please fill in all fields </p>
+        )}
         <div className={css.recordMealModalBtnContainer}>
           <button
             className={`${css.recordMealModalConfirmBtn} ${a.hoverYellowBtn}`}
-            // onClick={handleSubmit}
-            type="submit"
-            // disabled={submitButtonDisabled}
+            onClick={handleClick}
+            type="button"
           >
             Confirm
           </button>
           <button
             className={`${css.recordMealModalCancelBtn} ${a.hoverCloseBtn}`}
             type="button"
-            onClick={() => setUpdateMealModalOpen(false)}
+            onClick={() => {
+              setUpdateMealModalOpen(false);
+              setValidationText(false);
+            }}
           >
             Cancel
           </button>

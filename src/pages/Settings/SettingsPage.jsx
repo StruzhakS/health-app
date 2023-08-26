@@ -33,11 +33,13 @@ const SettingsPage = () => {
           return { ...prevForm, [name]: value };
         });
       }
+      return;
     }
     setForm(prevForm => {
       return { ...prevForm, [name]: value };
     });
   };
+
   const formData = new FormData();
   const [tmpPath, setTmpPath] = useState('');
 
