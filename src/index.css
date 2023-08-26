@@ -9,6 +9,7 @@ body {
   line-height: 16px;
   background-color: #050505;
 }
+
 ul,
 ol {
   list-style: none;
@@ -52,4 +53,9 @@ button {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+input:focus {
+  outline: none;
 }

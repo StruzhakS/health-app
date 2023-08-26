@@ -4,7 +4,7 @@
 }
 @media screen and (min-width: 1440px) {
   .dashboardSection {
-   padding-bottom: 40px;
+   padding-bottom: 0px;
   }
 }
 
@@ -41,6 +41,11 @@
   align-items: baseline;
   margin-bottom: 16px;
 }
+@media screen and (min-width: 834px) {
+  .dashboardButtonContainer {
+     margin-bottom: 0px;
+  }
+}
 
 .monthSlect {
   color: white;
@@ -58,7 +63,8 @@
 .dashboardDesctopGraph{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  column-gap: 20px;
+  row-gap: 10px;
 }
 .gridItem1{
   grid-column: 1/2;

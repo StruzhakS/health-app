@@ -3,6 +3,9 @@
   flex-direction: row;
   align-items: baseline;
   position: relative;
+  margin-bottom: 9px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .lastMonthBtn {
   font-family: Poppins;
@@ -11,13 +14,18 @@
   font-weight: 500;
   line-height: 30px;
   margin-left: 8px;
+  margin-top: 24px;
 }
 @media screen and (min-width: 834px) {
   .lastMonthBtn {
     width: 212px;
-    height: 64px;
     font-size: 30px;
     margin-left: 0px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .lastMonthBtn {
+   margin-top: 16px;
   }
 }
 
@@ -57,34 +65,37 @@
   display: flex;
   background-color: black;
   color: white;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 400;
   width: 165px;
   height: 54px;
-  padding: 14px;
+  padding: 16px 0 16px 12px;
   border-radius: 12px;
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
+  line-height: 32px;
 }
 @media screen and (min-width: 834px) {
   .dashboardSelect {
     width: 212px;
     height: 64px;
-    font-size: 30px;
+    font-size: 22px;
+    
   }
 }
 @media screen and (min-width: 1440px) {
   .dashboardSelect {
     width: 212px;
     height: 64px;
+    
   }
 }
 .modalOverlay {
   position: absolute;
-  top: 129px;
-  left: 39px;
-
+  top: 152px;
+  left: 38px;
+cursor: pointer;
   background-color: transparent;
   display: flex;
   justify-content: center;
@@ -93,13 +104,13 @@
 }
 @media screen and (min-width: 834px) {
   .modalOverlay {
-    top: 148px;
-    left: 49px;
+    top: 156px;
+    left: 57px;
   }
 }
 @media screen and (min-width: 1440px) {
   .modalOverlay {
-    top: 148px;
-    left: 58px;
+    top: 152px;
+    left: 61px;
   }
 }

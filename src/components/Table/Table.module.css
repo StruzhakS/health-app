@@ -1,51 +1,100 @@
-.table{
-    width: 768px;
-    height: 240px;
+.table {
+    width: 300px;
+    /* height: 240px; */
     border-radius: 12px;
     background-color: #0f0f0f;
+    padding: 16px 12px;
 }
+
+.mealWrap {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.foodName {
+    width: 178px;
+}
+
+.mealNameWrap {
+    display: flex;
+    align-items: flex-end;
+}
+
+.mealNutritionalWrap {
+    display: flex;
+}
+
+.mealTypeWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.descriptionWrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 175px;
+    gap: 12px;
+}
+
+.mealListItemTitle {
+    margin-right: 25px;
+}
+
 @media screen and (min-width: 1440px) {
     .table {
-      width: 676px;
+        width: 676px;
     }
-  }
-.table td{
+}
+
+/* .table td {
     height: 60px;
+} */
+
+.firstTd {
+    width: 16px;
 }
-.firstTd{
-width: 16px;
-}
-.allTd{
+
+.allTd {
     width: 80px;
 }
-.table th, .table td{
+
+/* .table th,
+.table td {
     padding: 20px 14px 20px;
     font-size: 14px;
     line-height: 20px;
-    
-}
-.table th{
+
+} */
+
+/* .table th {
     font-weight: 600;
-   
-}
-.secondTd{
+
+} */
+
+.secondTd {
     width: 260px;
-    
+
 }
-.btnAdd{
+
+.btnAdd {
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
-    color:  #E3FFA8;
+    color: #E3FFA8;
     font-weight: 500;
     font-size: 14px;
     line-height: 22px;
 }
-.btnEdit{
+
+.btnEdit {
     display: flex;
     gap: 6px;
-    color:#B6B6B6;
+    color: #B6B6B6;
 }
-.btn{
+
+.btn {
     width: 49px;
 }

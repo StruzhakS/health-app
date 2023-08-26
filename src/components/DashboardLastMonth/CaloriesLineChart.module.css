@@ -16,7 +16,7 @@
 }
 @media screen and (min-width: 1440px) {
   .dashboardCaloriesContainer {
-   width: 382px;
+   width: 380px;
   }
 }
 .caloriesTitle{
@@ -57,7 +57,7 @@ line-height: 20px;
 }
 @media screen and (min-width: 1440px) {
   .caloriesChartWrapper {
-   width: 670px; 
+   width: 679px; 
   }
 }
 .lineChartContainer{

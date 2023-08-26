@@ -15,18 +15,26 @@ import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
 import EyeIcon from '../../../assets/icons/Illustration/eye.svg';
 import EyeOffIcon from '../../../assets/icons/Illustration/eye-off.svg';
 
-const passwordRules =
-  /^(?=.*\d.*\d.*\d.*\d.*)(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d].{6,}$/;
+const regexPatterns = {
+  email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+  password: /^(?=.*\d.*\d.*\d.*\d.*)(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d].{6,}$/,
+};
 
 const validationSchema = yup.object().shape({
   name: yup.string().min(2, 'Too Short!').required('Name is a required field'),
   email: yup
     .string()
     .email('Enter a valid Password*')
-    .required('E-mail is a required field'),
+    .required('E-mail is a required field')
+    .test('valid-email', 'Enter a valid Password*', function (value) {
+      return regexPatterns.email.test(value);
+    }),
+
   password: yup
     .string()
-    .matches(passwordRules, { message: 'Please create a stronger password' })
+    .matches(regexPatterns.password, {
+      message: 'Please create a stronger password',
+    })
     .max(16, 'Too Long!')
     .required('Password is a required field'),
 });
@@ -118,6 +126,11 @@ const SignUp = () => {
                 </label>
                 <label htmlFor="email">
                   <input
+                    className={`${styles.input} ${
+                      touched.email && errors.email ? styles.invalidInput : ''
+                    } ${
+                      touched.email && !errors.email ? styles.validInput : ''
+                    }`}
                     placeholder="E-mail"
                     type="email"
                     name="email"
@@ -125,7 +138,6 @@ const SignUp = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
-                    className={styles.input}
                   />
                   <div className={styles.errorFields}>
                     {errors.email && touched.email ? (
@@ -136,7 +148,11 @@ const SignUp = () => {
                 <div className={styles.passwordInputContainer}>
                   <label htmlFor="password">
                     <input
-                      className={styles.passwordInput}
+                      className={`${styles.passwordInput} ${
+                        values.password.match(regexPatterns.password)
+                          ? styles.securePassword
+                          : ''
+                      }`}
                       placeholder="Password"
                       type={showPassword ? 'text' : 'password'}
                       name="password"
@@ -179,7 +195,7 @@ const SignUp = () => {
                       )}
                       {!errors.password && values.password && (
                         <div className={styles.correctFields}>
-                          {values.password.match(passwordRules) && (
+                          {values.password.match(regexPatterns.password) && (
                             <div>Password is secure</div>
                           )}
                         </div>

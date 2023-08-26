@@ -60,6 +60,12 @@
   }
 }
 
+.waterIntakeModalFormButton:disabled {
+  opacity: 0.5;
+  background-color: #aaa;
+  pointer-events: none;
+}
+
 .closeWaterIntakeModal {
   color: #b6b6b6;
   text-align: center;

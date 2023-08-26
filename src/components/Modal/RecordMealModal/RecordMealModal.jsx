@@ -28,9 +28,9 @@ const RecordMealModal = ({
   const [numberOfItems, setNumberOfItems] = useState([0]);
 
   const [productNameArr, setProductNameArr] = useState(['']);
-  const [carbonohidratesArr, setCarbonohidratesArr] = useState(['0']);
-  const [proteinArr, setProteinArr] = useState(['0']);
-  const [fatArr, setFatArr] = useState(['0']);
+  const [carbonohidratesArr, setCarbonohidratesArr] = useState(['']);
+  const [proteinArr, setProteinArr] = useState(['']);
+  const [fatArr, setFatArr] = useState(['']);
 
   const dispatch = useDispatch();
 
@@ -67,9 +67,9 @@ const RecordMealModal = ({
     const newValue = numberOfItems.length;
     setNumberOfItems(prev => [...prev, newValue]);
     setProductNameArr(prev => [...prev, '']);
-    setCarbonohidratesArr(prev => [...prev, '0']);
-    setProteinArr(prev => [...prev, '0']);
-    setFatArr(prev => [...prev, '0']);
+    setCarbonohidratesArr(prev => [...prev, '']);
+    setProteinArr(prev => [...prev, '']);
+    setFatArr(prev => [...prev, '']);
   };
 
   const onCloseButtonClick = () => {
@@ -77,9 +77,9 @@ const RecordMealModal = ({
     setNumberOfItems([0]);
     setRecordMealModalOpen(false);
     setProductNameArr(['']);
-    setCarbonohidratesArr(['0']);
-    setProteinArr(['0']);
-    setFatArr(['0']);
+    setCarbonohidratesArr(['']);
+    setProteinArr(['']);
+    setFatArr(['']);
   };
 
   const handleSubmit = evt => {
@@ -115,7 +115,7 @@ const RecordMealModal = ({
   };
 
   const onCarbonohidratesChange = (evt, index) => {
-    let string = evt.target.value;
+    let string = evt.target.value.replace(/[^\d]/g, '');
     if (parseFloat(string) < 0) {
       string = '0';
     }
@@ -134,7 +134,7 @@ const RecordMealModal = ({
   };
 
   const onProteinChange = (evt, index) => {
-    let string = evt.target.value;
+    let string = evt.target.value.replace(/[^\d]/g, '');
     if (parseFloat(string) < 0) {
       string = '0';
     }
@@ -154,7 +154,7 @@ const RecordMealModal = ({
   };
 
   const onFatChange = (evt, index) => {
-    let string = evt.target.value;
+    let string = evt.target.value.replace(/[^\d]/g, '');
     if (parseFloat(string) < 0) {
       string = '0';
     }
@@ -198,27 +198,31 @@ const RecordMealModal = ({
               <input
                 placeholder="The name of the product or dish"
                 type="text"
+                maxlength="30"
                 className={css.recordMealModalInput}
                 value={productNameArr[i]}
                 onChange={evt => onNameChange(evt, i)}
               />
               <input
                 placeholder="Carbonoh."
-                type="number"
+                type="text"
+                maxlength="3"
                 className={css.recordMealModalInput}
                 value={carbonohidratesArr[i]}
                 onChange={evt => onCarbonohidratesChange(evt, i)}
               />
               <input
                 placeholder="Protein"
-                type="number"
+                type="text"
+                maxlength="3"
                 className={css.recordMealModalInput}
                 value={proteinArr[i]}
                 onChange={evt => onProteinChange(evt, i)}
               />
               <input
                 placeholder="Fat"
-                type="number"
+                type="text"
+                maxlength="3"
                 className={css.recordMealModalInput}
                 value={fatArr[i]}
                 onChange={evt => onFatChange(evt, i)}

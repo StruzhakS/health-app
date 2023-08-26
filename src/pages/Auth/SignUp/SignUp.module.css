@@ -132,9 +132,7 @@
   color: #e74a3b;
 }
 
-.securePassword .passwordMessage {
-  color: #3cbc81;
-}
+
 
 .imgIllustrationMobile {
   display: block;
@@ -168,7 +166,7 @@
   min-height: 16px;
   padding-left: 6px;
   text-align: start;
-  color: red;
+  color: #E74A3B;
 }
 
 .correctFields {
@@ -177,7 +175,7 @@
   min-height: 16px;
   padding-left: 6px;
   text-align: start;
-  color: rgb(34, 93, 20);
+  color: #3CBC81;
 }
 
 .redBorder {
@@ -187,13 +185,18 @@
 }
 
 .invalidInput {
-  border-color: red;
+  border-color: #E74A3B;
+}
+
+.securePassword,
+.validInput {
+  border-color: #3CBC81;
 }
 
 @media (min-width: 834px) and (max-width: 1439.5px) {
   .container {
     max-width: 834px;
-    padding-top: 40px;
+    padding: 40px 195px 60px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -309,8 +312,7 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 40px 150px 60px;
   }
 
   .heading {
@@ -386,13 +388,7 @@
     max-width: 192px;
   }
 
-  .invalidPassword .passwordMessage {
-    color: #e74a3b;
-  }
 
-  .securePassword .passwordMessage {
-    color: #3cbc81;
-  }
 
   .passwordInputIcon {
     top: 10px;
