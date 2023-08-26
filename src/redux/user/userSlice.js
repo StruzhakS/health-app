@@ -4,6 +4,7 @@ import {
   getMonthAllStatistic,
   getYearAllStatistic,
   updateFoodOperations,
+  updateUserFoodOperation,
   updateWaterOperations,
   updateWeightOperation,
 } from './userOperations';
@@ -31,10 +32,10 @@ const initialState = {
   lunch: [],
   dinner: [],
   snack: [],
-  
 
   monthStatistic: [],
   yearStatistic: [],
+  id: null,
 };
 
 const userSlice = createSlice({
@@ -62,6 +63,7 @@ const userSlice = createSlice({
         state.lunch = payload.lunch;
         state.dinner = payload.dinner;
         state.snack = payload.snack;
+        state.id = payload._id;
       })
       .addCase(updateWaterOperations.fulfilled, (state, { payload }) => {
         state.water = payload.water;
@@ -94,6 +96,12 @@ const userSlice = createSlice({
         state.carbo = payload.carbonohidrates;
         state.protein = payload.protein;
         state.changeWeight = payload.changeWeight;
+      })
+      .addCase(updateUserFoodOperation.fulfilled, (state, { payload }) => {
+        state.breakfast = payload.breakfast;
+        state.lunch = payload.lunch;
+        state.dinner = payload.dinner;
+        state.snack = payload.snack;
       })
       .addCase(getMonthAllStatistic.fulfilled, (state, { payload }) => {
         state.monthStatistic = payload;

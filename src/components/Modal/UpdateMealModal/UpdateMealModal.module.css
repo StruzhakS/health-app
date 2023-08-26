@@ -1,7 +1,7 @@
 .recordMealModal {
   border-radius: 12px;
   background: #0f0f0f;
-  width: 300px;
+  min-width: 300px;
   padding: 16px 12px;
 
   position: absolute;
@@ -47,7 +47,7 @@
 }
 
 .recordMealModalInput {
-  width: 276px;
+  /* width: 150px; */
   padding: 8px 10px;
   color: #fff;
 
@@ -172,4 +172,37 @@
     flex-direction: row-reverse;
     gap: 12px;
   }
+}
+
+.updateFoodForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+.textBtn {
+  width: 63px;
+  height: 30px;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  margin-left: 12px;
+  font-weight: 500;
+  align-items: center;
+}
+
+.validationText {
+  font-size: 14px;
+  text-align: right;
+  margin-right: 50px;
+  color: red;
+  margin-bottom: 8px;
+}
+
+.inputWrapper {
+  display: flex;
+  gap: 8px;
 }

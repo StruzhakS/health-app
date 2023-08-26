@@ -1,17 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './SignUp.module.css';
-
 import a from '../../../animations/animations.module.css';
 import { signUp } from '../../../redux/auth/authOperations';
 import iconsSrc from '../../../assets/icons/symbol-defs.svg';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
 import IllustrationTablet from '../../../assets/img/tablet/Illustration.png';
 import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';

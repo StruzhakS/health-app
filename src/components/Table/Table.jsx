@@ -2,10 +2,6 @@ import React from 'react';
 import s from './Table.module.css';
 import Icons from '../../assets/icons/symbol-defs.svg';
 import { useMediaQuery } from 'react-responsive';
-
-// import { PiPencilLineLight } from 'react-icons/pi';
-// import { BsPlus } from 'react-icons/bs';
-
 import * as mob from 'assets/img/mobile';
 import { nanoid } from 'nanoid';
 const DiaryTable = ({
@@ -13,6 +9,7 @@ const DiaryTable = ({
   mealData,
   onRecordMealButtonClick,
   onUpdateMealButtonClick,
+  setFoodName,
 }) => {
   const isMobile = useMediaQuery({ maxWidth: 833 });
 
@@ -53,6 +50,11 @@ const DiaryTable = ({
           ];
     return newArray;
   }
+
+  const onEditButtonClick = name => {
+    setFoodName(name);
+    onUpdateMealButtonClick(mealType);
+  };
 
   return (
     <>
@@ -96,7 +98,7 @@ const DiaryTable = ({
                     {el.foodName && isMobile && (
                       <button
                         className={s.btnEdit}
-                        onClick={() => onUpdateMealButtonClick(mealType)}
+                        onClick={() => onEditButtonClick(el.foodName)}
                       >
                         <svg
                           width="16px"
@@ -130,10 +132,27 @@ const DiaryTable = ({
                             </p>
                           )
                       )}
+                  </div>
+                  <div className={s.mealNutritionalWrap}>
+                    {Object.keys(el)
+                      .slice(1)
+                      .map(
+                        key =>
+                          el.foodName && (
+                            <p key={key}>
+                              {isMobile
+                                ? `${key.slice(0, 1).toUpperCase()}${key.slice(
+                                    1,
+                                    4
+                                  )}.: ${el[key]}`
+                                : el[key]}
+                            </p>
+                          )
+                      )}
 
                     {el.foodName && !isMobile && (
                       <button
-                        onClick={() => onUpdateMealButtonClick(mealType)}
+                        onClick={() => onEditButtonClick(el.foodName)}
                         className={s.btnEdit}
                       >
                         <svg

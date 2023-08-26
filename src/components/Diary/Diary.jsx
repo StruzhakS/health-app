@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Diary.module.css';
 // import Table from 'components/Table/Table';
 // import TableMobile from 'components/Table/TableMobile';
-
 import { BsArrowLeft } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 // import { useMemo } from 'react';
@@ -18,22 +17,20 @@ const Diary = () => {
   const [updateMealModalOpen, setUpdateMealModalOpen] = useState(false);
 
   const [selectedMeal, setSelectedMeal] = useState('');
-
   const breakfast = useSelector(state => state.user.breakfast);
   const lunch = useSelector(state => state.user.lunch);
   const dinner = useSelector(state => state.user.dinner);
   const snack = useSelector(state => state.user.snack);
 
+  const [foodName, setFoodName] = useState('');
   const onRecordMealButtonClick = evt => {
     setSelectedMeal(evt.target.name);
     setRecordMealModalOpen(true);
-    document.body.style.overflow = 'hidden';
   };
 
   const onUpdateMealButtonClick = meal => {
     setSelectedMeal(meal);
     setUpdateMealModalOpen(true);
-    document.body.style.overflow = 'hidden';
   };
 
   const mealTypes = [
@@ -50,6 +47,7 @@ const Diary = () => {
       mealData={data}
       onRecordMealButtonClick={onRecordMealButtonClick}
       onUpdateMealButtonClick={onUpdateMealButtonClick}
+      setFoodName={setFoodName}
     />
   ));
 
@@ -64,10 +62,10 @@ const Diary = () => {
         selectedMeal={selectedMeal}
         updateMealModalOpen={updateMealModalOpen}
         setUpdateMealModalOpen={setUpdateMealModalOpen}
+        foodName={foodName}
       />
-
       <div className={s.btnNav}>
-        <Link className={s.btnDiary} to={'/mainpage'}>
+        <Link className={s.btnDiary} to={'/'}>
           <BsArrowLeft size="1.5rem" />
         </Link>
         <h2 className={s.textBtn}>Diary</h2>

@@ -8,7 +8,6 @@ import ControlPanel from 'components/ControlPanel/ControlPanel';
 import iconsSrc from '../../assets/icons/symbol-defs.svg';
 import Modal from 'react-modal';
 import { customStyles } from './Header';
-// import { logout } from 'redux/auth/authSlice';
 import MobileMenuModal from 'components/Modal/MobileMenuModal/MobileMenuModal';
 import { logoutUserThunk } from 'redux/auth/authOperations';
 
@@ -27,9 +26,7 @@ const AuthHeader = () => {
 
   const logOut = useCallback(async () => {
     dispatch(logoutUserThunk());
-    // dispatch(logout());
     setSetingsModalIsOpen(false);
-
     navigate('/');
   }, [dispatch, navigate]);
 
