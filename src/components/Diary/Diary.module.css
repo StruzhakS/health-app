@@ -6,9 +6,49 @@
   flex-direction: column;
 }
 
+.diary {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.targetMeal {
+  width: 500px;
+}
+
+.recordMealIcon {
+  stroke: #e3ffa8;
+}
+
 @media screen and (min-width: 834px) {
+  .diary {
+    display: block;
+
+
+  }
+
   .containerDiary {
     padding-top: 24px;
+  }
+
+  .foodIMG {
+    margin-bottom: 0;
+  }
+
+  .containerLis {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+    justify-content: space-between;
+  }
+
+  .titleTab {
+    font-size: 22px;
+    line-height: 32px;
+  }
+
+  .listTab {
+    width: 362px;
   }
 }
 
@@ -16,6 +56,17 @@
   .containerDiary {
     padding-top: 20px;
     padding-bottom: 52px;
+  }
+
+  .diary {
+    display: flex;
+    column-gap: 20px;
+
+
+  }
+
+  .tableRow {
+    flex-wrap: nowrap;
   }
 }
 
@@ -25,11 +76,7 @@
   margin-bottom: 12px;
 }
 
-@media screen and (min-width: 834px) {
-  .foodIMG {
-    margin-bottom: 0;
-  }
-}
+
 
 .btnNav {
   display: flex;
@@ -64,14 +111,7 @@
   margin-bottom: 12px;
 }
 
-@media screen and (min-width: 834px) {
-  .containerLis {
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 6px;
-    justify-content: space-between;
-  }
-}
+
 
 .titleTab {
   width: 148px;
@@ -84,12 +124,7 @@
   align-items: center;
 }
 
-@media screen and (min-width: 834px) {
-  .titleTab {
-    font-size: 22px;
-    line-height: 32px;
-  }
-}
+
 
 .listTab {
   display: flex;
@@ -99,11 +134,7 @@
   flex-wrap: wrap;
 }
 
-@media screen and (min-width: 834px) {
-  .listTab {
-    width: 362px;
-  }
-}
+
 
 .itemTab {
   display: inline-block;
@@ -118,24 +149,4 @@
   gap: 24px;
   flex-wrap: wrap;
   margin-bottom: 24px;
-}
-
-@media screen and (min-width: 1440px) {
-  .tableRow {
-    flex-wrap: nowrap;
-  }
-}
-
-.diary {
-  display: flex;
-  flex-wrap: wrap;
-
-}
-
-.targetMeal {
-  width: 500px;
-}
-
-.recordMealIcon {
-  stroke: #e3ffa8;
 }

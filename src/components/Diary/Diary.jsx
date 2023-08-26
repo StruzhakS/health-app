@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Diary.module.css';
 // import Table from 'components/Table/Table';
 // import TableMobile from 'components/Table/TableMobile';
-// import { useMediaQuery } from 'react-responsive';
 import { BsArrowLeft } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 // import { useMemo } from 'react';
@@ -18,7 +17,6 @@ const Diary = () => {
   const [updateMealModalOpen, setUpdateMealModalOpen] = useState(false);
 
   const [selectedMeal, setSelectedMeal] = useState('');
-  // const isMobile = useMediaQuery({ maxWidth: 833 });
   const breakfast = useSelector(state => state.user.breakfast);
   const lunch = useSelector(state => state.user.lunch);
   const dinner = useSelector(state => state.user.dinner);
