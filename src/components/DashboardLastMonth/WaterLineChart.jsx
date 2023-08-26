@@ -55,49 +55,59 @@ const WaterLineChart = ({ isMonth }) => {
     }, 0);
     return sum / waterArray.length;
   };
-
+ /////////////Year/////////////////
+  
   const yearStatistic = useSelector(state => state.user.yearStatistic);
 
   const dataYearXlabel = () => {
     return monthsForYear.map(month => month.slice(0, 3));
   };
-  const dataYearYlabel = () => {
-    return yearStatistic.map(({ water }) => water);
-  };
-
-  const dataYearWater = dataYearYlabel();
-  const dataByMonth = {};
-
-  for (let i = 0; i < dataYearWater.length; i++) {
-    const monthIndex = i % 12;
-    if (!dataByMonth[monthIndex]) {
-      dataByMonth[monthIndex] = [];
-    }
-    dataByMonth[monthIndex].push(dataYearWater[i]);
-  }
   
-  const monthlyAverages = [];
+  const monthlyWater = {};
+  const monthlyDays = {};
+  const dataYear = yearStatistic;
 
-  for (const monthIndex in dataByMonth) {
-    if (dataByMonth.hasOwnProperty(monthIndex)) {
-      const monthData = dataByMonth[monthIndex];
-      const sum = monthData.reduce((total, value) => total + value, 0);
-      const average = sum / monthData.length;
-      monthlyAverages.push(average.toFixed(0));
+  dataYear.forEach(entry => {
+    const date = new Date(entry.date);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+
+     if (!monthlyWater[year]) {
+      monthlyWater[year] = {};
+      monthlyDays[year] = {};
+    }
+
+   if (!monthlyWater[year][month]) {
+      monthlyWater[year][month] = 0;
+      monthlyDays[year][month] = 0;
+    }
+    monthlyWater[year][month] += entry.water;
+    monthlyDays[year][month]++;
+  });
+  
+  const resultWaterData = [];
+  for (const year in monthlyWater) {
+    for (const month in monthlyWater[year]) {
+      const averageWater =
+        monthlyWater[year][month] / monthlyDays[year][month];
+      resultWaterData.push({
+        averageWater: averageWater,
+      });
     }
   }
 
-  const averageYear = () => {
-    const arr = monthlyAverages;
-    const sum = arr.reduce((total, num) => total + num, 0);
-    const averageYearAll = sum / arr.length;
-    const roundedNumber = Math.round(averageYearAll);
-    const numberString = roundedNumber.toString();
-    const firstFourDigits = numberString.slice(0, 5);
-    const digitsOnly = firstFourDigits.replace('.', '');
-    return digitsOnly;
+  const dataYearYlabel = resultWaterData.map(
+    ({ averageWater }) => averageWater
+  );
+ const averageYear = () => {
+    const waterArray = dataYearYlabel;
+    const sum = waterArray.reduce((accum, el) => {
+      return accum + el;
+    }, 0);
+    return sum / waterArray.length;
   };
 
+    
   const yAxisFormatter = value => {
     if (value >= 1000) {
       return `${value / 1000}L`;
@@ -109,7 +119,7 @@ const WaterLineChart = ({ isMonth }) => {
     labels: isMonth ? dataXlabel() : dataYearXlabel(),
     datasets: [
       {
-        data: isMonth ? dataYlabel() : monthlyAverages,
+        data: isMonth ? dataYlabel() : dataYearYlabel,
         borderColor: 'rgba(227, 255, 168, 1)',
         backgroundColor: '#E3FFA8',
         cubicInterpolationMode: 'monotone',
@@ -191,8 +201,8 @@ const WaterLineChart = ({ isMonth }) => {
         <span className={css.averageTitle}>
           Average value:
           <span className={css.waterSubtitle}>
-            {' '}
-            {isMonth ? average().toFixed(0) : averageYear()} ml
+            
+            {isMonth ? average().toFixed(0) : averageYear().toFixed(0)} ml
           </span>
         </span>
       </div>

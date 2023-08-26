@@ -34,7 +34,7 @@ font-weight: 400;
 }
 .chartContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .weightLine {
@@ -66,7 +66,7 @@ font-weight: 400;
  .yearWeightLine {
      gap: 56px;
      align-items: center;
-     margin-left: 0px;
+     margin-left: 20px;
   }
 }
 .weightPoint {

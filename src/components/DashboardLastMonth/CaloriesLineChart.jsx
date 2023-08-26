@@ -51,56 +51,73 @@ const CaloriesLineChart = ({ isMonth }) => {
     return monthStatistic.map(({ date }) => date.split('-')[2]);
   };
   const average = () => {
-    const waterArray = dataYlabel();
-    const sum = waterArray.reduce((accum, el) => {
+    const caloriesArray = dataYlabel();
+    const sum = caloriesArray.reduce((accum, el) => {
       return (accum += el);
     }, 0);
-    return sum / waterArray.length;
+    return sum / caloriesArray.length;
   };
 
+    //////Year///
+  
   const yearStatistic = useSelector(state => state.user.yearStatistic);
   const dataYearXlabel = () => {
     return monthsForYear.map(month => month.slice(0, 3));
   };
 
-  const dataYearYlabel = () => {
-    return yearStatistic.map(({ calories }) => calories);
+  const monthlyCalories = {};
+  const monthlyDays = {};
+  const dataYear = yearStatistic;
+
+  dataYear.forEach(entry => {
+    const date = new Date(entry.date);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+
+    if (!monthlyCalories[year]) {
+      monthlyCalories[year] = {};
+      monthlyDays[year] = {};
+    }
+    if (!monthlyCalories[year][month]) {
+      monthlyCalories[year][month] = 0;
+      monthlyDays[year][month] = 0;
+    }
+    monthlyCalories[year][month] += entry.calories;
+    monthlyDays[year][month]++;
+  });
+
+  const resultCaloriesData = [];
+  const resultYear = [];
+  const resultMonth = [];
+  for (const year in monthlyCalories) {
+    for (const month in monthlyCalories[year]) {
+      const averageCalories =
+        monthlyCalories[year][month] / monthlyDays[year][month];
+
+      resultCaloriesData.push({
+        averageCalories: averageCalories,
+      });
+      resultYear.push({
+        year: year,
+      });
+      resultMonth.push({
+        month: month,
+      });
+    }
+  }
+
+  const dataYearYlabel = resultCaloriesData.map(
+    ({ averageCalories }) => averageCalories
+  );
+
+  const averageYear = () => {
+    const caloriesArray = dataYearYlabel;
+    const sum = caloriesArray.reduce((accum, el) => {
+      return accum + el;
+    }, 0);
+    return sum / caloriesArray.length;
   };
 
-  const dataYearCalories = dataYearYlabel();
-  const dataByMonth = {};
-
-  for (let i = 0; i < dataYearCalories.length; i++) {
-    const monthIndex = i % 12;
-
-    if (!dataByMonth[monthIndex]) {
-      dataByMonth[monthIndex] = [];
-    }
-
-    dataByMonth[monthIndex].push(dataYearCalories[i]);
-  }
-  const monthlyAverages = [];
-
-  for (const monthIndex in dataByMonth) {
-    if (dataByMonth.hasOwnProperty(monthIndex)) {
-      const monthData = dataByMonth[monthIndex];
-      const sum = monthData.reduce((total, value) => total + value, 0);
-      const average = sum / monthData.length;
-      monthlyAverages.push(average.toFixed(0));
-    }
-  }
- 
-
- const averageYear = () => {
-    const arr = monthlyAverages;
-    const sum = arr.reduce((total, num) => total + num, 0);
-    const averageYearAll = sum / arr.length;
-    const roundedNumber = Math.round(averageYearAll);
-    const numberString = roundedNumber.toString();
-    const firstFourDigits = numberString.slice(0, 5);
-    const digitsOnly = firstFourDigits.replace('.', '');
-    return digitsOnly;
-  };
   const yAxisFormatter = value => {
     if (value >= 1000) {
       return `${value / 1000}K`;
@@ -112,7 +129,7 @@ const CaloriesLineChart = ({ isMonth }) => {
     labels: isMonth ? dataXlabel() : dataYearXlabel(),
     datasets: [
       {
-        data: isMonth ? dataYlabel() : monthlyAverages,
+        data: isMonth ? dataYlabel() : dataYearYlabel,
         borderColor: 'rgba(227, 255, 168, 1)',
         backgroundColor: '#E3FFA8',
         cubicInterpolationMode: 'monotone',
@@ -194,7 +211,7 @@ const CaloriesLineChart = ({ isMonth }) => {
         <span className={css.averageCalTitle}>
           Average value:
           <span className={css.caloriesSubtitle}>
-            {isMonth ? average().toFixed(0) : averageYear()} cal
+            {isMonth ? average().toFixed(0) : averageYear().toFixed(0)} cal
           </span>
         </span>
       </div>

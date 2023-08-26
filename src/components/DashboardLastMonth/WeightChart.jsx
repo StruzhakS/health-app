@@ -28,37 +28,55 @@ const WeightChart = ({ isMonth }) => {
     }, 0);
     return sum / weightArray.length;
   };
+  //////Year///////////////
 
   const yearStatistic = useSelector(state => state.user.yearStatistic);
 
   const dataYearMonthLabel = monthsForYear;
-  const dataYearWeightLabel = yearStatistic.map(({ weight }) => weight);
-console.log(dataYearWeightLabel);
- const dataYearWeight = dataYearWeightLabel;
-  const dataByMonth = {};
 
-  for (let i = 0; i < dataYearWeight.length; i++) {
-    const monthIndex = i % 12;
-    if (!dataByMonth[monthIndex]) {
-      dataByMonth[monthIndex] = [];
+  const monthlyWeight = {};
+  const monthlyDays = {};
+  const dataYear = yearStatistic;
+
+  dataYear.forEach(entry => {
+    const date = new Date(entry.date);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+
+    if (!monthlyWeight[year]) {
+      monthlyWeight[year] = {};
+      monthlyDays[year] = {};
     }
-    dataByMonth[monthIndex].push(dataYearWeight[i]);
-  }
-  // console.log(dataByMonth);
-  const monthlyAverages = [];
+    if (!monthlyWeight[year][month]) {
+      monthlyWeight[year][month] = 0;
+      monthlyDays[year][month] = 0;
+    }
+    monthlyWeight[year][month] += entry.weight;
+    monthlyDays[year][month]++;
+  });
 
-  for (const monthIndex in dataByMonth) {
-    if (dataByMonth.hasOwnProperty(monthIndex)) {
-      const monthData = dataByMonth[monthIndex];
-      const sum = monthData.reduce((total, value) => total + value, 0);
-      const average = sum / monthData.length;
-      monthlyAverages.push(average.toFixed(0));
+  const resultWeightData = [];
+  for (const year in monthlyWeight) {
+    for (const month in monthlyWeight[year]) {
+      const averageWeight =
+        monthlyWeight[year][month] / monthlyDays[year][month];
+
+      resultWeightData.push({
+        averageWeight: averageWeight,
+      });
     }
   }
 
-
-
-
+  const dataYearWeightLabel = resultWeightData.map(({ averageWeight }) =>
+    Number(averageWeight.toFixed(0))
+  );
+ const averageYear = () => {
+    const weightArray = dataYearWeightLabel;
+    const sum = weightArray.reduce((accum, el) => {
+      return accum + el;
+    }, 0);
+    return sum / weightArray.length;
+  };
 
   return (
     <>
@@ -66,7 +84,9 @@ console.log(dataYearWeightLabel);
         <span className={css.titleWeight}>Weight</span>
         <span className={css.titleAverage}>
           Average value:
-          <span className={css.weightSubtitle}>{average().toFixed(0)} kg</span>
+          <span className={css.weightSubtitle}>
+            {isMonth ? average().toFixed(0) : averageYear().toFixed(0)}kg
+          </span>
         </span>
       </div>
       <div className={css.weighChartContainerScroll}>
@@ -95,7 +115,7 @@ console.log(dataYearWeightLabel);
           <div className={css.weighChartContainer}>
             <div className={css.chartContainer}>
               <div className={css.yearWeightLine}>
-                {monthlyAverages.map((weight, id) => (
+                {dataYearWeightLabel.map((weight, id) => (
                   <div key={id} className={css.yearWeightPoint}>
                     {weight}
                   </div>
