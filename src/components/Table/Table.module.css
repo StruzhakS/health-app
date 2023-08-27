@@ -12,6 +12,20 @@
     overflow: auto;
 }
 
+.sideBarBox::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sideBarBox::-webkit-scrollbar-track {
+    background: rgb(55, 55, 55);
+    border-radius: 12px;
+}
+
+.sideBarBox::-webkit-scrollbar-thumb {
+    background-color: #050505;
+    border-radius: 30px;
+}
+
 .targetMeal:not(:last-of-type) {
     margin-bottom: 27px;
 }

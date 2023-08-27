@@ -58,12 +58,15 @@ const Diary = () => {
         recordMealModalOpen={recordMealModalOpen}
         setRecordMealModalOpen={setRecordMealModalOpen}
       />
-      <UpdateMealModal
-        selectedMeal={selectedMeal}
-        updateMealModalOpen={updateMealModalOpen}
-        setUpdateMealModalOpen={setUpdateMealModalOpen}
-        foodName={foodName}
-      />
+      {foodName && (
+        <UpdateMealModal
+          selectedMeal={selectedMeal}
+          updateMealModalOpen={updateMealModalOpen}
+          setUpdateMealModalOpen={setUpdateMealModalOpen}
+          foodName={foodName}
+        />
+      )}
+
       <div className={s.btnNav}>
         <Link className={s.btnDiary} to={'/'}>
           <BsArrowLeft size="1.5rem" />

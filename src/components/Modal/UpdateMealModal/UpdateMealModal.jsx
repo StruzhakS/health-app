@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import css from './UpdateMealModal.module.css';
 import Modal from 'react-modal';
 import Breakfast from '../../../assets/img/mobile/Breakfast.png';
@@ -6,8 +6,9 @@ import Lunch from '../../../assets/img/mobile/Lunch.png';
 import Dinner from '../../../assets/img/mobile/Dinner.png';
 import Snack from '../../../assets/img/mobile/Snack.png';
 import a from '../../../animations/animations.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateUserFoodOperation } from 'redux/user/userOperations';
+import { makeSelectMeal } from 'redux/user/userSelectors';
 
 export const customStyles = {
   overlay: {
@@ -23,16 +24,44 @@ const UpdateMealModal = ({
   selectedMeal,
   foodName,
 }) => {
-  const [form, setForm] = useState({
-    foodName,
-    carbonohidrates: '',
-    protein: '',
-    fat: '',
-  });
+  const dispatch = useDispatch();
+  const selectMeal = makeSelectMeal();
+  const mealData = useSelector(state => selectMeal(state, selectedMeal));
+  const editMeal = mealData?.filter(el => el.foodName === foodName);
 
   const [validationText, setValidationText] = useState(false);
+  const [form, setForm] = useState({
+    foodName,
+    carbonohidrates: editMeal[0]?.carbonohidrates || '',
+    protein: editMeal[0]?.protein || '',
+    fat: editMeal[0]?.fat || '',
+  });
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (updateMealModalOpen) {
+      if (editMeal[0]) {
+        setForm({
+          foodName,
+          carbonohidrates: editMeal[0].carbonohidrates,
+          protein: editMeal[0].protein,
+          fat: editMeal[0].fat,
+        });
+      } else {
+        setForm({
+          foodName,
+          carbonohidrates: '',
+          protein: '',
+          fat: '',
+        });
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateMealModalOpen, foodName]);
+
+  const handleCloseModal = () => {
+    setUpdateMealModalOpen(false);
+    setValidationText(false);
+  };
 
   const foodSection = selectedMeal.toLowerCase();
 
@@ -52,14 +81,13 @@ const UpdateMealModal = ({
     }
 
     dispatch(updateUserFoodOperation(updateFood));
-    setUpdateMealModalOpen(false);
-    setValidationText(false);
     setForm({
       foodName,
       carbonohidrates: '',
       protein: '',
       fat: '',
     });
+    handleCloseModal();
   };
 
   const handleChange = e => {
@@ -85,7 +113,7 @@ const UpdateMealModal = ({
     <Modal
       className={`${css.recordMealModal} ${a.scaleInCenter}`}
       isOpen={updateMealModalOpen}
-      onRequestClose={() => setUpdateMealModalOpen(false)}
+      onRequestClose={handleCloseModal}
       style={customStyles}
       contentLabel="Example Modal"
     >

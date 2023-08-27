@@ -61,9 +61,7 @@
   line-height: 1.42em;
   margin-bottom: 16px;
 
-  @media (min-width: 834px) {
-    margin-bottom: 0;
-
+  @media screen and (min-width: 834px) {
     width: 100px;
   }
 }
@@ -177,9 +175,24 @@
   }
 }
 
+.updateFoodForm {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 .textBtn {
-  color: #e3ffa8;
-  margin-bottom: 16px;
+  width: 280px;
+  height: 30px;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  margin-left: 12px;
+  font-weight: 500;
+  align-items: center;
 }
 
 .validationText {
@@ -189,33 +202,7 @@
   margin-bottom: 8px;
 }
 
-@media screen and (min-width: 834px) {
-  .updateFoodForm {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 8px;
-  }
-  .textBtn {
-    width: 63px;
-    height: 30px;
-    font-size: 24px;
-    line-height: 30px;
-    display: flex;
-    margin-left: 12px;
-    font-weight: 500;
-    align-items: center;
-  }
-
-  .validationText {
-    text-align: right;
-    margin-right: 50px;
-  }
-
-  .inputWrapper {
-    display: flex;
-    gap: 8px;
-  }
+.inputWrapper {
+  display: flex;
+  gap: 12px;
 }
