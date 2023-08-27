@@ -26,10 +26,10 @@ const SettingsPage = () => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    if (name === 'age' || 'height' || 'weight') {
+    if (name === 'age' || name === 'height' || name === 'weight') {
       const regex = /^\d{0,3}$/;
-      if (regex.test(value)) {
-        setForm(prevForm => {
+      if (regex.test(value) && Number(value) <= 999) {
+        return setForm(prevForm => {
           return { ...prevForm, [name]: value };
         });
       }
@@ -77,6 +77,12 @@ const SettingsPage = () => {
         })
       )
       .then(() => navigate('/'));
+  };
+
+  const handleDefault = e => {
+    if (e.key === '-' || e.key === '+') {
+      e.preventDefault();
+    }
   };
 
   return (
@@ -179,6 +185,7 @@ const SettingsPage = () => {
                 placeholder="Enter your age"
                 required
                 value={form.age}
+                onKeyDown={handleDefault}
                 onChange={handleChange}
                 maxLength={3}
                 autoComplete="off"
@@ -219,6 +226,7 @@ const SettingsPage = () => {
                 name="height"
                 value={form.height}
                 onChange={handleChange}
+                onKeyDown={handleDefault}
                 maxLength={3}
                 autoComplete="off"
                 placeholder="Enter your height in cm"
@@ -230,6 +238,7 @@ const SettingsPage = () => {
                 className={s.nameInput}
                 type="text"
                 name="weight"
+                onKeyDown={handleDefault}
                 value={form.weight}
                 onChange={handleChange}
                 maxLength="3"
