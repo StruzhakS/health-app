@@ -1,6 +1,15 @@
 .container {
-  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+
   margin: 0 auto;
+  padding: 24px 0 40px;
+
+}
+
+.ContainerDiv {
+  margin-top: 24px;
+
 }
 
 .input {
@@ -23,7 +32,7 @@
 }
 
 .button {
-  /* margin-top: 16px; */
+
   width: 300px;
   height: 36px;
   padding: 8px 10px 8px 10px;
@@ -40,14 +49,6 @@
   margin-bottom: 80px;
 }
 
-/* 
-.error {
-  color: rgb(0, 0, 0);
-} */
-
-.containerImg {
-  margin-bottom: 24px;
-}
 
 .heading {
   font-family: Poppins;
@@ -134,28 +135,13 @@
 
 
 
-.imgIllustrationMobile {
-  display: block;
-}
-
-.imgIllustrationDesktop {
-  display: none;
-}
-
-.imgIllustrationTablet {
-  display: none;
-}
-
 .passwordInputIcon {
   position: absolute;
   top: 10px;
   left: 260px;
 }
 
-/* .error {
-  color: white;
-  font-size: 10px;
-} */
+
 .field {
   min-height: 16px;
 }
@@ -193,29 +179,49 @@
   border-color: #3CBC81;
 }
 
+.googleAuth {
+  width: 300px;
+  height: 36px;
+  display: flex;
+  padding: 0.5rem 1.4rem;
+  justify-content: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 12px;
+
+  gap: 0.75rem;
+
+  color: #b6b6b6;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  margin: 16px auto;
+}
+
+.googleAuth svg {
+  height: 24px;
+}
+
+.googleAuth:hover {
+  transform: scale(1.02);
+}
+
 @media (min-width: 834px) and (max-width: 1439.5px) {
   .container {
-    max-width: 834px;
-    padding: 40px 195px 60px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
+
+    padding: 40px 168px 60px;
     align-items: center;
-  }
-
-  .containerImg {
-    display: flex;
-    width: 380px;
-    margin-bottom: 60px;
-    align-items: stretch;
     justify-content: center;
-    max-width: 380px;
+
   }
 
-  .imgIllustration {
-    width: 380px;
-    max-width: 380px;
+  .ContainerDiv {
+    margin-top: 60px;
+
   }
 
   .heading {
@@ -293,26 +299,21 @@
     color: #3cbc81;
   }
 
-  .imgIllustrationTablet {
-    display: block;
-  }
-
-  .imgIllustrationDesktop {
-    display: none;
-  }
-
-  .imgIllustrationMobile {
-    display: none;
+  .googleAuth {
+    margin: 5px auto;
   }
 }
 
 @media (min-width: 1440px) {
   .container {
-    max-width: 1440px;
-    display: flex;
+    flex-direction: row;
+
+    padding: 40px 116px 60px;
+    align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 40px 150px 60px;
+
+
   }
 
   .heading {
@@ -320,31 +321,32 @@
     line-height: 1.3;
   }
 
+
   .ContainerDiv {
-    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 508px;
+    justify-content: space-between;
+
+    margin-top: 80px;
+    margin-left: 104px;
+    width: 444px;
+
   }
 
-  .containerImg {
-    max-width: 592px;
-    margin-right: 104px;
-  }
 
-  .imgIllustration {
-    width: 592px;
-    margin-right: 50px;
-  }
 
   .center {
     display: flex;
     flex-direction: column;
   }
 
-  .input {
-    width: 192px;
-  }
+
 
   .passwordInput {
-    width: 192px;
+
+    width: 212px;
     height: 36px;
     padding: 8px 10px;
     border-radius: 12px;
@@ -354,9 +356,13 @@
     background-color: #0f0f0f;
   }
 
+  .input {
+    width: 212px;
+  }
+
   .button {
-    width: 192px;
-    margin-bottom: 200px;
+    width: 212px;
+    margin-bottom: 20px;
   }
 
   .linkContainer {
@@ -391,49 +397,27 @@
 
 
   .passwordInputIcon {
+
     top: 10px;
-    left: 160px;
+    left: 180px;
   }
 
-  .imgIllustrationDesktop {
-    display: block;
-    margin-left: 2px;
+  .googleAuth {
+    width: 212px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0em;
+    padding: 0 5px;
+    margin: 0 0 16px;
   }
 
-  .imgIllustrationTablet {
-    display: none;
+  .googleAuth svg {
+    height: 24px;
   }
 
-  .imgIllustrationMobile {
-    display: none;
+  .googleAuth:hover {
+    transform: scale(1.02);
   }
-}
 
-.googleAuth {
-  max-width: 320px;
-  display: flex;
-  padding: 0.5rem 1.4rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 700;
-  text-align: center;
-  text-transform: uppercase;
-  vertical-align: middle;
-  align-items: center;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  gap: 0.75rem;
-  color: rgb(65, 63, 63);
-  background-color: #fff;
-  cursor: pointer;
-  transition: all 0.6s ease;
-  margin: 0 auto 16px;
-}
-
-.googleAuth svg {
-  height: 24px;
-}
-
-.googleAuth:hover {
-  transform: scale(1.02);
 }
