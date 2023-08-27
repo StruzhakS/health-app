@@ -1,7 +1,7 @@
 .container {
   max-width: 320px;
   margin: 0 auto;
-  padding: 20px;
+  /* padding: 20px; */
   border-radius: 5px;
 }
 
@@ -104,6 +104,36 @@
   display: none;
 }
 
+.googleAuth {
+  width: 300px;
+  display: flex;
+  padding: 0.5rem 1.4rem;
+  justify-content: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  gap: 0.75rem;
+  color: rgb(65, 63, 63);
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  margin: 0 auto 16px;
+}
+
+.googleAuth svg {
+  height: 24px;
+}
+
+.googleAuth:hover {
+  transform: scale(1.02);
+}
+
 @media (min-width: 834px) and (max-width: 1439.5px) {
   .container {
     max-width: 834px;
@@ -135,6 +165,9 @@
   .inputContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
     margin-left: 33px;
   }
   .subheading {
@@ -193,6 +226,9 @@
   .imgIllustrationMobile {
     display: none;
   }
+  .googleAuth {
+    width: 250px;
+  }
 }
 
 @media (min-width: 1440px) {
@@ -224,6 +260,9 @@
   .inputContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
     margin-left: 24px;
   }
 
@@ -281,33 +320,16 @@
   .imgIllustrationMobile {
     display: none;
   }
-}
 
-.googleAuth {
-  max-width: 320px;
-  display: flex;
-  padding: 0.5rem 1.4rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 700;
-  text-align: center;
-  text-transform: uppercase;
-  vertical-align: middle;
-  align-items: center;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  gap: 0.75rem;
-  color: rgb(65, 63, 63);
-  background-color: #fff;
-  cursor: pointer;
-  transition: all 0.6s ease;
-  margin: 0 auto 16px;
-}
+  .googleAuth {
+    width: 250px;
+  }
 
-.googleAuth svg {
-  height: 24px;
-}
+  .googleAuth svg {
+    height: 24px;
+  }
 
-.googleAuth:hover {
-  transform: scale(1.02);
+  .googleAuth:hover {
+    transform: scale(1.02);
+  }
 }

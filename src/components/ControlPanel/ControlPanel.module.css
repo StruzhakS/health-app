@@ -25,6 +25,11 @@
   padding: 10px;
 }
 
+.recordWeightIcon {
+  stroke: #e3ffa8;
+  fill: #e3ffa8
+}
+
 .titleTarget {
   font-size: 14px;
   font-weight: 600;

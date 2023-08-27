@@ -10,9 +10,14 @@ body {
   background-color: #050505;
 }
 
-ul,
-ol {
+ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ol {
+
   margin: 0;
   padding: 0;
 }

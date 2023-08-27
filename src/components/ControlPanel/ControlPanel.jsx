@@ -80,8 +80,8 @@ const ControlPanel = () => {
               <p className={s.subTitleTarget}>{weight}</p>{' '}
               <p className={s.weigthTargetText}>kg</p>
               <button onClick={() => setWeightModalOpen(true)}>
-                <svg style={{ fill: 'white' }} width="24" height="14">
-                  <use href={`${iconsSrc}#edit-2`} />
+                <svg className={s.recordWeightIcon} width="24" height="14">
+                  <use xlinkHref={`${iconsSrc}#pencil`} />
                 </svg>
               </button>
             </div>
