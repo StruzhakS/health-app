@@ -93,7 +93,7 @@ const UpdateMealModal = ({
   const handleChange = e => {
     const { name, value } = e.target;
 
-    if (name === 'carbonohidrates' || 'fat' || 'protein') {
+    if (name === 'carbonohidrates' || name === 'fat' || name === 'protein') {
       if (/^\d{0,3}$/.test(value) && Number(value) <= 999) {
         setForm(prevForm => {
           return { ...prevForm, [name]: value };

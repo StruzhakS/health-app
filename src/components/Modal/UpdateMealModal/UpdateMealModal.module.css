@@ -47,7 +47,7 @@
 }
 
 .recordMealModalInput {
-  /* width: 150px; */
+  width: 300px;
   padding: 8px 10px;
   color: #fff;
 
@@ -59,6 +59,7 @@
 
   font-weight: 400;
   line-height: 1.42em;
+  margin-bottom: 16px;
 
   @media screen and (min-width: 834px) {
     width: 100px;
@@ -67,7 +68,7 @@
 
 /* .recordMealModalInput:first-child {
   @media (min-width: 834px) {
-    width: 280px;
+    width: 100px;
   }
 } */
 
@@ -133,7 +134,7 @@
 
   font-weight: 500;
   line-height: 1.42em;
-  width: 276px;
+  width: 300px;
   margin-bottom: 16px;
   cursor: pointer;
 
@@ -150,7 +151,7 @@
 }
 
 .recordMealModalCancelBtn {
-  width: 276px;
+  width: 300px;
   cursor: pointer;
   color: #b6b6b6;
   text-align: center;
@@ -196,8 +197,7 @@
 
 .validationText {
   font-size: 14px;
-  text-align: right;
-  margin-right: 50px;
+  text-align: center;
   color: red;
   margin-bottom: 8px;
 }

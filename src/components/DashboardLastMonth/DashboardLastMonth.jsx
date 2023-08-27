@@ -72,7 +72,7 @@ const DashboardLastMonth = () => {
         <div>
           <DateSelector setIsMonth={setIsMonth} />
         </div>
-        <div className={css.monthSlect}>{currentMonth}</div>
+        <div className={css.monthSlect}>{ isMonth?   currentMonth : currentYearFormat}</div>
       </div>
       <div className={css.dashboardDesctopGraph}>
         <div className={css.gridItem1}>
