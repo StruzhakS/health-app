@@ -64,7 +64,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
-  row-gap: 10px;
+  row-gap: 1px;
 }
 .gridItem1{
   grid-column: 1/2;
