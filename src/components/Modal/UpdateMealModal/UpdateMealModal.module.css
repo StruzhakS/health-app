@@ -60,16 +60,16 @@
   font-weight: 400;
   line-height: 1.42em;
 
-  @media (min-width: 834px) {
+  @media screen and (min-width: 834px) {
     width: 100px;
   }
 }
 
-.recordMealModalInput:first-child {
+/* .recordMealModalInput:first-child {
   @media (min-width: 834px) {
     width: 280px;
   }
-}
+} */
 
 .recordMealModalInput::-webkit-inner-spin-button,
 .recordMealModalInput::-webkit-outer-spin-button {
@@ -177,14 +177,14 @@
 .updateFoodForm {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
-  gap: 20px;
+  gap: 12px;
   margin-bottom: 8px;
 }
 
 .textBtn {
-  width: 63px;
+  width: 280px;
   height: 30px;
   font-size: 24px;
   line-height: 30px;
@@ -204,5 +204,5 @@
 
 .inputWrapper {
   display: flex;
-  gap: 8px;
+  gap: 12px;
 }

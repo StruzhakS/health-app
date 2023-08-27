@@ -88,7 +88,7 @@ const DiaryTable = ({
           </div>
         </div>
 
-        <ol className={s.table}>
+        <ol className={`${s.table}  ${s.sideBarBox}`}>
           {makeNewMealsArray(mealData).map(el => {
             return !el.showButton ? (
               <li key={nanoid()} className={s.mealItem}>
@@ -111,6 +111,7 @@ const DiaryTable = ({
                       </button>
                     )}
                   </div>
+
                   <div className={s.mealNutritionalWrap}>
                     {Object.keys(el)
                       .slice(1)
@@ -129,23 +130,6 @@ const DiaryTable = ({
                               ) : (
                                 el[key]
                               )}
-                            </p>
-                          )
-                      )}
-                  </div>
-                  <div className={s.mealNutritionalWrap}>
-                    {Object.keys(el)
-                      .slice(1)
-                      .map(
-                        key =>
-                          el.foodName && (
-                            <p key={key}>
-                              {isMobile
-                                ? `${key.slice(0, 1).toUpperCase()}${key.slice(
-                                    1,
-                                    4
-                                  )}.: ${el[key]}`
-                                : el[key]}
                             </p>
                           )
                       )}
