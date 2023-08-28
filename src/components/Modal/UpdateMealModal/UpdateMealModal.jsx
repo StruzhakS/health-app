@@ -76,7 +76,8 @@ const UpdateMealModal = ({
     },
   };
 
-  const handleClick = () => {
+  const handleClick = e => {
+    e.preventDefault();
     if (form.carbonohidrates === '' || form.protein === '' || form.fat === '') {
       setValidationText(true);
       return;
@@ -129,7 +130,7 @@ const UpdateMealModal = ({
         />
         <p className={css.recordMealModalMeal}>{selectedMeal}</p>
       </div>
-      <form>
+      <form noValidate>
         <div className={css.updateFoodForm}>
           <h4 className={css.textBtn}>{foodName}</h4>
           <div className={css.inputWrapper}>
@@ -172,7 +173,7 @@ const UpdateMealModal = ({
           <button
             className={`${css.recordMealModalConfirmBtn} ${a.hoverYellowBtn}`}
             onClick={handleClick}
-            type="button"
+            // type="button"
           >
             Confirm
           </button>
