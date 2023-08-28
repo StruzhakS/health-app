@@ -4,11 +4,10 @@
   justify-content: space-between;
   align-items: center;
   color: white;
- 
 }
 @media screen and (min-width: 834px) {
   .dashboardWaterContainer {
-   width: 345px;
+    width: 345px;
   }
 }
 .waterTitle {
@@ -29,9 +28,9 @@
   font-weight: 400;
   line-height: 20px;
 }
-.waterSubtitle{
+.waterSubtitle {
   font-size: 14px;
-  color: #B6B6B6;
+  color: #b6b6b6;
   margin-left: 8px;
 }
 .waterLineChartContainer {
@@ -41,55 +40,74 @@
 }
 @media screen and (min-width: 1440px) {
   .waterLineChartContainer {
- padding: 25px 20px 24px 14px;
+    padding: 25px 20px 24px 14px;
   }
 }
 
-
 .chartWrapper {
-  display: inline-block;
-  overflow-x: auto;
   width: 100%;
-   margin-bottom: 17px;
 }
 @media screen and (min-width: 1440px) {
   .chartWrapper {
-  overflow: hidden;
-       margin-bottom: 0px;
+    overflow: hidden;
+    margin-bottom: 0px;
   }
 }
 
 .chartContainer {
   width: 740px;
-  overflow-x: auto;
-  white-space: nowrap;
-  scroll-behavior: smooth;
-  margin-bottom: 17px;
+
+  margin-bottom: 8px;
   height: 313px;
 }
 @media screen and (min-width: 834px) {
   .chartContainer {
-     width: 780px;
-     overflow: hidden;
+    width: 780px;
+    overflow: hidden;
   }
 }
 @media screen and (min-width: 1440px) {
   .chartContainer {
-   width: 679px; 
-     height: 380px;
-       margin-bottom: 0px;
+    width: 679px;
+    height: 380px;
+    margin-bottom: 0px;
   }
 }
 
-.chartContainer::-webkit-scrollbar {
-  background-color: #0f0f0f; 
-  height: 8px;
-   border-radius: 12px;
+.waterChartContainerScroll {
+  display: flex;
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  margin-bottom: 27px;
+}
+@media screen and (min-width: 834px) {
+  .waterChartContainerScroll {
+    width: 780px;
+    overflow: hidden;
+    margin-bottom: 0px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .waterChartContainerScroll {
+    width: 679px;
+    height: 380px;
+    margin-bottom: 0px;
+  }
 }
 
-.chartContainer::-webkit-scrollbar-thumb {
+.waterChartContainerScroll::-webkit-scrollbar {
+  height: 8px;
+  background-color: #0f0f0f;
+  border-radius: 12px;
+}
+
+.waterChartContainerScroll::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  height: 8px;
- 
+}
+
+.waterChartContainerScroll::-webkit-scrollbar-track {
+  background-color: #0f0f0f;
 }
