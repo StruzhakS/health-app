@@ -2,8 +2,6 @@ import Diary from 'components/Diary/Diary';
 import Layout from 'components/Layout/Layout';
 import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
 import MainAuth from 'pages/Auth/MainAuth/MainAuth';
-// import HomePage from '../../pages/';
-// import MainPage from 'pages/MainPage';
 import DashboardLastMonth from '../DashboardLastMonth/DashboardLastMonth';
 import { Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
@@ -18,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateAuthUser } from '../../redux/auth/authSlice';
 import SettingsPage from 'pages/Settings/SettingsPage';
 import GoogleAuth from 'components/GoogleAuth/GoogleAuth';
-// import GoogleAuth from 'components/GoogleAuth/GoogleAuth';
+
 
 export const App = () => {
   const dispatch = useDispatch();

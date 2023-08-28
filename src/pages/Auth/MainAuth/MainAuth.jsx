@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import styles from './MainAuth.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import a from '../../../animations/animations.module.css';
 import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
+import iconsSrc from '../../../assets/icons/symbol-defs.svg';
 import { useMediaQuery } from 'react-responsive';
 
 const MainAuth = () => {
@@ -26,21 +27,21 @@ const MainAuth = () => {
         <img
           className={a.slideUpToDown}
           src={mob.illustrationMob}
-          alt="genders"
+          alt="fitnessChecking"
         />
       )}
       {isTablet && (
         <img
           className={a.slideUpToDown}
           src={tab.illustrationTab}
-          alt="genders"
+          alt="fitnessChecking"
         />
       )}
       {isDesktop && (
         <img
           className={a.slideUpToDown}
           src={desk.illustrationDesk}
-          alt="genders"
+          alt="fitnessChecking"
         />
       )}
 
@@ -64,6 +65,15 @@ const MainAuth = () => {
             </Link>
           </div>
         </div>
+        <NavLink
+          to={'https://health-app-1rfu.onrender.com/api/auth/google'}
+          className={styles.googleAuth}
+        >
+          <svg width="16" height="16">
+            <use href={`${iconsSrc}#google-auth`} />
+          </svg>{' '}
+          Continue with Google
+        </NavLink>
         <div className={styles['auth-list']}>
           <ul className={styles['auth-list-c']}>
             <li className={styles['auth-list-item']}>Set goals</li>

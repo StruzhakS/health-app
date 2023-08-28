@@ -6,8 +6,6 @@ import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
 import { useMediaQuery } from 'react-responsive';
-import clsx from 'clsx';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { addGoalsThunk } from 'redux/auth/authOperations';
 
@@ -33,7 +31,7 @@ const Activity = () => {
   const isMobile = useMediaQuery({ maxWidth: 833 });
   const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1439 });
   const isDesktop = useMediaQuery({ minWidth: 1440 });
-  const multiplyClass = clsx(s.goalList, s.gap);
+
   return (
     <div className={s.goals}>
       {isMobile && (
@@ -66,7 +64,7 @@ const Activity = () => {
             checked={activity === '1.2'}
             onChange={onOptionChange}
           />
-          <span className={multiplyClass}>
+          <span className={`${s.goalList}${s.gap}`}>
             1.2 - if you do not have physical activity and sedentary work
           </span>
         </label>
@@ -78,7 +76,7 @@ const Activity = () => {
             checked={activity === '1.375'}
             onChange={onOptionChange}
           />
-          <span className={multiplyClass}>
+          <span className={`${s.goalList}${s.gap}`}>
             1.375 - if you do short runs or light gymnastics 1-3 times a week
           </span>
         </label>
@@ -90,7 +88,7 @@ const Activity = () => {
             checked={activity === '1.55'}
             onChange={onOptionChange}
           />
-          <span className={multiplyClass}>
+          <span className={`${s.goalList}${s.gap}`}>
             1.55 - if you play sports with average loads 3-5 times a week
           </span>
         </label>
@@ -102,7 +100,7 @@ const Activity = () => {
             checked={activity === '1.725'}
             onChange={onOptionChange}
           />
-          <span className={multiplyClass}>
+          <span className={`${s.goalList}${s.gap}`}>
             1.725 ​​- if you train fully 6-7 times a week
           </span>
         </label>
@@ -114,7 +112,7 @@ const Activity = () => {
             checked={activity === '1.9'}
             onChange={onOptionChange}
           />
-          <span className={multiplyClass}>
+          <span className={`${s.goalList}${s.gap}`}>
             1.9 - if your work is related to physical labor, you train 2 times a
             day and include strength exercises in your training program
           </span>
