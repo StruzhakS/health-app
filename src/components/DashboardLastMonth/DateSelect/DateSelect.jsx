@@ -4,6 +4,10 @@ import sprite from '../../../assets/icons/symbol-defs.svg';
 import s from './DateSelect.module.css';
 import a from '../../../animations/animations.module.css';
 
+Modal.setAppElement('#root');
+
+
+
 const DateSelector = ({ setIsMonth }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonText, setButtonText] = useState('Last Month');
@@ -61,7 +65,7 @@ const DateSelector = ({ setIsMonth }) => {
           ></use>
         </svg>
       </button>
-      <div className={s.positonForButton}>
+      <div className={s.positonForButton} >
         <Modal
           isOpen={isModalOpen}
           onRequestClose={handleModalClose}
@@ -70,7 +74,7 @@ const DateSelector = ({ setIsMonth }) => {
           overlayClassName={s.modalOverlay}
          
         >
-          <span onClick={handleButtonClick}>{lastYearButtonText}</span>
+          <span  onClick={handleButtonClick}>{lastYearButtonText}</span>
         </Modal>
       </div>
     </div>
