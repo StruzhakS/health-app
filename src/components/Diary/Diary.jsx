@@ -1,10 +1,7 @@
 import React from 'react';
 import s from './Diary.module.css';
-// import Table from 'components/Table/Table';
-// import TableMobile from 'components/Table/TableMobile';
 import { BsArrowLeft } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-// import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useState } from 'react';

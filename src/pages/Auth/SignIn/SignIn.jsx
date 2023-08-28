@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SignIn.module.css';
 import a from '../../../animations/animations.module.css';
@@ -12,27 +11,36 @@ import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
 import { useMediaQuery } from 'react-responsive';
 import Loader from 'components/Loader/Loader';
+import { Formik } from 'formik';
+import * as yup from 'yup';
+
+const regexPatterns = {
+  email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+};
+
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email('Enter a valid Password*')
+    .required('E-mail is a required field')
+    .test('valid-email', 'Enter a valid Password*', function (value) {
+      return regexPatterns.email.test(value);
+    }),
+  password: yup.string().required('Password is a required field'),
+});
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error, isLoading } = useSelector(state => state.auth);
+  const { isLoading } = useSelector(state => state.auth);
 
-  const [form, setForm] = useState({
-    email: '',
-    password: '',
-  });
-  console.log('isLoading', isLoading);
-  const handleChange = ({ target: { name, value } }) => {
-    setForm(prevForm => {
-      return { ...prevForm, [name]: value };
-    });
-  };
+  const handleSubmit = values => {
+    const body = {
+      email: values.email,
+      password: values.password,
+    };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    // setLoading();
-    dispatch(signIn(form))
+    dispatch(signIn(body))
       .unwrap()
       .then(() => navigate('/'))
       .catch(error => {
@@ -59,21 +67,21 @@ const SignIn = () => {
             <img
               className={a.slideUpToDown}
               src={mob.illustrationMob}
-              alt="genders"
+              alt="fitnessChecking"
             />
           )}
           {isTablet && (
             <img
               className={a.slideUpToDown}
               src={tab.illustrationTab}
-              alt="genders"
+              alt="fitnessChecking"
             />
           )}
           {isDesktop && (
             <img
               className={a.slideUpToDown}
               src={desk.illustrationDesk}
-              alt="genders"
+              alt="fitnessChecking"
             />
           )}
           <div className={`${styles.ContainerDiv} ${a.slideDownToUp}`}>
@@ -82,43 +90,82 @@ const SignIn = () => {
               <h3 className={styles.subheading}>
                 You need to login to use the service
               </h3>
-              {error && <p className={styles.error}>{error}</p>}
-              <form className={styles.inputContainer} onSubmit={handleSubmit}>
-                <input
-                  name="email"
-                  className={styles.input}
-                  type="email"
-                  placeholder="Email"
-                  value={form.email}
-                  onChange={handleChange}
-                />
-                <input
-                  name="password"
-                  className={styles.input}
-                  type="password"
-                  placeholder="Password"
-                  value={form.password}
-                  onChange={handleChange}
-                />
-                <NavLink
-                  to={'https://health-app-1rfu.onrender.com/api/auth/google'}
-                  className={styles.googleAuth}
-                >
-                  <svg width="16" height="16">
-                    <use href={`${iconsSrc}#google-auth`} />
-                  </svg>{' '}
-                  Continue with Google
-                </NavLink>
-                <button className={styles.button} type="submit">
-                  Sign In
-                </button>
-                <Link
-                  to="/forgot-password"
-                  className={styles.forgotPasswordLink}
-                >
-                  Forgot your password?
-                </Link>
-              </form>
+
+              <Formik
+                initialValues={{ email: '', password: '' }}
+                validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+              >
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                }) => (
+                  <form
+                    className={styles.inputContainer}
+                    onSubmit={handleSubmit}
+                  >
+                    <label htmlFor="email">
+                      <input
+                        className={styles.input}
+                        placeholder="E-mail"
+                        type="email"
+                        name="email"
+                        id="email"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email}
+                      />
+                      <div className={styles.errorFields}>
+                        {errors.email && touched.email ? (
+                          <div>{errors.email} </div>
+                        ) : null}
+                      </div>
+                    </label>
+                    <label htmlFor="password">
+                      <input
+                        className={styles.input}
+                        placeholder="Password"
+                        type="password"
+                        name="password"
+                        id="password"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.password}
+                      />
+
+                      <div className={styles.errorFields}>
+                        {errors.password && touched.password && (
+                          <div>{errors.password}</div>
+                        )}
+                      </div>
+                    </label>
+                    <NavLink
+                      to={
+                        'https://health-app-1rfu.onrender.com/api/auth/google'
+                      }
+                      className={styles.googleAuth}
+                    >
+                      <svg width="16" height="16">
+                        <use href={`${iconsSrc}#google-auth`} />
+                      </svg>{' '}
+                      Continue with Google
+                    </NavLink>
+                    <button className={styles.button} type="submit">
+                      Sign In
+                    </button>
+                    <Link
+                      to="/forgot-password"
+                      className={styles.forgotPasswordLink}
+                    >
+                      Forgot your password?
+                    </Link>
+                  </form>
+                )}
+              </Formik>
             </div>
             <div className={styles.signupContainer}>
               <p className={styles.signupText}>
