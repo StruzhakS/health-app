@@ -70,7 +70,7 @@ const MainPageFood = () => {
               >{`${percentageCount(goalCarbo, carbo)}%`}</p>
             </div>
             <div>
-              <h3 className={css.scheduleListItemTitle}>Carbonohidrates</h3>
+              <h3 className={css.scheduleListItemTitle}>Carbohydrates</h3>
               <p className={css.scheduleListItemDescription}>
                 Goal:
                 <span className={css.scheduleListItemAdditionalDescription}>

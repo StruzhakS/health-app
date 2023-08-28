@@ -58,8 +58,8 @@ const CaloriesLineChart = ({ isMonth }) => {
     return sum / caloriesArray.length;
   };
 
-    //////Year///
-  
+  //////Year///
+
   const yearStatistic = useSelector(state => state.user.yearStatistic);
   const dataYearXlabel = () => {
     return monthsForYear.map(month => month.slice(0, 3));
@@ -215,11 +215,13 @@ const CaloriesLineChart = ({ isMonth }) => {
           </span>
         </span>
       </div>
-      <div className={css.caloriesChartWrapper}>
-        <div
-          className={`${css.caloriesChartContainer} ${css.lineChartContainer}`}
-        >
-          <Line data={data} options={options} />
+      <div className={css.caloriesChatContainerScroll}>
+        <div className={css.caloriesChartWrapper}>
+          <div
+            className={`${css.caloriesChartContainer} ${css.lineChartContainer}`}
+          >
+            <Line data={data} options={options} />
+          </div>
         </div>
       </div>
     </>

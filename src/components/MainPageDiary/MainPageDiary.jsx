@@ -98,7 +98,7 @@ const MainPageDiary = () => {
               <ul className={css.mealAdditionalInfoList}>
                 <li className={css.mealAdditionalInfoListItem}>
                   <p className={css.mealAdditionalInfoDescription}>
-                    Carbonohidrates:
+                    Carbohydrates:
                     <span className={css.mealAdditionalInfoValue}>
                       &nbsp;{carbonohidrates}
                     </span>
