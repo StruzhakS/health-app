@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   signUp,
   signIn,
@@ -93,8 +93,32 @@ const authSlice = createSlice({
       )
       .addCase(addGoalsThunk.fulfilled, handleAddGoalsFulfilled)
       .addCase(logoutUserThunk.fulfilled, handleLogoutFulfilled)
-      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
-      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
+      .addMatcher(
+        isAnyOf(
+          signUp.pending,
+          signIn.pending,
+          forgotPassword.pending,
+          updateGoalOperation.pending,
+          updateWeightOperation.pending,
+          updateSettingsOperations.pending,
+          addGoalsThunk.pending,
+          logoutUserThunk.pending
+        ),
+        handlePending
+      )
+      .addMatcher(
+        isAnyOf(
+          signUp.rejected,
+          signIn.rejected,
+          forgotPassword.rejected,
+          updateGoalOperation.rejected,
+          updateWeightOperation.rejected,
+          updateSettingsOperations.rejected,
+          addGoalsThunk.rejected,
+          logoutUserThunk.rejected
+        ),
+        handleRejected
+      );
   },
 });
 
