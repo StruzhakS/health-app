@@ -110,12 +110,12 @@
 @media screen and (min-width: 834px) {
   .modalOverlay {
     top: 54px;
-    left: 21px;
+    left: 8px;
   }
 }
 @media screen and (min-width: 1440px) {
   .modalOverlay {
     top: 49px;
-    left: 15px;
+    left: 7px;
   }
 }
