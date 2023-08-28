@@ -60,6 +60,8 @@ const UpdateMealModal = ({
 
   const handleCloseModal = () => {
     setUpdateMealModalOpen(false);
+    // document.body.style.overflow = 'auto';
+
     setValidationText(false);
   };
 
@@ -180,6 +182,7 @@ const UpdateMealModal = ({
             onClick={() => {
               setUpdateMealModalOpen(false);
               setValidationText(false);
+              // document.body.style.overflow = 'auto';
             }}
           >
             Cancel

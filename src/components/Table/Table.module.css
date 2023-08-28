@@ -1,223 +1,203 @@
 .table {
-    width: 300px;
-    height: 232px;
-    border-radius: 12px;
-    background-color: #0f0f0f;
-    padding: 16px 12px 16px 27px;
+  width: 300px;
+  height: 232px;
+  border-radius: 12px;
+  background-color: #0f0f0f;
+  padding: 16px 12px 16px 27px;
 
-    display: flex;
-    flex-direction: column;
-    column-gap: 16px;
+  display: flex;
+  flex-direction: column;
+  column-gap: 16px;
 
-    overflow: auto;
+  overflow: auto;
 }
 
 .sideBarBox::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 .sideBarBox::-webkit-scrollbar-track {
-    background: rgb(55, 55, 55);
-    border-radius: 12px;
+  background: rgb(55, 55, 55);
+  border-radius: 12px;
 }
 
 .sideBarBox::-webkit-scrollbar-thumb {
-    background-color: #050505;
-    border-radius: 30px;
+  background-color: #050505;
+  border-radius: 30px;
 }
 
 .targetMeal:not(:last-of-type) {
-    margin-bottom: 27px;
+  margin-bottom: 27px;
 }
 
 .recordMealButton {
-    margin-bottom: 16px;
-    color: #E3FFA8;
-    font-size: 14px;
-    line-height: 1.42;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  color: #e3ffa8;
+  font-size: 14px;
+  line-height: 1.42;
 }
 
 .recordMealIcon {
-    stroke: #b6b6b6;
-    margin-right: 6px;
+  stroke: #b6b6b6;
+  margin-right: 6px;
 }
 
 .btnEdit,
 .colorNut {
-    color: #B6B6B6;
+  color: #b6b6b6;
 }
 
 .mealWrap {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .mealAdditionalInfoValue {
-    margin-left: 6px;
-    color: #B6B6B6;
+  margin-left: 6px;
+  color: #b6b6b6;
 
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.42;
-
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.42;
 }
 
 .mealItem {
-    padding-left: 16px;
-    margin-bottom: 16px;
-    height: 40px;
-
+  padding-left: 16px;
+  margin-bottom: 16px;
+  height: 40px;
 }
 
 .foodName {
-    width: 178px;
+  width: 178px;
 }
 
 .mealNameWrap {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
-
-
 .mealNutritionalWrap {
-    display: flex;
-    gap: 12px
+  display: flex;
+  gap: 12px;
 }
 
 .mealTypeWrapper {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
 .descriptionWrap {
-    display: flex;
-    flex-wrap: wrap;
-    width: 175px;
-    gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 175px;
+  gap: 12px;
 }
 
 .mealListItemTitle {
-    margin-right: 26px;
-    color: #FFF;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.44;
-
+  margin-right: 26px;
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.44;
 }
 
-
 .mealTitleWrapper {
-    width: 148px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
+  width: 148px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
 .mealAdditionalInfoDescription {
-    color: #FFF;
-    font-size: 14px;
-    line-height: 1.42;
-
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.42;
 }
 
-@media screen and (min-width:834px) {
-    .table {
-        width: 780px;
-        height: 240px;
-        padding: 32px 12px 0 27px;
-    }
+@media screen and (min-width: 834px) {
+  .table {
+    width: 780px;
+    height: 240px;
+    padding: 32px 12px 0 27px;
+  }
 
-    .mealListItemTitle {
-        margin-right: 0;
-        font-size: 22px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.45;
+  .mealListItemTitle {
+    margin-right: 0;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.45;
+  }
 
+  .recordMealButton {
+    margin-bottom: 7px;
+  }
 
-    }
+  .mealItem {
+    margin-bottom: 32px;
+  }
 
-    .recordMealButton {
-        margin-bottom: 7px;
+  .mealTypeWrapper {
+    flex-wrap: nowrap;
+    gap: 196px;
+    margin-bottom: 6px;
+  }
 
-    }
+  .descriptionWrap {
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
 
-    .mealItem {
+  .mealWrap {
+    flex-direction: row;
+    gap: 110px;
+  }
 
-        margin-bottom: 32px;
+  .foodName {
+    width: 260px;
+  }
 
+  .numWrap {
+    width: 80px;
+  }
 
-    }
+  .numWrap:not(:last-of-type) {
+    margin-right: 32px;
+  }
 
-    .mealTypeWrapper {
-        flex-wrap: nowrap;
-        gap: 196px;
-        margin-bottom: 6px;
+  .mealNutritionalWrap {
+    gap: 0;
+  }
 
-    }
-
-    .descriptionWrap {
-        flex-wrap: nowrap;
-        gap: 20px;
-    }
-
-    .mealWrap {
-        flex-direction: row;
-        gap: 110px;
-
-    }
-
-    .foodName {
-        width: 260px;
-    }
-
-    .numWrap {
-        width: 80px;
-    }
-
-    .numWrap:not(:last-of-type) {
-        margin-right: 32px;
-    }
-
-    .mealNutritionalWrap {
-
-        gap: 0
-    }
-
-    .btnEdit {
-        display: flex;
-        align-items: center;
-    }
+  .btnEdit {
+    display: flex;
+    align-items: center;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .table {
-        width: 676px;
-    }
+  .table {
+    width: 676px;
+  }
 
-    .mealTypeWrapper {
+  .mealTypeWrapper {
+    gap: 126px;
+  }
 
-        gap: 126px;
+  .numWrap:last-of-type {
+    width: 55px;
+  }
 
-
-    }
-
-    .numWrap:last-of-type {
-        width: 55px;
-    }
-
-    .mealWrap {
-
-        gap: 32px;
-
-    }
+  .mealWrap {
+    gap: 32px;
+  }
 }
