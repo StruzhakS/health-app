@@ -18,13 +18,13 @@ const Loader = () => {
             className={`${s['hamster__limb']} ${s['hamster__limb--fr']}`}
           ></div>
           <div
-            className={`${s['hamster__limb']} ${s['hamster__limb--fr']}`}
+            className={`${s['hamster__limb']} ${s['hamster__limb--fl']}`}
           ></div>
           <div
-            className={`${s['hamster__limb']} ${s['hamster__limb--fr']}`}
+            className={`${s['hamster__limb']} ${s['hamster__limb--br']}`}
           ></div>
           <div
-            className={`${s['hamster__limb']} ${s['hamster__limb--fr']}`}
+            className={`${s['hamster__limb']} ${s['hamster__limb--bl']}`}
           ></div>
           <div className={s['hamster__tail']}></div>
         </div>
