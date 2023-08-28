@@ -39,10 +39,14 @@ export const updateWeightOperation = createAsyncThunk(
 
 export const updateSettingsOperations = createAsyncThunk(
   'user/settings',
-  (body, { _, getState }) => {
-    setHeadersToken(getState().auth.token);
-    const data = updateSettingsApi(body);
-    return data;
+  async (body, { rejectWithValue, getState }) => {
+    try {
+      setHeadersToken(getState().auth.token);
+      const data = await updateSettingsApi(body);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
 );
 

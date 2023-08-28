@@ -9,6 +9,7 @@ import iconsSrc from '../../assets/icons/symbol-defs.svg';
 import { useNavigate } from 'react-router-dom';
 import { updateSettingsOperations } from 'redux/user/userOperations';
 import { useMediaQuery } from 'react-responsive';
+import { toast } from 'react-toastify';
 
 const SettingsPage = () => {
   const user = useSelector(state => state.auth?.user);
@@ -76,7 +77,8 @@ const SettingsPage = () => {
           activity: user.activity,
         })
       )
-      .then(() => navigate('/'));
+      .then(() => navigate('/'))
+      .catch(error => toast.error(error.message));
   };
 
   const handleDefault = e => {
@@ -150,6 +152,8 @@ const SettingsPage = () => {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
+                required={true}
+                minLength={2}
               />
             </label>
             <label className={s.photoLabel}>
@@ -183,12 +187,12 @@ const SettingsPage = () => {
                 type="text"
                 name="age"
                 placeholder="Enter your age"
-                required
                 value={form.age}
                 onKeyDown={handleDefault}
                 onChange={handleChange}
                 maxLength={3}
                 autoComplete="off"
+                required={true}
               />
             </label>
             <div className={s.genderLabel}>
@@ -230,6 +234,7 @@ const SettingsPage = () => {
                 maxLength={3}
                 autoComplete="off"
                 placeholder="Enter your height in cm"
+                required={true}
               />
             </label>
             <label className={s.labelWrapper}>
@@ -245,6 +250,7 @@ const SettingsPage = () => {
                 autoComplete="off"
                 placeholder="Enter your weight"
                 step={0.1}
+                required={true}
               />
             </label>
             <div className={`${s.activityWrapper} ${s.fullWidth}`}>
