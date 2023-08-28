@@ -42,7 +42,7 @@ const handleForgotPasswordFulfilled = state => {
   state.isLoading = false;
 };
 const handlePending = state => {
-  state.isLoading = true;
+  state.isLoading = false;
 };
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
