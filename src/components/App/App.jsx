@@ -43,7 +43,7 @@ export const App = () => {
             element={<PublicRoute component={<SignIn />} />}
           />
           <Route
-            path="/signup/googleAuth"
+            path="/googleAuth"
             element={<PublicRoute component={<GoogleAuth />} />}
           />
           <Route
