@@ -51,15 +51,27 @@ const RecordMealModal = ({
 
     for (let i = 0; i < arrLength; i++) {
       const carbonohydratesElemBoolean =
-        parseFloat(carbonohidratesArr[i]) === 0 || carbonohidratesArr[i] === '';
-      const fatElemBoolean = parseFloat(fatArr[i]) === 0 || fatArr[i] === '';
-      const proteinElemBoolean =
-        parseFloat(proteinArr[i]) === 0 || proteinArr[i] === '';
+        parseFloat(carbonohidratesArr[i]) === 0;
 
-      if (carbonohydratesElemBoolean && fatElemBoolean && proteinElemBoolean) {
+      const fatElemBoolean = parseFloat(fatArr[i]) === 0;
+
+      const proteinElemBoolean = parseFloat(proteinArr[i]) === 0;
+
+      const nameElemBoolean = productNameArr[i].trim() === '';
+
+      if (nameElemBoolean) {
         i = arrLength + 1;
         setSubmitButtonDisabled(true);
-      } else setSubmitButtonDisabled(false);
+      } else {
+        if (
+          carbonohydratesElemBoolean &&
+          fatElemBoolean &&
+          proteinElemBoolean
+        ) {
+          i = arrLength + 1;
+          setSubmitButtonDisabled(true);
+        } else setSubmitButtonDisabled(false);
+      }
     }
   }, [carbonohidratesArr, fatArr, productNameArr, proteinArr]);
 
@@ -88,7 +100,7 @@ const RecordMealModal = ({
 
     const sendedObj = {};
     sendedObj[selectedMeal.toLowerCase()] = productNameArr.map((el, i) => ({
-      foodName: el,
+      foodName: el.trim(),
       carbonohidrates: `${carbonohidratesArr[i]}`,
       fat: `${fatArr[i]}`,
       protein: `${proteinArr[i]}`,
@@ -99,7 +111,7 @@ const RecordMealModal = ({
   };
 
   const onNameChange = (evt, index) => {
-    const string = evt.target.value.trim();
+    const string = evt.target.value.replace(/[0-9]/g, '');
     setProductNameArr(prev => {
       const resultArr = [];
       for (let i = 0; i < prev.length; i++) {

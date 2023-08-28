@@ -66,7 +66,7 @@ const WaterIntakeModal = ({
             placeholder="Enter milliliters"
             className={css.waterIntakeModalFormInput}
             type="text"
-            maxlength="4"
+            maxLength="4"
             value={milliliters}
             onChange={onInputChange}
           />

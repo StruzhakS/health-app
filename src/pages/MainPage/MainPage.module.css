@@ -2,14 +2,17 @@
   width: 300px;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 60px;
 
   @media (min-width: 834px) {
     width: 780px;
+    padding-bottom: 40px;
   }
 
   @media (min-width: 1440px) {
     width: 1375px;
     display: flex;
     gap: 178px;
+    padding-bottom: 52px;
   }
 }
