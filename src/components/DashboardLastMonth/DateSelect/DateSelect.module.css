@@ -98,7 +98,7 @@
 .modalOverlay {
   position: absolute;
   top: 152px;
-  left: 186px;
+  left: 42px;
   cursor: pointer;
   background-color: transparent;
   display: flex;
@@ -115,6 +115,6 @@
 @media screen and (min-width: 1440px) {
   .modalOverlay {
     top: 146px;
-    left: 112px;
+    left: 64px;
   }
 }
