@@ -21,7 +21,7 @@ const authPersistConfig = {
 const userPersistConfig = {
   key: 'user',
   storage,
-  whitelist: ['breakfast', 'lunch', 'dinner', 'snack'],
+  whitelist: ['breakfast', 'lunch', 'dinner', 'snack', 'id'],
 };
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 const persistedUserReducer = persistReducer(userPersistConfig, userReducer);

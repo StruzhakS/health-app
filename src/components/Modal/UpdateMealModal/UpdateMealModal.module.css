@@ -1,9 +1,8 @@
 .recordMealModal {
   border-radius: 12px;
   background: #0f0f0f;
-  min-width: 300px;
+  width: 300px;
   padding: 16px 12px;
-
   position: absolute;
   z-index: 5;
   top: 50%;
@@ -47,7 +46,7 @@
 }
 
 .recordMealModalInput {
-  width: 300px;
+  width: 276px;
   padding: 8px 10px;
   color: #fff;
 
@@ -62,8 +61,13 @@
   margin-bottom: 16px;
 
   @media screen and (min-width: 834px) {
-    width: 100px;
+    width: 120px;
+    margin-bottom: 0;
   }
+}
+
+.recordMealModalInput:last-child {
+  margin-bottom: 0;
 }
 
 /* .recordMealModalInput:first-child {
@@ -134,7 +138,7 @@
 
   font-weight: 500;
   line-height: 1.42em;
-  width: 300px;
+  width: 276px;
   margin-bottom: 16px;
   cursor: pointer;
 
@@ -151,7 +155,7 @@
 }
 
 .recordMealModalCancelBtn {
-  width: 300px;
+  width: 276px;
   cursor: pointer;
   color: #b6b6b6;
   text-align: center;
@@ -177,22 +181,29 @@
 
 .updateFoodForm {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   /* justify-content: space-between; */
   align-items: center;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+  @media (min-width: 834px) {
+    flex-direction: row;
+  }
 }
 
 .textBtn {
   width: 280px;
-  height: 30px;
+  /* height: 30px; */
   font-size: 24px;
   line-height: 30px;
   display: flex;
   margin-left: 12px;
   font-weight: 500;
   align-items: center;
+  /* margin-bottom: 12px; */
+  @media (min-width: 834px) {
+    margin-bottom: 0;
+  }
 }
 
 .validationText {
@@ -204,5 +215,9 @@
 
 .inputWrapper {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  column-gap: 12px;
+  @media (min-width: 834px) {
+    flex-direction: row;
+  }
 }
