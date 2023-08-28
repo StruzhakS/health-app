@@ -4,7 +4,7 @@ import sprite from '../../../assets/icons/symbol-defs.svg';
 import s from './DateSelect.module.css';
 import a from '../../../animations/animations.module.css';
 
-Modal.setAppElement('#root');
+
 
 
 
@@ -55,7 +55,7 @@ const DateSelector = ({ setIsMonth }) => {
   };
   return (
     <div className={`${s.dateSelectorContainer} ${a.slideLeftToRight}`}>
-      <button onClick={handleModalOpen} className={s.lastMonthBtn}>
+      <button onClick={handleModalOpen} className={s.lastMonthBtn} >
         {buttonText}
 
         <svg className={s.dashboardArrowDownSvg}>
@@ -65,14 +65,15 @@ const DateSelector = ({ setIsMonth }) => {
           ></use>
         </svg>
       </button>
-      <div className={s.positonForButton} >
+      <div className={s.positonForButton} id="dashboard" >
         <Modal
           isOpen={isModalOpen}
           onRequestClose={handleModalClose}
           contentLabel="ModalDashBoard"
           className={`${s.dashboardSelect} ${a.scaleInCenter}`}
+           parentSelector={() => document.querySelector('#dashboard')} 
           overlayClassName={s.modalOverlay}
-         
+       
         >
           <span  onClick={handleButtonClick}>{lastYearButtonText}</span>
         </Modal>
