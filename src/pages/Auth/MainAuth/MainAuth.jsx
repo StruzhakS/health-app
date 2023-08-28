@@ -3,9 +3,10 @@ import { useAuth } from '../../../hooks/useAuth';
 import styles from './MainAuth.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import a from '../../../animations/animations.module.css';
-import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
-import IllustrationTablet from '../../../assets/img/tablet/Illustration.png';
-import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
+import * as desk from 'assets/img/desktop';
+import * as mob from 'assets/img/mobile';
+import * as tab from 'assets/img/tablet';
+import { useMediaQuery } from 'react-responsive';
 
 const MainAuth = () => {
   const AuthUser = useAuth();
@@ -16,26 +17,32 @@ const MainAuth = () => {
       return navigate('signup/goal');
     }
   }, [AuthUser, navigate]);
-
+  const isMobile = useMediaQuery({ maxWidth: 833 });
+  const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1439 });
+  const isDesktop = useMediaQuery({ minWidth: 1440 });
   return (
     <div className={styles['auth-container']}>
-      <div className={`${styles['auth-img']} ${a.slideUpToDown}`}>
+      {isMobile && (
         <img
-          className={`${styles.imgIllustrationDesktop} ${styles.imgIllustration}`}
-          src={IllustrationDesktop}
-          alt="Illustration"
+          className={a.slideUpToDown}
+          src={mob.illustrationMob}
+          alt="genders"
         />
+      )}
+      {isTablet && (
         <img
-          className={`${styles.imgIllustrationTablet} ${styles.imgIllustration}`}
-          src={IllustrationTablet}
-          alt="Illustration"
+          className={a.slideUpToDown}
+          src={tab.illustrationTab}
+          alt="genders"
         />
+      )}
+      {isDesktop && (
         <img
-          className={`${styles.imgIllustrationMobile} ${styles.imgIllustration}`}
-          src={IllustrationMobile}
-          alt="Illustration"
+          className={a.slideUpToDown}
+          src={desk.illustrationDesk}
+          alt="genders"
         />
-      </div>
+      )}
 
       <div className={`${styles['auth-content']} ${a.slideDownToUp}`}>
         <h1 className={styles['auth-header']}>Set goals and achieve them</h1>
@@ -44,19 +51,16 @@ const MainAuth = () => {
         </h2>
         <div className={styles['main-auth-button']}>
           <div>
-            <Link
-              to="/signin"
-              className={`${styles['auth-button']} ${a.mainBtnHover}`}
-            >
-              sign in
+            <Link to="/signin" className={styles['auth-button']}>
+              Sign in
             </Link>
           </div>
           <div>
             <Link
               to="/signup"
-              className={`${styles['auth-button']} ${a.mainBtnHover}`}
+              className={`${styles['auth-button-su']} ${a.hoverCloseBtn}`}
             >
-              sign up
+              Sign up
             </Link>
           </div>
         </div>

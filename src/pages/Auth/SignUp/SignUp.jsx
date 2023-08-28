@@ -9,9 +9,10 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import IllustrationDesktop from '../../../assets/img/desktop/Illustration.png';
-import IllustrationTablet from '../../../assets/img/tablet/Illustration.png';
-import IllustrationMobile from '../../../assets/img/mobile/Illustration.png';
+import * as desk from 'assets/img/desktop';
+import * as mob from 'assets/img/mobile';
+import * as tab from 'assets/img/tablet';
+import { useMediaQuery } from 'react-responsive';
 import EyeIcon from '../../../assets/icons/Illustration/eye.svg';
 import EyeOffIcon from '../../../assets/icons/Illustration/eye-off.svg';
 
@@ -66,159 +67,167 @@ const SignUp = () => {
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
-
+  const isMobile = useMediaQuery({ maxWidth: 833 });
+  const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1439 });
+  const isDesktop = useMediaQuery({ minWidth: 1440 });
   return (
     <div className={styles.container}>
       <ToastContainer />
-      <div className={`${styles.containerImg} ${a.slideUpToDown}`}>
+      {isMobile && (
         <img
-          className={`${styles.imgIllustrationDesktop} ${styles.imgIllustration}`}
-          src={IllustrationDesktop}
-          alt="Illustration"
+          className={a.slideUpToDown}
+          src={mob.illustrationMob}
+          alt="genders"
         />
+      )}
+      {isTablet && (
         <img
-          className={`${styles.imgIllustrationTablet} ${styles.imgIllustration}`}
-          src={IllustrationTablet}
-          alt="Illustration"
+          className={a.slideUpToDown}
+          src={tab.illustrationTab}
+          alt="genders"
         />
+      )}
+      {isDesktop && (
         <img
-          className={`${styles.imgIllustrationMobile} ${styles.imgIllustration}`}
-          src={IllustrationMobile}
-          alt="Illustration"
+          className={a.slideUpToDown}
+          src={desk.illustrationDesk}
+          alt="genders"
         />
-      </div>
+      )}
       <div className={`${styles.ContainerDiv} ${a.slideDownToUp}`}>
-        <h2 className={styles.heading}>Sign Up</h2>
-        <h3 className={styles.subheading}>
-          You need to register to use the service
-        </h3>
-        <div className={styles.center}>
-          <Formik
-            initialValues={{ name: '', email: '', password: '' }}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-            }) => (
-              <form onSubmit={handleSubmit}>
-                <label htmlFor="name">
-                  <input
-                    placeholder="Name"
-                    type="text"
-                    name="name"
-                    id="name"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.name}
-                    className={styles.input}
-                  />
-                  <div className={styles.errorFields}>
-                    {errors.name && touched.name ? (
-                      <div>{errors.name} </div>
-                    ) : null}
-                  </div>
-                </label>
-                <label htmlFor="email">
-                  <input
-                    className={`${styles.input} ${
-                      touched.email && errors.email ? styles.invalidInput : ''
-                    } ${
-                      touched.email && !errors.email ? styles.validInput : ''
-                    }`}
-                    placeholder="E-mail"
-                    type="email"
-                    name="email"
-                    id="email"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                  />
-                  <div className={styles.errorFields}>
-                    {errors.email && touched.email ? (
-                      <div>{errors.email} </div>
-                    ) : null}
-                  </div>
-                </label>
-                <div className={styles.passwordInputContainer}>
-                  <label htmlFor="password">
+        <div>
+          <h2 className={styles.heading}>Sign Up</h2>
+          <h3 className={styles.subheading}>
+            You need to register to use the service
+          </h3>
+          <div className={styles.center}>
+            <Formik
+              initialValues={{ name: '', email: '', password: '' }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+              }) => (
+                <form onSubmit={handleSubmit}>
+                  <label htmlFor="name">
                     <input
-                      className={`${styles.passwordInput} ${
-                        values.password.match(regexPatterns.password)
-                          ? styles.securePassword
-                          : ''
-                      }`}
-                      placeholder="Password"
-                      type={showPassword ? 'text' : 'password'}
-                      name="password"
-                      id="password"
-                      onChange={e => {
-                        handleChange(e);
-                        setPasswordValue(e.target.value);
-                      }}
+                      placeholder="Name"
+                      type="text"
+                      name="name"
+                      id="name"
+                      onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.password}
+                      value={values.name}
+                      className={styles.input}
                     />
-                    <div className={styles.passwordInputIcon}>
-                      <button
-                        type="button"
-                        className={styles.showPasswordButton}
-                        onClick={toggleShowPassword}
-                      >
-                        {!showPassword ? (
-                          <img
-                            src={EyeOffIcon}
-                            alt="Hide"
-                            width="16"
-                            height="16"
-                          />
-                        ) : (
-                          <img
-                            src={EyeIcon}
-                            alt="Show"
-                            width="16"
-                            height="16"
-                          />
-                        )}
-                      </button>
-                    </div>
-                    <div className={styles.field}>
-                      {errors.password && touched.password && (
-                        <div className={styles.errorFields}>
-                          {errors.password}
-                        </div>
-                      )}
-                      {!errors.password && values.password && (
-                        <div className={styles.correctFields}>
-                          {values.password.match(regexPatterns.password) && (
-                            <div>Password is secure</div>
-                          )}
-                        </div>
-                      )}
+                    <div className={styles.errorFields}>
+                      {errors.name && touched.name ? (
+                        <div>{errors.name} </div>
+                      ) : null}
                     </div>
                   </label>
-                </div>
-                <NavLink
-                  to={'https://health-app-1rfu.onrender.com/api/auth/google'}
-                  className={styles.googleAuth}
-                >
-                  <svg width="16" height="16">
-                    <use href={`${iconsSrc}#google-auth`} />
-                  </svg>{' '}
-                  Continue with Google
-                </NavLink>
+                  <label htmlFor="email">
+                    <input
+                      className={`${styles.input} ${
+                        touched.email && errors.email ? styles.invalidInput : ''
+                      } ${
+                        touched.email && !errors.email ? styles.validInput : ''
+                      }`}
+                      placeholder="E-mail"
+                      type="email"
+                      name="email"
+                      id="email"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.email}
+                    />
+                    <div className={styles.errorFields}>
+                      {errors.email && touched.email ? (
+                        <div>{errors.email} </div>
+                      ) : null}
+                    </div>
+                  </label>
+                  <div className={styles.passwordInputContainer}>
+                    <label htmlFor="password">
+                      <input
+                        className={`${styles.passwordInput} ${
+                          values.password.match(regexPatterns.password)
+                            ? styles.securePassword
+                            : ''
+                        }`}
+                        placeholder="Password"
+                        type={showPassword ? 'text' : 'password'}
+                        name="password"
+                        id="password"
+                        onChange={e => {
+                          handleChange(e);
+                          setPasswordValue(e.target.value);
+                        }}
+                        onBlur={handleBlur}
+                        value={values.password}
+                      />
+                      <div className={styles.passwordInputIcon}>
+                        <button
+                          type="button"
+                          className={styles.showPasswordButton}
+                          onClick={toggleShowPassword}
+                        >
+                          {!showPassword ? (
+                            <img
+                              src={EyeOffIcon}
+                              alt="Hide"
+                              width="16"
+                              height="16"
+                            />
+                          ) : (
+                            <img
+                              src={EyeIcon}
+                              alt="Show"
+                              width="16"
+                              height="16"
+                            />
+                          )}
+                        </button>
+                      </div>
+                      <div className={styles.field}>
+                        {errors.password && touched.password && (
+                          <div className={styles.errorFields}>
+                            {errors.password}
+                          </div>
+                        )}
+                        {!errors.password && values.password && (
+                          <div className={styles.correctFields}>
+                            {values.password.match(regexPatterns.password) && (
+                              <div>Password is secure</div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </label>
+                  </div>
+                  <NavLink
+                    to={'https://health-app-1rfu.onrender.com/api/auth/google'}
+                    className={styles.googleAuth}
+                  >
+                    <svg width="16" height="16">
+                      <use href={`${iconsSrc}#google-auth`} />
+                    </svg>{' '}
+                    Continue with Google
+                  </NavLink>
 
-                <button type="submit" className={styles.button}>
-                  Sign Up
-                </button>
-              </form>
-            )}
-          </Formik>
+                  <button type="submit" className={styles.button}>
+                    Sign Up
+                  </button>
+                </form>
+              )}
+            </Formik>
+          </div>
         </div>
         <div className={styles.linkContainer}>
           <p className={styles.linkText}>Do you already have an account?</p>
