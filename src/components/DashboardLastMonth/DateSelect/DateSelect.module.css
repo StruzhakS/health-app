@@ -74,7 +74,7 @@
   border-radius: 12px;
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
   justify-content: flex-start;
-  position: relative;
+
   line-height: 32px;
 }
 @media screen and (min-width: 834px) {
@@ -93,12 +93,13 @@
   }
 }
 .positonForButton {
-  position: relative;
-}
-.modalOverlay {
   position: absolute;
-  top: 152px;
-  left: 42px;
+}
+
+.modalOverlay {
+  position: relative;
+  top: 53px;
+  left: 6px;
   cursor: pointer;
   background-color: transparent;
   display: flex;
@@ -108,13 +109,13 @@
 }
 @media screen and (min-width: 834px) {
   .modalOverlay {
-    top: 153px;
-    left: 74px;
+    top: 54px;
+    left: 21px;
   }
 }
 @media screen and (min-width: 1440px) {
   .modalOverlay {
-    top: 146px;
-    left: 64px;
+    top: 49px;
+    left: 15px;
   }
 }
