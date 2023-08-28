@@ -33,7 +33,7 @@ const RecomendedFood = () => {
   return (
     <div className={s.recomendedFoodSection}>
       <h2 className={`${s.recomendedFoodTitle} ${a.slideUpToDown}`}>
-        Recommented food
+        Recommended food
       </h2>
       <div className={s.recomendedFoodBox}>
         <img

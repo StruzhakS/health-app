@@ -111,7 +111,7 @@ const RecordMealModal = ({
   };
 
   const onNameChange = (evt, index) => {
-    const string = evt.target.value;
+    const string = evt.target.value.replace(/[0-9]/g, '');
     setProductNameArr(prev => {
       const resultArr = [];
       for (let i = 0; i < prev.length; i++) {

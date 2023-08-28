@@ -34,7 +34,7 @@ const RecommendedFoodSection = () => {
 
   return (
     <section className={`${css.recommendedFoodSection} ${a.slideRightToLeft}`}>
-      <h2 className={css.recommendedFoodSectionTitle}>Recommented food</h2>
+      <h2 className={css.recommendedFoodSectionTitle}>Recommended food</h2>
       <ul className={css.recommendedFoodSectionList}>
         {randomDataArr().map(({ name, amount, calories, img }) => (
           <li className={css.recommendedFoodSectionListItem} key={name}>
