@@ -11,16 +11,18 @@ import * as desk from 'assets/img/desktop';
 import * as mob from 'assets/img/mobile';
 import * as tab from 'assets/img/tablet';
 import { useMediaQuery } from 'react-responsive';
+import Loader from 'components/Loader/Loader';
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector(state => state.auth?.error);
+  const { error, isLoading } = useSelector(state => state.auth);
+
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
-
+  console.log('isLoading', isLoading);
   const handleChange = ({ target: { name, value } }) => {
     setForm(prevForm => {
       return { ...prevForm, [name]: value };
@@ -29,6 +31,7 @@ const SignIn = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    // setLoading();
     dispatch(signIn(form))
       .unwrap()
       .then(() => navigate('/'))
@@ -40,6 +43,7 @@ const SignIn = () => {
         });
       });
   };
+
   const isMobile = useMediaQuery({ maxWidth: 833 });
   const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1439 });
   const isDesktop = useMediaQuery({ minWidth: 1440 });
@@ -47,75 +51,86 @@ const SignIn = () => {
   return (
     <div className={styles.container}>
       <ToastContainer />
-      {isMobile && (
-        <img
-          className={a.slideUpToDown}
-          src={mob.illustrationMob}
-          alt="genders"
-        />
-      )}
-      {isTablet && (
-        <img
-          className={a.slideUpToDown}
-          src={tab.illustrationTab}
-          alt="genders"
-        />
-      )}
-      {isDesktop && (
-        <img
-          className={a.slideUpToDown}
-          src={desk.illustrationDesk}
-          alt="genders"
-        />
-      )}
-      <div className={`${styles.ContainerDiv} ${a.slideDownToUp}`}>
-        <div>
-          <h2 className={styles.heading}>Sign In</h2>
-          <h3 className={styles.subheading}>
-            You need to login to use the service
-          </h3>
-          {error && <p className={styles.error}>{error}</p>}
-          <form className={styles.inputContainer} onSubmit={handleSubmit}>
-            <input
-              name="email"
-              className={styles.input}
-              type="email"
-              placeholder="Email"
-              value={form.email}
-              onChange={handleChange}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {isMobile && (
+            <img
+              className={a.slideUpToDown}
+              src={mob.illustrationMob}
+              alt="genders"
             />
-            <input
-              name="password"
-              className={styles.input}
-              type="password"
-              placeholder="Password"
-              value={form.password}
-              onChange={handleChange}
+          )}
+          {isTablet && (
+            <img
+              className={a.slideUpToDown}
+              src={tab.illustrationTab}
+              alt="genders"
             />
-            <NavLink
-              to={'https://health-app-1rfu.onrender.com/api/auth/google'}
-              className={styles.googleAuth}
-            >
-              <svg width="16" height="16">
-                <use href={`${iconsSrc}#google-auth`} />
-              </svg>{' '}
-              Continue with Google
-            </NavLink>
-            <button className={styles.button} type="submit">
-              Sign In
-            </button>
-            <Link to="/forgot-password" className={styles.forgotPasswordLink}>
-              Forgot your password?
-            </Link>
-          </form>
-        </div>
-        <div className={styles.signupContainer}>
-          <p className={styles.signupText}>If you don't have an account yet</p>
-          <Link to="/signup" className={styles.signupLink}>
-            Sign up
-          </Link>
-        </div>
-      </div>
+          )}
+          {isDesktop && (
+            <img
+              className={a.slideUpToDown}
+              src={desk.illustrationDesk}
+              alt="genders"
+            />
+          )}
+          <div className={`${styles.ContainerDiv} ${a.slideDownToUp}`}>
+            <div>
+              <h2 className={styles.heading}>Sign In</h2>
+              <h3 className={styles.subheading}>
+                You need to login to use the service
+              </h3>
+              {error && <p className={styles.error}>{error}</p>}
+              <form className={styles.inputContainer} onSubmit={handleSubmit}>
+                <input
+                  name="email"
+                  className={styles.input}
+                  type="email"
+                  placeholder="Email"
+                  value={form.email}
+                  onChange={handleChange}
+                />
+                <input
+                  name="password"
+                  className={styles.input}
+                  type="password"
+                  placeholder="Password"
+                  value={form.password}
+                  onChange={handleChange}
+                />
+                <NavLink
+                  to={'https://health-app-1rfu.onrender.com/api/auth/google'}
+                  className={styles.googleAuth}
+                >
+                  <svg width="16" height="16">
+                    <use href={`${iconsSrc}#google-auth`} />
+                  </svg>{' '}
+                  Continue with Google
+                </NavLink>
+                <button className={styles.button} type="submit">
+                  Sign In
+                </button>
+                <Link
+                  to="/forgot-password"
+                  className={styles.forgotPasswordLink}
+                >
+                  Forgot your password?
+                </Link>
+              </form>
+            </div>
+            <div className={styles.signupContainer}>
+              <p className={styles.signupText}>
+                If you don't have an account yet
+              </p>
+              <Link to="/signup" className={styles.signupLink}>
+                Sign up
+              </Link>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
