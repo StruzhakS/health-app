@@ -44,8 +44,7 @@ line-height: 20px;
 }
 
 .caloriesChartWrapper {
-  display: inline-block;
-  overflow-x: auto; 
+
   width: 100%;
 }
 @media screen and (min-width: 834px) {
@@ -74,7 +73,7 @@ padding: 25px 5px 24px 14px;
 .caloriesChartContainer {
   width: 740px;
 
-margin-bottom: 27px;
+margin-bottom: 8px;
 height: 313px;
 }
 @media screen and (min-width: 834px) {
@@ -98,7 +97,22 @@ height: 313px;
   max-width: 100%; 
   white-space: nowrap; 
    scroll-behavior: smooth; 
+   margin-bottom: 27px;
   
+}
+@media screen and (min-width: 834px) {
+  .caloriesChatContainerScroll {
+    width: 780px;
+    overflow: hidden;
+    margin-bottom: 0px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .caloriesChatContainerScroll {
+    width: 679px;
+    height: 380px;
+    margin-bottom: 0px;
+  }
 }
 .caloriesChatContainerScroll::-webkit-scrollbar {
  height: 8px;
@@ -112,5 +126,5 @@ height: 313px;
 }
 
 .caloriesChatContainerScroll::-webkit-scrollbar-track {
-  background-color: rgba(41, 41, 40, 1); 
+  background-color: #0F0F0F; 
 }

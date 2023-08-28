@@ -25,7 +25,7 @@
 }
 @media screen and (min-width: 1440px) {
   .lastMonthBtn {
-   margin-top: 16px;
+    margin-top: 16px;
   }
 }
 
@@ -60,7 +60,7 @@
   fill: rgba(227, 255, 168, 1);
   stroke: rgba(227, 255, 168, 1);
 }
-.positonForButton{
+.positonForButton {
   position: relative;
 }
 .dashboardSelect {
@@ -75,7 +75,7 @@
   border-radius: 12px;
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
   justify-content: flex-start;
-  position: relative;
+  position: absolute;
   line-height: 32px;
 }
 @media screen and (min-width: 834px) {
@@ -83,21 +83,21 @@
     width: 212px;
     height: 64px;
     font-size: 22px;
-    
+    position: absolute;
   }
 }
 @media screen and (min-width: 1440px) {
   .dashboardSelect {
     width: 212px;
     height: 64px;
-    
+    position: absolute;
   }
 }
 .modalOverlay {
   position: absolute;
-  top: 152px;
-  left: 43px;
-cursor: pointer;
+  top: 179px;
+  left: 125px;
+  cursor: pointer;
   background-color: transparent;
   display: flex;
   justify-content: center;
@@ -107,12 +107,12 @@ cursor: pointer;
 @media screen and (min-width: 834px) {
   .modalOverlay {
     top: 159px;
-    left: 154px;
+    left: 254px;
   }
 }
 @media screen and (min-width: 1440px) {
   .modalOverlay {
     top: 152px;
-    left: 65px;
+    left: 120px;
   }
 }
