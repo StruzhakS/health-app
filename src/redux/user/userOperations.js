@@ -84,7 +84,7 @@ export const updateFoodOperations = createAsyncThunk(
       const data = await setFoodIntake(body);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data);
     }
   }
 );
