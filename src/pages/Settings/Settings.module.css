@@ -159,6 +159,17 @@
   }
 }
 
+.customRadio {
+  cursor: pointer;
+  @media (min-width: 834px) {
+    cursor: pointer;
+  }
+
+  @media (min-width: 1440px) {
+    cursor: pointer;
+  }
+}
+
 .customRadioBox {
   display: flex;
   gap: 16px;
@@ -190,6 +201,7 @@
   margin-right: 8px;
   margin-left: 0;
   outline: none;
+  cursor: pointer;
 }
 
 .actvityLabel {
@@ -204,6 +216,7 @@
 }
 
 .actvityLabel > span {
+  cursor: pointer;
   color: rgba(255, 255, 255, 1);
   line-height: 1.43;
 }

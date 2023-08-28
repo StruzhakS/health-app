@@ -53,7 +53,7 @@ const AuthHeader = () => {
             className={s.userBtn}
             onClick={() => setSetingsModalIsOpen(true)}
           >
-            {userName} <img src={avatar} alt="" className={s.avatarImg} />
+            {userName} <img src={avatar} alt="avatar" className={s.avatarImg} />
             <svg
               style={
                 !setingsModalIsOpen

@@ -25,6 +25,8 @@ const Diary = () => {
   const [foodName, setFoodName] = useState('');
   const onRecordMealButtonClick = evt => {
     setSelectedMeal(evt.target.name);
+    document.body.style.overflow = 'hidden';
+
     setRecordMealModalOpen(true);
   };
 
