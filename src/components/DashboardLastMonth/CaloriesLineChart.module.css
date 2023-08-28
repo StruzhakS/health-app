@@ -73,7 +73,7 @@ padding: 25px 5px 24px 14px;
 }
 .caloriesChartContainer {
   width: 740px;
-  overflow-x: auto; 
+
 margin-bottom: 27px;
 height: 313px;
 }
@@ -92,15 +92,25 @@ height: 313px;
    margin-bottom: 0px;
   }
 }
-.lineChartContainer > div::-webkit-scrollbar {
-  width: 2px; 
+.caloriesChatContainerScroll{
+  display: flex;
+  overflow-x: auto; 
+  max-width: 100%; 
+  white-space: nowrap; 
+   scroll-behavior: smooth; 
+  
+}
+.caloriesChatContainerScroll::-webkit-scrollbar {
+ height: 8px;
+  background-color: #0F0F0F;
+  border-radius: 12px;
 }
 
-.lineChartContainer > div::-webkit-scrollbar-thumb {
-  background-color: rgba(182, 182, 182, 0.7); 
-  border-radius: 6px; 
+.caloriesChatContainerScroll::-webkit-scrollbar-thumb {
+ background-color:rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
 }
 
-.lineChartContainer > div::-webkit-scrollbar-track {
+.caloriesChatContainerScroll::-webkit-scrollbar-track {
   background-color: rgba(41, 41, 40, 1); 
 }

@@ -60,7 +60,9 @@
   fill: rgba(227, 255, 168, 1);
   stroke: rgba(227, 255, 168, 1);
 }
-
+.positonForButton{
+  position: relative;
+}
 .dashboardSelect {
   display: flex;
   background-color: black;
@@ -94,7 +96,7 @@
 .modalOverlay {
   position: absolute;
   top: 152px;
-  left: 38px;
+  left: 43px;
 cursor: pointer;
   background-color: transparent;
   display: flex;
@@ -104,13 +106,13 @@ cursor: pointer;
 }
 @media screen and (min-width: 834px) {
   .modalOverlay {
-    top: 156px;
-    left: 57px;
+    top: 159px;
+    left: 154px;
   }
 }
 @media screen and (min-width: 1440px) {
   .modalOverlay {
     top: 152px;
-    left: 61px;
+    left: 65px;
   }
 }
