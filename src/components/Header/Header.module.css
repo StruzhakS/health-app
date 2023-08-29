@@ -96,9 +96,11 @@
   font-weight: 500;
   line-height: 1.42;
 }
-
-.userSettingsModal {
+.positionModalHeader{
   position: absolute;
+}
+.userSettingsModal {
+ 
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -111,6 +113,30 @@
   right: 27px;
   padding: 24px;
 }
+.modalHeaderOverlay {
+  position: relative;
+  top: 50px;
+  left: 140px;
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+@media screen and (min-width: 834px) {
+  .modalHeaderOverlay {
+    top: 50px;
+    left: 620px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .modalHeaderOverlay {
+    top: 50px;
+    left: 1220px;
+  }
+}
+
 
 .controlWrapper {
   display: flex;

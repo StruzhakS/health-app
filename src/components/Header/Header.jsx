@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import AuthHeader from './AuthHeader';
 import UnAuthHeader from './UnAuthHeader';
 
@@ -11,7 +11,7 @@ export const customStyles = {
   },
 };
 
-Modal.setAppElement('#root');
+// Modal.setAppElement('#root');
 
 const Header = () => {
   const isAuth = useSelector(state => state.auth?.user?.requirements);
