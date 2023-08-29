@@ -76,7 +76,16 @@ const SignUp = () => {
     <div className={styles.container}>
       <ToastContainer />
       {isLoading ? (
-        <Loader />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+          }}
+        >
+          <Loader />
+        </div>
       ) : (
         <>
           {isMobile && (
