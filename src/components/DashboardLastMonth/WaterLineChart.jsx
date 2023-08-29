@@ -55,14 +55,14 @@ const WaterLineChart = ({ isMonth }) => {
     }, 0);
     return sum / waterArray.length;
   };
- /////////////Year/////////////////
-  
+  /////////////Year/////////////////
+
   const yearStatistic = useSelector(state => state.user.yearStatistic);
 
   const dataYearXlabel = () => {
     return monthsForYear.map(month => month.slice(0, 3));
   };
-  
+
   const monthlyWater = {};
   const monthlyDays = {};
   const dataYear = yearStatistic;
@@ -72,24 +72,23 @@ const WaterLineChart = ({ isMonth }) => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
 
-     if (!monthlyWater[year]) {
+    if (!monthlyWater[year]) {
       monthlyWater[year] = {};
       monthlyDays[year] = {};
     }
 
-   if (!monthlyWater[year][month]) {
+    if (!monthlyWater[year][month]) {
       monthlyWater[year][month] = 0;
       monthlyDays[year][month] = 0;
     }
     monthlyWater[year][month] += entry.water;
     monthlyDays[year][month]++;
   });
-  
+
   const resultWaterData = [];
   for (const year in monthlyWater) {
     for (const month in monthlyWater[year]) {
-      const averageWater =
-        monthlyWater[year][month] / monthlyDays[year][month];
+      const averageWater = monthlyWater[year][month] / monthlyDays[year][month];
       resultWaterData.push({
         averageWater: averageWater,
       });
@@ -99,7 +98,7 @@ const WaterLineChart = ({ isMonth }) => {
   const dataYearYlabel = resultWaterData.map(
     ({ averageWater }) => averageWater
   );
- const averageYear = () => {
+  const averageYear = () => {
     const waterArray = dataYearYlabel;
     const sum = waterArray.reduce((accum, el) => {
       return accum + el;
@@ -107,7 +106,6 @@ const WaterLineChart = ({ isMonth }) => {
     return sum / waterArray.length;
   };
 
-    
   const yAxisFormatter = value => {
     if (value >= 1000) {
       return `${value / 1000}L`;
@@ -201,15 +199,17 @@ const WaterLineChart = ({ isMonth }) => {
         <span className={css.averageTitle}>
           Average value:
           <span className={css.waterSubtitle}>
-            
             {isMonth ? average().toFixed(0) : averageYear().toFixed(0)} ml
           </span>
         </span>
       </div>
-
-      <div className={css.chartWrapper}>
-        <div className={`${css.chartContainer} ${css.waterLineChartContainer}`}>
-          <Line data={data} options={options} />
+      <div className={css.waterChartContainerScroll}>
+        <div className={css.chartWrapper}>
+          <div
+            className={`${css.chartContainer} ${css.waterLineChartContainer}`}
+          >
+            <Line data={data} options={options} />
+          </div>
         </div>
       </div>
     </>

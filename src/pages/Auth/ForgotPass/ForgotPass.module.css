@@ -1,8 +1,15 @@
 .container {
-  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+
   margin: 0 auto;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 24px 0 40px;
+
+}
+
+.ContainerDiv {
+  margin-top: 24px;
+
 }
 
 .input {
@@ -14,7 +21,20 @@
   gap: 10px;
   background-color: #0f0f0f;
   color: #b6b6b6;
-  margin-bottom: 16px;
+
+}
+
+.field {
+  min-height: 16px;
+}
+
+.errorFields {
+  display: block;
+  width: auto;
+  min-height: 16px;
+  padding-left: 6px;
+  text-align: start;
+  color: #E74A3B;
 }
 
 .button {
@@ -31,15 +51,14 @@
   letter-spacing: 0em;
   text-align: center;
   color: #0f0f0f;
-  margin-bottom: 80px;
+
 }
+
 .error {
   color: rgb(20, 9, 9);
 }
 
-.imgContainer {
-  margin-bottom: 24px;
-}
+
 
 .heading {
   font-family: Poppins;
@@ -84,37 +103,28 @@
   text-align: left;
   color: #ffffff;
 }
-.imgIllustrationMobile {
-  display: block;
-}
-.imgIllustrationDesktop {
-  display: none;
-}
-.imgIllustrationTablet {
-  display: none;
+
+.linkContainer {
+  margin-top: 80px;
 }
 
 @media (min-width: 834px) and (max-width: 1439.5px) {
   .container {
-    max-width: 834px;
-    margin: 0 auto;
-    padding-left: 190px;
-    padding-right: 190px;
-    padding-top: 40px;
-    border-radius: 5px;
-    padding-bottom: 60px;
-  }
-  .containerImg {
-    display: flex;
-    width: 380px;
-    margin-bottom: 60px;
-    align-items: stretch;
+
+    padding: 40px 168px 60px;
+    align-items: center;
     justify-content: center;
+
   }
-  .imgIlistration {
-    width: 380px;
-    margin-bottom: 60px;
+
+  .ContainerDiv {
+    margin-top: 60px;
+    width: 444px;
+
   }
+
+
+
   .heading {
     font-family: Poppins;
     font-size: 30px;
@@ -131,8 +141,9 @@
   .inputContainer {
     display: flex;
     flex-direction: column;
-    margin-left: 33px;
+
   }
+
   .subheading {
     width: 444px;
     font-size: 22px;
@@ -145,102 +156,103 @@
     height: 36px;
     gap: 16px;
   }
+
   .button {
     width: 360px;
-    margin-bottom: 318px;
+
   }
+
   .center {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
+
   .linkContainer {
+    margin-top: 310px;
     display: flex;
     align-items: baseline;
     justify-content: center;
   }
+
   .linkText {
     font-size: 14px;
     margin-right: 16px;
   }
-  .forgotPasswordLink {
+
+  /* .forgotPasswordLink {
     margin-bottom: 250px;
-  }
+  } */
 
   .signupText {
     font-size: 14px;
     font-weight: 400;
     margin-right: 16px;
   }
+
   .signupContainer {
     display: flex;
     align-items: baseline;
     justify-content: center;
   }
+
   .account {
     margin-right: 16px;
   }
-  .imgIllustrationTablet {
-    display: block;
-  }
-  .imgIllustrationDesktop {
-    display: none;
-  }
 
-  .imgIllustrationMobile {
-    display: none;
-  }
 }
 
 @media (min-width: 1440px) {
   .container {
-    max-width: 1440px;
-    display: flex;
+    flex-direction: row;
+
+    padding: 40px 116px 60px;
+    align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding-top: 0;
-    padding-bottom: 0;
+
+
   }
+
+  .ContainerDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 508px;
+    justify-content: space-between;
+
+    margin-top: 80px;
+    margin-left: 104px;
+    width: 444px;
+
+  }
+
   .center {
     display: flex;
     flex-direction: column;
   }
 
-  .imgContainer {
-    margin-right: 104px;
-    max-width: 592px;
-  }
-  .imgIllustration {
-    width: 592px;
-  }
+
+
   .button {
     width: 360px;
-    margin-bottom: 318px;
+
   }
+
   .input {
     width: 360px;
     height: 36px;
     gap: 16px;
   }
+
   .linkContainer {
     display: flex;
   }
+
   .account {
     margin-right: 16px;
   }
-  .ContainerDiv {
-    margin-left: 0;
-    padding-left: 39px;
-  }
-  .imgIllustrationDesktop {
-    display: block;
-    margin-left: 19px;
-  }
-  .imgIllustrationTablet {
-    display: none;
-  }
-  .imgIllustrationMobile {
-    display: none;
-  }
+
+
 }

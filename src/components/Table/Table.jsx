@@ -52,7 +52,7 @@ const DiaryTable = ({
   }
 
   const onEditButtonClick = name => {
-    // document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
 
     setFoodName(name);
     onUpdateMealButtonClick(mealType);

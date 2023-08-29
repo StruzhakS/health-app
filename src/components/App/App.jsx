@@ -2,8 +2,6 @@ import Diary from 'components/Diary/Diary';
 import Layout from 'components/Layout/Layout';
 import RecomendedFood from 'components/RecomendedFood/RecomendedFood';
 import MainAuth from 'pages/Auth/MainAuth/MainAuth';
-// import HomePage from '../../pages/';
-// import MainPage from 'pages/MainPage';
 import DashboardLastMonth from '../DashboardLastMonth/DashboardLastMonth';
 import { Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
@@ -18,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateAuthUser } from '../../redux/auth/authSlice';
 import SettingsPage from 'pages/Settings/SettingsPage';
 import GoogleAuth from 'components/GoogleAuth/GoogleAuth';
+
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -42,16 +41,21 @@ export const App = () => {
             element={<PublicRoute component={<SignIn />} />}
           />
           <Route
+            path="/googleAuth"
+            element={<PublicRoute component={<GoogleAuth />} />}
+          />
+          <Route
             path="/signup"
             element={<PublicRoute component={<SignUp />} />}
           />
-          <Route path="/googleAuth" element={<GoogleAuth />} />
-          {/* <Route
-            path="/googleauth/:params"
-            element={<PublicRoute component={<GoogleAuth />} />}
-          /> */}
-          <Route path="/signup/:params" element={<SignupForm />} />
-          <Route path="/forgot-password" element={<ForgotPass />} />
+          <Route
+            path="/signup/:params"
+            element={<PublicRoute component={<SignupForm />} />}
+          />
+          <Route
+            path="/forgot-password"
+            element={<PublicRoute component={<ForgotPass />} />}
+          />
           <Route
             path="recommended-food"
             element={<PrivateRoute component={<RecomendedFood />} />}

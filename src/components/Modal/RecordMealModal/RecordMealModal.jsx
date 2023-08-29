@@ -7,8 +7,11 @@ import Breakfast from '../../../assets/img/mobile/Breakfast.png';
 import Lunch from '../../../assets/img/mobile/Lunch.png';
 import Dinner from '../../../assets/img/mobile/Dinner.png';
 import Snack from '../../../assets/img/mobile/Snack.png';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateFoodOperations } from 'redux/user/userOperations';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ButtonLoader from 'components/Loader/ButtonLoader';
 
 const imageObject = { Breakfast, Lunch, Dinner, Snack };
 
@@ -24,6 +27,7 @@ const RecordMealModal = ({
   setRecordMealModalOpen,
   selectedMeal,
 }) => {
+  const isLoading = useSelector(state => state.user.isLoading);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
   const [numberOfItems, setNumberOfItems] = useState([0]);
 
@@ -106,8 +110,16 @@ const RecordMealModal = ({
       protein: `${proteinArr[i]}`,
     }));
 
-    onCloseButtonClick();
-    dispatch(updateFoodOperations(sendedObj));
+    dispatch(updateFoodOperations(sendedObj))
+      .unwrap()
+      .then(() => onCloseButtonClick())
+      .catch(e => {
+        toast.error(e.message, {
+          theme: 'dark',
+          autoClose: 2000,
+          hideProgressBar: true,
+        });
+      });
   };
 
   const onNameChange = (evt, index) => {
@@ -193,6 +205,7 @@ const RecordMealModal = ({
       style={customStyles}
       contentLabel="Example Modal"
     >
+      <ToastContainer />
       <h3 className={css.recordMealModalTitle}>Record your meal</h3>
       <div className={css.recordMealModalMealImageContainer}>
         <img
@@ -253,14 +266,19 @@ const RecordMealModal = ({
           Add more
         </button>
         <div className={css.recordMealModalBtnContainer}>
-          <button
-            className={`${css.recordMealModalConfirmBtn} ${a.hoverYellowBtn}`}
-            onClick={handleSubmit}
-            type="submit"
-            disabled={submitButtonDisabled}
-          >
-            Confirm
-          </button>
+          {isLoading ? (
+            <ButtonLoader />
+          ) : (
+            <button
+              className={`${css.recordMealModalConfirmBtn} ${a.hoverYellowBtn}`}
+              onClick={handleSubmit}
+              type="submit"
+              disabled={submitButtonDisabled}
+            >
+              Confirm
+            </button>
+          )}
+
           <button
             className={`${css.recordMealModalCancelBtn} ${a.hoverCloseBtn}`}
             type="button"

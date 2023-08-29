@@ -1,16 +1,16 @@
 .container {
-    padding: 24px 10px;
+    padding: 24px 0 60px;
 }
 
 @media screen and (min-width: 834px) {
     .container {
-        padding: 40px 195px 0;
+        padding: 40px 168px 100px;
     }
 
 }
 
 @media screen and (min-width: 1440px) {
     .container {
-        padding: 40px 150px 0;
+        padding: 40px 116px 86px;
     }
 }
