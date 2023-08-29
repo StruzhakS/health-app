@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import s from './Header.module.css';
 import a from '../../animations/animations.module.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import ControlPanel from 'components/ControlPanel/ControlPanel';
 import iconsSrc from '../../assets/icons/symbol-defs.svg';
 import Modal from 'react-modal';
-import { customStyles } from './Header';
+
 import MobileMenuModal from 'components/Modal/MobileMenuModal/MobileMenuModal';
 import { logoutUserThunk } from 'redux/auth/authOperations';
 
@@ -20,6 +20,7 @@ const AuthHeader = () => {
 
   const [setingsModalIsOpen, setSetingsModalIsOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOper] = useState(false);
+  const [clickedOutside, setClickedOutside] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,6 +30,22 @@ const AuthHeader = () => {
     setSetingsModalIsOpen(false);
     navigate('/');
   }, [dispatch, navigate]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (setingsModalIsOpen && !event.target.closest(`.${s.userSettingsModal}`)) {
+        setClickedOutside(true);
+      }
+    };
+
+    if (clickedOutside) {
+      setSetingsModalIsOpen(false);
+      setClickedOutside(false);
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [setingsModalIsOpen, clickedOutside]);
 
   return (
     <div className={s.header}>
@@ -70,12 +87,15 @@ const AuthHeader = () => {
             </svg>
           </button>
         </div>
+        <div className={s.positionModalHeader} id="headerModal">
         <Modal
           className={`${s.userSettingsModal} ${a.scaleInCenter}`}
           isOpen={setingsModalIsOpen}
           onRequestClose={() => setSetingsModalIsOpen(false)}
-          style={customStyles}
-          contentLabel="Example Modal"
+       
+            contentLabel="Example Modal"
+            parentSelector={() => document.querySelector('#headerModal')}
+              overlayClassName={s.modalHeaderOverlay}
         >
           <button
             className={s.userBtn}
@@ -95,7 +115,7 @@ const AuthHeader = () => {
             </svg>
             Log out
           </button>
-        </Modal>
+        </Modal></div>
         <MobileMenuModal
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenuOper={setMobileMenuOper}
